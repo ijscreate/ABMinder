@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		app:cardCornerRadius = "10dp"
+		app:cardElevation = "4dp"
+		app:cardUseCompatPadding = "true"
+		android:layout_gravity = "center"
+		android:orientation = "vertical"
+		>
+
+	<ScrollView
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			>
+
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:padding = "16dp"
+				android:orientation = "vertical"
+				>
+
+			<!-- Cost of Asset -->
+			<com.google.android.material.textfield.TextInputLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/cost_of_asset"
+					>
+
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextCostOfAsset"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						android:importantForAutofill = "no"
+						android:paddingHorizontal = "6dp"
+						android:textColorHint = "#757575"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<!-- Salvage Value -->
+			<com.google.android.material.textfield.TextInputLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/salvage_value"
+					>
+
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextSalvageValue"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						android:importantForAutofill = "no"
+						android:paddingHorizontal = "6dp"
+						android:textColorHint = "#757575"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<!-- Useful Life -->
+			<com.google.android.material.textfield.TextInputLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/useful_life_years"
+					>
+
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextUsefulLife"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "number"
+						android:importantForAutofill = "no"
+						android:paddingHorizontal = "6dp"
+						android:textColorHint = "#757575"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
+
+
+			<Spinner
+					android:id = "@+id/spinnerMethod"
+					android:layout_width = "match_parent"
+					android:layout_height = "40dp"
+					android:entries = "@array/depreciation_methods"
+					android:importantForAutofill = "no"
+					/>
+
+
+			<!-- Calculate Button -->
+			<com.google.android.material.button.MaterialButton
+					android:id = "@+id/buttonCalculateDepreciation"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:text = "@string/calculate"
+					style = "?attr/materialButtonOutlinedStyle"
+					/>
+
+			<!-- Result TextView -->
+			<com.google.android.material.textview.MaterialTextView
+					android:id = "@+id/textViewDepreciationResult"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:padding = "8dp"
+					android:layout_marginTop = "6dp"
+					android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+					/>
+
+			<com.google.android.material.divider.MaterialDivider
+					android:layout_width = "match_parent"
+					android:layout_height = "1dp"
+					android:layout_marginVertical = "4dp"
+					/>
+
+			<!-- Description TextView -->
+			<TextView
+					android:id = "@+id/description"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "12dp"
+					android:padding = "8dp"
+					android:text = "@string/depreciation_description"
+					android:textSize = "16sp"
+					/>
+
+		</LinearLayout>
+	</ScrollView>
+</androidx.cardview.widget.CardView>

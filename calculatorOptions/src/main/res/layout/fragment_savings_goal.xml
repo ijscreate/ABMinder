@@ -1,0 +1,78 @@
+<!-- res/layout/fragment_savings_goal.xml -->
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        >
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutGoalAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Savings Goal Amount"
+            >
+
+        <EditText
+                android:id="@+id/editTextGoalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                tools:ignore="LabelFor"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutMonthlySaving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textInputLayoutGoalAmount"
+            android:layout_marginTop="16dp"
+            android:hint="Monthly Saving"
+            >
+
+        <EditText
+                android:id="@+id/editTextMonthlySaving"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                tools:ignore="LabelFor"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+            android:id="@+id/buttonCalculateSavingsGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textInputLayoutMonthlySaving"
+            android:layout_marginTop="16dp"
+            android:text="Calculate"
+            />
+
+    <TextView
+            android:id="@+id/textViewSavingsGoalResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonCalculateSavingsGoal"
+            android:layout_marginTop="16dp"
+            />
+
+    <Button
+            android:id="@+id/buttonExplanationSavingsGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewSavingsGoalResult"
+            android:layout_marginTop="16dp"
+            android:text="Show Explanation"
+            />
+
+    <TextView
+            android:id="@+id/textViewSavingsGoalDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonExplanationSavingsGoal"
+            android:layout_marginTop="16dp"
+            />
+</RelativeLayout>

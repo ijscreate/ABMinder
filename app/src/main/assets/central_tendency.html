@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Measures of Central Tendency - Scribbr</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        p {
+            color: #464646;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .card h3 {
+            color: #333;
+        }
+        .card p {
+            margin-bottom: 10px;
+        }
+        .card ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .card ul li {
+            margin-bottom: 5px;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            color: #555;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Measures of Central Tendency</h1>
+    <p>Understanding the different measures used to describe the center of a data set.</p>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h3>Mean (Arithmetic Average):</h3>
+        <p>The mean represents the average value of a dataset.</p>
+        <p>The mean is the sum of all values in a data set divided by the number of values. It is
+            affected by outliers.</p>
+        <p>Mathematically, the mean can be expressed as:</p>
+        <math display="block" xmlns="http://www.w3.org/1998/Math/MathML">
+            <semantics>
+                <mrow>
+                    <mtext>Mean</mtext>
+                    <mo>=</mo>
+                    <mfrac>
+                        <mrow>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>+</mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>+</mo>
+                            <mo>…</mo>
+                            <mo>+</mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>n</mi>
+                            </msub>
+                        </mrow>
+                        <mi>n</mi>
+                    </mfrac>
+                </mrow>
+                <annotation encoding="application/x-tex">\text{Mean} = \frac{x_1 + x_2 + \ldots +
+                    x_n}{n}
+                </annotation>
+            </semantics>
+        </math>
+        <p>For symmetric data distributions, the mean is accurately located at the center. However,
+            in skewed distributions, extreme values can pull the mean away from the center.</p>
+
+        <p>Here are some examples of where the mean is used:</p>
+    </div>
+    <ol>
+        <li>Descriptive Statistics: The mean is often used to describe the central tendency of a
+            set of values. For example, when analyzing test scores of students, the mean score
+            can give an idea of the average performance.
+        </li>
+        <li>Research and Analysis: In research studies, the mean is frequently used to summarize
+            data. Researchers often calculate the mean of a sample to draw conclusions about the
+            population.
+        </li>
+        <li>Business and Finance: In finance, the mean is used to calculate averages such as
+            stock prices, returns on investments, or company earnings.
+        </li>
+        <li>Quality Control: In manufacturing processes, the mean is used to monitor and control
+            quality by calculating the average measurements of products to ensure they meet
+            specifications.
+        </li>
+        <li>Survey Analysis: When analyzing survey data, the mean can be used to understand the
+            average response to a particular question among respondents.
+        </li>
+    </ol>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h3>Median:</h3>
+        <p>The median is the middle value in a sorted list of numbers. The median is not affected by
+            extreme values and is therefore a better measure than the mean for highly skewed
+            distributions.</p>
+        <p>If the dataset has an even number of values, the median is the average of the two middle
+            values.</p>
+        <p>For example:</p>
+        <ul>
+            <li>1. Dataset with an odd number of observations: 23, 21, 18, 16, 15, 13, 12, 10,
+                9,
+                7, 6, 5, and 2
+            </li>
+            <li>Median: 12 (middle value)</li>
+            <br>
+            <li>2. Dataset with an even number of observations: 40, 38, 35, 33, 32, 30, 29, 27, 26,
+                24,
+                23, 22, 19, and 17
+            </li>
+            <li>Median: (27 + 29) / 2 = 28</li>
+        </ul>
+    </div>
+    <p>Here are some examples of where the median is used:</p>
+    <ol>
+        <li>Income Distribution: In economics, the median income is often used to represent
+            the income level that separates the higher half of the population from the lower
+            half.
+        </li>
+        <li>Real Estate: When analyzing housing prices, the median price is often used as it
+            represents the middle value of a set of prices, providing a more accurate
+            picture of typical prices than the mean.
+
+        </li>
+        <li>Healthcare: In healthcare, the median is used to represent the middle value of
+            patient outcomes or treatment costs, giving a better understanding of the
+            typical result or expense.
+        </li>
+        <li>Skewed Data: In cases where data is skewed or contains outliers, the median is
+            preferred over the mean as it is less affected by extreme values and provides a
+            more robust measure of central tendency.
+        </li>
+        <li>Ranking Data: When ranking items such as salaries, test scores, or performance
+            ratings, the median can be used to identify the middle value, which can be more
+            representative than the mean in certain situations.
+        </li>
+    </ol>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h3>Mode:</h3>
+        <p>The mode is the value that appears most frequently in a data set. There can be one mode,
+            more than one mode, or no mode.</p>
+        <p>For example, in the dataset {1, 2, 2, 3, 4}, the mode is 2. In the dataset {1, 2, 2, 3,
+            3, 4}, the modes are 2 and 3. In the dataset {1, 2, 3, 4}, there is no mode.</p>
+        <p> Here are some examples of scenarios where the mode is used:</p>
+        <ol>
+            <li>Fashion and Design: Fashion designers use the mode to identify the most popular
+                colors, styles, or patterns among consumers.
+            </li>
+            <li>Education: Teachers can use the mode to determine the most common score on a test,
+                helping them assess student performance.
+            </li>
+            <li>Economics: Economic analysts may calculate the mode of incomes in a population to
+                better understand wealth distribution.
+            </li>
+            <li>Traffic Analysis: Urban planners can use the mode to identify peak traffic hours in
+                a specific area.</li>
+            <li>Scientific Research: Scientists can use the mode to identify the most frequent
+                values in a dataset and draw meaningful conclusions.</li>
+        </ol>
+    </div>
+</div>
+
+<footer>
+    <p>Reference: <a href="https://www.scribbr.com/statistics/central-tendency">Scribbr</a></p>
+</footer>
+
+</body>
+</html>

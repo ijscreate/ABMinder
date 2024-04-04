@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		xmlns:tools = "http://schemas.android.com/tools"
+		android:id = "@+id/amortizationScheduleCardView"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		app:cardCornerRadius = "10dp"
+		app:cardElevation = "4dp"
+		app:cardUseCompatPadding = "true"
+		android:orientation = "vertical"
+		>
+
+	<LinearLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:padding = "16dp"
+			android:orientation = "vertical"
+			>
+
+		<com.google.android.material.textview.MaterialTextView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:text = "@string/amortization_schedule"
+				android:fontFamily = "sans-serif-black"
+				android:padding = "6dp"
+				android:gravity = "center"
+				android:textStyle = "bold"
+				android:textAppearance = "@style/TextAppearance.AppCompat.Title"
+				android:textAllCaps = "true"
+				/>
+
+		<androidx.cardview.widget.CardView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				app:cardElevation = "4dp"
+				android:layout_margin = "6dp"
+				app:cardCornerRadius = "6dp"
+				app:contentPadding = "4dp"
+				>
+
+			<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/editTextLoanAmount"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/loan_amount"
+					android:inputType = "numberDecimal"
+					android:importantForAutofill = "no"
+					android:paddingHorizontal = "6dp"
+					android:ems = "@integer/material_motion_duration_short_1"
+					android:minHeight = "48dp"
+					android:textColorHint = "#757575"
+					tools:ignore = "VisualLintTextFieldSize"
+					/>
+		</androidx.cardview.widget.CardView>
+
+		<androidx.cardview.widget.CardView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				app:cardElevation = "4dp"
+				app:cardCornerRadius = "6dp"
+				android:layout_margin = "6dp"
+				app:contentPadding = "4dp"
+				>
+
+			<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/editTextInterestRate"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/interest_rate"
+					android:inputType = "numberDecimal"
+					android:importantForAutofill = "no"
+					android:paddingHorizontal = "6dp"
+					android:minHeight = "48dp"
+					android:textColorHint = "#757575"
+					tools:ignore = "VisualLintTextFieldSize"
+					/>
+		</androidx.cardview.widget.CardView>
+
+		<androidx.cardview.widget.CardView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_margin = "6dp"
+				app:cardCornerRadius = "6dp"
+				app:cardElevation = "4dp"
+				app:contentPadding = "4dp"
+				>
+
+			<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/editTextLoanTerm"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/loan_term_years"
+					android:inputType = "numberDecimal"
+					android:paddingHorizontal = "6dp"
+					android:importantForAutofill = "no"
+					android:minHeight = "48dp"
+					android:textColorHint = "#757575"
+					tools:ignore = "VisualLintTextFieldSize"
+					/>
+		</androidx.cardview.widget.CardView>
+
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginTop = "2dp"
+				android:orientation = "horizontal"
+				android:gravity = "center"
+				>
+
+			<com.google.android.material.textview.MaterialTextView
+					android:id = "@+id/textViewAmortizationResult"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:text = ""
+					android:padding = "8dp"
+					android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+					android:gravity = "center"
+					android:layout_weight = "1"
+					/>
+
+			<Button
+					android:id = "@+id/buttonCalculateAmortization"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:text = "@string/calculate_amortization"
+					android:layout_weight = "2"
+					/>
+		</LinearLayout>
+
+		<TableLayout
+				android:id = "@+id/amortizationTable"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:stretchColumns = "0,1,2,3"
+				>
+
+			<TableRow>
+
+				<TextView
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:text = "Period"
+						android:padding = "5dp"
+						/>
+
+				<TextView
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:text = "Beginning Balance"
+						android:padding = "5dp"
+						/>
+
+				<TextView
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:text = "Interest"
+						android:padding = "5dp"
+						/>
+
+				<TextView
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:text = "Principal"
+						android:padding = "5dp"
+						/>
+			</TableRow>
+
+			<!-- Add TableRow widgets for each period of the loan here -->
+
+		</TableLayout>
+
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginTop = "8dp"
+				android:orientation = "vertical"
+				>
+
+
+			<Button
+					android:id = "@+id/explainAmortizationButton"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:text = "@string/show_explanation"
+					/>
+
+			<ScrollView
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					>
+
+				<TextView
+						android:id = "@+id/tVAmortizationDescription"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:layout_marginTop = "6dp"
+						android:padding = "8dp"
+						android:text = ""
+						android:textSize = "16sp"
+						/>
+			</ScrollView>
+		</LinearLayout>
+	</LinearLayout>
+</androidx.cardview.widget.CardView>

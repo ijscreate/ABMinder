@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools = "http://schemas.android.com/tools">
+	<string name = "rate_of_interest">Rate of Interest(%)</string>
+	<string name = "principal_amount">Principal Amount</string>
+	<string name = "time_years">Time(years)</string>
+	<string name = "calculate">Calculate</string>
+	<string name = "show_explanation">Show Solution</string>
+	<string name = "simple_interest">simple interest</string>
+	<string name = "selling_price">Selling Price</string>
+	<string name = "cost_price">Cost Price</string>
+	<string name = "profit_margin">Profit Margin</string>
+	<string name = "calculate_amortization">Calculate</string>
+	<string name = "amortization_schedule">Amortization Schedule</string>
+	<string name = "loan_amount">Loan Amount</string>
+	<string name = "interest_rate">Interest Rate</string>
+	<string name = "loan_term_years">Loan Term (years)</string>
+	<string name = "discount_rate">Discount Rate</string>
+	<string name = "initial_investment">Initial Investment</string>
+	<string name = "npv_calculator">Net Present Value</string>
+	<string name = "cash_flow">Cash Flow</string>
+	<string name = "year_1">Year 1</string>
+	<string name = "year_2">Year 2</string>
+	<string name = "year_3">Year 3</string>
+	<string name = "year_4">Year 4</string>
+	<string name = "year_5">Year 5</string>
+	<string name = "no_of_years">No. of years (max. of 10)</string>
+	<string name = "add_year">Add Year</string>
+	<string name = "ok">OK</string>
+	<string name = "enter">Enter</string>
+	<string name = "year_6">Year 6</string>
+	<string name = "year_7">Year 7</string>
+	<string name = "year_8">Year 8</string>
+	<string name = "year_9">Year 9</string>
+	<string name = "year_10">Year 10</string>
+	<string name = "roi_calculator">Return On Investment</string>
+	<string name = "annual_net_cash_flow">Annual net cash flow</string>
+	<string name = "reset">Reset</string>
+	<string name = "investment_amount">Investment amount</string>
+	<string name = "variable_cost">Variable cost</string>
+	<string name = "fixed_cost">Fixed cost</string>
+	<string name = "break_even_calculator">Break-Even Point</string>
+	<string name = "compound_interest">Compound Interest</string>
+	<string name = "tax_rate">Tax rate</string>
+	<string name = "equity_weight">Equity weight</string>
+	<string name = "debt_weight">Debt weight</string>
+	<string name = "cost_of_equity">Cost of equity</string>
+	<string name = "cost_of_debt">Cost of debt</string>
+	<string name = "future_value">Future Value:</string>
+	<string name = "weighted_average_cost_of_capital">Weighted Average Cost Of Capital</string>
+	<string name = "time_period_years">Time period (years)</string>
+	<string name = "interest_rate_percent">Interest rate</string>
+	<string name = "present_value">Present Value</string>
+	<string name = "compounding_periods_per_year">Compounding Periods (per year)</string>
+	<string name = "time_value_of_money">Time Value Of Money</string>
+	<string name = "break_even">Break-even:</string>
+	<string name = "dcf_result">DCF: </string>
+	<string name = "enter_cash_flows">Enter cash flows (use a comma to separate cash flows)</string>
+	<string name = "net_income">Net Income</string>
+	<string name = "preferred_dividends">Preferred Dividends</string>
+	<string name = "weighted_average_shares">Weighted Average Shares</string>
+	<string name = "eps_result">Earnings Per Share: %.2f</string>
+	<string name = "final_gdp">Final GDP</string>
+	<string name = "initial_gdp">Initial GDP</string>
+	<string name = "gdp_result">Gross Domestic Product: %.2f</string>
+	<string name = "equity">Total shareholders equity</string>
+	<string name = "total_debt">Total Liabilities</string>
+	<string name = "dter_result">Debt/Equity Ratio: %.2f</string>
+	<string name = "current_liabilities">Current liabilities</string>
+	<string name = "operating_cash_flow_ratio_result">Operating Cash Flow Ratio: %.2f</string>
+	<string name = "net_operating_cash_flow">Net Operating Cash Flow</string>
+	<!-- Inventory Turnover Ratio Calculator -->
+	<string name = "cost_of_goods_sold">Cost of Goods Sold</string>
+	<string name = "average_inventory">Average Inventory</string>
+	<string name = "inventory_turnover_ratio_result">Inventory Turnover Ratio: %.2f</string>
+	<string name = "average_total_assets">Average Total Assets</string>
+	<string name = "roa_result">Return on Assets: %.2f%%</string>
+	<string name = "annual_cash_flow">Annual Cashflow</string>
+	<string name = "payback_period_result">Payback Period: %.2f</string>
+	<string name = "net_credit_sales">Net Credit Sales</string>
+	<string name = "average_accounts_receivable">Average Accounts Receivable</string>
+	<string name = "average_collection_period_result">Average Collection Period: %.2f days</string>
+	<string name = "revenues">Revenues</string>
+	<string name = "costs">Costs</string>
+	<string name = "expected_losses">Expected Losses</string>
+	<string name = "economic_capital">Economic Capital</string>
+	<string name = "raroc_result">RAROC: %.2f%%</string>
+	<!-- Working Capital Ratio Fragment Strings -->
+	<string name = "current_assets">Enter Current Assets</string>
+	<string name = "wc_result">Working Capital Ratio: %.2f</string>
+	<string name = "savings_goal_result" tools:ignore = "PluralsCandidate">To reach your goal, save %s monthly for %d months.</string>
+
+	<string name = "inflation_adjusted_return_result">The inflation-adjusted return is %s.</string>
+	<string name = "principal">Principal</string>
+	<string name = "initial_cost">Initial Cost</string>
+	<string name = "salvage_value">Salvage Value</string>
+	<string name = "useful_life_years">Useful Life (Years)</string>
+	<string name = "beginning_inventory">Beginning Inventory</string>
+	<string name = "purchases">Purchases</string>
+	<string name = "ending_inventory">Ending Inventory</string>
+	<string name = "cogs_result">Cost of Goods Sold (COGS): ₱%.2f</string>
+	<string name = "equity_multiplier">Equity Multiplier</string>
+	<string name = "total_assets">Total Assets</string>
+	<string name = "total_equity">Total Equity</string>
+	<string name = "equity_multiplier_result">Equity Multiplier: %.2f</string>
+	<string name = "future_value_result">Future Value: ₱%$s</string>
+	<string name = "number_of_periods">Number of Periods</string>
+
+	<!-- Error message for invalid input -->
+	<string name = "invalid_input">Invalid input. Please enter valid values.</string>
+
+	<!-- Titles -->
+	<string name = "present_value_title">Present Value of Cash Flows</string>
+
+	<!-- Hints -->
+	<string name = "cash_flows">Enter Cash Flows (separated by commas)</string>
+	<!-- Result label -->
+	<string name = "present_value_result">Present Value: ₱%$s</string>
+	<!-- Titles -->
+	<string name = "average_rate_of_return_title">Average Rate of Return</string>
+	<string name = "final_value">Final Value</string>
+	<!-- Result label -->
+	<string name = "average_rate_of_return_result">Average Rate of Return: %2$s%</string>
+
+	<!-- Titles -->
+	<string name = "cash_conversion_cycle_title">Cash Conversion Cycle (CCC)</string>
+	<!-- Hints -->
+	<string name = "days_inventory">Days Inventory</string>
+	<string name = "days_receivables">Days Receivables</string>
+	<string name = "days_payables">Days Payables</string>
+	<string name = "explanation">Explanation</string>
+	<!-- Description -->
+	<string name = "cash_conversion_cycle_description">Enter the number of days for each component of the cash conversion cycle.</string>
+
+	<!-- Result -->
+	<string name = "cash_conversion_cycle_result">Cash Conversion Cycle (CCC): %.2f days</string>
+
+	<!-- Explanation -->
+	<string name = "cash_conversion_cycle_explanation">The Cash Conversion Cycle (CCC) measures the time it takes for a company to convert its investments in inventory and other resources into cash flow from sales. It is calculated by adding the number of days inventory is held to the number of days it takes to collect receivables, then subtracting the number of days it takes to pay suppliers (days payables).</string>
+	<string name = "sale_amount">Sale Amount</string>
+	<string name = "commission_rate">Commission Rate (%)</string>
+	<string name = "commission_result">Commission Earned: ₱%.2f</string>
+
+	<!-- Rule of 72 Calculator Strings -->
+	<string name = "annual_rate_of_return">Annual Rate of Return (%)</string>
+	<string name = "rule_of_72_result">Estimated Years to Double: %.2f years</string>
+	<string name = "rule_of_72_result_invalid">Invalid input. Please enter a valid annual rate of return.</string>
+	<string name = "payment_frequency">Payment Frequency</string>
+	<string-array name = "payment_frequency_options">
+		<item>Monthly</item>
+		<item>Quarterly</item>
+		<item>Semi-Annually</item>
+		<item>Annually</item>
+	</string-array>
+	<string name = "annuity_payment_result">The annuity payment is approximately ₱%.2f</string>
+	<!-- Mortgage Calculator Strings -->
+	<string name = "annual_interest_rate">Annual Interest Rate (%)</string>
+	<string name = "mortgage_result">Estimated Monthly Payment: ₱%.2f</string>
+
+	<string name = "list_price">List Price</string>
+	<string name = "discount_1">Discount 1 (%)</string>
+	<string name = "discount_2">Discount 2 (%)</string>
+	<string name = "discount_3">Discount 3 (%)</string>
+	<string name = "trade_discount_result">Net Price after Trade Discounts: %1$f</string>
+	<string name = "data">Data</string>
+	<string name = "total_market_shares">Total Market Shares</string>
+	<string name = "market_share_1">Market Share 1</string>
+	<string name = "market_share_2">Market Share 2</string>
+	<string name = "market_share_3">Market Share 3</string>
+	<!-- HHI Strings -->
+	<string name = "hhi_result">The Herfindahl-Hirschman Index (HHI) is: %.2f</string>
+	<string name = "hhi_explanation">The Herfindahl-Hirschman Index (HHI) is a measure of market concentration. It is calculated by squaring the market share of each firm in the market, and then summing the resulting squares. A higher HHI indicates a more concentrated market, with a maximum value of 10,000 for a monopoly.</string>
+	<string name = "original_price">Original Price</string>
+	<string name = "sale_price">Sale Price</string>
+	<string name = "markdown_result">Markdown: %.2f</string>
+	<string name = "cost_of_asset">Cost of Asset</string>
+	<string name = "depreciation_description">Calculate the depreciation of an asset using different methods (straight-line, declining balance, etc.).</string>
+	<string name = "depreciation_result">Depreciation Expense: ₱%.2f</string>
+	<string name = "depreciation_method">Depreciation Method</string>
+	<string-array name = "depreciation_methods">
+		<item>Straight-Line</item>
+		<item>Declining Balance</item>
+		<item>Sum-of-Years\' Digits</item>
+	</string-array>
+	<string name = "inventory_optional">Inventory (Optional)</string>
+	<string name = "quick_ratio_description">Measure a company\'s ability to meet its short-term obligations with its most liquid assets.\n\nThe Quick Ratio formula is: Quick Ratio = (Current Assets - Inventory) / Current Liabilities.\n\nUse this calculator to assess a company\'s liquidity position and its ability to cover short-term debts.</string>
+	<string name = "quick_ratio_result">Quick Ratio: %1$.2f</string>
+	<string name = "about_us_title">About Us</string>
+
+
+</resources>

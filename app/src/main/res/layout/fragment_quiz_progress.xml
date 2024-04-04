@@ -1,0 +1,522 @@
+<ScrollView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		>
+
+	<LinearLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:orientation = "vertical"
+			android:padding = "16dp"
+			>
+
+		<!-- Progress Title -->
+		<TextView
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:text = "@string/progress_overview"
+				android:textSize = "24sp"
+				android:textStyle = "bold"
+				android:layout_marginBottom = "10dp"
+				/>
+
+		<!-- Progress Description -->
+		<TextView
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:text = "View your statistics and progress here"
+				android:textSize = "16sp"
+				android:textColor = "@android:color/darker_gray"
+				android:layout_marginBottom = "16dp"
+				/>
+
+		<com.github.mikephil.charting.charts.PieChart
+				android:id = "@+id/pieChart"
+				android:layout_width = "match_parent"
+				android:layout_height = "200dp"
+				android:layout_marginBottom = "12dp"
+				/>
+
+		<!-- Total Questions Section -->
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:orientation = "horizontal"
+				android:padding = "4dp"
+				android:layout_marginBottom = "12dp"
+				>
+
+			<androidx.cardview.widget.CardView
+					android:layout_width = "0dp"
+					android:layout_height = "wrap_content"
+					android:layout_weight = "1"
+					android:layout_marginEnd = "8dp"
+					android:padding = "6dp"
+					>
+
+				<LinearLayout
+						android:layout_width = "match_parent"
+						android:layout_height = "match_parent"
+						android:orientation = "horizontal"
+						>
+
+					<View
+							android:layout_width = "10dp"
+							android:layout_height = "10dp"
+							android:background = "@color/green"
+							android:layout_margin = "8dp"
+							android:layout_gravity = "center_vertical"
+							/>
+
+					<TextView
+							android:id = "@+id/tvTotalCorrectAnswers"
+							android:layout_width = "wrap_content"
+							android:layout_height = "wrap_content"
+							android:textSize = "12sp"
+							android:padding = "4dp"
+							android:layout_gravity = "center"
+							android:text = "Total Correct Answers"
+							/>
+
+
+				</LinearLayout>
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView
+					android:layout_width = "0dp"
+					android:layout_height = "wrap_content"
+					android:layout_weight = "1"
+					android:layout_marginStart = "8dp"
+					android:padding = "6dp"
+					>
+
+
+				<LinearLayout
+						android:layout_width = "match_parent"
+						android:layout_height = "match_parent"
+						android:orientation = "horizontal"
+						>
+
+					<View
+							android:layout_width = "10dp"
+							android:layout_height = "10dp"
+							android:background = "@color/incorrectOptionColor"
+							android:layout_margin = "8dp"
+							android:layout_gravity = "center_vertical"
+							/>
+
+					<TextView
+							android:id = "@+id/tvTotalWrongAnswers"
+							android:layout_width = "wrap_content"
+							android:layout_height = "wrap_content"
+							android:textSize = "12sp"
+							android:padding = "4dp"
+							android:layout_gravity = "center"
+							android:text = "Total Wrong Answers"
+							/>
+
+
+				</LinearLayout>
+			</androidx.cardview.widget.CardView>
+		</LinearLayout>
+
+		<androidx.cardview.widget.CardView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginHorizontal = "2dp"
+				android:layout_marginBottom = "16dp"
+				app:cardCornerRadius = "12dp"
+				>
+
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "vertical"
+					android:padding = "16dp"
+					>
+
+				<TextView
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:text = "Total Questions Answered"
+						android:textSize = "20sp"
+						android:textStyle = "bold"
+						/>
+
+				<!-- Total Questions TextView -->
+				<TextView
+						android:id = "@+id/tvTotalQuestions"
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:textSize = "18sp"
+						android:text = "100"
+						android:layout_marginTop = "8dp"
+						/>
+
+			</LinearLayout>
+		</androidx.cardview.widget.CardView>
+
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:orientation = "vertical"
+				>
+
+			<!-- Current Streak -->
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<TextView
+						android:id = "@+id/tvCurrentStreakTitle"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "2"
+						android:text = "Current Streak:"
+						android:paddingVertical = "6dp"
+						android:textSize = "18sp"
+						/>
+
+				<TextView
+						android:id = "@+id/tvCurrentStreak"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:gravity = "end"
+						android:text = ""
+						android:textSize = "18sp"
+						/>
+			</LinearLayout>
+
+			<!-- Highest Streak -->
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<TextView
+						android:id = "@+id/tvHighestStreakTitle"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "2"
+						android:text = "Highest Streak:"
+						android:paddingVertical = "6dp"
+						android:textSize = "18sp"
+						/>
+
+				<TextView
+						android:id = "@+id/tvHighestStreak"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:gravity = "end"
+						android:text = ""
+						android:textSize = "18sp"
+						/>
+			</LinearLayout>
+
+			<com.google.android.material.divider.MaterialDivider
+					android:layout_width = "match_parent"
+					android:layout_height = "2dp"
+					android:layout_marginVertical = "4dp"
+					/>
+
+			<!-- Average Time (Easy) -->
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<TextView
+						android:id = "@+id/tvAverageTimeEasyTitle"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "2"
+						android:text = "Average Time (Easy):"
+						android:paddingVertical = "6dp"
+						android:textSize = "18sp"
+						/>
+
+				<TextView
+						android:id = "@+id/tvAverageTimeEasy"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:gravity = "end"
+						android:text = ""
+						android:textSize = "18sp"
+						/>
+			</LinearLayout>
+
+			<!-- Average Time (Medium) -->
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<TextView
+						android:id = "@+id/tvAverageTimeMediumTitle"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "2"
+						android:text = "Average Time (Medium):"
+						android:paddingVertical = "6dp"
+						android:textSize = "18sp"
+						/>
+
+				<TextView
+						android:id = "@+id/tvAverageTimeMedium"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:gravity = "end"
+						android:text = ""
+						android:textSize = "18sp"
+						/>
+			</LinearLayout>
+
+			<!-- Average Time (Hard) -->
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<TextView
+						android:id = "@+id/tvAverageTimeHardTitle"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "2"
+						android:text = "Average Time (Hard):"
+						android:paddingVertical = "6dp"
+						android:textSize = "18sp"
+						/>
+
+				<TextView
+						android:id = "@+id/tvAverageTimeHard"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:gravity = "end"
+						android:text = ""
+						android:textSize = "18sp"
+						/>
+			</LinearLayout>
+
+			<com.google.android.material.divider.MaterialDivider
+					android:layout_width = "match_parent"
+					android:layout_height = "2dp"
+					android:layout_marginVertical = "4dp"
+					/>
+
+			<!-- Fastest Time (Easy) -->
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<TextView
+						android:id = "@+id/tvFastestTimeEasyTitle"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "2"
+						android:text = "Fastest Time (Easy):"
+						android:paddingVertical = "6dp"
+						android:textSize = "18sp"
+						/>
+
+				<TextView
+						android:id = "@+id/tvFastestTimeEasy"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:gravity = "end"
+						android:text = ""
+						android:textSize = "18sp"
+						/>
+			</LinearLayout>
+
+			<!-- Fastest Time (Medium) -->
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<TextView
+						android:id = "@+id/tvFastestTimeMediumTitle"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "2"
+						android:text = "Fastest Time (Medium):"
+						android:paddingVertical = "6dp"
+						android:textSize = "18sp"
+						/>
+
+				<TextView
+						android:id = "@+id/tvFastestTimeMedium"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:gravity = "end"
+						android:text = ""
+						android:textSize = "18sp"
+						/>
+			</LinearLayout>
+
+			<!-- Fastest Time (Hard) -->
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<TextView
+						android:id = "@+id/tvFastestTimeHardTitle"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "2"
+						android:text = "Fastest Time (Hard):"
+						android:paddingVertical = "6dp"
+						android:textSize = "18sp"
+						/>
+
+				<TextView
+						android:id = "@+id/tvFastestTimeHard"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:gravity = "end"
+						android:text = ""
+						android:textSize = "18sp"
+						/>
+			</LinearLayout>
+
+		</LinearLayout>
+
+
+		<!-- Correct and Wrong Answers Section -->
+		<androidx.cardview.widget.CardView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginHorizontal = "2dp"
+				android:layout_marginBottom = "16dp"
+				app:cardCornerRadius = "12dp"
+				>
+
+		</androidx.cardview.widget.CardView>
+
+		<!-- Average Scores Section -->
+		<!-- CardView for Easy Difficulty -->
+		<androidx.cardview.widget.CardView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginHorizontal = "2dp"
+				android:layout_marginBottom = "16dp"
+				app:cardCornerRadius = "12dp"
+				>
+
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "vertical"
+					android:padding = "16dp"
+					>
+
+				<TextView
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:text = "Average Score for Easy Difficulty"
+						android:textSize = "20sp"
+						android:textStyle = "bold"
+						/>
+
+				<TextView
+						android:id = "@+id/tvAverageScoreEasy"
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:textSize = "18sp"
+						android:text = "75%"
+						android:layout_marginTop = "8dp"
+						/>
+			</LinearLayout>
+		</androidx.cardview.widget.CardView>
+
+		<!-- CardView for Medium Difficulty -->
+		<androidx.cardview.widget.CardView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginHorizontal = "2dp"
+				android:layout_marginBottom = "16dp"
+				app:cardCornerRadius = "12dp"
+				>
+
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "vertical"
+					android:padding = "16dp"
+					>
+
+				<TextView
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:text = "Average Score for Medium Difficulty"
+						android:textSize = "20sp"
+						android:textStyle = "bold"
+						/>
+
+				<TextView
+						android:id = "@+id/tvAverageScoreMedium"
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:textSize = "18sp"
+						android:text = "60%"
+						android:layout_marginTop = "8dp"
+						/>
+			</LinearLayout>
+		</androidx.cardview.widget.CardView>
+
+		<!-- CardView for Hard Difficulty -->
+		<androidx.cardview.widget.CardView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_margin = "2dp"
+				app:cardCornerRadius = "12dp"
+				>
+
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "vertical"
+					android:padding = "16dp"
+					>
+
+				<TextView
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:text = "Average Score for Hard Difficulty"
+						android:textSize = "20sp"
+						android:textStyle = "bold"
+						/>
+
+				<TextView
+						android:id = "@+id/tvAverageScoreHard"
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:textSize = "18sp"
+						android:text = "45%"
+						android:layout_marginTop = "8dp"
+						/>
+			</LinearLayout>
+		</androidx.cardview.widget.CardView>
+	</LinearLayout>
+</ScrollView>

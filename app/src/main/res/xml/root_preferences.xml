@@ -1,0 +1,44 @@
+<PreferenceScreen
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		xmlns:android = "http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory
+			app:title = "General"
+			app:layout = "@layout/title"
+			android:layout = "@layout/preferences"
+			app:titleTextAppearance = "@style/PreferenceCategoryTitleStyle"
+			app:iconSpaceReserved = "false">
+
+		<ListPreference
+				app:title = "Theme"
+				app:key = "theme_preference"
+				app:iconSpaceReserved = "false"
+				app:entries = "@array/theme_options"
+				app:entryValues = "@array/theme_values"
+				app:layout = "@layout/preferences"
+				app:icon = "@drawable/theme"
+				app:defaultValue = "system"
+				app:useSimpleSummaryProvider = "true" />
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+			app:title = "@string/app_name"
+			app:icon = "@drawable/ic_logo_modified"
+			app:layout = "@layout/title"
+			app:enableCopying = "true">
+
+		<Preference
+				app:title = "About Us"
+				app:key = "about_us"
+				app:layout = "@layout/preferences"
+				app:icon = "@drawable/information" />
+
+		<Preference
+				app:title = "About ABMinder"
+				app:key = "about_app"
+				app:layout = "@layout/preferences"
+				app:icon = "@drawable/about" />
+	</PreferenceCategory>
+
+</PreferenceScreen>

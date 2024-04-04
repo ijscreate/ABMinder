@@ -1,0 +1,62 @@
+package com.mtcdb.stem.mathtrix.learn
+
+import android.view.*
+import android.widget.*
+import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.ListAdapter
+import com.mtcdb.stem.mathtrix.*
+
+data class StudyPlan(
+    val title : String,
+    val startTime : String,
+    val endTime : String,
+)
+
+class StudyPlanAdapter(
+    private val studyPlans : MutableList<StudyPlan>,
+    private val onDeleteStudyPlan : (StudyPlan) -> Unit,
+) : ListAdapter<StudyPlan, StudyPlanAdapter.StudyPlanViewHolder>(StudyPlanDiffCallback()) {
+
+    override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) : StudyPlanViewHolder {
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_study_plan, parent, false)
+        return StudyPlanViewHolder(itemView)
+    }
+
+    override fun onBindViewHolder(holder : StudyPlanViewHolder, position : Int) {
+        val studyPlan = studyPlans[position]
+        holder.bind(studyPlan)
+        holder.deleteButton.setOnClickListener {
+            onDeleteStudyPlan(studyPlan)
+        }
+    }
+
+    override fun getItemCount() : Int = studyPlans.size
+
+    class StudyPlanViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+        private val titleTextView : TextView = itemView.findViewById(R.id.study_plan_title)
+        private val dateRangeTextView : TextView = itemView.findViewById(R.id.study_plan_date_range)
+        val deleteButton : ImageButton = itemView.findViewById(R.id.delete_study_plan_button)
+
+        fun bind(studyPlan : StudyPlan) {
+            titleTextView.text = studyPlan.title
+            dateRangeTextView.text = buildString {
+                append(studyPlan.title)
+                append(" ")
+                append(studyPlan.startTime)
+                append(" - ")
+                append(studyPlan.endTime)
+            }
+        }
+    }
+}
+
+class StudyPlanDiffCallback : DiffUtil.ItemCallback<StudyPlan>() {
+    override fun areItemsTheSame(oldItem : StudyPlan, newItem : StudyPlan) : Boolean {
+        return oldItem.title == newItem.title
+    }
+
+    override fun areContentsTheSame(oldItem : StudyPlan, newItem : StudyPlan) : Boolean {
+        return oldItem == newItem
+    }
+}

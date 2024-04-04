@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:id = "@+id/siCardView"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		app:cardCornerRadius = "10dp"
+		app:cardElevation = "4dp"
+		app:cardUseCompatPadding = "true"
+		android:layout_gravity = "center"
+		android:orientation = "vertical"
+		>
+
+	<ScrollView
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			>
+
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:padding = "16dp"
+				android:orientation = "vertical"
+				>
+
+			<!-- Principal -->
+			<com.google.android.material.textfield.TextInputLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/principal"
+					>
+
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextPrincipal"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						android:importantForAutofill = "no"
+						android:paddingHorizontal = "6dp"
+						android:textColorHint = "#757575"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<!-- Rate -->
+			<com.google.android.material.textfield.TextInputLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/rate"
+					>
+
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextRate"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						android:importantForAutofill = "no"
+						android:paddingHorizontal = "6dp"
+						android:textColorHint = "#757575"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<!-- Time -->
+			<com.google.android.material.textfield.TextInputLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/time_in_years"
+					>
+
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextTime"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						android:importantForAutofill = "no"
+						android:paddingHorizontal = "6dp"
+						android:textColorHint = "#757575"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<!-- Result TextView -->
+			<com.google.android.material.textview.MaterialTextView
+					android:id = "@+id/textViewResult"
+					android:layout_width = "match_parent"
+					android:layout_height = "0dp"
+					android:gravity = "center"
+					android:padding = "8dp"
+					android:layout_weight = "1"
+					android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+					/>
+
+
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<Button
+						android:id = "@+id/explainButton"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:text = "@string/show_explanation"
+						style = "?android:attr/buttonBarButtonStyle"
+						android:layout_weight = "1"
+						/>
+
+				<!-- Calculate Button -->
+				<Button
+						android:id = "@+id/buttonCalculate"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:text = "@string/calculate"
+						android:layout_weight = "1"
+						style = "?android:attr/buttonBarButtonStyle"
+						/>
+			</LinearLayout>
+
+			<TextView
+					android:id = "@+id/tVCalculationOptionDescription"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					/>
+
+		</LinearLayout>
+	</ScrollView>
+</androidx.cardview.widget.CardView>

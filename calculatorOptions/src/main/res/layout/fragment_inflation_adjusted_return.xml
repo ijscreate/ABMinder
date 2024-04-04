@@ -1,0 +1,78 @@
+<RelativeLayout
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:tools = "http://schemas.android.com/tools"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:padding = "16dp"
+		>
+
+	<com.google.android.material.textfield.TextInputLayout
+			android:id = "@+id/textInputLayoutNominalReturn"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:hint = "Nominal Return"
+			>
+
+		<EditText
+				android:id = "@+id/editTextNominalReturn"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:inputType = "numberDecimal"
+				tools:ignore = "LabelFor"
+				/>
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<com.google.android.material.textfield.TextInputLayout
+			android:id = "@+id/textInputLayoutInflationRate"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_below = "@id/textInputLayoutNominalReturn"
+			android:layout_marginTop = "16dp"
+			android:hint = "Inflation Rate"
+			>
+
+		<EditText
+				android:id = "@+id/editTextInflationRate"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:inputType = "numberDecimal"
+				tools:ignore = "LabelFor"
+				/>
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<Button
+			android:id = "@+id/buttonCalculateInflationAdjustedReturn"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_below = "@id/textInputLayoutInflationRate"
+			android:layout_marginTop = "16dp"
+			style = "?attr/buttonBarButtonStyle"
+			android:text = "Calculate"
+			/>
+
+	<TextView
+			android:id = "@+id/textViewInflationAdjustedReturnResult"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_below = "@id/buttonCalculateInflationAdjustedReturn"
+			android:layout_marginTop = "16dp"
+			/>
+
+	<Button
+			android:id = "@+id/buttonExplanationInflationAdjustedReturn"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_below = "@id/textViewInflationAdjustedReturnResult"
+			android:layout_marginTop = "16dp"
+			style = "?attr/buttonBarButtonStyle"
+			android:text = "Show Explanation"
+			/>
+
+	<TextView
+			android:id = "@+id/textViewInflationAdjustedReturnDescription"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_below = "@id/buttonExplanationInflationAdjustedReturn"
+			android:layout_marginTop = "16dp"
+			/>
+</RelativeLayout>

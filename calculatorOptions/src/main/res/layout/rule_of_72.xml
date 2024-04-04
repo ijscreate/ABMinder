@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:id = "@+id/ruleOf72CardView"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		app:cardCornerRadius = "10dp"
+		app:cardElevation = "4dp"
+		app:cardUseCompatPadding = "true"
+		android:layout_gravity = "center"
+		android:orientation = "vertical"
+		>
+
+	<ScrollView
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			>
+
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:padding = "16dp"
+				android:orientation = "vertical"
+				>
+
+			<!-- Annual Rate of Return -->
+			<com.google.android.material.textfield.TextInputLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/annual_rate_of_return"
+					>
+
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextAnnualRate"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						android:importantForAutofill = "no"
+						android:paddingHorizontal = "6dp"
+						android:textColorHint = "#757575"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
+
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "horizontal"
+					>
+
+				<Button
+						android:id = "@+id/buttonSolution1"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:text = "@string/show_explanation"
+						android:layout_weight = "1"
+						style = "?android:attr/buttonBarButtonStyle"
+						/>
+
+
+				<Button
+						android:id = "@+id/buttonCalculateRuleOf72"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:text = "@string/calculate"
+						android:layout_weight = "1"
+						style = "?android:attr/buttonBarButtonStyle"
+						/>
+			</LinearLayout>
+
+			<!-- Result TextView -->
+			<com.google.android.material.textview.MaterialTextView
+					android:id = "@+id/textViewRuleOf72Result"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:padding = "8dp"
+					android:layout_marginTop = "6dp"
+					android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+					/>
+
+			<!-- Description TextView -->
+			<TextView
+					android:id = "@+id/description"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "12dp"
+					android:padding = "8dp"
+					android:textSize = "16sp"
+					/>
+		</LinearLayout>
+	</ScrollView>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,25 @@
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+                android:id="@+id/nav_item_dictionary"
+                android:title="@string/dictionary"
+                android:icon="@drawable/search" />
+
+        <item
+                android:id="@+id/nav_item_calculator"
+                android:title="@string/calculator"
+                android:icon="@drawable/philippine_peso" />
+
+        <item
+                android:id="@+id/nav_item_learn"
+                android:title="@string/learn"
+                android:icon="@drawable/learning" />
+
+        <item android:id="@+id/nav_item_quiz"
+              android:title="@string/quiz"
+              android:icon="@drawable/test"  />
+    </group>
+</menu>

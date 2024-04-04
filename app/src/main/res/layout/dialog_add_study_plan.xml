@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:orientation = "vertical"
+		android:paddingTop = "16dp"
+		android:paddingHorizontal = "16dp"
+		android:paddingBottom = "0dp"
+		>
+
+	<com.google.android.material.textfield.TextInputLayout
+			android:layout_width = "match_parent"
+			android:hint = "@string/study_plan_title"
+			android:layout_height = "wrap_content"
+			>
+
+		<com.google.android.material.textfield.TextInputEditText
+				android:id = "@+id/study_plan_title_edit_text"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:inputType = "text"
+				android:layout_marginBottom = "16dp"
+				/>
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<LinearLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:orientation = "horizontal"
+			>
+
+		<TextView
+				android:id = "@+id/start_time_text_view"
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:text = "@string/start_time"
+				android:gravity = "center"
+				android:padding = "8dp"
+				android:background = "@drawable/time_bg"
+				android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+				android:layout_weight = "2"
+				/>
+
+		<TextView
+				android:layout_width = "wrap_content"
+				android:layout_height = "match_parent"
+				android:layout_gravity = "center_vertical"
+				android:gravity = "center"
+				android:text = "@string/to"
+				android:layout_weight = "3"
+				/>
+
+		<TextView
+				android:id = "@+id/end_time_text_view"
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+				android:layout_weight = "2"
+				android:padding = "8dp"
+				android:background = "@drawable/time_bg"
+				android:gravity = "center"
+				android:text = "@string/end_time"
+				/>
+
+	</LinearLayout>
+
+	<DatePicker
+			android:id = "@+id/date_picker"
+			android:layout_width = "wrap_content"
+			android:layout_height = "150dp"
+			android:datePickerMode = "spinner"
+			android:calendarViewShown = "false"
+			android:layout_gravity = "center_horizontal"
+			/>
+
+</LinearLayout>

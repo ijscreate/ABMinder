@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/dcfCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical"
+                >
+
+            <!-- Initial Investment -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/initial_investment"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextInitialInvestmentDCF"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Cash Flows -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_cash_flows"
+                        >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextCashFlowsDCF"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:importantForAutofill="no"
+                            android:paddingHorizontal="6dp"
+                            android:textColorHint="#757575"
+                            />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" "
+                        android:textColor="#757575"
+                        android:paddingTop="4dp"
+                        />
+
+            </LinearLayout>
+
+            <!-- Discount Rate -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/discount_rate"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextDiscountRateDCF"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Calculate Button -->
+            <Button
+                    android:id="@+id/buttonCalculateDCF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calculate"
+                    style="?android:attr/buttonBarButtonStyle"
+                    />
+
+            <!-- Result TextView -->
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textViewDCFResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_marginTop="6dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>

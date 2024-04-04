@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tvmCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical"
+                >
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_value_of_money"
+                    android:fontFamily="sans-serif-black"
+                    android:padding="6dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textAppearance=" @style/TextAppearance.AppCompat.Title"
+                    android:textAllCaps="true"
+                    />
+
+            <!-- Present Value -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/present_value"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextPresentValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Interest Rate -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/interest_rate_percent"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextInterestRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/compounding_periods_per_year"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCompoundingPeriod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/time_period_years"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextTimePeriod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/future_value"
+                        android:padding="6dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_weight="1"
+                        />
+
+                <!-- Result TextView -->
+                <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/textViewTVMResult"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="6dp"
+                        android:gravity="start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                <Button
+                        android:id="@+id/buttonReset"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reset"
+                        android:layout_weight="1"
+                        style="?android:attr/buttonBarButtonStyle"
+                        />
+
+                <Button
+                        android:id="@+id/buttonShowSolution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/show_explanation"
+                        android:layout_weight="1"
+                        style="?android:attr/buttonBarButtonStyle"
+                        />
+
+                <!-- Calculate Button -->
+                <Button
+                        android:id="@+id/buttonCalculateTVM"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/calculate"
+                        android:layout_weight="1"
+                        style="?android:attr/buttonBarButtonStyle"
+                        />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/waccCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="vertical"
+                >
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weighted_average_cost_of_capital"
+                    android:fontFamily="sans-serif-black"
+                    android:padding="6dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textAppearance=" @style/TextAppearance.AppCompat.Title"
+                    android:textAllCaps="true"
+                    />
+
+            <!-- Cost of Debt -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cost_of_debt"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCostOfDebt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Cost of Equity -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cost_of_equity"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCostOfEquity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Debt Weight -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/debt_weight"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextDebtWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Equity Weight -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/equity_weight"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextEquityWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Tax Rate -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/tax_rate"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextTaxRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:textColorHint="#757575"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                <Button
+                        android:id="@+id/buttonSolution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/show_explanation"
+                        style="?android:attr/buttonBarButtonStyle"
+                        />
+
+
+                <!-- Calculate Button -->
+                <Button
+                        android:id="@+id/buttonCalculateWACC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/calculate"
+                        android:layout_weight="1"
+                        style="?android:attr/buttonBarButtonStyle"
+                        />
+            </LinearLayout>
+
+            <!-- Result TextView -->
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textViewWACCResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_marginTop="6dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    />
+
+            <TextView
+                    android:id="@+id/tVDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:padding="8dp"
+                    android:textSize="16sp"
+                    />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>

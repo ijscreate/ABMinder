@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Present Value vs Future Value</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        .reference {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Present Value vs Future Value</h1>
+<p>In finance, present value (PV) and future value (FV) are important concepts used to evaluate the
+    worth of money at different points in time. Let's understand each concept:</p>
+<h2>Present Value (PV)</h2>
+<p>Present value represents the current value of a future sum of money or cash flow, discounted at a
+    specific rate of return. It answers the question: "What is the value today of a future amount of
+    money?"</p>
+<ul>
+    <li>PV is calculated using the formula: <strong>PV = FV / (1 + r)^n</strong>, where
+        <strong>FV</strong> is the future value, <strong>r</strong> is the discount rate, and
+        <strong>n</strong> is the number of periods.
+    </li>
+    <li>A lower discount rate results in a higher present value, while a higher discount rate
+        results in a lower present value.
+    </li>
+    <li>Present value helps in decision-making by determining the current worth of future cash
+        flows, investments, or liabilities.
+    </li>
+</ul>
+
+<div>
+    <p>Let's say you are considering an investment that will require an initial investment of PHP
+        50,000 and is expected to generate cash flows of PHP 15,000 per year for the next three
+        years. You want to know if the investment is worth making, so you decide to calculate the
+        present value of the expected cash flows using a discount rate of 10%.</p>
+    <p>To calculate the present value of the first cash flow, which will be received in one year,
+        you would use the following formula:</p>
+    <p>PV = CF / (1 + r)^1</p>
+    <p>Where:</p>
+    <ul>
+        <li>PV is the present value</li>
+        <li>CF is the cash flow (in this case, PHP 15,000)</li>
+        <li>r is the discount rate (in this case, 10%, or 0.10 as a decimal)</li>
+        <li>n is the number of periods until the cash flow is received (in this case, 1)</li>
+    </ul>
+    <p>Plugging in the values, you get:</p>
+    <p>PV = 15,000 / (1 + 0.10)^1 = PHP 13,636.36</p>
+    <p>To calculate the present value of the second cash flow, which will be received in two years,
+        you would use the same formula, but with a different value for n:</p>
+    <p>PV = CF / (1 + r)^2</p>
+    <p>Plugging in the values, you get:</p>
+    <p>PV = 15,000 / (1 + 0.10)^2 = PHP 12,391.41</p>
+    <p>To calculate the present value of the third cash flow, which will be received in three years,
+        you would use the same formula, but with a different value for n:</p>
+    <p>PV = CF / (1 + r)^3</p>
+    <p>Plugging in the values, you get:</p>
+    <p>PV = 15,000 / (1 + 0.10)^3 = PHP 11,258.94</p>
+    <p>To determine the overall present value of the expected cash flows, you would add up the
+        present values of the individual cash flows:</p>
+    <p>PV = 13,636.36 + 12,391.41 + 11,258.94 = PHP 37,286.71</p>
+    <p>Since the present value of the expected cash flows is less than the initial investment of PHP
+        50,000, this investment is not expected to generate a profit.</p>
+    <p>In summary, in this example, the present value of the expected cash flows is calculated by
+        discounting each cash flow back to its present value using a discount rate of 10%. The
+        present value of the individual cash flows is then added up to determine the overall present
+        value of the expected cash flows. Since the present value is less than the initial
+        investment, this investment is not expected to generate a profit.</p>
+</div>
+
+<h2>Future Value (FV)</h2>
+<p>Future value represents the value of an investment or cash flow at a specific future date, based
+    on an assumed rate of return. It answers the question: "What will be the value in the future of
+    an investment made today?"</p>
+<ul>
+    <li>FV is calculated using the formula: <strong>FV = PV * (1 + r)^n</strong>, where
+        <strong>PV</strong> is the present value, <strong>r</strong> is the interest rate or rate of
+        return, and <strong>n</strong> is the number of periods.
+    </li>
+    <li>A higher interest rate or rate of return results in a higher future value, while a lower
+        interest rate results in a lower future value.
+    </li>
+    <li>Future value is essential for assessing the growth potential of investments and determining
+        the value of savings or investments over time.
+    </li>
+</ul>
+
+<div>
+    <p>Let's say you have PHP 10,000 today and you plan to invest it in a savings account with an
+        annual interest rate of 5%. How much would the investment be worth in 5 years?</p>
+    <p>To calculate the future value, you can use the formula:</p>
+    <p>Future Value = Principal x (1 + Interest Rate)^Number of Years</p>
+    <p>In this case, the principal is PHP 10,000, the interest rate is 5% or 0.05, and the number of
+        years is 5.</p>
+    <p>So, the future value would be:</p>
+    <p>Future Value = PHP 10,000 x (1 + 0.05)^5</p>
+    <p>Future Value = PHP 10,000 x (1.05)^5</p>
+    <p>Future Value = PHP 10,000 x 1.2762815625</p>
+    <p>Future Value = PHP 12,762.82</p>
+    <p>Therefore, the investment would be worth PHP 12,762.82 in 5 years, assuming a constant
+        interest rate of 5%.</p>
+</div>
+
+<p>Understanding present value and future value is crucial for making informed financial decisions,
+    such as investment planning, budgeting, and evaluating the profitability of projects or business
+    ventures.</p>
+<p class="reference">Reference: <a
+        href="https://www.wallstreetmojo.com/present-value-vs-future-value/" target="_blank">Wall
+    Street Mojo - Present Value vs Future Value</a></p>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!-- edit_term_fragment.xml -->
+<LinearLayout
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:orientation = "vertical"
+		android:padding = "16dp"
+		>
+
+	<EditText
+			android:id = "@+id/termEditText"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:hint = "Term"
+			android:autofillHints = ""
+			/>
+
+	<EditText
+			android:id = "@+id/definitionEditText"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:hint = "Definition"
+			android:autofillHints = ""
+			/>
+
+	<EditText
+			android:id = "@+id/exampleEditText"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:hint = "Example"
+
+			android:autofillHints = ""
+			/>
+
+	<LinearLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:orientation = "horizontal"
+			>
+
+		<Button
+				android:id = "@+id/cancelButton"
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:layout_weight = "1"
+				android:text = "Cancel"
+				style = "?android:attr/buttonBarButtonStyle"
+				/>
+
+		<Button
+				android:id = "@+id/saveButton"
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:layout_weight = "1"
+				android:text = "Save"
+				style = "?android:attr/buttonBarButtonStyle"
+				/>
+	</LinearLayout>
+
+	<androidx.recyclerview.widget.RecyclerView
+			android:id = "@+id/termsRecyclerView"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			/>
+
+</LinearLayout>

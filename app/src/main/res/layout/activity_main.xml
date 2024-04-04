@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mindinventory.midrawer.MIDrawerView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		xmlns:tools = "http://schemas.android.com/tools"
+		android:id = "@+id/drawer_layout"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:fitsSystemWindows = "true"
+		app:sliderType = "slide"
+		android:orientation = "vertical"
+		tools:context = "com.mtcdb.stem.mathtrix.MainActivity"
+		>
+
+
+	<androidx.coordinatorlayout.widget.CoordinatorLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			>
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+				android:id = "@+id/fab"
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:layout_gravity = "bottom|end"
+				android:layout_margin = "16dp"
+				app:elevation = "2dp"
+				android:src = "@drawable/baseline_add_24"
+				android:forceHasOverlappingRendering = "true"
+				android:contentDescription = "@string/fab"
+				/>
+
+		<RelativeLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "match_parent"
+				>
+
+			<com.google.android.material.appbar.AppBarLayout
+					android:id = "@+id/appBar"
+					android:background = "@color/colorPrimary"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					>
+
+				<androidx.appcompat.widget.Toolbar
+						android:id = "@+id/toolbar"
+						android:layout_weight = "1"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						app:titleTextColor = "@color/white"
+						app:titleTextAppearance = "@style/TextAppearance.Material3.TitleLarge"
+						/>
+			</com.google.android.material.appbar.AppBarLayout>
+
+			<FrameLayout
+					android:id = "@+id/fragment_container"
+					android:layout_width = "match_parent"
+					android:layout_height = "match_parent"
+					android:layout_below = "@id/appBar"
+					>
+
+			</FrameLayout>
+		</RelativeLayout>
+
+	</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+	<com.google.android.material.navigation.NavigationView
+			android:id = "@+id/nav_view"
+			android:layout_width = "275dp"
+			android:layout_height = "match_parent"
+			android:layout_gravity = "start"
+			android:fitsSystemWindows = "false"
+			app:itemIconPadding = "16dp"
+			app:drawerLayoutCornerSize = "@dimen/navigation"
+			app:itemTextAppearance = "@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+			app:itemTextAppearanceActiveBoldEnabled = "true"
+			app:elevation = "2dp"
+			app:itemRippleColor = "@color/colorPrimary"
+			app:itemBackground = "@drawable/nav_item"
+			app:headerLayout = "@layout/nav_header"
+			app:menu = "@menu/activity_main_drawer"
+			/>
+</com.mindinventory.midrawer.MIDrawerView>

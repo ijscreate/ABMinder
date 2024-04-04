@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!--suppress Annotator -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            background: #fff;
+            color: #333;
+            max-width: 800px;
+            margin: 15px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        section {
+            background-color: #f5f9fd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #313131;
+            text-align: justify;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        h2:hover {
+            font-size: 25px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+        }
+
+        .definition,
+        .calculation,
+        .key-points {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        pre {
+            font-size: 15px;
+            font-family: verdana;
+            margin-bottom: 10px;
+        }
+
+        .example {
+            margin-bottom: 20px;
+        }
+
+        .example h5 {
+            margin-bottom: 5px;
+        }
+
+        .example p {
+            margin-bottom: 10px;
+        }
+
+        .example pre {
+            margin-bottom: 5px;
+        }
+
+        .citation {
+            margin-top: 20px;
+            font-style: italic;
+            color: #888;
+            text-align: center;
+        }
+
+        .citation a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .citation a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h2>Simple Interest</h2>
+</header>
+<section class="definition">
+    <h3>What is Simple Interest?</h3>
+    <p>Simple interest is a straightforward method of calculating interest on a loan or investment.
+        It is based on the original principal amount (the initial sum of money) and the
+        predetermined interest rate. <br>
+        <br>
+        Simple interest is an interest charge that ​borrowers pay ​lenders for a loan, calculated
+        based solely on the principal amount without compounding interest. The formula for simple
+        interest is straightforward, and it is commonly used in ​automobile loans or short-term
+        personal loans. Simple interest does not involve compounding, making it easier for borrowers
+        to understand and potentially resulting in lower borrowing costs compared to ​compound
+        interest.
+    </p>
+
+    <p>The formula for simple interest is:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>I</mi>
+                <mo>=</mo>
+                <mi>P</mi>
+                <mi>R</mi>
+                <mi>T</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">I = P R T
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>Finding the Principal Amount (P): If you know the interest, rate, and time, you can find the
+        principal amount using the formula:</p>
+
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>P</mi>
+                <mo>=</mo>
+                <mfrac>
+                    <mi>I</mi>
+                    <mrow>
+                        <mi>r</mi>
+                        <mo>×</mo>
+                        <mi>t</mi>
+                    </mrow>
+                </mfrac>
+            </mrow>
+            <annotation encoding="application/x-tex">P = \frac{I}{r \times t}
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>Finding the Rate of Interest: If you know the interest, principal, and time, you can find
+        the rate of interest using the formula:</p>
+
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>r</mi>
+                <mo>=</mo>
+                <mfrac>
+                    <mi>I</mi>
+                    <mrow>
+                        <mi>P</mi>
+                        <mo>×</mo>
+                        <mi>t</mi>
+                    </mrow>
+                </mfrac>
+            </mrow>
+            <annotation encoding="application/x-tex">r = \frac{I}{P \times t}
+            </annotation>
+        </semantics>
+    </math>
+
+    <ul>
+        <li>The result will be in decimal form. Multiply by 100 to convert it to a percentage.</li>
+    </ul>
+
+    <p>Finding the Time Period (t): If you know the interest, principal, and rate, you can find the
+        time using the formula:</p>
+
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>t</mi>
+                <mo>=</mo>
+                <mfrac>
+                    <mi>I</mi>
+                    <mrow>
+                        <mi>P</mi>
+                        <mo>×</mo>
+                        <mi>r</mi>
+                    </mrow>
+                </mfrac>
+            </mrow>
+            <annotation encoding="application/x-tex">t = \frac{I}{P \times r}
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>Where:</p>
+    <ul>
+        <li><strong>I</strong> is the interest</li>
+        <li><strong>P</strong> is the principal amount (the initial amount of money)</li>
+        <li><strong>R</strong> is the annual interest rate (expressed as a decimal)</li>
+        <li><strong>T</strong> is the time the money is borrowed or invested for, usually measured in years</li>
+    </ul>
+
+    <p>
+        When calculating simple interest for periods less than a year, such as months or days, you
+        can use adjusted formulas to account for the fractional time periods. <br>
+        <br>
+        For calculating simple interest for months, the formula is:
+    </p>
+
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>I</mi>
+                <mo>=</mo>
+                <mi>P</mi>
+                <mi>R</mi>
+                <mrow>
+                    <mo fence="true">(</mo>
+                    <mfrac>
+                        <mi>T</mi>
+                        <mn>12</mn>
+                    </mfrac>
+                    <mo fence="true">)</mo>
+                </mrow>
+            </mrow>
+            <annotation encoding="application/x-tex">I = PR\left(\frac{T}{365}\right)
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>Where:</p>
+    <ul>
+        <li><strong>I</strong> is the interest</li>
+        <li><strong>P</strong> is the principal amount (the initial amount of money)</li>
+        <li><strong>R</strong> is the annual interest rate (in decimal form)</li>
+        <li><strong>T</strong> is the time the money is invested or borrowed for (in months)</li>
+    </ul>
+
+    <p>Similarly, for calculating simple interest for days, the formula is:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>I</mi>
+                <mo>=</mo>
+                <mi>P</mi>
+                <mi>R</mi>
+                <mrow>
+                    <mo fence="true">(</mo>
+                    <mfrac>
+                        <mi>T</mi>
+                        <mn>365</mn>
+                    </mfrac>
+                    <mo fence="true">)</mo>
+                </mrow>
+            </mrow>
+            <annotation encoding="application/x-tex">I = PR\left(\frac{T}{365}\right)
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>Where:</p>
+    <ul>
+        <li><strong>I</strong> is the interest</li>
+        <li><strong>P</strong> is the principal amount (the initial amount of money)</li>
+        <li><strong>R</strong> is the annual interest rate (in decimal form)</li>
+        <li><strong>T</strong> is the time the money is invested or borrowed for (in days)</li>
+
+    <p>
+        Note that these formulas assume that the interest rate is an annual rate. If the interest
+        rate
+        is given as a monthly or daily rate, you would need to adjust the formulas accordingly.
+    </p>
+
+    <i><strong>Important!</strong> The time must be in years to apply the simple interest formula.
+        If you are given
+        months, use a fraction to represent it as years.
+    </i>
+
+    <p>Another type of problem you might run into when working with simple interest is finding the
+        total amount owed or the total value of an investment after a given amount of time. This is
+        known as the future value, and can be calculated in a couple of different ways.</p>
+
+    <p>The future value in simple interest refers to the total amount of money accumulated or owed
+        after a certain period of time when simple interest is applied to the principal amount. It
+        represents the sum of the principal amount and the interest earned or charged over the
+        specified time period.</p>
+    <p>Future value can be calculated using the simple interest formula:</p>
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <semantics>
+                <mrow>
+                    <mi>F</mi>
+                    <mi>V</mi>
+                    <mo>=</mo>
+                    <mi>P</mi>
+                    <mo>+</mo>
+                    <mi>S</mi>
+                    <mi>I</mi>
+                </mrow>
+                <annotation encoding="application/x-tex">FV = P + SI
+                </annotation>
+            </semantics>
+        </math>
+
+    <p>Alternatively, we can express the formula as:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>F</mi>
+                <mi>V</mi>
+                <mo>=</mo>
+                <mi>P</mi>
+                <mi>V</mi>
+                <mo>×</mo>
+                <mo stretchy="false">(</mo>
+                <mn>1</mn>
+                <mo>+</mo>
+                <mi>r</mi>
+                <mi>t</mi>
+                <mo stretchy="false">)</mo>
+            </mrow>
+            <annotation encoding="application/x-tex">FV = PV \times (1 + rt)
+            </annotation>
+        </semantics>
+    </math>
+    <p>where:</p>
+    <ul>
+        <li><strong>FV</strong> is the future value of the investment/loan, including interest</li>
+        <li><strong>PV</strong> is the principal investment amount (the initial deposit or loan amount)</li>
+        <li><strong>SI</strong> is the simple interest</li>
+        <li><strong>r</strong> is the annual interest rate (in decimal)</li>
+        <li><strong>t</strong> is the number of years the money is invested or borrowed for</li>
+    </ul>
+</section>
+
+
+<section class="example">
+    <h3>Real-World Examples:</h3>
+    <h4>Example 1: Paying Back a Personal Loan</h4>
+    <p>Imagine you took out a personal loan of $2000 from a bank at an annual interest rate of 8%
+        for 2 years to purchase a new laptop. Using the simple interest formula:</p>
+    <pre>Principal (P) = $2000</pre>
+    <pre>Interest Rate (R) = 8% or 0.08</pre>
+    <pre>Time (T) = 2 years</pre>
+    <pre>Simple Interest (SI) = P × R × T = $2000 × 0.08 × 2 = $320</pre>
+    <p>The total amount to be repaid would be:</p>
+    <pre>Total Amount = Principal + Simple Interest = $2000 + $320 = $2320</pre>
+    <p>So, you would need to repay a total of $2320 to the bank over the 2-year period.</p>
+
+    <h4>Example 2: Earning Interest on a Savings Account</h4>
+    <p>Suppose you deposit $5000 into a savings account with an annual interest rate of 4% offered
+        by your bank. After 5 years, using simple interest:</p>
+    <pre>Principal (P) = $5000</pre>
+    <pre>Interest Rate (R) = 4% or 0.04</pre>
+    <pre>Time (T) = 5 years</pre>
+    <pre>Simple Interest (SI) = P × R × T = $5000 × 0.04 × 5 = $1000</pre>
+    <p>The future value of your savings account after 5 years would be:</p>
+    <pre>Total Savings = Principal + Simple Interest = $5000 + $1000 = $6000</pre>
+    <p>So, your savings account would have a total of $6000 after 5 years, including the interest
+        earned.</p>
+
+</section>
+
+<section class="definition">
+    <h3>Pros of Simple Interest:</h3>
+    <ul>
+        <li><strong>Easy to Understand:</strong> Simple interest calculations are straightforward
+            and easy to comprehend, making it accessible to individuals without advanced financial
+            knowledge.
+        </li>
+        <li><strong>Simple Calculation:</strong> The calculation of simple interest involves
+            multiplying the principal amount, interest rate, and time period, which can be done
+            quickly without the need for complex formulas or calculations.
+        </li>
+        <li><strong>Transparent:</strong> Since simple interest does not involve compounding, the
+            total interest payable remains constant throughout the loan or investment term,
+            providing clarity to borrowers or investors.
+        </li>
+        <li><strong>Useful for Short-term Loans:</strong> Simple interest is well-suited for
+            short-term loans or investments where the interest is calculated periodically based on
+            the original principal amount.
+        </li>
+    </ul>
+
+    <h3>Cons of Simple Interest:</h3>
+    <ul>
+        <li><strong>Higher Total Interest Paid:</strong> Compared to compound interest, simple
+            interest typically results in higher total interest paid over the life of a loan or
+            investment, especially for longer terms.
+        </li>
+        <li><strong>Not Reflective of Changing Balances:</strong> Simple interest does not account
+            for changes in the principal amount over time, which may result in overestimation or
+            underestimation of the true interest cost or earnings.
+        </li>
+        <li><strong>Limited Growth Potential:</strong> Investments using simple interest may
+            experience slower growth compared to those utilizing compound interest, as the interest
+            earned does not compound over time.
+        </li>
+        <li><strong>Less Flexible:</strong> Simple interest may not be as flexible or adaptable to
+            changing financial circumstances or fluctuations in interest rates compared to more
+            complex interest calculation methods.
+        </li>
+    </ul>
+</section>
+
+
+<section class="key-points">
+    <h3>Key Points:</h3>
+    <ul>
+        <li>Simple interest is calculated by multiplying the loan principal by the interest rate and
+            the
+            term of the loan.
+        </li>
+        <li>It provides borrowers with a basic idea of borrowing costs and is commonly used in ​auto
+            loans and short-term personal loans.
+        </li>
+        <li>Simple interest does not involve compounding of interest.</li>
+        <li>Benefits of simple interest include lower borrowing costs, easier debt repayment, and a
+            straightforward calculation method.
+        </li>
+        <li>In comparison to compound interest, simple interest does not result in interest being
+            added
+            to the principal amount.
+        </li>
+        <li>Simple interest is advantageous for borrowers, while compound interest is vital for
+            building
+            wealth for investors.
+        </li>
+        <li>Simple interest instruments like most personal loans and coupon-paying bonds provide a
+            straightforward calculation method.
+        </li>
+        <li>Compound interest instruments like bank deposit accounts and credit cards involve
+            interest-on-interest and can lead to higher total payments.
+        </li>
+    </ul>
+</section>
+
+<footer>
+    <p>For more information, visit <a
+            href="https://www.investopedia.com/terms/s/simple_interest.asp">Investopedia -  Simple Interest</a>.</p>
+</footer>
+</body>
+</html>

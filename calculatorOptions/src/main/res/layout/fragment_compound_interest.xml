@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/compoundInterestCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:orientation="vertical"
+            >
+
+        <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/compound_interest"
+                android:fontFamily="sans-serif-black"
+                android:padding="6dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textAllCaps="true"
+                />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/principal_amount"
+                    android:layout_margin="6dp"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextPrincipal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:ems="@integer/material_motion_duration_short_1"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="VisualLintTextFieldSize"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/rate_of_interest"
+                    android:layout_margin="6dp"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:importantForAutofill="no"
+                        android:paddingHorizontal="6dp"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="VisualLintTextFieldSize"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:hint="@string/time_years"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:paddingHorizontal="6dp"
+                        android:importantForAutofill="no"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="VisualLintTextFieldSize"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:hint="@string/compounding_periods_per_year"
+                    >
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCompoundingPeriods"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:paddingHorizontal="6dp"
+                        android:importantForAutofill="no"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="VisualLintTextFieldSize"
+                        />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textViewResult"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <Button
+                        android:id="@+id/explainButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/show_explanation"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_weight="1"
+                        />
+
+                <Button
+                        android:id="@+id/buttonCalculate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/calculate"
+                        android:layout_weight="1"
+                        style="?android:attr/buttonBarButtonStyle"
+                        />
+            </LinearLayout>
+
+            <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                <TextView
+                        android:id="@+id/tVCalculationOptionDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:padding="8dp"
+                        android:text=""
+                        android:textSize="16sp"
+                        />
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
