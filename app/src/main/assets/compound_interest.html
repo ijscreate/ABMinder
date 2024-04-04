@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            background: #fff;
+            color: #333;
+            max-width: 800px;
+            margin: 15px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        section {
+            background-color: #f5f9fd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #313131;
+            text-align: justify;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        h2:hover {
+            font-size: 25px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+        }
+
+        .definition,
+        .calculation,
+        .key-points {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        pre {
+            font-size: 15px;
+            font-family: verdana;
+            margin-bottom: 10px;
+        }
+
+        .example {
+            margin-bottom: 20px;
+        }
+
+        .example h5 {
+            margin-bottom: 5px;
+        }
+
+        .example p {
+            margin-bottom: 10px;
+        }
+
+        .example pre {
+            margin-bottom: 5px;
+        }
+
+        .citation {
+            margin-top: 20px;
+            font-style: italic;
+            color: #888;
+            text-align: center;
+        }
+
+        .citation a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .citation a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h2>Compound Interest</h2>
+</header>
+<section class="definition">
+    <!-- Definition of Compound Interest -->
+    <h3>What is Compound Interest?</h3>
+    <p>Compound interest is the interest calculated on the initial principal, which also includes
+        all of the accumulated interest from previous periods on a deposit or loan. The concept of
+        compound interest is that interest is added to the principal, creating a larger base on
+        which future interest is calculated. This results in exponential growth over time, as the
+        interest earned in each period becomes part of the principal for the next period.</p>
+</section>
+<section class="calculation">
+    <!-- Calculation of Compound Interest -->
+    <h3>Calculation of Compound Interest</h3>
+    <p>The formula for calculating compound interest is:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>A</mi>
+                <mo>=</mo>
+                <mi>P</mi>
+                <msup>
+                    <mrow>
+                        <mo fence="true">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mi>r</mi>
+                            <mi>n</mi>
+                        </mfrac>
+                        <mo fence="true">)</mo>
+                    </mrow>
+                    <mrow>
+                        <mi>n</mi>
+                        <mi>t</mi>
+                    </mrow>
+                </msup>
+            </mrow>
+            <annotation encoding="application/x-tex">A = P \left(1 + \frac{r}{n}\right)^{nt}
+            </annotation>
+        </semantics>
+    </math>
+    <p>Where:</p>
+    <ul>
+        <li><strong>A</strong> is the amount of money accumulated after n years, including interest.
+        </li>
+        <li><strong>P</strong> is the principal amount (the initial amount of money).</li>
+        <li><strong>r</strong> is the annual interest rate (in decimal).</li>
+        <li><strong>n</strong> is the number of times interest is compounded per year.</li>
+        <li><strong>t</strong> is the number of years the money is invested or borrowed for.</li>
+    </ul>
+</section>
+<section class="compounding-frequencies">
+    <!-- Compounding Frequencies -->
+    <h3>Compounding Frequencies</h3>
+    <p>Compound interest can be compounded yearly, half-yearly, quarterly, monthly, daily, etc. The
+        frequency of compounding affects the final amount accrued. Here are the corresponding
+        formulas:</p>
+    <ul>
+        <li>Annually:
+            Interest is compounded once per year. Here, <strong>n = 1</strong>.
+        </li>
+        <li>Semi-Annually:
+            Interest is compounded twice per year. Here, <strong>n = 2</strong>.
+        </li>
+        <li>Quarterly:
+            Interest is compounded four times per year. Here, <strong>n = 4</strong>.
+        </li>
+        <li>Monthly:
+            Interest is compounded twelve times per year. Here, <strong>n = 12</strong>.
+        </li>
+        <li>Daily:
+            Interest is compounded every day. Here, <strong>n = 365</strong>.
+        </li>
+    </ul>
+</section>
+
+<section class="example">
+    <h3>Examples of Compound Interest</h3>
+    <!-- Example 1: Annually Compounded Interest -->
+    <h4>Annually Compounded Interest:</h4>
+    <p>Let’s say you invest $10,000 in a savings account that earns an annual interest rate of 5%
+        compounded annually. After one year, your investment would grow to:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>A</mi>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>000</mn>
+                <msup>
+                    <mrow>
+                        <mo fence="true">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mn>0.05</mn>
+                            <mn>1</mn>
+                        </mfrac>
+                        <mo fence="true">)</mo>
+                    </mrow>
+                    <mrow>
+                        <mn>1</mn>
+                        <mo>×</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msup>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>500</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">A = \$10,000 \left(1 + \frac{0.05}{1}\right)^{1
+                \times 1} = \$10,500
+            </annotation>
+        </semantics>
+    </math>
+
+    <!-- Example 2: Semi-Annually Compounded Interest -->
+    <h4>Semi-Annually Compounded Interest:</h4>
+    <p>Now, let’s say the same savings account compounds interest semi-annually. After one year,
+        your investment would grow to:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>A</mi>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>000</mn>
+                <msup>
+                    <mrow>
+                        <mo fence="true">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mn>0.05</mn>
+                            <mn>2</mn>
+                        </mfrac>
+                        <mo fence="true">)</mo>
+                    </mrow>
+                    <mrow>
+                        <mn>2</mn>
+                        <mo>×</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msup>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>506.25</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">A = \$10,000 \left(1 + \frac{0.05}{2}\right)^{2
+                \times 1} = \$10,506.25
+            </annotation>
+        </semantics>
+    </math>
+
+    <!-- Example 3: Quarterly Compounded Interest -->
+    <h4>Quarterly Compounded Interest:</h4>
+    <p>If the interest is compounded quarterly, your investment after one year would be:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>A</mi>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>000</mn>
+                <msup>
+                    <mrow>
+                        <mo fence="true">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mn>0.05</mn>
+                            <mn>4</mn>
+                        </mfrac>
+                        <mo fence="true">)</mo>
+                    </mrow>
+                    <mrow>
+                        <mn>4</mn>
+                        <mo>×</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msup>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>509.41</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">A = \$10,000 \left(1 + \frac{0.05}{4}\right)^{4
+                \times 1} = \$10,509.41
+            </annotation>
+        </semantics>
+    </math>
+
+    <!-- Example 4: Monthly Compounded Interest -->
+    <h4>Monthly Compounded Interest:</h4>
+    <p>If the interest is compounded monthly, your investment after one year would be:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>A</mi>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>000</mn>
+                <msup>
+                    <mrow>
+                        <mo fence="true">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mn>0.05</mn>
+                            <mn>12</mn>
+                        </mfrac>
+                        <mo fence="true">)</mo>
+                    </mrow>
+                    <mrow>
+                        <mn>12</mn>
+                        <mo>×</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msup>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>511.62</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">A = \$10,000 \left(1 +
+                \frac{0.05}{12}\right)^{12 \times 1} = \$10,511.62
+            </annotation>
+        </semantics>
+    </math>
+
+    <!-- Example 5: Daily Compounded Interest -->
+    <h4>Daily Compounded Interest:</h4>
+    <p>If the interest is compounded daily, your investment after one year would be:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>A</mi>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>000</mn>
+                <msup>
+                    <mrow>
+                        <mo fence="true">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mn>0.05</mn>
+                            <mn>365</mn>
+                        </mfrac>
+                        <mo fence="true">)</mo>
+                    </mrow>
+                    <mrow>
+                        <mn>365</mn>
+                        <mo>×</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msup>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>10</mn>
+                <mo separator="true">,</mo>
+                <mn>512.67</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">A = \$10,000 \left(1 +
+                \frac{0.05}{365}\right)^{365 \times 1} = \$10,512.67
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>As you can see, the more frequently the interest is compounded, the more your investment
+        grows. However, the difference becomes less significant as the compounding frequency
+        increases.</p>
+
+    <p>Let’s consider another example where you deposit $5,000 in a bank account that offers an annual
+        interest rate of 4% compounded monthly for 3 years.</p>
+
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>A</mi>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>5</mn>
+                <mo separator="true">,</mo>
+                <mn>000</mn>
+                <msup>
+                    <mrow>
+                        <mo fence="true">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mn>0.04</mn>
+                            <mn>12</mn>
+                        </mfrac>
+                        <mo fence="true">)</mo>
+                    </mrow>
+                    <mrow>
+                        <mn>12</mn>
+                        <mo>×</mo>
+                        <mn>3</mn>
+                    </mrow>
+                </msup>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>5</mn>
+                <mo separator="true">,</mo>
+                <mn>624.89</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">A = \$5,000 \left(1 +
+                \frac{0.04}{12}\right)^{12 \times 3} = \$5,624.89
+            </annotation>
+        </semantics>
+    </math>
+
+    <p><strong>Amount of Interest Earned:</strong> The amount of interest earned is the difference
+        between the final amount and the initial principal:</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>I</mi>
+                <mi>n</mi>
+                <mi>t</mi>
+                <mi>e</mi>
+                <mi>r</mi>
+                <mi>e</mi>
+                <mi>s</mi>
+                <mi>t</mi>
+                <mo>=</mo>
+                <mi>A</mi>
+                <mo>−</mo>
+                <mi>P</mi>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>5</mn>
+                <mo separator="true">,</mo>
+                <mn>624.89</mn>
+                <mo>−</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>5</mn>
+                <mo separator="true">,</mo>
+                <mn>000</mn>
+                <mo>=</mo>
+                <mi mathvariant="normal">$</mi>
+                <mn>624.89</mn>
+            </mrow>
+            <annotation encoding="application/x-tex">Interest = A - P = \$5,624.89 - \$5,000 =
+                \$624.89
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>So, after 3 years, your investment would grow to $5,624.89, and you would have earned $624.89
+        in interest. This is the power of compound interest! It allows your money to grow faster
+        because interest is calculated on the initial principal and all of the accumulated interest.</p>
+</section>
+
+<section>
+    <h3>Effective Annual Interest Rate</h3>
+
+    <p>The effective rate of interest, also known as the effective annual interest rate or the
+        annual equivalent rate (AER), is the interest rate that actually gets paid after taking into
+        account the effects of compounding.</p>
+
+    <p>The formula for the effective annual interest rate is:</p>
+
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>i</mi>
+                <mo>=</mo>
+                <mrow>
+                    <mo fence="true">(</mo>
+                    <mn>1</mn>
+                    <mo>+</mo>
+                    <mfrac>
+                        <mi>n</mi>
+                        <mi>r</mi>
+                    </mfrac>
+                    <mo fence="true">)</mo>
+                </mrow>
+                <msup>
+                    <mrow>
+                        <mi>n</mi>
+                        <mo>−</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msup>
+            </mrow>
+            <annotation encoding="application/x-tex">i = \left(1 + \frac{n}{r}\right)^{n-1}
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>Where:</p>
+    <ul>
+        <li><strong>i</strong> is the effective interest rate</li>
+        <li><strong>r</strong> is the nominal interest rate</li>
+        <li><strong>n</strong> is the number of compounding periods per year</li>
+    </ul>
+
+    <p>The effective annual interest rate is a more accurate measure of interest charges than the
+        nominal rate because it takes into account the frequency of compounding. The more frequent
+        the compounding periods, the higher the effective interest rate.</p>
+
+    <p>For example, if you have a nominal interest rate of 10% compounded monthly, the effective
+        annual interest rate would be:</p>
+
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <semantics>
+            <mrow>
+                <mi>i</mi>
+                <mo>=</mo>
+                <msup>
+                    <mrow>
+                        <mo fence="true">(</mo>
+                        <mn>1</mn>
+                        <mo>+</mo>
+                        <mfrac>
+                            <mn>0.10</mn>
+                            <mn>12</mn>
+                        </mfrac>
+                        <mo fence="true">)</mo>
+                    </mrow>
+                    <mn>12</mn>
+                </msup>
+                <mo>−</mo>
+                <mn>1</mn>
+                <mo>=</mo>
+                <mn>0.1047</mn>
+                <mo>=</mo>
+                <mn>10.47</mn>
+                <mi mathvariant="normal">%</mi>
+            </mrow>
+            <annotation encoding="application/x-tex">i = \left(1 + \frac{0.10}{12}\right)^{12} - 1 =
+                0.1047 = 10.47\%
+            </annotation>
+        </semantics>
+    </math>
+
+    <p>This means that even though the stated interest rate is 10%, the interest you actually pay or
+        earn in a year is 10.47% due to monthly compounding.</p>
+</section>
+
+
+<section>
+    <h3>Pros and Cons of Compound Interest</h3>
+
+    <!-- Pros -->
+    <h4>Pros:</h4>
+    <ul>
+        <li><strong>Growth of Investments:</strong> Compound interest can help investors grow their
+            money. It multiplies money at an accelerated rate, making your capital grow reasonably
+            quickly.
+        </li>
+        <li><strong>Beneficial for Long-Term Investments:</strong> Understanding the pros and cons
+            of compound interest can be beneficial to those with long-term investments.
+        </li>
+        <li><strong>Better Comparisons and Judgements:</strong> If you understand compound interest,
+            you can make better comparisons and judgements. For example, some mortgages compound
+            every day, some every year – which would you choose?
+        </li>
+    </ul>
+
+    <!-- Cons -->
+    <h4>Cons:</h4>
+    <ul>
+        <li><strong>Cost Can Be Disguised:</strong> The cost is disguised and can run away with your
+            money. Missing a payment by a day may mean interest falls due to be calculated before
+            the payment is recorded.
+        </li>
+        <li><strong>Designed to Help Lenders:</strong> Compound interest is designed to help
+            lenders. Credit card monthly repayments are usually set so you are encouraged to keep
+            borrowing and thus keep paying interest.
+        </li>
+        <li><strong>Can Make Debt More Difficult:</strong> Compound interest can make debt more
+            difficult. It’s the effect of ‘interest on interest’ and happens when interest is added
+            to the capital or principal sum so that from that moment on, the interest which has been
+            added also itself earns interest.
+        </li>
+    </ul>
+</section>
+
+
+<section class="key-points">
+    <!-- Key points about Compound Interest -->
+    <h3>Key Points:</h3>
+    <ul>
+        <li>Compound interest is interest calculated on the initial principal, which also includes
+            all of the accumulated interest from previous periods.
+        </li>
+        <li>The formula for compound interest takes into account the principal amount, interest
+            rate, and the number of time periods the money is invested or borrowed for.
+        </li>
+        <li>Compound interest leads to exponential growth of funds over time, as interest is
+            continuously added to the principal amount.
+        </li>
+        <li>Compounding frequency (e.g., annually, semi-annually, monthly) affects the final amount
+            accrued.
+        </li>
+        <li>Compound interest is widely used in savings accounts, investments, loans, and
+            mortgages.
+        </li>
+        <li>It is important to understand compound interest when making financial decisions to
+            maximize returns or minimize costs.
+        </li>
+    </ul>
+</section>
+<footer>
+    <p style="text-align: center">For more information, visit <a
+            href="https://www.investopedia.com/terms/c/compoundinterest.asp">Investopedia - Compound
+        Interest</a>.</p>
+</footer>
+</body>
+</html>

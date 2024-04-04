@@ -1,0 +1,61 @@
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        style="?attr/materialAlertDialogTheme"
+        >
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/term"
+            android:layout_marginBottom="6dp"
+            app:boxCornerRadiusTopStart="16dp"
+            >
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/termEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:autofillHints="name"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/definition"
+            android:layout_marginBottom="6dp"
+            app:boxCornerRadiusTopStart="16dp"
+            >
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/definitionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:autofillHints="name"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/example_optional"
+            app:boxCornerRadiusTopStart="16dp"
+            >
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/exampleEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:autofillHints="name"
+                />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

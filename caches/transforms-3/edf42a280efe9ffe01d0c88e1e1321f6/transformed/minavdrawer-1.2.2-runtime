@@ -1,0 +1,6 @@
+com.mindinventory.midrawer.BuildConfig
+com.mindinventory.midrawer.MIDrawerView
+com.mindinventory.midrawer.MIDrawerView$Companion
+com.mindinventory.midrawer.MIDrawerView$MIDrawerEvents
+com.mindinventory.midrawer.MIDrawerView$MIDrawerEvents$DefaultImpls
+com.mindinventory.midrawer.MIDrawerView$setDrawerView$1

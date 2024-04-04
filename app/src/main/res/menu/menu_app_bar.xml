@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/action_edit_term"
+            android:title="@string/edit_term"
+            app:showAsAction="always"
+            android:visible="false"
+            android:icon="@drawable/baseline_add_24"
+            android:iconTint="@color/white" />
+
+    <item
+            android:id="@+id/action_progress"
+            android:title="@string/progress"
+            app:showAsAction="ifRoom"
+            android:visible="false"
+            android:icon="@drawable/progress"
+            android:iconTint="@color/white" />
+
+    <item
+            android:id="@+id/action_settings"
+            android:title="@string/settings"
+            app:showAsAction="always"
+            android:icon="@drawable/sharp_settings_24"
+            android:iconTint="@color/white" />
+
+</menu>

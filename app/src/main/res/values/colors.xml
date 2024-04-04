@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name = "black">#FF000000</color>
+	<color name = "white">#FFFFFFFF</color>
+
+	<color name = "colorPrimary">#0097a7
+	</color>
+	<color name = "colorSecondary">#00e5ff</color>
+	<color name = "colorPrimaryDark">#006974</color>
+	<color name = "colorAccent">#00BCD4</color>
+	<color name = "primaryText">#212121</color>
+	<color name = "secondaryText">#757575</color>
+	<color name = "dividerColor">#BDBDBD</color>
+
+	<color name = "correctOptionColor">#00C853</color>
+	<color name = "incorrectOptionColor">#FF1744</color>
+
+	<color name = "lightGreen">#ADFA9C</color>
+	<color name = "green">#28D801</color>
+	<color name = "lightRed">#FF9999</color>
+	<color name = "Red">#D60404</color>
+	<color name = "colorTertiary">#4b607c</color>
+	<color name = "colorOnTertiary">#ffffff</color>
+
+</resources>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		xmlns:tools = "http://schemas.android.com/tools"
+		android:id = "@+id/difficulty"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:orientation = "vertical"
+		android:background = "@color/colorPrimary"
+		tools:context = "com.mtcdb.stem.mathtrix.MainActivity"
+		>
+
+
+	<TextView
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:text = "@string/engage_your_mind_with_our_interactive_quiz_app"
+			android:textColor = "@color/white"
+			android:layout_marginHorizontal = "16dp"
+			android:layout_marginTop = "16dp"
+			android:textStyle = "bold"
+			android:layout_marginBottom = "4dp"
+			android:textSize = "18sp"
+			/>
+
+	<TextView
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:text = "@string/choose_your_preferred_difficulty_level_easy_medium_or_hard_and_dive_into_a_collection_of_thought_provoking_questions"
+			android:textColor = "@color/white"
+			android:layout_marginBottom = "16dp"
+			android:layout_marginHorizontal = "16dp"
+			/>
+
+	<com.google.android.material.card.MaterialCardView
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			android:layout_margin = "-4dp"
+			android:layout_marginBottom = "-16dp"
+			app:cardElevation = "4dp"
+			app:cardBackgroundColor = "@color/white"
+			app:cardCornerRadius = "28dp"
+			>
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "match_parent"
+				android:orientation = "horizontal"
+				android:padding = "16dp"
+				app:layout_constraintStart_toEndOf = "@+id/materialDivider"
+				app:layout_constraintEnd_toEndOf = "@+id/materialDivider"
+				>
+
+			<androidx.appcompat.widget.AppCompatSpinner
+					android:id = "@+id/spinner"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:padding = "8dp"
+					android:prompt = "@string/subject_prompt"
+					app:layout_constraintEnd_toEndOf = "parent"
+					app:layout_constraintStart_toStartOf = "parent"
+					android:background = "@drawable/button_background"
+					android:elevation = "2dp"
+					android:layout_marginHorizontal = "6dp"
+					app:layout_constraintHorizontal_bias = "0.0"
+					app:layout_constraintTop_toTopOf = "parent"
+					android:layout_marginTop = "8dp"
+					android:spinnerMode = "dropdown"
+
+					/>
+
+			<LinearLayout
+					android:layout_width = "0dp"
+					android:layout_height = "wrap_content"
+					android:layout_weight = "1"
+					android:id = "@+id/constraintLayout"
+					app:layout_constraintStart_toStartOf = "parent"
+					app:layout_constraintTop_toTopOf = "parent"
+					android:layout_marginTop = "56dp"
+					>
+
+				<ImageView
+						android:id = "@+id/quizImageView"
+						android:layout_width = "match_parent"
+						android:layout_height = "171dp"
+						android:padding = "16dp"
+						android:src = "@drawable/test"
+						android:contentDescription = "@string/quiz"
+						android:adjustViewBounds = "true"
+						/>
+
+			</LinearLayout>
+
+			<com.google.android.material.divider.MaterialDivider
+					android:layout_width = "1dp"
+					android:layout_marginHorizontal = "8dp"
+					android:layout_height = "170dp"
+					app:dividerColor = "@android:color/darker_gray"
+					app:layout_constraintStart_toEndOf = "@+id/constraintLayout"
+					android:id = "@+id/materialDivider"
+					android:layout_marginStart = "16dp"
+					app:layout_constraintTop_toTopOf = "parent"
+					android:layout_marginTop = "56dp"
+					/>
+
+			<LinearLayout
+					android:layout_width = "0dp"
+					android:layout_height = "wrap_content"
+					android:layout_weight = "1"
+					android:gravity = "top"
+					android:orientation = "vertical"
+					android:id = "@+id/linearLayout"
+					app:layout_constraintTop_toTopOf = "parent"
+					app:layout_constraintStart_toEndOf = "@+id/materialDivider"
+					app:layout_constraintEnd_toEndOf = "parent"
+					app:layout_constraintHorizontal_bias = "0.62"
+					android:layout_marginStart = "16dp"
+					android:layout_marginTop = "56dp"
+					>
+
+				<TextView
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:gravity = "center"
+						android:layout_marginBottom = "4dp"
+						android:textColor = "@android:color/darker_gray"
+						android:textAppearance = "@style/TextAppearance.AppCompat.Small"
+						android:text = "@string/choose_difficulty_level"
+						/>
+
+				<androidx.appcompat.widget.AppCompatButton
+						android:id = "@+id/easyButton"
+						android:layout_width = "match_parent"
+						android:layout_height = "36dp"
+						android:text = "@string/easy"
+						android:textSize = "16sp"
+						android:textStyle = "bold"
+						android:layout_margin = "6dp"
+						android:textColor = "@color/black"
+						android:fontFamily = "@font/roboto_regular"
+						android:textAppearance = "@style/TextAppearance.AppCompat.Title"
+						android:layout_marginBottom = "12dp"
+						android:background = "@drawable/button_background"
+						android:foreground = "?attr/selectableItemBackground"
+						/>
+
+				<androidx.appcompat.widget.AppCompatButton
+						android:id = "@+id/mediumButton"
+						android:layout_width = "match_parent"
+						android:layout_height = "36dp"
+						android:text = "@string/medium"
+						android:textSize = "16sp"
+						android:textStyle = "bold"
+						android:tooltipText = "Score 8 or higher in Easy level to unlock"
+						android:layout_margin = "6dp"
+						android:textColor = "@color/black"
+						android:fontFamily = "@font/roboto_regular"
+						android:textAppearance = "@style/TextAppearance.AppCompat.Title"
+						android:layout_marginBottom = "12dp"
+						android:background = "@drawable/button_background"
+						android:foreground = "?attr/selectableItemBackground"
+						/>
+
+				<androidx.appcompat.widget.AppCompatButton
+						android:id = "@+id/hardButton"
+						android:layout_width = "match_parent"
+						android:layout_height = "36dp"
+						android:layout_margin = "6dp"
+						android:textSize = "16sp"
+						android:tooltipText = "Score 6 or higher in Medium level to unlock"
+						android:textStyle = "bold"
+						android:textColor = "@color/black"
+						android:fontFamily = "@font/roboto_regular"
+						android:textAppearance = "@style/TextAppearance.AppCompat.Title"
+						android:text = "@string/hard"
+						android:background = "@drawable/button_background"
+						android:foreground = "?attr/selectableItemBackground"
+						/>
+
+			</LinearLayout>
+
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "vertical"
+					app:layout_constraintTop_toBottomOf = "@+id/materialDivider"
+					tools:layout_editor_absoluteX = "16dp"
+					>
+
+				<TextView
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:text = "@string/quiz_rules_title"
+						android:textColor = "@android:color/darker_gray"
+						android:layout_marginHorizontal = "16dp"
+						android:textStyle = "bold"
+						android:textSize = "18sp"
+						android:id = "@+id/textView3"
+						android:layout_marginTop = "28dp"
+						/>
+
+				<TextView
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:text = "@string/quiz_rules_description"
+						android:textColor = "@android:color/darker_gray"
+						android:layout_marginHorizontal = "16dp"
+						android:id = "@+id/textView2"
+						android:textSize = "16sp"
+						android:layout_marginTop = "4dp"
+						/>
+
+				<TextView
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:text = "@string/quiz_rules_additional"
+						android:textColor = "@android:color/darker_gray"
+						android:layout_marginHorizontal = "16dp"
+						android:textSize = "16sp"
+						android:id = "@+id/textView4"
+						android:layout_marginBottom = "296dp"
+						android:layout_marginTop = "2dp"
+						/>
+			</LinearLayout>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</com.google.android.material.card.MaterialCardView>
+</LinearLayout>

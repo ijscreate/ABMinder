@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:tools = "http://schemas.android.com/tools">
+
+	<uses-permission android:name = "android.permission.POST_NOTIFICATIONS" />
+	<uses-permission android:name = "android.permission.SCHEDULE_EXACT_ALARM" />
+	<uses-permission android:name = "android.permission.WAKE_LOCK" />
+	<uses-permission android:name = "android.permission.VIBRATE" />
+	<uses-permission android:name = "com.android.alarm.permission.SET_ALARM" />
+
+	<application
+			android:name = "com.mtcdb.stem.mathtrix.MyApplication"
+			android:allowBackup = "true"
+			android:dataExtractionRules = "@xml/data_extraction_rules"
+			android:fullBackupContent = "@xml/backup_rules"
+			android:icon = "@drawable/ic_logo"
+			android:label = "@string/app_name"
+			android:roundIcon = "@drawable/ic_logo_modified"
+			android:supportsRtl = "true"
+			android:theme = "@style/AppTheme"
+			tools:targetApi = "tiramisu">
+		<activity
+				android:name = "com.mtcdb.stem.mathtrix.WelcomeActivity"
+				android:exported = "true"
+				android:screenOrientation = "unspecified"
+				tools:ignore = "DiscouragedApi">
+			<intent-filter>
+				<action android:name = "android.intent.action.MAIN" />
+				<category android:name = "android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+				android:name = "com.mtcdb.stem.mathtrix.settings.SettingsActivity"
+				android:exported = "false"
+				android:label = "@string/title_activity_settings" />
+		<activity
+				android:name = "com.mtcdb.stem.mathtrix.MainActivity"
+				android:exported = "false"
+				android:windowSoftInputMode = "adjustResize" />
+		<activity
+				android:name = "com.mtcdb.stem.mathtrix.quiz.DifficultyLevel"
+				android:exported = "false" />
+
+		<receiver
+				android:name = ".learn.AlarmReceiver"
+				android:enabled = "true" />
+	</application>
+
+</manifest>
