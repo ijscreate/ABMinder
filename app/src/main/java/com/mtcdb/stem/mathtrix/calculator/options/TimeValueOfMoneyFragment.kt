@@ -1,11 +1,13 @@
 package com.mtcdb.stem.mathtrix.calculator.options
 
+import android.annotation.*
 import android.os.*
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.*
 import com.google.android.material.dialog.*
 import com.mtcdb.stem.mathtrix.*
+import org.w3c.dom.Text
 import kotlin.math.*
 
 class TimeValueOfMoneyFragment : Fragment() {
@@ -16,7 +18,9 @@ class TimeValueOfMoneyFragment : Fragment() {
     private lateinit var timePeriodEditText : EditText
     private lateinit var calculateButton : Button
     private lateinit var resultTextView : TextView
+    private lateinit var description : TextView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater : LayoutInflater, container : ViewGroup?,
         savedInstanceState : Bundle?,
@@ -39,6 +43,38 @@ class TimeValueOfMoneyFragment : Fragment() {
         calculateButton =
             view.findViewById(com.calculator.calculatoroptions.R.id.buttonCalculateTVM)
         resultTextView = view.findViewById(com.calculator.calculatoroptions.R.id.textViewTVMResult)
+        description = view.findViewById(R.id.description)
+        val desc = """
+            The Time Value of Money (TVM) concept evaluates the worth of money over time, considering the potential earning capacity of investments or interest accrual. It determines how the value of money changes due to factors like inflation and interest rates.
+        
+            Example:
+        
+                Suppose you have ₱1,000 to invest in a savings account with an annual interest rate of 5%, compounded quarterly. You want to calculate the future value of your investment after 3 years.
+        
+            Formula:
+        
+                The future value (FV) of an investment using TVM formula is calculated as:
+        
+            FV = PV * (1 + r/n)^(n*t)
+        
+            Calculation:
+        
+            - Present Value (PV): ₱1,000
+            - Interest Rate (r): 5% per annum
+            - Compounding Period (n): Quarterly (4 times a year)
+            - Time Period (t): 3 years
+        
+            Plugging these values into the formula:
+        
+                FV = ₱1,000 * (1 + 0.05/4)^(4*3)
+                FV ≈ ₱1,159.27
+        
+            Result:
+        
+            After 3 years, your investment of ₱1,000 will grow to approximately ₱1,159.27, considering quarterly compounding at a 5% annual interest rate.
+        """.trimIndent()
+
+        description.text = desc
 
         calculateButton.setOnClickListener {
             calculateTimeValueOfMoney()
@@ -77,26 +113,28 @@ class TimeValueOfMoneyFragment : Fragment() {
         timePeriod : Double,
         result : Double,
     ) {
-        interestRate / 100
+        // Convert interest rate to decimal form
+        val adjustedInterestRate = interestRate / 100
 
+        // Explanation of the Time Value of Money (TVM) calculation
         val explanation = """
-            Time Value of Money (TVM) calculates the present or future value of money based on an interest rate and time period.
+        Time Value of Money (TVM) calculates the present or future value of money based on an interest rate and time period.
 
-            Given:
-                Present Value = $presentValue
-                Number of Compounding Period Per Year = $compoundingPeriod
-                Interest Rate = $interestRate%
-                Number of Years = $timePeriod years
+        Given:
+            Present Value: ₱$presentValue
+            Number of Compounding Periods Per Year: $compoundingPeriod
+            Interest Rate: $interestRate%
+            Number of Years: $timePeriod years
 
-            Formula:
-                Future Value = Present Value * (1 + Interest Rate / Compounding Period)^Compounding Period * Time Period
+        Formula:
+            Future Value = Present Value * (1 + Interest Rate / Compounding Period)^Compounding Period * Time Period
 
-            Calculation:
-                Future Value = $presentValue * (1 + $interestRate / $compoundingPeriod)^$compoundingPeriod * $timePeriod
-                Future Value = $result
+        Calculation:
+            Future Value = ₱$presentValue * (1 + $adjustedInterestRate / $compoundingPeriod)^(${compoundingPeriod * timePeriod})
+            Future Value = ₱$result
 
-            Therefore, the Time Value of Money is $result.
-        """.trimIndent()
+        Therefore, the Time Value of Money is ₱$result.
+    """.trimIndent()
 
         // Display explanation in a custom dialog
         MaterialAlertDialogBuilder(requireContext())
@@ -105,4 +143,5 @@ class TimeValueOfMoneyFragment : Fragment() {
             .setPositiveButton("OK", null)
             .show()
     }
+
 }

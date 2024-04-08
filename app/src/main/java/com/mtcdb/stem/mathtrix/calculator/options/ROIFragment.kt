@@ -65,13 +65,14 @@ class ROIFragment : Fragment() {
             ROI is expressed as a percentage.
             
             Example:
-            Suppose you invest $10,000 and your investment grows to $15,000.
+            Suppose you invest ₱10,000 and your investment grows to ₱15,000.
             
-            ROI = (($15,000 - $10,000) / $10,000) * 100
+            ROI = ((₱15,000 - ₱10,000) / ₱10,000) * 100
             ROI = 50%
             
             Therefore, the Return on Investment is 50%.
         """.trimIndent()
+
 
         descriptionTextView.text = description
 

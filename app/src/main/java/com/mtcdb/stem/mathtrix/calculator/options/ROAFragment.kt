@@ -58,17 +58,18 @@ class ROAFragment : Fragment() {
 
             Let's consider an example to illustrate the calculation:
 
-            Suppose a company has a net income of $500,000 and average total assets of $2,000,000.
+            Suppose a company has a net income of ₱500,000 and average total assets of ₱2,000,000.
 
-            ROA = ($500,000 / $2,000,000) * 100
+            ROA = (₱500,000 / ₱2,000,000) * 100
                 = 25%
 
-            In this example, the ROA is 25%, indicating that the company generates 25 cents in profit for every dollar of assets.
+            In this example, the ROA is 25%, indicating that the company generates 25 centavos in profit for every peso of assets.
 
             ROA is a key metric for investors, as it helps assess how efficiently a company converts its investments in assets into profits. A higher ROA is generally favorable, indicating better asset utilization.
 
             Understanding ROA is crucial for comparing companies within the same industry and evaluating a company's historical performance.
         """.trimIndent()
+
 
         description.text = roaDescription
 
@@ -101,7 +102,6 @@ class ROAFragment : Fragment() {
 
         resultTextView.text =
             getString(com.calculator.calculatoroptions.R.string.roa_result, returnOnAssets)
-        showExplanationDialog(netIncome, averageTotalAssets, returnOnAssets)
     }
 
     private fun showExplanationDialog(

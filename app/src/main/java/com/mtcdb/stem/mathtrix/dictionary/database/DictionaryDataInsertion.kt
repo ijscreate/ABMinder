@@ -1995,6 +1995,41 @@ class DictionaryDataInsertion(
                         "The process of reducing the size of a central bank's balance sheet and withdrawing liquidity from the financial system by selling government securities and other assets.",
                         "Quantitative tightening is used as a contractionary monetary policy tool to control inflation, stabilize financial markets, and prevent asset bubbles."
                     ),
+                    Triple(
+                        "Accounts Receivable",
+                        "Money owed to a company by its customers for goods or services that have been delivered or used but not yet paid for.",
+                        "Proper management of accounts receivable is crucial for maintaining a company's cash flow and liquidity."
+                    ),
+                    Triple(
+                        "Accrual Basis Accounting",
+                        "An accounting method that records revenue and expenses when they are earned or incurred, regardless of when the cash is received or paid.",
+                        "Accrual basis accounting provides a more accurate representation of a company's financial performance by matching revenues with related expenses."
+                    ),
+                    Triple(
+                        "Amortization",
+                        "The process of spreading out the cost of an intangible asset or a loan over its useful life or the loan repayment period.",
+                        "The monthly mortgage payment includes both principal and interest, with the interest portion being amortized over the life of the loan."
+                    ),
+                    Triple(
+                        "Break-Even Analysis",
+                        "A technique used to determine the point at which total revenue equals total costs, and the business does not make a profit or loss.",
+                        "Conducting a break-even analysis can help businesses determine the minimum level of sales required to cover their fixed and variable costs."
+                    ),
+                    Triple(
+                        "Capital Budgeting",
+                        "The process of evaluating potential investments or expenditures that are expected to generate benefits over a long period of time.",
+                        "Capital budgeting techniques, such as net present value and internal rate of return, are used to assess the profitability of potential projects."
+                    ),
+                    Triple(
+                        "Depreciation",
+                        "The gradual allocation of the cost of a tangible asset over its useful life, reflecting its decrease in value due to wear and tear or obsolescence.",
+                        "Depreciation is a non-cash expense that allows businesses to recover the cost of assets used in generating revenue."
+                    ),
+                    Triple(
+                        "Working Capital",
+                        "The difference between a company's current assets and current liabilities, representing the funds available for short-term operations and obligations.",
+                        "Maintaining a healthy level of working capital is essential for businesses to meet their short-term financial obligations and fund their day-to-day operations."
+                    ),
 
                     )
 

@@ -69,13 +69,23 @@ class FutureValueFragment : Fragment() {
         description.text = futureValueDescription
 
         buttonSolution.setOnClickListener {
-            calculateFutureValue()
+            val principalAmount = principalAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val interestRate = interestRateEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val numberOfPeriods = numberOfPeriodsEditText.text.toString().toDoubleOrNull() ?: 0.0
+
+            val futureValue = principalAmount * (1 + interestRate).pow(numberOfPeriods)
+
+            resultTextView.text =
+                getString(
+                    R.string.future_value_result,
+                    futureValue
+                )
+            showExplanationDialog(principalAmount, interestRate, numberOfPeriods, futureValue)
         }
 
         return view
     }
 
-    @SuppressLint("StringFormatInvalid")
     private fun calculateFutureValue() {
         val principalAmount = principalAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
         val interestRate = interestRateEditText.text.toString().toDoubleOrNull() ?: 0.0
@@ -88,7 +98,6 @@ class FutureValueFragment : Fragment() {
                 R.string.future_value_result,
                 futureValue
             )
-        showExplanationDialog(principalAmount, interestRate, numberOfPeriods, futureValue)
     }
 
     private fun showExplanationDialog(

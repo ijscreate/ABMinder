@@ -112,11 +112,11 @@ class ChaptersFragment : Fragment() {
 
             "Principles of Marketing" -> listOf(
                 "Marketing Principles and Strategies",
-               "Customer Relationships",
+                "Customer Relationships",
                 "Market Opportunity Analysis and Consumer Analysis",
             )
 
-            "Organisation and Management" -> listOf(
+            "Organization and Management" -> listOf(
                 "Nature and Concept of Management",
                 "Firm and its Environment",
             )

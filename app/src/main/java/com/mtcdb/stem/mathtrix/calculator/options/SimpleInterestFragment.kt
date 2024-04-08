@@ -63,13 +63,14 @@ class SimpleInterestFragment : Fragment() {
             To calculate Simple Interest, multiply the Principal amount (P), Rate of interest (R), and Time (T), and then divide by 100.
             
             Example:
-            Suppose you invest $1,000 at an annual interest rate of 5% for 2 years.
+            Suppose you invest ₱1,000 at an annual interest rate of 5% for 2 years.
             
             I = 1000 * 5 * 2 / 100
             I = 100
             
-            Therefore, the Simple Interest earned is $100.
+            Therefore, the Simple Interest earned is ₱100.
         """.trimIndent()
+
 
         descriptionTextView.text = description
 

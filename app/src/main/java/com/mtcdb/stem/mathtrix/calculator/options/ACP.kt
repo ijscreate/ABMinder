@@ -49,27 +49,29 @@ class AverageCollectionPeriodFragment : Fragment() {
 
         val acpDescription = """
             The Average Collection Period (ACP) is a financial metric that measures the average number of days it takes for a company to collect payments from its customers.
-
+        
             The formula for calculating ACP is:
-
+        
             ACP = (Average Accounts Receivable / Net Credit Sales) * Number of Days
-
+        
             Where:
             - Average Accounts Receivable is the average amount of money owed to a company by its customers.
             - Net Credit Sales represent the total sales made on credit, excluding cash sales.
             - Number of Days is the period for which the average is calculated (usually 365 days for an annual average).
-
-            Let's consider an example to illustrate the calculation:
-
-            Suppose a company has an Average Accounts Receivable of $50,000 and Net Credit Sales of $200,000 over a year.
-
-            ACP = ($50,000 / $200,000) * 365
-                = 91.25 days
-
+        
+            Example:
+            Let's consider a company with the following financial data over a year:
+            Average Accounts Receivable = ₱50,000
+            Net Credit Sales = ₱200,000
+        
+            ACP = (₱50,000 / ₱200,000) * 365
+                ≈ 91.25 days
+        
             In this example, the Average Collection Period is approximately 91.25 days, indicating that, on average, it takes the company around 91 days to collect payments.
-
+        
             A lower ACP is generally favorable as it suggests that a company is efficient in collecting receivables. However, it's essential to compare ACP with industry benchmarks for a more meaningful interpretation.
         """.trimIndent()
+
 
         description.text = acpDescription
 
@@ -109,11 +111,6 @@ class AverageCollectionPeriodFragment : Fragment() {
                 com.calculator.calculatoroptions.R.string.average_collection_period_result,
                 averageCollectionPeriod
             )
-        showExplanationDialog(
-            netCreditSales,
-            averageAccountsReceivable,
-            averageCollectionPeriod
-        )
     }
 
     private fun showExplanationDialog(

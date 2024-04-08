@@ -11,20 +11,20 @@ import kotlin.math.*
 
 class CompoundInterestFragment : Fragment() {
 
-    private lateinit var principalEditText : EditText
-    private lateinit var rateEditText : EditText
-    private lateinit var timeEditText : EditText
-    private lateinit var calculateButton : Button
-    private lateinit var resultTextView : TextView
-    private lateinit var explainButton : Button
-    private lateinit var descriptionTextView : TextView
-    private lateinit var compoundingPeriods : EditText
+    private lateinit var principalEditText: EditText
+    private lateinit var rateEditText: EditText
+    private lateinit var timeEditText: EditText
+    private lateinit var calculateButton: Button
+    private lateinit var resultTextView: TextView
+    private lateinit var explainButton: Button
+    private lateinit var descriptionTextView: TextView
+    private lateinit var compoundingPeriods: EditText
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
-        inflater : LayoutInflater, container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View {
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
         val rootView =
             inflater.inflate(
                 com.calculator.calculatoroptions.R.layout.fragment_compound_interest,
@@ -62,20 +62,30 @@ class CompoundInterestFragment : Fragment() {
             Where:
             A = Amount after interest
             P = Principal amount (initial amount of money)
-            R = Annual interest rate (decimal)
-            N = Number of times that interest is compounded per unit T
+            R = Annual interest rate (as a decimal)
+            N = Number of times that interest is compounded per year
             T = Time the money is invested or borrowed for, in years
             
             To calculate Compound Interest, use the formula to find the total amount after interest and then subtract the principal amount.
             
             Example:
-            Suppose you invest $1,000 at an annual interest rate of 5% compounded quarterly for 2 years.
+            Suppose you invest ₱1,000 at an annual interest rate of 5% compounded quarterly for 2 years.
             
+            Given:
+            Principal Amount (P) = ₱1,000
+            Annual Interest Rate (R) = 5% or 0.05 (as a decimal)
+            Number of Compounding Periods per Year (N) = 4 (quarterly)
+            Time (T) = 2 years
+            
+            Calculation:
             A = 1000 * (1 + (0.05 / 4))^(4 * 2)
-            A = 1104.06
+            A = 1000 * (1 + 0.0125)^8
+            A ≈ 1000 * 1.1041
+            A ≈ ₱1104.06
             
-            Therefore, the Compound Interest earned is $104.06.
+            Therefore, the Compound Interest earned is approximately ₱104.06.
         """.trimIndent()
+
 
         descriptionTextView.text = description
 
@@ -98,8 +108,13 @@ class CompoundInterestFragment : Fragment() {
         val perTime = periods * time
 
         val compoundInterest = principal * (1 + (rated / periods)).pow(perTime)
+        val totalInterestEarned = compoundInterest - principal
 
-        resultTextView.text = compoundInterest.toString()
+        resultTextView.text = getString(
+            com.calculator.calculatoroptions.R.string.compound_interest_result,
+            compoundInterest,
+            totalInterestEarned
+        )
     }
 
     private fun showExplanationDialog() {
@@ -110,22 +125,35 @@ class CompoundInterestFragment : Fragment() {
         val rated = rate / 100
         val perTime = periods * time
 
+        // Calculate compound interest using the formula A = P * (1 + (R / N))^(N * T)
         val compoundInterest = principal * (1 + (rated / periods)).pow(perTime)
+        val totalInterestEarned = compoundInterest - principal
+
+        // Explanation of the calculation step by step
         val explanation = """
-            Given:
-                Principal Amount = $principal
-                Annual Interest Rate = $rate
-                Time = $time years
-                
-            Formula:
-                A = P * (1 + (R / N))^(N * T)
-                
-            Solution:
-                A = $principal * (1 + ($rate / $periods))^($periods * $time)
-                A = $compoundInterest
-                
-            Therefore, the Compound Interest is $compoundInterest    
-        """.trimIndent()
+        Given:
+            Principal Amount = $principal
+            Annual Interest Rate = $rate%
+            Time = $time years
+            Compounding Periods per Year = $periods
+            
+        Formula:
+            A = P * (1 + (R / N))^(N * T)
+            
+        Explanation:
+            1. Divide the annual interest rate by the number of compounding periods per year to get the periodic interest rate:
+               R / N = $rate / $periods = ${rate / periods}
+            2. Multiply the number of compounding periods per year by the time to get the total number of compounding periods:
+               N * T = $periods * $time = $perTime
+            3. Add 1 to the periodic interest rate and raise it to the power of the total number of compounding periods:
+               (1 + (R / N))^($periods * $time) = ${(1 + (rated / periods))}^$perTime
+            4. Multiply the principal amount by the result to find the compound interest:
+               A = $principal * ${(1 + (rated / periods)).pow(perTime)} = $compoundInterest
+               A = $compoundInterest
+            
+        Therefore, the Total Compound Interest is $compoundInterest
+        Total Interest Earned = $totalInterestEarned
+    """.trimIndent()
 
         // Display explanation in a custom dialog
         MaterialAlertDialogBuilder(requireContext())

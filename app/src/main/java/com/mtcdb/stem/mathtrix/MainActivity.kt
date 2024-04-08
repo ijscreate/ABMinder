@@ -24,6 +24,8 @@ import com.mtcdb.stem.mathtrix.learn.subjects.*
 import com.mtcdb.stem.mathtrix.quiz.*
 import com.mtcdb.stem.mathtrix.quiz.database.*
 import com.mtcdb.stem.mathtrix.settings.*
+import java.util.*
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,6 +37,65 @@ class MainActivity : AppCompatActivity() {
     private lateinit var termDatabaseHelper : DictionaryDatabaseHelper
     private var backPressedTime : Long = 0
     private lateinit var navView : NavigationView
+
+    // List of random tips or motivations
+    private val tipsList = listOf(
+        "Stay focused and never give up!",
+        "Take breaks to recharge your energy.",
+        "Set achievable goals and celebrate your progress.",
+        "Keep learning and expanding your skills.",
+        "Believe in yourself and your abilities.",
+        "Stay positive and optimistic.",
+        "Surround yourself with supportive people.",
+        "Stay organized and prioritize your tasks.",
+        "Embrace challenges as opportunities for growth.",
+        "Stay persistent and persevere through obstacles.",
+        "Practice time management and avoid procrastination.",
+        "Maintain a healthy work-life balance.",
+        "Learn from your mistakes and use them as learning experiences.",
+        "Stay curious and open-minded to new perspectives.",
+        "Develop a growth mindset and embrace continuous improvement.",
+        "Celebrate small wins and acknowledge your progress.",
+        "Stay disciplined and consistent in your efforts.",
+        "Seek feedback and use it constructively.",
+        "Find inspiration in others' success stories.",
+        "Practice self-care and prioritize your well-being.",
+        "Stay humble and always strive to learn more.",
+        "Embrace new challenges and step out of your comfort zone.",
+        "Cultivate a positive attitude and spread positivity.",
+        "Stay resilient and bounce back from setbacks.",
+        "Develop strong time management skills.",
+        "Practice mindfulness and stay present in the moment.",
+        "Celebrate diversity and embrace different perspectives.",
+        "Stay accountable and take responsibility for your actions.",
+        "Develop effective communication skills.",
+        "Practice gratitude and appreciate the little things.",
+        "Stay determined and never lose sight of your goals.",
+        "Embrace change and adapt to new situations.",
+        "Stay focused on continuous self-improvement.",
+        "Cultivate a sense of purpose and passion for what you do.",
+        "Stay motivated and inspired by your dreams and aspirations.",
+        "Learn about different accounting principles and practices.",
+        "Stay updated with the latest business trends and technologies.",
+        "Develop critical thinking and problem-solving skills.",
+        "Network and build professional connections.",
+        "Seek internships or practical experience in your field.",
+        "Learn effective marketing and business strategies.",
+        "Develop strong leadership and teamwork skills.",
+        "Stay organized and detail-oriented in your work.",
+        "Embrace ethical practices and integrity in business.",
+        "Develop financial literacy and investment knowledge.",
+        "Stay adaptable and open to learning new business models.",
+        "Cultivate entrepreneurial skills and innovative thinking.",
+        "Learn to analyze and interpret financial statements.",
+        "Stay informed about relevant laws and regulations.",
+        "Develop effective communication skills for presentations and meetings.",
+        "Embrace continuous learning and professional development.",
+        "Stay motivated by the potential for career growth and advancement.",
+        "Learn to manage resources and budgets effectively.",
+        "Cultivate strategic thinking and decision-making skills.",
+        "Stay passionate about your chosen field and its impact."
+    )
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     @SuppressLint("InflateParams")
@@ -61,11 +122,12 @@ class MainActivity : AppCompatActivity() {
             showAddTermDialog()
         }
 
+        // Display a random tip or motivation when the activity is created
+        displayRandomTip()
+
         // Initialize toolbar and other UI components
         initViews()
 
-        // Set initial fragment
-        setCurrentFragment(DictionaryFragment())
 
         val calcView = layoutInflater.inflate(
             R.layout.fragment_calculator_options, null
@@ -133,6 +195,18 @@ class MainActivity : AppCompatActivity() {
         onBackPressedDispatcher.addCallback(this) {
             handleBackPressed()
         }
+    }
+
+    private fun displayRandomTip() {
+        // Get a random index within the range of the tipsList
+        val randomIndex = Random.nextInt(tipsList.size)
+
+        // Get the random tip using the random index
+        val randomTip = tipsList[randomIndex]
+        val textViewRandomTip = findViewById<TextView>(R.id.randomTips)
+
+        // Display the random tip on the TextView
+        textViewRandomTip.text = randomTip
     }
 
     override fun onDestroy() {

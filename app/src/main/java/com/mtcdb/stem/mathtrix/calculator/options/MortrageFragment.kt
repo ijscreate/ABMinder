@@ -1,6 +1,7 @@
 package com.mtcdb.stem.mathtrix.calculator.options
 
 import android.os.*
+import android.text.*
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.*
@@ -9,6 +10,7 @@ import com.google.android.material.dialog.*
 import com.google.android.material.textfield.*
 import com.google.android.material.textview.*
 import kotlin.math.*
+import com.mtcdb.stem.mathtrix.R
 
 class MortgageCalculatorFragment : Fragment() {
 
@@ -44,6 +46,11 @@ class MortgageCalculatorFragment : Fragment() {
         description = view.findViewById(com.calculator.calculatoroptions.R.id.description)
         buttonSolution = view.findViewById(com.calculator.calculatoroptions.R.id.buttonSolution)
 
+        // Set input validation for edit texts
+        principalEditText.addTextChangedListener(inputTextWatcher)
+        interestRateEditText.addTextChangedListener(inputTextWatcher)
+        loanTermEditText.addTextChangedListener(inputTextWatcher)
+
         calculateButton.setOnClickListener {
             calculateMortgage()
         }
@@ -73,53 +80,86 @@ class MortgageCalculatorFragment : Fragment() {
         return view
     }
 
+    private val inputTextWatcher = object : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable?) {
+            validateInputs()
+        }
+    }
+
+    private fun validateInputs() {
+        val principal = principalEditText.text.toString().toDoubleOrNull()
+        val interestRate = interestRateEditText.text.toString().toDoubleOrNull()
+        val loanTerm = loanTermEditText.text.toString().toDoubleOrNull()
+
+        calculateButton.isEnabled =
+            principal != null && principal > 0 && interestRate != null && interestRate >= 0 && loanTerm != null && loanTerm > 0
+    }
+
     private fun calculateMortgage() {
-        val principal = principalEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val annualInterestRate = interestRateEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val loanTermYears = loanTermEditText.text.toString().toDoubleOrNull() ?: 0.0
+        val principal = principalEditText.text.toString().toDouble()
+        val annualInterestRate = interestRateEditText.text.toString().toDouble()
+        val loanTermYears = loanTermEditText.text.toString().toDouble()
 
-        val monthlyInterestRate = annualInterestRate / 12 / 100
-        val totalPayments = loanTermYears * 12
+        try {
+            val monthlyInterestRate = annualInterestRate / 12 / 100
+            val totalPayments = loanTermYears * 12
 
-        val monthlyPayment =
-            principal * monthlyInterestRate * (1 + monthlyInterestRate).pow(totalPayments) /
-                    ((1 + monthlyInterestRate).pow(totalPayments) - 1)
+            val monthlyPayment =
+                principal * monthlyInterestRate * (1 + monthlyInterestRate).pow(totalPayments) /
+                        ((1 + monthlyInterestRate).pow(totalPayments) - 1)
 
-        resultTextView.text =
-            getString(
-                com.calculator.calculatoroptions.R.string.mortgage_result,
-                monthlyPayment
-            )
-        showExplanationDialog(principal, annualInterestRate, loanTermYears, monthlyPayment)
+            resultTextView.text =
+                getString(R.string.mortgage_result, monthlyPayment)
+            showExplanationDialog(principal, annualInterestRate, loanTermYears, monthlyPayment)
+        } catch (e: Exception) {
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.error_message),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun showExplanationDialog(
         principal : Double,
-        annualInterestRate : Double,
+        monthlyInterestRate : Double,
         loanTermYears : Double,
         monthlyPayment : Double,
     ) {
         val explanation = """
-            The Mortgage Calculator helps you estimate your monthly mortgage payment.
+    The Mortgage Calculator estimates your monthly mortgage payment based on the principal loan amount, annual interest rate, and loan term.
 
-            Given:
-                Principal Loan Amount = $principal
-                Annual Interest Rate = $annualInterestRate%
-                Loan Term (Years) = $loanTermYears
+    Given:
+        Principal Loan Amount: ₱$principal
+        Annual Interest Rate: $monthlyInterestRate%
+        Loan Term (Years): $loanTermYears
 
-            Solution:
-                Monthly Interest Rate = Annual Interest Rate / 12 / 100
-                                       = $annualInterestRate / 12 / 100
+    Solution:
+        Step 1: Calculate Monthly Interest Rate
+            Monthly Interest Rate = Annual Interest Rate / 12 / 100
+                                  = $monthlyInterestRate / 12 / 100
 
-                Total Number of Payments = Loan Term (Years) * 12
-                                         = $loanTermYears * 12
+        Step 2: Calculate Total Number of Payments
+            Total Number of Payments = Loan Term (Years) * 12
+                                     = $loanTermYears * 12
 
-                Monthly Mortgage Payment = Principal Loan Amount * [Monthly Interest Rate * (1 + Monthly Interest Rate)^Total Number of Payments] /
-                                           [(1 + Monthly Interest Rate)^Total Number of Payments - 1]
-                                         = $monthlyPayment
+        Step 3: Calculate Monthly Mortgage Payment
+            To calculate the monthly mortgage payment, we use the following formula:
+            
+            Monthly Mortgage Payment = Principal Loan Amount * [Monthly Interest Rate * (1 + Monthly Interest Rate)^Total Number of Payments] /
+                                       [(1 + Monthly Interest Rate)^Total Number of Payments - 1]
+            
+            Substituting the given values:
+            Monthly Mortgage Payment = ₱$principal * [$monthlyInterestRate * (1 + $monthlyInterestRate)^$loanTermYears] /
+                                       [(1 + $monthlyInterestRate)^$loanTermYears - 1]
 
-            Therefore, your estimated monthly mortgage payment is $monthlyPayment.
-        """.trimIndent()
+            After performing the calculations, we find:
+            Monthly Mortgage Payment ≈ ₱$monthlyPayment
+
+    Therefore, your estimated monthly mortgage payment is ₱$monthlyPayment.
+""".trimIndent()
 
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Mortgage Payment Calculation")

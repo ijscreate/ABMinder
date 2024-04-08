@@ -116,12 +116,6 @@ class EPSFragment : Fragment() {
 
         resultTextView.text =
             getString(com.calculator.calculatoroptions.R.string.eps_result, earningsPerShare)
-        showExplanationDialog(
-            netIncome,
-            preferredDividends,
-            weightedAverageShares,
-            earningsPerShare
-        )
     }
 
     private fun showExplanationDialog(
@@ -131,29 +125,35 @@ class EPSFragment : Fragment() {
         earningsPerShare : Double,
     ) {
         val explanation = """
-            Earnings Per Share (EPS) is a financial metric that represents the portion of a company's profit allocated to each outstanding share of common stock.
-            
-            The formula for calculating EPS is:
-            
-            EPS = (Net Income - Preferred Dividends) / Weighted Average Shares Outstanding
-            
-            Given:
-                Net Income = $netIncome
-                Preferred Dividends = $preferredDividends
-                Weighted Average Shares = $weightedAverageShares
-                
-            Solution:
-                EPS = ($netIncome - $preferredDividends) / $weightedAverageShares
-                EPS = $earningsPerShare
-                
-            Therefore, the Earnings Per Share is $earningsPerShare.
-        """.trimIndent()
+        Earnings Per Share (EPS) is a financial metric that represents the portion of a company's profit allocated to each outstanding share of common stock.
+
+        Formula:
+        EPS = (Net Income - Preferred Dividends) / Weighted Average Shares Outstanding
+
+        Step-by-step Calculation:
+
+        1. Subtract Preferred Dividends from Net Income:
+           Net Income - Preferred Dividends = $netIncome - $preferredDividends = ${netIncome - preferredDividends}
+
+        2. Divide the result by Weighted Average Shares Outstanding:
+           EPS = (Net Income - Preferred Dividends) / Weighted Average Shares Outstanding
+               = ${netIncome - preferredDividends} / $weightedAverageShares
+               = $earningsPerShare
+
+        Given:
+            Net Income = $netIncome
+            Preferred Dividends = $preferredDividends
+            Weighted Average Shares = $weightedAverageShares
+
+        Therefore, the Earnings Per Share is $earningsPerShare.
+    """.trimIndent()
 
         // Display explanation in a custom dialog
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Earnings Per Share (EPS) Calculation")
+            .setTitle("Earnings Per Share (EPS) Calculation Explanation")
             .setMessage(explanation)
             .setPositiveButton("OK", null)
             .show()
     }
+
 }

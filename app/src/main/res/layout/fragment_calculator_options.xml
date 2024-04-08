@@ -27,16 +27,15 @@
 				/>
 	</androidx.cardview.widget.CardView>
 
-	<com.google.android.material.divider.MaterialDivider
-			android:layout_width = "match_parent"
-			android:layout_height = "2dp"
-			/>
-
 	<FrameLayout
 			android:id = "@+id/calculator_container"
 			android:layout_width = "match_parent"
 			android:layout_height = "match_parent"
 			>
+		<com.google.android.material.divider.MaterialDivider
+				android:layout_width = "match_parent"
+				android:layout_height = "2dp"
+				/>
 
 		<androidx.recyclerview.widget.RecyclerView
 				android:id = "@+id/recyclerViewCalculationOptions"

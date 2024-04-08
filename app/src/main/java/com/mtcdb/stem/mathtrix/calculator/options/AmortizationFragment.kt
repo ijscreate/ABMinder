@@ -55,25 +55,26 @@ class AmortizationFragment : Fragment() {
 
         // Set up description text
         val description = """
-            Amortization Schedule calculates the monthly installment payments for a loan.
-            
+            The Amortization Schedule calculates the monthly installment payments for a loan.
+        
             The formula for calculating monthly payments is:
-            
+        
             M = P * [r(1+r)^n] / [(1+r)^n-1]
-            
+        
             Where:
-            M = Monthly payment
-            P = Principal loan amount
-            r = Monthly interest rate (annual rate / 12 / 100)
-            n = Total number of payments (loan term * 12)
-            
+            - M = Monthly payment
+            - P = Principal loan amount
+            - r = Monthly interest rate (annual rate / 12 / 100)
+            - n = Total number of payments (loan term * 12)
+        
             Example:
-            Suppose you take out a loan of $10,000 with an annual interest rate of 5% for 3 years.
-            
+            Suppose you take out a loan of ₱10,000 with an annual interest rate of 5% for 3 years.
+        
             Monthly interest rate (r) = 0.05 / 12
             Total number of payments (n) = 3 * 12
-            Monthly payment (M) = $299.71
+            Monthly payment (M) ≈ ₱299.71
         """.trimIndent()
+
 
         descriptionTextView.text = description
 

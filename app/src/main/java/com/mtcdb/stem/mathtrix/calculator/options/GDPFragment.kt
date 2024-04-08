@@ -27,9 +27,7 @@ class GDPFragment : Fragment() {
         savedInstanceState : Bundle?,
     ) : View? {
         val view = inflater.inflate(
-            com.calculator.calculatoroptions.R.layout.fragment_gdp,
-            container,
-            false
+            com.calculator.calculatoroptions.R.layout.fragment_gdp, container, false
         )
 
         // Initialize UI components
@@ -103,7 +101,6 @@ class GDPFragment : Fragment() {
 
         resultTextView.text =
             getString(com.calculator.calculatoroptions.R.string.gdp_result, gdpGrowthRate)
-        showExplanationDialog(initialGDP, finalGDP, gdpGrowthRate)
     }
 
     private fun showExplanationDialog(
@@ -112,20 +109,33 @@ class GDPFragment : Fragment() {
         gdpGrowthRate : Double,
     ) {
         val explanation = """
-            Gross Domestic Product (GDP) Growth Rate measures the annual percentage change in a country's economic output. It is calculated using the formula:
+        Gross Domestic Product (GDP) Growth Rate measures the annual percentage change in a country's economic output. It is calculated using the formula:
 
-            GDP Growth Rate = ((Final GDP - Initial GDP) / Initial GDP) * 100
+        GDP Growth Rate = ((Final GDP - Initial GDP) / Initial GDP) * 100
+        
+         Given:
+            Initial GDP = $initialGDP
+            Final GDP = $finalGDP
 
-            Given:
-                Initial GDP = $initialGDP
-                Final GDP = $finalGDP
+        Step-by-step Calculation:
+        
+        1. Subtract the Initial GDP from the Final GDP to find the change in GDP:
+           Change in GDP = Final GDP - Initial GDP
+                      = $finalGDP - $initialGDP
+                      = ${(finalGDP - initialGDP)}
 
-            Solution:
-                GDP Growth Rate = (($finalGDP - $initialGDP) / $initialGDP) * 100
-                GDP Growth Rate = $gdpGrowthRate%
+        2. Divide the change in GDP by the Initial GDP to get the relative change:
+           Relative Change = Change in GDP / Initial GDP
+                          = ${(finalGDP - initialGDP)} / $initialGDP
+                          = ${(finalGDP - initialGDP) / initialGDP}
 
-            Therefore, the GDP Growth Rate is $gdpGrowthRate%.
-        """.trimIndent()
+        3. Multiply the relative change by 100 to express it as a percentage:
+           GDP Growth Rate = Relative Change * 100
+                           = (${(finalGDP - initialGDP) / initialGDP}) * 100
+                           = $gdpGrowthRate%
+
+        Therefore, the GDP Growth Rate is $gdpGrowthRate%.
+    """.trimIndent()
 
         // Display explanation in a custom dialog
         MaterialAlertDialogBuilder(requireContext())
@@ -134,6 +144,7 @@ class GDPFragment : Fragment() {
             .setPositiveButton("OK", null)
             .show()
     }
+
 }
 
 

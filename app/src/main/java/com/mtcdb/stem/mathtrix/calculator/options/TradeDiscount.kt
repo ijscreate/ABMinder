@@ -19,6 +19,7 @@ class TradeDiscountCalculatorFragment : Fragment() {
     private lateinit var calculateButton : MaterialButton
     private lateinit var resultTextView : MaterialTextView
     private lateinit var descriptionTextView : TextView
+    private lateinit var buttonSolution : Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -45,9 +46,27 @@ class TradeDiscountCalculatorFragment : Fragment() {
         resultTextView =
             view.findViewById(com.calculator.calculatoroptions.R.id.textViewTradeDiscountResult)
         descriptionTextView = view.findViewById(com.calculator.calculatoroptions.R.id.description)
+        buttonSolution = view.findViewById(com.calculator.calculatoroptions.R.id.buttonSolution)
 
         calculateButton.setOnClickListener {
             calculateTradeDiscount()
+        }
+
+        buttonSolution.setOnClickListener {
+            val listPrice = listPriceEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val discount1 = discount1EditText.text.toString().toDoubleOrNull() ?: 0.0
+            val discount2 = discount2EditText.text.toString().toDoubleOrNull() ?: 0.0
+            val discount3 = discount3EditText.text.toString().toDoubleOrNull() ?: 0.0
+
+            val netPrice =
+                listPrice * (1 - (discount1 / 100)) * (1 - (discount2 / 100)) * (1 - (discount3 / 100))
+
+            resultTextView.text =
+                getString(
+                    com.calculator.calculatoroptions.R.string.trade_discount_result,
+                    netPrice
+                )
+            showExplanationDialog(listPrice, discount1, discount2, discount3, netPrice)
         }
 
         val description = """
@@ -60,6 +79,7 @@ class TradeDiscountCalculatorFragment : Fragment() {
             - Discounted Price after Discount 1 = ₱100 - ₱10 = ₱90
             - Discount 2: 5% of ₱90 = ₱4.50 discount
             - Final Discounted Price after Discount 2 = ₱90 - ₱4.50 = ₱85.50
+            
             So, the final price after applying both discounts is ₱85.50."""
             .trimIndent()
 
@@ -83,35 +103,48 @@ class TradeDiscountCalculatorFragment : Fragment() {
                 com.calculator.calculatoroptions.R.string.trade_discount_result,
                 netPrice
             )
-        showExplanationDialog(listPrice, discount1, discount2, discount3, netPrice)
     }
 
     private fun showExplanationDialog(
-        listPrice : Double,
-        discount1 : Double,
-        discount2 : Double,
-        discount3 : Double,
-        netPrice : Double,
+        listPrice: Double,
+        discount1: Double,
+        discount2: Double,
+        discount3: Double,
+        netPrice: Double,
     ) {
+        // Explanation detailing the step-by-step calculation
         val explanation = """
-            Given:
-                List Price = $listPrice
-                Discount Rate 1 = $discount1%
-                Discount Rate 2 = $discount2%
-                Discount Rate 3 = $discount3%
+        Given:
+            List Price = ₱$listPrice
+            Discount Rate 1 = $discount1%
+            Discount Rate 2 = $discount2%
+            Discount Rate 3 = $discount3%
+        
+        Solution:
+            Step 1: Calculate the discounted price after the first discount
+                Discounted Price 1 = List Price - (List Price * Discount Rate 1 / 100)
+                                   = ₱$listPrice - (₱$listPrice * $discount1 / 100)
+                                   = ₱${listPrice * (1 - discount1 / 100)}
             
-            Solution:
-                Net Price = List Price * (1 - Discount Rate 1/100) * (1 - Discount Rate 2/100) * (1 - Discount Rate 3/100)
-                          = $listPrice * (1 - $discount1/100) * (1 - $discount2/100) * (1 - $discount3/100)
-                          = $netPrice
+            Step 2: Calculate the discounted price after the second discount
+                Discounted Price 2 = Discounted Price 1 - (Discounted Price 1 * Discount Rate 2 / 100)
+                                   = ₱${listPrice * (1 - discount1 / 100)} - (₱${listPrice * (1 - discount1 / 100)} * $discount2 / 100)
+                                   = ₱${(listPrice * (1 - discount1 / 100)) * (1 - discount2 / 100)}
             
-            Therefore, the Net Price after applying the trade discounts is $netPrice.
-        """.trimIndent()
+            Step 3: Calculate the net price after the third discount
+                Net Price = Discounted Price 2 - (Discounted Price 2 * Discount Rate 3 / 100)
+                          = ₱${(listPrice * (1 - discount1 / 100)) * (1 - discount2 / 100)} - (₱${(listPrice * (1 - discount1 / 100)) * (1 - discount2 / 100)} * $discount3 / 100)
+                          = ₱${netPrice}
+        
+        Therefore, the Net Price after applying the trade discounts is ₱$netPrice.
+    """.trimIndent()
 
+        // Display explanation in a custom dialog
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Trade Discount Calculation")
             .setMessage(explanation)
             .setPositiveButton("OK", null)
             .show()
     }
+
 }

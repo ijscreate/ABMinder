@@ -40,6 +40,7 @@
 	<string name = "fixed_cost">Fixed cost</string>
 	<string name = "break_even_calculator">Break-Even Point</string>
 	<string name = "compound_interest">Compound Interest</string>
+	<string name="compound_interest_result">Total Compound Interest: ₱%.2f\nTotal Interest Earned: ₱%.2f</string>
 	<string name = "tax_rate">Tax rate</string>
 	<string name = "equity_weight">Equity weight</string>
 	<string name = "debt_weight">Debt weight</string>
@@ -72,6 +73,7 @@
 	<string name = "cost_of_goods_sold">Cost of Goods Sold</string>
 	<string name = "average_inventory">Average Inventory</string>
 	<string name = "inventory_turnover_ratio_result">Inventory Turnover Ratio: %.2f</string>
+
 	<string name = "average_total_assets">Average Total Assets</string>
 	<string name = "roa_result">Return on Assets: %.2f%%</string>
 	<string name = "annual_cash_flow">Annual Cashflow</string>
@@ -102,7 +104,7 @@
 	<string name = "total_assets">Total Assets</string>
 	<string name = "total_equity">Total Equity</string>
 	<string name = "equity_multiplier_result">Equity Multiplier: %.2f</string>
-	<string name = "future_value_result">Future Value: ₱%$s</string>
+	<string name = "future_value_result">Future Value: ₱%.2f</string>
 	<string name = "number_of_periods">Number of Periods</string>
 
 	<!-- Error message for invalid input -->
@@ -114,7 +116,7 @@
 	<!-- Hints -->
 	<string name = "cash_flows">Enter Cash Flows (separated by commas)</string>
 	<!-- Result label -->
-	<string name = "present_value_result">Present Value: ₱%$s</string>
+	<string name = "present_value_result">Present Value: ₱%.2f</string>
 	<!-- Titles -->
 	<string name = "average_rate_of_return_title">Average Rate of Return</string>
 	<string name = "final_value">Final Value</string>
@@ -185,6 +187,9 @@
 	<string name = "quick_ratio_description">Measure a company\'s ability to meet its short-term obligations with its most liquid assets.\n\nThe Quick Ratio formula is: Quick Ratio = (Current Assets - Inventory) / Current Liabilities.\n\nUse this calculator to assess a company\'s liquidity position and its ability to cover short-term debts.</string>
 	<string name = "quick_ratio_result">Quick Ratio: %1$.2f</string>
 	<string name = "about_us_title">About Us</string>
+	<string name = "compounding_periods">Compounding Periods</string>
+	<string name = "cashflows_at">Cash Flows at:</string>
+	<string name = "enter_data_separated_by_commas_e_g_1_2_3_4">Enter data separated by commas (e.g., 1, 2, 3, 4)</string>
 
 
 </resources>

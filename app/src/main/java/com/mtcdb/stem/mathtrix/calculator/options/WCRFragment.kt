@@ -53,7 +53,18 @@ class WorkingCapitalFragment : Fragment() {
             A ratio above 1 indicates that the company has more assets than liabilities in the short term, suggesting good financial health.
             
             Conversely, a ratio below 1 may indicate potential liquidity issues.
+            
+            Example:
+            Let's consider a company with the following financial data:
+            Current Assets = ₱500,000
+            Current Liabilities = ₱300,000
+            
+            Working Capital Ratio = ₱500,000 / ₱300,000
+                                  ≈ 1.67
+                                   
+            In this example, the Working Capital Ratio is approximately 1.67, indicating that the company has more than enough current assets to cover its current liabilities.
         """.trimIndent()
+
 
         description.text = wcDescription
 
@@ -86,7 +97,6 @@ class WorkingCapitalFragment : Fragment() {
 
         resultTextView.text =
             getString(com.calculator.calculatoroptions.R.string.wc_result, workingCapitalRatio)
-        showExplanationDialog(currentAssets, currentLiabilities, workingCapitalRatio)
     }
 
     private fun showExplanationDialog(

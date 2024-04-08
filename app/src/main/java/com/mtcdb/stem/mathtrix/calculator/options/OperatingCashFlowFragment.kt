@@ -98,7 +98,6 @@ class OperatingCashFlowRatioFragment : Fragment() {
                 com.calculator.calculatoroptions.R.string.operating_cash_flow_ratio_result,
                 operatingCashFlowRatio
             )
-        showExplanationDialog(netOperatingCashFlow, currentLiabilities, operatingCashFlowRatio)
     }
 
     private fun showExplanationDialog(

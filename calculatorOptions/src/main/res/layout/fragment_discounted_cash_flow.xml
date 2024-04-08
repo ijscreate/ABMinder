@@ -66,13 +66,6 @@
                             />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text=" "
-                        android:textColor="#757575"
-                        android:paddingTop="4dp"
-                        />
 
             </LinearLayout>
 
@@ -94,14 +87,30 @@
                         />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Calculate Button -->
-            <Button
-                    android:id="@+id/buttonCalculateDCF"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/calculate"
-                    style="?android:attr/buttonBarButtonStyle"
-                    />
+
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                        android:id="@+id/buttonSolution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/show_explanation"
+                        android:layout_weight="1"
+                        style="?android:attr/buttonBarButtonStyle"
+                        />
+                <!-- Calculate Button -->
+                <Button
+                        android:id="@+id/buttonCalculateDCF"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/calculate"
+                        style="?android:attr/buttonBarButtonStyle"
+                        />
+            </LinearLayout>
 
             <!-- Result TextView -->
             <com.google.android.material.textview.MaterialTextView
@@ -112,6 +121,16 @@
                     android:layout_marginTop="6dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     />
+
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/textViewDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_marginTop="12dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    />
+
 
         </LinearLayout>
     </ScrollView>

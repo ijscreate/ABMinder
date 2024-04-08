@@ -221,12 +221,10 @@ class LessonsFragment : Fragment() {
 
             "Application of Demand" -> listOf(
                 Lesson(
-                    "Basic Principle of Demand and Supply",
-                    "basic_principle_demand_supply.html"
+                    "Basic Principle of Demand and Supply", "basic_principle_demand_supply.html"
                 ),
                 Lesson(
-                    "Market/Economic Equilibrium",
-                    "market_economic_equilibrium.html"
+                    "Market/Economic Equilibrium", "market_economic_equilibrium.html"
                 ),
                 Lesson("Equilibrium Price", "equilibrium_price.html"),
                 Lesson("Price Elasticity of Demand", "elasticity_demand_supply.html"),
@@ -245,8 +243,7 @@ class LessonsFragment : Fragment() {
                 ),
                 Lesson("Wage Situation in the Philippines", "wage_situation.html"),
                 Lesson(
-                    "Labor Migration and Overseas Filipino Workers (OFWs)",
-                    "labor_migration.html"
+                    "Labor Migration and Overseas Filipino Workers (OFWs)", "labor_migration.html"
                 ),
                 Lesson("Philippine Economic Problems", "philippine_economic_problem.html"),
                 Lesson("Philippine Peso Exchange Rates", "philippine_peso.html"),
@@ -277,8 +274,7 @@ class LessonsFragment : Fragment() {
             //BUSINESS ETHICS
             "Business in Social and Economic" -> listOf(
                 Lesson(
-                    "Nature and Forms of Business Organization",
-                    "nature_and_forms_business.html"
+                    "Nature and Forms of Business Organization", "nature_and_forms_business.html"
                 ),
                 Lesson(
                     "Purpose of Establishing Business Enterprises",
@@ -286,15 +282,13 @@ class LessonsFragment : Fragment() {
                 ),
                 Lesson("Core Principle of Business Organization", "core_principle_business.html"),
                 Lesson(
-                    "Common Practices in Business Organization",
-                    "common_practices_business.html"
+                    "Common Practices in Business Organization", "common_practices_business.html"
                 ),
             )
 
             "Foundations of the Principles of Business Ethics" -> listOf(
                 Lesson(
-                    "Classical Philosophies and Virtue Ethics",
-                    "classical_philosophy_ethics.html"
+                    "Classical Philosophies and Virtue Ethics", "classical_philosophy_ethics.html"
                 ),
                 Lesson("Impact of Belief Systems", "impact_belief_systems.html"),
                 Lesson("Filipino Value System", "filipino_value_system.html"),
@@ -317,7 +311,7 @@ class LessonsFragment : Fragment() {
             )
 
             //FUNDAMENTALS OF ABM II
-            "MODULE 1" -> listOf(
+            "Statement of Financial Position" -> listOf(
                 Lesson("Statement of Financial Position", "statement_financial_position.html"),
                 Lesson("Assets", "assets.html"),
                 Lesson("Liability", "liability.html"),
@@ -325,7 +319,7 @@ class LessonsFragment : Fragment() {
 
                 )
 
-            "MODULE 2" -> listOf(
+            "Preparation of the Statement of Financial Position" -> listOf(
                 Lesson(
                     "Preparation of the Statement of Financial Position of a Single Proprietorship",
                     "preparation_statement_financial_position.html"
@@ -333,34 +327,41 @@ class LessonsFragment : Fragment() {
                 Lesson("Description of Account Titles", "description_account_titles.html"),
             )
 
-            "MODULE 3" -> listOf(
+            "Statement of Comprehensive Income" -> listOf(
                 Lesson("Comprehensive Income", "comprehensive_income.html"),
                 Lesson("Profit or Loss", "profit_or_loss.html"),
                 Lesson("Other Comprehensive Income", "other_comprehensive_income.html"),
             )
 
-            "MODULE 4" -> listOf(
+            "Statement of Changes in Equity" -> listOf(
                 Lesson("Statement of Changes in Equity", "statement_changes_equity.html"),
                 Lesson("Relevant Terminologies", "relevant_terminologies.html"),
                 Lesson("Accounting for Share Issue", "accounting_share_issue.html"),
-
+                Lesson("Requirements/Format for Equity", "requirements_format_equity.html"),
                 )
 
-            "MODULE 5" -> listOf(
+            "Statement of Cash Flows" -> listOf(
                 Lesson("Statement of Cash Flows", ""),
-                Lesson("", ""),
-                Lesson("", ""),
-                Lesson("", ""),
-
-
+                Lesson("Transaction not Affecting Cash", "transaction_not_affecting_cash.html"),
+                Lesson("Free Cash Flow", "free_cash_flow.html"),
+                Lesson("Operating Activities", "operating_activities.html"),
+                Lesson("Investing Activities", "investment_activities.html"),
+                Lesson("Financing Activities", "financing_activities.html"),
+                Lesson("Cash", "cash.html"),
                 )
 
-            "MODULE 6" -> listOf(
-                Lesson("", ""),
+            "Bank Account and Financial Health" -> listOf(
+                Lesson("Bank Accounts and Financial Health", "bank_accounts_financial_health.html"),
                 Lesson("Financial Institutions", "financial_institutions.html"),
                 Lesson("Selecting Bank Accounts", "selecting_bank_accounts.html"),
                 Lesson("Bank Reconciliation Statement", "bank_reconciliation.html"),
                 Lesson("Savings Accounts", "savings_accounts.html"),
+                Lesson("Check Accounts", "check_accounts.html"),
+                Lesson("Bank Reconciliation", "bank_reconciliation.html"),
+                Lesson("Outstanding Checks", "outstanding_checks.html"),
+                Lesson("Debit Cards", "debit_cards.html"),
+                Lesson("ATMs", "atms.html"),
+                Lesson("Privacy Protections and Concerns in the Philippines", "privacy_concerns.html"),
 
                 )
 
@@ -370,8 +371,7 @@ class LessonsFragment : Fragment() {
                 Lesson("Traditional Approach to Marketing", "traditional_approach_marketing.html"),
                 Lesson("Goals of Marketing", "goals_marketing.html"),
                 Lesson(
-                    "Contemporary Approach to Marketing",
-                    "contemporary_approach_marketing.html"
+                    "Contemporary Approach to Marketing", "contemporary_approach_marketing.html"
                 ),
 
                 )
@@ -390,16 +390,61 @@ class LessonsFragment : Fragment() {
             )
 
             "Market Opportunity Analysis and Consumer Analysis" -> listOf(
+                Lesson("Strategic Marketing Process", "strategic_marketing_process.html"),
+                Lesson("Market Strategy Development", "market_strategy_development.html"),
+                Lesson("Tactical Marketing Process", "tactical_marketing_process.html"),
+                Lesson("Marketing Microenvironments", "marketing_microenvironments.html"),
+                Lesson(
+                    "Identifying Strengths and Weaknesses", "identifying_strengths_weaknesses.html"
+                ),
 
-            )
+                Lesson("Opportunities and Threats", "opportunities_threats.html"),
+                Lesson(
+                    "Consumer and organizational Markets", "consumer_organizational_markets.html"
+                ),
+                Lesson("Market Segmentation", "market_segmentation.html"),
+                Lesson("Target Market vs. Consumer Market", "target_market_consumer_market.html"),
+                Lesson("Marketing Mix", "marketing_mix.html"),
+                Lesson("Product Strategy", "product_strategy.html"),
+                Lesson("Place Strategy", "place_strategy.html"),
+                Lesson("Marketing Implementation", "marketing_implementation.html"),
+                Lesson(
+                    "Marketing Control and Strategic Control",
+                    "marketing_control_strategic_control.html"
+                ),
+
+                )
 
             //ORGANISATION AND MANAGEMENT
             "Nature and Concept of Management" -> listOf(
-
+                Lesson("Defining Management", "defining_management.html"),
+                Lesson(
+                    "Famous Theories on the Functions of Management",
+                    "famous_theories_management.html"
+                ),
+                Lesson("Five Functions of Management", "five_functions_management.html"),
+                Lesson(
+                    "The Six Most Popular Management Theories for Organizations",
+                    "six_popular_management.html"
+                ),
+                Lesson("Manager", "manager.html"),
+                Lesson("Qualities of a Good Manager", "qualities_good_manager.html"),
             )
 
             "Firm and its Environment" -> listOf(
-
+                Lesson("Business Environment", "business_environment.html"),
+                Lesson("Forces in the Macro Environment", "forces_macro_environment.html"),
+                Lesson("PEST and SWOT Analyzes Framework", "pest_swot_framework.html"),
+                Lesson("Planning", "plannings.html"),
+                Lesson("Organizing", "organizing.html"),
+                Lesson("Types of Organizations", "types_organizations.html"),
+                Lesson("Organizational Theories", "organizational_theories.html"),
+                Lesson("Staffing", "staffing.html"),
+                Lesson("Recruitment & Selection Process", "recruitment_selection.html"),
+                Lesson("Compensation and Benefits", "compensation_benefits.html"),
+                Lesson("Leading", "leading.html"),
+                Lesson("Controlling", "controlling.html"),
+                Lesson("Functional Areas of Management", "functional_ares_management.html"),
             )
 
             else -> emptyList()

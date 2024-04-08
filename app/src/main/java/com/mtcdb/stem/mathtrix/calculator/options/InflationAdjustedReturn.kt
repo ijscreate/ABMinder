@@ -46,7 +46,19 @@ class InflationAdjustedReturnFragment : Fragment() {
         }
 
         explanationButton.setOnClickListener {
-            showExplanationDialog()
+            val nominalReturn = nominalReturnEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val inflationRate = inflationRateEditText.text.toString().toDoubleOrNull() ?: 0.0
+
+            val inflationAdjustedReturn = (1 + (nominalReturn / 100)) / (1 + (inflationRate / 100)) - 1
+
+            val decimalFormat = DecimalFormat("#.##")
+            resultTextView.text =
+                getString(
+                    com.calculator.calculatoroptions.R.string.inflation_adjusted_return_result,
+                    decimalFormat.format(inflationAdjustedReturn * 100)
+                )
+
+            showExplanationDialog(nominalReturn, inflationRate ,inflationAdjustedReturn)
         }
 
         val des = """
@@ -88,22 +100,28 @@ class InflationAdjustedReturnFragment : Fragment() {
             )
     }
 
-    private fun showExplanationDialog() {
+    private fun showExplanationDialog(nominal: Double, inflation: Double, inflationAdjusted: Double) {
         val explanation = """
-            To calculate the Inflation-Adjusted Return:
+        To calculate the Inflation-Adjusted Return:
 
-            Inflation-Adjusted Return = (1 + (Nominal Return / 100)) / (1 + (Inflation Rate / 100)) - 1
+        Inflation-Adjusted Return = (1 + (Nominal Return / 100)) / (1 + (Inflation Rate / 100)) - 1
 
-            For example:
-            If the Nominal Return is 5% and the Inflation Rate is 2%:
-
-            Inflation-Adjusted Return = (1 + (5 / 100)) / (1 + (2 / 100)) - 1
-                                      = 0.0291 or 2.91%
-
-            The Inflation-Adjusted Return helps investors understand the real return on their investments after accounting for inflation.
-
-            Adjust the nominal return and inflation rate to see how they impact the inflation-adjusted return.
-        """.trimIndent()
+        Solution:
+        
+        Given:
+        Nominal Return = $nominal%
+        Inflation Rate = $inflation%
+        
+        Substitute the values into the formula:
+        Inflation-Adjusted Return = (1 + ($nominal / 100)) / (1 + ($inflation / 100)) - 1
+                                  = (1 + (${nominal / 100})) / (1 + (${inflation / 100})) - 1
+                                  = ${(1 + (nominal / 100))} / ${(1 + (inflation / 100))} - 1
+                                  = $inflationAdjusted
+                                  
+        Therefore, the Inflation-Adjusted Return is $inflationAdjusted.
+                                      
+        Adjust the nominal return and inflation rate to see how they impact the inflation-adjusted return.
+    """.trimIndent()
 
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Inflation-Adjusted Return Calculation Explanation")
@@ -111,4 +129,5 @@ class InflationAdjustedReturnFragment : Fragment() {
             .setPositiveButton("OK", null)
             .show()
     }
+
 }

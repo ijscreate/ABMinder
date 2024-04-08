@@ -62,17 +62,67 @@ class CashConversionCycleFragment : Fragment() {
     }
 
     private fun setDescription() {
-        descriptionTextView.text = getString(R.string.cash_conversion_cycle_description)
+        val description = """
+            The Cash Conversion Cycle (CCC) measures the time it takes for a company to convert its investments in inventory and other resources into cash flows from sales. It assesses the efficiency of a company's working capital management by evaluating how long it takes to convert resources into cash.
+        
+            Explanation:
+            - Days Inventory Outstanding (DIO): Represents the average number of days it takes for a company to sell its inventory.
+            - Days Sales Outstanding (DSO): Indicates the average number of days it takes for a company to collect payment from customers.
+            - Days Payable Outstanding (DPO): Reflects the average number of days it takes for a company to pay its suppliers.
+        
+            Formula:
+            Cash Conversion Cycle (CCC) = DIO + DSO - DPO
+        
+            To use this calculator:
+            1. Enter the number of days for Days Inventory Outstanding (DIO), Days Sales Outstanding (DSO), and Days Payable Outstanding (DPO).
+            2. Click on the Calculate button to determine the Cash Conversion Cycle.
+        
+            For example:
+            If a company has:
+            - Days Inventory Outstanding (DIO) of 30 days
+            - Days Sales Outstanding (DSO) of 45 days
+            - Days Payable Outstanding (DPO) of 20 days
+        
+            The Cash Conversion Cycle (CCC) would be:
+            CCC = 30 days (DIO) + 45 days (DSO) - 20 days (DPO) = 55 days
+        
+            Therefore, it takes the company approximately 55 days to convert its investments in inventory and resources into cash flows from sales.
+        """.trimIndent()
+
+        descriptionTextView.text = description
     }
 
     private fun showExplanationDialog() {
-        val explanation = getString(R.string.cash_conversion_cycle_explanation)
+        val daysInventory = daysInventoryEditText.text.toString().toDoubleOrNull() ?: 0.0
+        val daysReceivables = daysReceivablesEditText.text.toString().toDoubleOrNull() ?: 0.0
+        val daysPayables = daysPayablesEditText.text.toString().toDoubleOrNull() ?: 0.0
+
+        val cashConversionCycle = daysInventory + daysReceivables - daysPayables
+
+        val explanation = """
+            The Cash Conversion Cycle (CCC) measures the time it takes for a company to convert its investments in inventory and other resources into cash flows from sales. It assesses the efficiency of a company's working capital management by evaluating how long it takes to convert resources into cash.
+                       
+            Given:
+                Days Inventory Outstanding (DIO) = $daysInventory days
+                Days Sales Outstanding (DSO) = $daysReceivables days
+                Days Payable Outstanding (DPO) = $daysPayables days
+                
+            Formula:
+                Cash Conversion Cycle (CCC) = DIO + DSO - DPO
+                
+            Solution:
+                Cash Conversion Cycle (CCC) = $daysInventory + $daysReceivables - $daysPayables
+                Cash Conversion Cycle (CCC) = $cashConversionCycle days
+                            
+            Therefore, the Cash Conversion Cycle (CCC) is $cashConversionCycle days.
+        """.trimIndent()
+
+        // Display explanation in a custom dialog
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle(getString(R.string.explanation))
+            .setTitle("Cash Conversion Cycle (CCC) Analysis")
             .setMessage(explanation)
-            .setPositiveButton(getString(R.string.ok)) { dialog, _ ->
-                dialog.dismiss()
-            }
+            .setPositiveButton("OK", null)
             .show()
     }
+
 }

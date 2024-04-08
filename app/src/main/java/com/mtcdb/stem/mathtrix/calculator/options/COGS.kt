@@ -72,7 +72,20 @@ class COGSFragment : Fragment() {
         description.text = cogsDescription
 
         buttonSolution.setOnClickListener {
-            calculateCOGS()
+            val beginningInventory =
+                beginningInventoryEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val purchases = purchasesEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val endingInventory = endingInventoryEditText.text.toString().toDoubleOrNull() ?: 0.0
+
+            val cogs = beginningInventory + purchases - endingInventory
+
+            resultTextView.text =
+                getString(
+                    com.calculator.calculatoroptions.R.string.cogs_result,
+                    cogs
+                )
+            showExplanationDialog(beginningInventory, purchases, endingInventory, cogs)
+
         }
 
         return view
@@ -96,7 +109,6 @@ class COGSFragment : Fragment() {
                 com.calculator.calculatoroptions.R.string.cogs_result,
                 cogs
             )
-        showExplanationDialog(beginningInventory, purchases, endingInventory, cogs)
     }
 
     private fun showExplanationDialog(

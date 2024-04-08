@@ -86,16 +86,31 @@
 					android:importantForAutofill = "no"
 					/>
 
-
-			<!-- Calculate Button -->
-			<com.google.android.material.button.MaterialButton
-					android:id = "@+id/buttonCalculateDepreciation"
+			<LinearLayout
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
-					android:text = "@string/calculate"
-					style = "?attr/materialButtonOutlinedStyle"
-					/>
+					android:orientation = "horizontal"
+					>
 
+				<Button
+						android:id = "@+id/buttonSolution"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:layout_weight="1"
+						android:text = "@string/show_explanation"
+						style = "?android:attr/buttonBarButtonStyle"
+						/>
+				<!-- Calculate Button -->
+				<Button
+						android:id = "@+id/buttonCalculateDepreciation"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:text = "@string/calculate"
+						android:layout_weight="1"
+						style = "?android:attr/buttonBarButtonStyle"
+						/>
+
+			</LinearLayout>
 			<!-- Result TextView -->
 			<com.google.android.material.textview.MaterialTextView
 					android:id = "@+id/textViewDepreciationResult"

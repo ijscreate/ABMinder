@@ -47,15 +47,15 @@ class CentralTendencyFragment : Fragment() {
         }
 
         val description = """
-    The Measures of Central Tendency Calculator allows you to compute statistical measures that represent the central tendency of a dataset.
-    
-    Simply input your dataset separated by commas, and the calculator will provide you with the mean, median, and mode.
-    
-    For example, given the dataset: 10, 15, 20, 20, 25
-    - Mean: (10 + 15 + 20 + 20 + 25) / 5 = 18
-    - Median: Since there are an odd number of values, the median is the middle value, which is 20.
-    - Mode: The mode is 20 since it appears most frequently.
-""".trimIndent()
+            The Measures of Central Tendency Calculator allows you to compute statistical measures that represent the central tendency of a dataset.
+            
+            Simply input your dataset separated by commas, and the calculator will provide you with the mean, median, and mode.
+            
+            For example, given the dataset: 10, 15, 20, 20, 25
+            - Mean: (10 + 15 + 20 + 20 + 25) / 5 = 18
+            - Median: Since there are an odd number of values, the median is the middle value, which is 20.
+            - Mode: The mode is 20 since it appears most frequently. 
+            """.trimIndent()
 
 
         descriptionTextView.text = description
@@ -94,15 +94,17 @@ class CentralTendencyFragment : Fragment() {
     }
 
     // Calculate the mode of the data set
-    private fun calculateMode(dataSet : List<Double>) : List<Double> {
+    private fun calculateMode(dataSet: List<Double>): String {
         val frequencyMap = mutableMapOf<Double, Int>()
         dataSet.forEach { value ->
             frequencyMap[value] = frequencyMap.getOrDefault(value, 0) + 1
         }
 
-        val maxFrequency = frequencyMap.maxByOrNull { it.value }?.value ?: return emptyList()
-        return frequencyMap.filter { it.value == maxFrequency }.keys.toList()
+        val maxFrequency = frequencyMap.maxByOrNull { it.value }?.value ?: return ""
+        val modes = frequencyMap.filter { it.value == maxFrequency }.keys.toList()
+        return modes.toString().removeSurrounding("[", "]")
     }
+
 
     // Show an error message
     private fun showErrorMessage() {
@@ -114,19 +116,44 @@ class CentralTendencyFragment : Fragment() {
     }
 
     private fun showExplanationDialog() {
+        val dataSetStr = dataSetEditText.text.toString()
+        val dataSet = dataSetStr.split(",").map { it.trim().toDoubleOrNull() ?: 0.0 }
+
+        val mean = dataSet.average()
+        val sortedData = dataSet.sorted()
+        val median = calculateMedian(sortedData)
+        val mode = calculateMode(dataSet)
+
         val explanation = """
-            Measures of Central Tendency are statistical measures that describe the center of a data set. 
-            - Mean: The average of all values in the data set.
-            - Median: The middle value when the data set is sorted in ascending order.
-            - Mode: The value that appears most frequently in the data set.
-            
-            These measures help summarize the data and provide insights into its distribution.
-        """.trimIndent()
+        Measures of Central Tendency are statistical measures that describe the center of a data set. 
+        - Mean: The average of all values in the data set.
+        - Median: The middle value when the data set is sorted in ascending order.
+        - Mode: The value that appears most frequently in the data set.
+        
+        Step-by-Step Calculation:
+        - Mean: Add up all values and divide by the total count.
+            For the dataset $dataSetStr
+            Mean = (${dataSet.joinToString(" + ")}) / ${dataSet.size}
+                 = ${dataSet.joinToString(" + ")} / ${dataSet.size}
+                 = $mean
+        - Median: Sort the data, then find the middle value(s).
+            For the sorted dataset (${sortedData.joinToString(", ")})
+            Median = ${if (dataSet.size % 2 == 0) {
+            "(${sortedData[dataSet.size / 2 - 1]} + ${sortedData[dataSet.size / 2]}) / 2"
+        } else {
+            sortedData[dataSet.size / 2].toString()
+        }}
+                 = $median
+        - Mode: Count the frequency of each value and identify the most frequent one(s).
+            For the dataset $dataSetStr
+            Mode = $mode
+    """.trimIndent()
 
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Explanation")
+            .setTitle("Explanation - Measures of Central Tendency")
             .setMessage(explanation)
             .setPositiveButton("OK", null)
             .show()
     }
+
 }

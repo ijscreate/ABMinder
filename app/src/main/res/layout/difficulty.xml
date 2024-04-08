@@ -25,6 +25,7 @@
 			/>
 
 	<TextView
+			android:id = "@+id/description"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
 			android:text = "@string/choose_your_preferred_difficulty_level_easy_medium_or_hard_and_dive_into_a_collection_of_thought_provoking_questions"
@@ -197,31 +198,25 @@
 						android:textStyle = "bold"
 						android:textSize = "18sp"
 						android:id = "@+id/textView3"
-						android:layout_marginTop = "28dp"
 						/>
 
-				<TextView
+				<ScrollView
 						android:layout_width = "match_parent"
 						android:layout_height = "wrap_content"
-						android:text = "@string/quiz_rules_description"
-						android:textColor = "@android:color/darker_gray"
-						android:layout_marginHorizontal = "16dp"
-						android:id = "@+id/textView2"
-						android:textSize = "16sp"
-						android:layout_marginTop = "4dp"
-						/>
+						>
 
-				<TextView
-						android:layout_width = "match_parent"
-						android:layout_height = "wrap_content"
-						android:text = "@string/quiz_rules_additional"
-						android:textColor = "@android:color/darker_gray"
-						android:layout_marginHorizontal = "16dp"
-						android:textSize = "16sp"
-						android:id = "@+id/textView4"
-						android:layout_marginBottom = "296dp"
-						android:layout_marginTop = "2dp"
-						/>
+					<TextView
+							android:layout_width = "match_parent"
+							android:layout_height = "wrap_content"
+							android:text = "@string/quiz_rules_description"
+							android:textColor = "@android:color/darker_gray"
+							android:layout_marginHorizontal = "16dp"
+							android:id = "@+id/textView2"
+							android:textSize = "16sp"
+							android:layout_marginTop = "4dp"
+							/>
+
+				</ScrollView>
 			</LinearLayout>
 
 		</androidx.constraintlayout.widget.ConstraintLayout>

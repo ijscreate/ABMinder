@@ -88,7 +88,6 @@ class DTERFragment : Fragment() {
 
         resultTextView.text =
             getString(com.calculator.calculatoroptions.R.string.dter_result, debtToEquityRatio)
-        showExplanationDialog(totalDebt, equity, debtToEquityRatio)
     }
 
     private fun showExplanationDialog(

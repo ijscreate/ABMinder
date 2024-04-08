@@ -107,7 +107,9 @@ class WACCFragment : Fragment() {
                 
                 WACC = [(15000 / 15000 + 5000) × 0.135] + [(5000 / 15000 + 5000) × 0.08 × (1 − 0.2)]
                 
-                WACC = 0.10125 + 0.016 = 0.11725 or 11.725%, the WACC for this firm is 11.725%
+                WACC = 0.10125 + 0.016 = 0.11725 or 11.725% 
+                
+                The WACC for this firm is 11.725%
 
         """.trimIndent()
         tVDescription.text = description
@@ -136,35 +138,40 @@ class WACCFragment : Fragment() {
     }
 
     private fun showExplanationDialog(
-        costOfDebt : Double,
-        costOfEquity : Double,
-        taxRate : Double,
-        v : Double,
-        debtWeight : Double,
-        equityWeight : Double,
-        wacc : Double,
+        costOfDebt: Double,
+        costOfEquity: Double,
+        taxRate: Double,
+        v: Double,
+        debtWeight: Double,
+        equityWeight: Double,
+        wacc: Double,
     ) {
+        // Explanation detailing the step-by-step calculation
         val explanation = """
+        Given:
+            Cost of Debt = $costOfDebt
+            Cost of Equity = $costOfEquity
+            Tax Rate = $taxRate
+            V = $v
+            Debt Weight = $debtWeight
+            Equity Weight = $equityWeight
+        
+        Formula:
+            After-Tax Cost of Debt = Cost of Debt * (1 - Tax Rate)
+            WACC = (Debt Weight / V * After-Tax Cost of Debt) + (Equity Weight / V * Cost of Equity)
+        
+        Solution:
+            Step 1: Calculate the After-Tax Cost of Debt
+                After-Tax Cost of Debt = $costOfDebt * (1 - $taxRate)
+                                       = ${costOfDebt * (1 - taxRate)}
             
-            Given:
-                Cost of Debt = $costOfDebt
-                Cost of Equity = $costOfEquity
-                Tax Rate = $taxRate
-                V = $debtWeight + $equityWeight
-                Debt Weight = $debtWeight
-                Equity Weight = $equityWeight
+            Step 2: Calculate the Weighted Average Cost of Capital (WACC)
+                WACC = ($debtWeight / $v * After-Tax Cost of Debt) + ($equityWeight / $v * Cost of Equity)
+                     = ($debtWeight / $v * ${costOfDebt * (1 - taxRate)}) + ($equityWeight / $v * $costOfEquity)
+                     = $wacc
                 
-            Formula:
-                After-Tax Cost of Debt = Rd * (1 - Tc)
-                WACC = (D / V * After-Tax Cost of Debt) + (E / V * Re)
-                
-            Solution:
-                After-Tax Cost of Debt = $costOfDebt * (1 - $taxRate) = ${costOfDebt * (1 - taxRate)}
-                WACC = ($debtWeight / $v * $costOfDebt * (1 - $taxRate)) + ($equityWeight / $v * $costOfEquity)
-                WACC = $wacc
-                
-            Therefore, the Weighted Average Cost of Capital is $wacc%.
-        """.trimIndent()
+        Therefore, the Weighted Average Cost of Capital is $wacc%.
+    """.trimIndent()
 
         // Display explanation in a custom dialog
         MaterialAlertDialogBuilder(requireContext())
@@ -173,4 +180,5 @@ class WACCFragment : Fragment() {
             .setPositiveButton("OK", null)
             .show()
     }
+
 }

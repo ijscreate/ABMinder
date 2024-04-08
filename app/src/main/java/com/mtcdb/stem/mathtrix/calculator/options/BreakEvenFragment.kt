@@ -46,6 +46,35 @@ class BreakEvenFragment : Fragment() {
         descriptionTextView =
             rootView.findViewById(com.calculator.calculatoroptions.R.id.tVBreakEvenDescription)
 
+        val description = """
+            Break-Even Analysis is a financial tool used to determine the point at which total revenue equals total costs, indicating the level of sales needed to cover all expenses.
+        
+            Given:
+            - Fixed Cost: The total expenses that remain constant regardless of the level of production or sales. This includes rent, salaries, and utilities.
+            - Variable Cost: The costs that vary with the level of production or sales. This includes raw materials and direct labor.
+            - Selling Price: The price at which a product or service is sold to customers.
+        
+            Formula:
+            - Break-Even Point (units) = Fixed Cost / (Selling Price - Variable Cost): The number of units that need to be sold to cover all costs and reach the break-even point.
+            - Break-Even Point (sales) = Fixed Costs ÷ Contribution Margin: The sales revenue needed to cover all costs and reach the break-even point.
+        
+            Example:
+            Suppose a company has fixed costs of ₱50,000, variable costs of ₱20 per unit, and sells its product for ₱100 each.
+        
+            Using the Break-Even Point (units) formula:
+            Break-Even Point (units) = ₱50,000 / (₱100 - ₱20) = 625 units
+        
+            Therefore, the company needs to sell 625 units to cover all costs and break even.
+        
+            Using the Break-Even Point (sales) formula:
+            Break-Even Point (sales) = ₱50,000 / (₱100 - ₱20) / ₱100 = ₱83,333.33
+        
+            Therefore, the company needs to generate ₱83,333.33 in sales revenue to cover all costs and break even.
+        """.trimIndent()
+
+
+        descriptionTextView.text = description
+
         calculateButton.setOnClickListener {
             calculateBreakEven()
         }

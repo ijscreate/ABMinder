@@ -88,10 +88,6 @@ class CalculatorOptionsFragment : Fragment() {
                 "Evaluate the value of money over time."
             ),
             CalculationOption(
-                "Discounted Cash Flow (DCF)",
-                "Estimate the value of an investment based on its future cash flows."
-            ),
-            CalculationOption(
                 "Earnings Per Share (EPS)",
                 "Measure a company's profitability per outstanding share of common stock."
             ),
@@ -222,7 +218,6 @@ class CalculatorOptionsFragment : Fragment() {
                 "Break-Even Point" -> BreakEvenFragment()
                 "Weighted Average Cost of Capital (WACC)" -> WACCFragment()
                 "Time Value of Money (TVM)" -> TimeValueOfMoneyFragment()
-                "Discounted Cash Flow (DCF)" -> DiscountedCashFlowFragment()
                 "Earnings Per Share (EPS)" -> EPSFragment()
                 "Gross Domestic Product (GDP) Growth Rate" -> GDPFragment()
                 "Debt to Equity Ratio" -> DTERFragment()

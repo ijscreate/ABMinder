@@ -61,14 +61,15 @@ class SavingsGoalFragment : Fragment() {
             The calculator will then display the result, indicating how many months it will take to reach your savings goal based on your monthly savings.
 
             For example:
-            If your savings goal is $1000 and you save $100 per month:
+            If your savings goal is ₱1000 and you save ₱100 per month:
 
-            Number of Months = $1000 / $100 = 10 months
+            Number of Months = ₱1000 / ₱100 = 10 months
 
             It's an effective tool for planning your savings strategy and achieving financial goals.
 
             Adjust the monthly saving amount to see how it affects the time needed to reach your goal.
         """.trimIndent()
+
 
         descriptionTextView.text = description
 

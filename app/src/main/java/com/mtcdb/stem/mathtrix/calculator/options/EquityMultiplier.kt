@@ -63,7 +63,17 @@ class EquityMultiplierFragment : Fragment() {
         description.text = equityMultiplierDescription
 
         buttonSolution.setOnClickListener {
-            calculateEquityMultiplier()
+            val totalAssets = totalAssetsEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val totalEquity = totalEquityEditText.text.toString().toDoubleOrNull() ?: 0.0
+
+            val equityMultiplier = totalAssets / totalEquity
+
+            resultTextView.text =
+                getString(
+                    R.string.equity_multiplier_result,
+                    equityMultiplier
+                )
+            showExplanationDialog(totalAssets, totalEquity, equityMultiplier)
         }
 
         return view
@@ -80,7 +90,6 @@ class EquityMultiplierFragment : Fragment() {
                 R.string.equity_multiplier_result,
                 equityMultiplier
             )
-        showExplanationDialog(totalAssets, totalEquity, equityMultiplier)
     }
 
     override fun onDestroy() {

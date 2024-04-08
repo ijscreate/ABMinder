@@ -20,7 +20,9 @@ class DepreciationCalculatorFragment : Fragment() {
     private lateinit var resultTextView : MaterialTextView
     private lateinit var descriptionTextView : TextView
     private lateinit var methodSpinner : Spinner
+    private lateinit var solutionButton : Button
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater : LayoutInflater, container : ViewGroup?,
         savedInstanceState : Bundle?,
@@ -41,6 +43,7 @@ class DepreciationCalculatorFragment : Fragment() {
         resultTextView =
             view.findViewById(com.calculator.calculatoroptions.R.id.textViewDepreciationResult)
         descriptionTextView = view.findViewById(R.id.description)
+        solutionButton = view.findViewById(com.calculator.calculatoroptions.R.id.buttonSolution)
         methodSpinner = view.findViewById(com.calculator.calculatoroptions.R.id.spinnerMethod)
 
         // Set up method spinner
@@ -71,6 +74,48 @@ class DepreciationCalculatorFragment : Fragment() {
 
         calculateButton.setOnClickListener {
             calculateDepreciation()
+        }
+
+        solutionButton.setOnClickListener {
+            val costOfAsset = costOfAssetEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val salvageValue = salvageValueEditText.text.toString().toDoubleOrNull() ?: 0.0
+            val usefulLife = usefulLifeEditText.text.toString().toIntOrNull() ?: 0
+            val selectedMethod = methodSpinner.selectedItem.toString()
+
+            val depreciationExpense = when (selectedMethod) {
+                "Straight-Line" -> calculateStraightLineDepreciation(
+                    costOfAsset,
+                    salvageValue,
+                    usefulLife
+                )
+
+                "Declining Balance" -> calculateDecliningBalanceDepreciation(
+                    costOfAsset,
+                    salvageValue,
+                    usefulLife
+                )
+
+                "Sum-of-Years' Digits" -> calculateSumOfYearsDigitsDepreciation(
+                    costOfAsset,
+                    salvageValue,
+                    usefulLife
+                )
+
+                else -> 0.0
+            }
+
+            resultTextView.text = getString(
+                com.calculator.calculatoroptions.R.string.depreciation_result,
+                depreciationExpense
+            )
+
+            showExplanationDialog(
+                costOfAsset,
+                salvageValue,
+                usefulLife.toDouble(),
+                depreciationExpense,
+                selectedMethod
+            )
         }
 
         val description = """
@@ -133,14 +178,6 @@ class DepreciationCalculatorFragment : Fragment() {
         resultTextView.text = getString(
             com.calculator.calculatoroptions.R.string.depreciation_result,
             depreciationExpense
-        )
-
-        showExplanationDialog(
-            costOfAsset,
-            salvageValue,
-            usefulLife.toDouble(),
-            depreciationExpense,
-            selectedMethod
         )
     }
 
