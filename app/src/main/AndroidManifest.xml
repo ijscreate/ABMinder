@@ -45,6 +45,21 @@
 		<receiver
 				android:name = ".learn.AlarmReceiver"
 				android:enabled = "true" />
+
+		<activity
+				android:name = ".BaseDrawerActivity"
+				android:exported = "true" />
+
+		<activity
+				android:name = ".calculator.CalculatorOptionsActivity"
+				android:label = "@string/calculator" />
+
+		<activity
+				android:name = ".learn.subjects.SubjectsActivity"
+				android:label = "@string/learn" />
+
+		<activity android:name = ".dictionary.DictionaryActivity"
+				android:label="@string/dictionary"/>
 	</application>
 
 </manifest>

@@ -57,26 +57,7 @@
 					android:layout_width = "match_parent"
 					android:layout_height = "match_parent"
 					android:layout_below = "@id/appBar"
-					>
-
-				<ImageView
-						android:padding="100dp"
-						android:layout_width = "wrap_content"
-						android:layout_height = "wrap_content"
-						android:src="@drawable/ic_logo_modified"
-						android:contentDescription = "@string/app_name"
-						/>
-
-				<TextView
-						android:id="@+id/randomTips"
-						android:layout_width = "match_parent"
-						android:layout_height = "wrap_content"
-						android:layout_gravity="center_vertical"
-						android:gravity="center"
-						android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-						android:padding="16dp"
-						android:layout_marginTop="150dp"/>
-			</FrameLayout>
+					/>
 		</RelativeLayout>
 
 	</androidx.coordinatorlayout.widget.CoordinatorLayout>

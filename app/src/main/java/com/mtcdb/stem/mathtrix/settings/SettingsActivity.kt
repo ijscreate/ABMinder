@@ -1,23 +1,31 @@
 package com.mtcdb.stem.mathtrix.settings
 
-import android.annotation.*
-import android.content.*
-import android.os.*
-import android.view.*
-import androidx.appcompat.app.*
-import androidx.preference.*
+import android.annotation.SuppressLint
+import android.app.ActivityOptions
+import android.content.Intent
+import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
+import com.mtcdb.stem.mathtrix.MainActivity
 import com.mtcdb.stem.mathtrix.R
 
 class SettingsActivity : AppCompatActivity() {
+
+    private lateinit var themePreference : String
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         // Apply the initial theme
+
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        preferences.getString("theme_preference", "system")?.let { applyTheme(it) }
+        themePreference = preferences.getString("theme_preference", "system") ?: "system"
+        applyTheme(themePreference)
 
         setContentView(R.layout.settings_activity)
 
@@ -27,9 +35,13 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         // Register the listener
-        preferences.registerOnSharedPreferenceChangeListener { sharedPreferences, key ->
+        preferences.registerOnSharedPreferenceChangeListener { _, key ->
             if (key == "theme_preference") {
-                sharedPreferences.getString("theme_preference", "system")?.let { applyTheme(it) }
+                val newTheme = preferences.getString("theme_preference", "system") ?: "system"
+                if (newTheme != themePreference) {
+                    themePreference = newTheme
+                    applyThemeWithAnimation()
+                }
             }
         }
 
@@ -45,16 +57,17 @@ class SettingsActivity : AppCompatActivity() {
             "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
-        this.recreate()
+    }
+
+    private fun applyThemeWithAnimation() {
+        val options = ActivityOptions.makeSceneTransitionAnimation(this)
+        startActivity(intent, options.toBundle())
     }
 
     override fun onOptionsItemSelected(item : MenuItem) : Boolean {
-
         when (item.itemId) {
             android.R.id.home -> {
-                val intent =
-                    Intent(this@SettingsActivity, com.mtcdb.stem.mathtrix.MainActivity::class.java)
-                startActivity(intent)
+                this.finish()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -79,11 +92,6 @@ class SettingsActivity : AppCompatActivity() {
                     .replace(R.id.settings, AboutAbminderFragment()).addToBackStack(null).commit()
                 true
             }
-
         }
-
     }
 }
-
-
-

@@ -16,6 +16,11 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         populateHardQuestionsBUSINESS()
         populateHardQuestionsFABM()
         populateHardQuestionsECONOMICS()
+        easyFABMII()
+        mediumFABMII()
+        hardFABMII()
+        easyBusinessEthics()
+        mediumBusinessEthics()
     }
 
     private fun insertQuizData(
@@ -29,7 +34,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
     }
 
     private fun populateEasyQuestions() {
-
         insertQuizData(
             "Business Mathematics",
             "What is the formula for calculating gross profit?",
@@ -37,7 +41,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0, // Index of correct answer (A)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the formula for calculating net profit?",
@@ -45,7 +48,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             2, // Index of correct answer (C)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the formula for calculating return on investment (ROI)?",
@@ -53,7 +55,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0, // Index of correct answer (A)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the formula for calculating contribution margin?",
@@ -61,7 +62,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             1, // Index of correct answer (B)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the formula to calculate simple interest?",
@@ -69,7 +69,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0, // Index of correct answer (A)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "Define 'Profit Margin'.",
@@ -77,7 +76,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             1, // Index of correct answer (B)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What does the term 'Break-even Point' represent in business?",
@@ -85,7 +83,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0, // Index of correct answer (A)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "Define 'Depreciation'.",
@@ -93,7 +90,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             3, // Index of correct answer (D)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the formula for calculating the break-even point in units?",
@@ -101,7 +97,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0, // Index of correct answer (A)
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the average of a set of numbers called?",
@@ -123,7 +118,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0,
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "Which of the following decimal values is the smallest?",
@@ -131,7 +125,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0,
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the value of 1.5% as a decimal?",
@@ -139,7 +132,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0,
             "Easy"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the ratio of 15 and 20 in simplest form?",
@@ -173,14 +165,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "What does the term 'net profit margin' indicate about a business?",
             "A. The total revenue generated, B. The profit after all expenses are deducted, C. The cost of goods sold, D. The gross profit before deductions",
             1, // Index of correct answer (B)
-            "Medium"
-        )
-
-        insertQuizData(
-            "Business Mathematics",
-            "What formula is used to calculate compound interest?",
-            "A. P(1 + r/n)^(nt), B. P / r / t, C. P + r + t, D. P - r - t",
-            0, // Index of correct answer (A)
             "Medium"
         )
 
@@ -713,13 +697,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Medium"
         )
 
-        insertQuizData(
-            "Business Finance",
-            "What does the term 'EBITDA' stand for in finance?",
-            "A. Earnings Before Interest, Taxes, Depreciation, and Amortization, B. Earnings Before Interest, Taxes, Depreciation, and Assets, C. Earnings Before Interest, Taxes, Dividends, and Amortization, D. Earnings Before Income, Taxes, Depreciation, and Assets",
-            1, // Index of correct answer (A)
-            "Medium"
-        )
 
         insertQuizData(
             "Business Finance",
@@ -888,13 +865,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Medium"
         )
 
-        insertQuizData(
-            "Business Finance",
-            "Enumerate the three main components of a company's current assets.",
-            "A. Cash, Accounts Receivable, Inventory, B. Cash, Accounts Payable, Inventory, C. Cash, Accounts Receivable, Fixed Assets, D. Cash, Accounts Payable, Fixed Assets",
-            0, // Index of correct answer (A)
-            "Medium"
-        )
 
         insertQuizData(
             "Business Finance",
@@ -912,13 +882,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Medium"
         )
 
-        insertQuizData(
-            "Business Finance",
-            "Enumerate the three main components of a company's cash flow statement.",
-            "A. Operating activities, Investing activities, Financing activities, B. Revenue, Expenses, Profit, C. Assets, Liabilities, Equity, D. Accounts Receivable, Accounts Payable, Inventory",
-            0, // Index of correct answer (A)
-            "Medium"
-        )
 
         insertQuizData(
             "Business Finance",
@@ -936,13 +899,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Medium"
         )
 
-        insertQuizData(
-            "Business Finance",
-            "Enumerate the three main components of a company's income statement.",
-            "A. Revenue, Expenses, Net Income, B. Assets, Liabilities, Equity, C. Operating activities, Investing activities, Financing activities, D. Current assets, Non-current assets, Current liabilities",
-            0, // Index of correct answer (A)
-            "Medium"
-        )
 
         insertQuizData(
             "Business Finance",
@@ -960,13 +916,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Medium"
         )
 
-        insertQuizData(
-            "Business Finance",
-            "Enumerate the three main components of a company's balance sheet.",
-            "A. Assets, Liabilities, Equity, B. Revenue, Expenses, Net Income, C. Operating activities, Investing activities, Financing activities, D. Current ratio, Quick ratio, Cash ratio",
-            0, // Index of correct answer (A)
-            "Medium"
-        )
 
         insertQuizData(
             "Business Finance",
@@ -981,14 +930,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Identify the type of financial ratio that measures a company's ability to meet its long-term obligations.",
             "A. Liquidity ratio, B. Profitability ratio, C. Efficiency ratio, D. Leverage ratio",
             3, // Index of correct answer (D)
-            "Medium"
-        )
-
-        insertQuizData(
-            "Business Finance",
-            "Enumerate the three main types of financial statements.",
-            "A. Income statement, Balance sheet, Cash flow statement, B. Assets, Liabilities, Equity, C. Revenue, Expenses, Net Income, D. Operating activities, Investing activities, Financing activities",
-            0, // Index of correct answer (A)
             "Medium"
         )
 
@@ -1451,24 +1392,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Define 'operating income' in financial analysis.",
             "A. The revenue earned from non-operating activities, B. The total revenue generated by a company, C. The amount of profit retained by the company for future investments, D. The net income after deducting all expenses except taxes and interest",
             3, // Index of correct answer (D)
-            "Medium"
-        )
-
-        insertQuizData(
-            "FABM 1",
-            "What is the purpose of a balance sheet in financial reporting?",
-            "A. To report a company's revenues and expenses, B. To analyze the inflow and outflow of cash over a period of time, C. To list a company's assets, liabilities, and equity at a specific point in time, D. To provide information about a company's profitability over a period of time",
-            2, // Index of correct answer (C)
-            "Medium"
-        )
-
-
-
-        insertQuizData(
-            "FABM 1",
-            "What is the purpose of an income statement in financial reporting?",
-            "A. To report a company's revenues and expenses over a period of time, B. To list a company's assets, liabilities, and equity at a specific point in time, C. To analyze the inflow and outflow of cash over a period of time, D. To provide information about a company's liquidity and solvency",
-            0, // Index of correct answer (A)
             "Medium"
         )
 
@@ -2132,7 +2055,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "Economic growth over time without considering external factors",
-            "A. A measure of the total value of all final goods and services produced within a country's borders in a given time period, B. A measure of the total value of all final goods and services produced by a country's citizens, regardless of their location, C. An analysis of a country's economic development over time without considering external factors, D. An analysis of a country's economic history and past events",
+            "A. A measure of the total value of all final goods and services produced within a country's borders in a given time period, B. A measure of the total value of all final goods and services produced by a country's citizens regardless of their location, C. An analysis of a country's economic development over time without considering external factors, D. An analysis of a country's economic history and past events",
             2, // Index of correct answer (C)
             "Medium"
         )
@@ -2140,7 +2063,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "When quantity supplied is greater than quantity demanded",
-            "A. A situation where the market is in equilibrium and the quantity demanded equals the quantity supplied, B. A situation where there is a shortage in the market, and the quantity demanded exceeds the quantity supplied, C. A situation where there is a surplus in the market, and the quantity supplied exceeds the quantity demanded, D. A situation where there is a monopoly in the market, with only one seller and no close substitutes",
+            "A. A situation where the market is in equilibrium and the quantity demanded equals the quantity supplied, B. A situation where there is a shortage in the market and the quantity demanded exceeds the quantity supplied, C. A situation where there is a surplus in the market and the quantity supplied exceeds the quantity demanded, D. A situation where there is a monopoly in the market with only one seller and no close substitutes",
             2, // Index of correct answer (C)
             "Medium"
         )
@@ -2156,7 +2079,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "Analysis of a firm's competitive environment",
-            "A. An analysis of a company's internal strengths and weaknesses, as well as external opportunities and threats, B. An analysis of the five competitive forces that shape the profitability of an industry, C. An analysis of the external factors that can impact a business or industry, D. An analysis of a firm's competitive environment within a particular industry",
+            "A. An analysis of a company's internal strengths and weaknesses as well as external opportunities and threats, B. An analysis of the five competitive forces that shape the profitability of an industry, C. An analysis of the external factors that can impact a business or industry, D. An analysis of a firm's competitive environment within a particular industry",
             3, // Index of correct answer (D)
             "Medium"
         )
@@ -2171,16 +2094,8 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
 
         insertQuizData(
             "Applied Economics",
-            "Movement of goods, services, and capital across borders",
-            "A. The process of economic growth and development within a country or region, B. The study of the economic events and processes in the past, C. The impact of government policies, regulations, and interventions on businesses and industries, D. The movement of goods, services, and capital across international borders",
-            3, // Index of correct answer (D)
-            "Medium"
-        )
-
-        insertQuizData(
-            "Applied Economics",
             "The main difference between GDP and GNP",
-            "A. GDP measures the total value of goods and services produced within a country's borders, while GNP measures the total value of goods and services produced by a country's citizens, regardless of location, B. GDP measures the total income of a country's citizens, while GNP measures the total value of goods and services produced within a country's borders, C. GDP measures the total value of exports, while GNP measures the total value of imports, D. GDP and GNP are the same concepts and measure the same thing",
+            "A. GDP measures the total value of goods and services produced within a country's borders while GNP measures the total value of goods and services produced by a country's citizens regardless of location, B. GDP measures the total income of a country's citizens while GNP measures the total value of goods and services produced within a country's borders, C. GDP measures the total value of exports while GNP measures the total value of imports, D. GDP and GNP are the same concepts and measure the same thing",
             0, // Index of correct answer (A)
             "Medium"
         )
@@ -2188,7 +2103,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "Differentiating between a shortage and a surplus",
-            "A. A shortage occurs when the quantity supplied is greater than the quantity demanded, while a surplus occurs when the quantity demanded is greater than the quantity supplied, B. A shortage occurs when the quantity demanded is greater than the quantity supplied, while a surplus occurs when the quantity supplied is greater than the quantity demanded, C. A shortage and a surplus are the same concept and refer to the same market situation, D. A shortage occurs when there is a monopoly in the market, while a surplus occurs when there is perfect competition",
+            "A. A shortage occurs when the quantity supplied is greater than the quantity demanded while a surplus occurs when the quantity demanded is greater than the quantity supplied, B. A shortage occurs when the quantity demanded is greater than the quantity supplied while a surplus occurs when the quantity supplied is greater than the quantity demanded, C. A shortage and a surplus are the same concept and refer to the same market situation, D. A shortage occurs when there is a monopoly in the market while a surplus occurs when there is perfect competition",
             1, // Index of correct answer (B)
             "Medium"
         )
@@ -2196,7 +2111,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "Comparing perfect competition and monopolistic competition",
-            "A. In perfect competition, there are many small firms selling identical products, while in monopolistic competition, there are a few large firms dominating the market, B. In perfect competition, firms can influence prices, while in monopolistic competition, firms have no ability to influence prices, C. In perfect competition, there are many small firms selling identical products, while in monopolistic competition, there are many small firms selling similar but differentiated products, D. Perfect competition and monopolistic competition are the same market structure",
+            "A. In perfect competition there are many small firms selling identical products while in monopolistic competition there are a few large firms dominating the market, B. In perfect competition firms can influence prices while in monopolistic competition firms have no ability to influence prices, C. In perfect competition there are many small firms selling identical products while in monopolistic competition there are many small firms selling similar but differentiated products, D. Perfect competition and monopolistic competition are the same market structure",
             2, // Index of correct answer (C)
             "Medium"
         )
@@ -2204,7 +2119,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "The main purpose of a SWOT analysis",
-            "A. To analyze the five competitive forces that shape the profitability of an industry, B. To analyze a firm's competitive environment within a particular industry, C. To analyze the external factors that can impact a business or industry, D. To analyze a company's internal strengths and weaknesses, as well as external opportunities and threats",
+            "A. To analyze the five competitive forces that shape the profitability of an industry, B. To analyze a firm's competitive environment within a particular industry, C. To analyze the external factors that can impact a business or industry, D. To analyze a company's internal strengths and weaknesses as well as external opportunities and threats",
             3, // Index of correct answer (D)
             "Medium"
         )
@@ -2212,7 +2127,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "Differentiating between consumer theory and production theory",
-            "A. Consumer theory analyzes the factors that influence the decisions of consumers, while production theory analyzes the factors that influence the decisions of firms in production, B. Consumer theory and production theory are the same concept and analyze the same factors, C. Consumer theory analyzes the impact of a business on the surrounding community, while production theory analyzes the mathematical representation of consumer preferences, D. Consumer theory analyzes the movement of goods and services across borders, while production theory analyzes the impact of government policies on businesses",
+            "A. Consumer theory analyzes the factors that influence the decisions of consumers while production theory analyzes the factors that influence the decisions of firms in production, B. Consumer theory and production theory are the same concept and analyze the same factors, C. Consumer theory analyzes the impact of a business on the surrounding community while production theory analyzes the mathematical representation of consumer preferences, D. Consumer theory analyzes the movement of goods and services across borders while production theory analyzes the impact of government policies on businesses",
             0, // Index of correct answer (A)
             "Medium"
         )
@@ -2220,7 +2135,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "Comparing the concepts of saving and investing",
-            "A. Saving and investing are the same concept and refer to the act of putting money aside for future use, B. Saving refers to the act of borrowing money, while investing refers to the act of committing money or capital to an endeavor with the expectation of obtaining an income or profit, C. Saving refers to the act of putting money aside for future use, while investing refers to the act of committing money or capital to an endeavor with the expectation of obtaining an income or profit, D. Saving refers to the act of committing money or capital to an endeavor with the expectation of obtaining an income or profit, while investing refers to the act of putting money aside for future use",
+            "A. Saving and investing are the same concept and refer to the act of putting money aside for future use, B. Saving refers to the act of borrowing money while investing refers to the act of committing money or capital to an endeavor with the expectation of obtaining an income or profit, C. Saving refers to the act of putting money aside for future use while investing refers to the act of committing money or capital to an endeavor with the expectation of obtaining an income or profit, D. Saving refers to the act of committing money or capital to an endeavor with the expectation of obtaining an income or profit while investing refers to the act of putting money aside for future use",
             2, // Index of correct answer (C)
             "Medium"
         )
@@ -2228,7 +2143,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "The main difference between price elasticity and income elasticity of demand",
-            "A. Price elasticity measures the responsiveness of quantity demanded to a change in price, while income elasticity measures the responsiveness of quantity demanded to a change in consumer income, B. Price elasticity measures the responsiveness of quantity supplied to a change in price, while income elasticity measures the responsiveness of quantity demanded to a change in consumer income, C. Price elasticity and income elasticity are the same concept and measure the same thing, D. Price elasticity measures the responsiveness of quantity demanded to a change in consumer income, while income elasticity measures the responsiveness of quantity demanded to a change in price",
+            "A. Price elasticity measures the responsiveness of quantity demanded to a change in price while income elasticity measures the responsiveness of quantity demanded to a change in consumer income, B. Price elasticity measures the responsiveness of quantity supplied to a change in price while income elasticity measures the responsiveness of quantity demanded to a change in consumer income, C. Price elasticity and income elasticity are the same concept and measure the same thing, D. Price elasticity measures the responsiveness of quantity demanded to a change in consumer income while income elasticity measures the responsiveness of quantity demanded to a change in price",
             0, // Index of correct answer (A)
             "Medium"
         )
@@ -2236,16 +2151,8 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "Comparing the concepts of rent and minimum wage",
-            "A. Rent refers to the payment made for the use of land or property, while minimum wage refers to the minimum hourly rate that employers are legally required to pay their workers, B. Rent and minimum wage are the same concept and refer to the payment made for the use of labor, C. Rent refers to the minimum hourly rate that employers are legally required to pay their workers, while minimum wage refers to the payment made for the use of land or property, D. Rent refers to the maximum hourly rate that employers are allowed to pay their workers, while minimum wage refers to the payment made for the use of capital",
+            "A. Rent refers to the payment made for the use of land or property while minimum wage refers to the minimum hourly rate that employers are legally required to pay their workers, B. Rent and minimum wage are the same concept and refer to the payment made for the use of labor, C. Rent refers to the minimum hourly rate that employers are legally required to pay their workers, while minimum wage refers to the payment made for the use of land or property, D. Rent refers to the maximum hourly rate that employers are allowed to pay their workers, while minimum wage refers to the payment made for the use of capital",
             0, // Index of correct answer (A)
-            "Medium"
-        )
-
-        insertQuizData(
-            "Applied Economics",
-            "Differentiating between monopoly and oligopoly",
-            "A. In a monopoly, there are many small firms selling identical products, while in an oligopoly, there are a few large firms dominating the market, B. In a monopoly, there is a single seller of a unique product with no close substitutes, while in an oligopoly, there are a few large firms dominating the market, C. A monopoly and an oligopoly are the same market structure, D. In a monopoly, firms have no ability to influence prices, while in an oligopoly, firms can influence prices",
-            1, // Index of correct answer (B)
             "Medium"
         )
 
@@ -2260,7 +2167,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "The main purpose of industry analysis and environmental analysis",
-            "A. Industry analysis focuses on analyzing a firm's competitive environment within a particular industry, while environmental analysis focuses on analyzing the external factors that can impact a business or industry, B. Industry analysis and environmental analysis are the same concept and serve the same purpose, C. Industry analysis focuses on analyzing a company's internal strengths and weaknesses, while environmental analysis focuses on analyzing the external opportunities and threats, D. Industry analysis focuses on analyzing the five competitive forces that shape the profitability of an industry, while environmental analysis focuses on analyzing the movement of goods, services, and capital across international borders",
+            "A. Industry analysis focuses on analyzing a firm's competitive environment within a particular industry while environmental analysis focuses on analyzing the external factors that can impact a business or industry, B. Industry analysis and environmental analysis are the same concept and serve the same purpose, C. Industry analysis focuses on analyzing a company's internal strengths and weaknesses while environmental analysis focuses on analyzing the external opportunities and threats, D. Industry analysis focuses on analyzing the five competitive forces that shape the profitability of an industry while environmental analysis focuses on analyzing the movement of goods services and capital across international borders",
             0, // Index of correct answer (A)
             "Medium"
         )
@@ -2268,7 +2175,7 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         insertQuizData(
             "Applied Economics",
             "Differentiating between consumer theory and utility function",
-            "A. Consumer theory analyzes the factors that influence the decisions of consumers, while utility function represents the mathematical representation of a consumer's preferences, B. Consumer theory and utility function are the same concept and analyze the same factors, C. Consumer theory analyzes the impact of a business on the surrounding community, while utility function analyzes the factors that influence the decisions of firms in production, D. Consumer theory analyzes the movement of goods and services across borders, while utility function analyzes the impact of government policies on businesses",
+            "A. Consumer theory analyzes the factors that influence the decisions of consumers while utility function represents the mathematical representation of a consumer's preferences, B. Consumer theory and utility function are the same concept and analyze the same factors, C. Consumer theory analyzes the impact of a business on the surrounding community, while utility function analyzes the factors that influence the decisions of firms in production, D. Consumer theory analyzes the movement of goods and services across borders, while utility function analyzes the impact of government policies on businesses",
             0, // Index of correct answer (A)
             "Medium"
         )
@@ -2569,4 +2476,1045 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         )
 
     }
+
+    private fun easyFABMII() {
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Statement of Financial Position?",
+            "A. To present a company's assets liabilities and equity at a specific point in time, B. To show a company's revenue and expenses over a period of time, C. To report a company's cash inflows and outflows, D. To summarize changes in a company's equity",
+            0,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is an example of an asset?",
+            "A. Accounts Payable, B. Cash, C. Loans Payable, D. Owner's Equity",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Capital account?",
+            "A. To record a company's liabilities, B. To record a company's revenue, C. To record the owner's investment in the business, D. To record a company's expenses",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Liability account?",
+            "A. To record a company's assets, B. To record the owner's investment in the business, C. To record a company's obligations or debts, D. To record a company's revenue",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Comprehensive Income statement?",
+            "A. To report a company's assets and liabilities, B. To show a company's cash flows, C. To summarize changes in a company's equity, D. To present a company's revenue, expenses, and net income",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Statement of Changes in Equity?",
+            "A. To report a company's assets and liabilities, B. To show a company's cash flows, C. To summarize changes in a company's equity, D. To present a company's revenue, expenses, and net income",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Statement of Cash Flows?",
+            "A. To report a company's assets and liabilities, B. To show a company's cash inflows and outflows, C. To summarize changes in a company's equity, D. To present a company's revenue, expenses, and net income",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Operating Activities section in the Statement of Cash Flows?",
+            "A. To report cash inflows and outflows from investing activities, B. To report cash inflows and outflows from financing activities, C. To report cash inflows and outflows from the company's core business operations, D. To report cash inflows and outflows from non-operating activities",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Investing Activities section in the Statement of Cash Flows?",
+            "A. To report cash inflows and outflows from the company's core business operations, B. To report cash inflows and outflows from financing activities, C. To report cash inflows and outflows from the purchase or sale of long-term assets, D. To report cash inflows and outflows from non-operating activities",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Financing Activities section in the Statement of Cash Flows?",
+            "A. To report cash inflows and outflows from the company's core business operations, B. To report cash inflows and outflows from investing activities, C. To report cash inflows and outflows from the issuance or repayment of debt and equity, D. To report cash inflows and outflows from non-operating activities",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Cash account?",
+            "A. To record a company's assets, B. To record a company's liabilities, C. To record a company's cash and cash equivalents, D. To record a company's revenue",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is an example of a financial institution?",
+            "A. A grocery store, B. A manufacturing company, C. A bank, D. A retail store",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of a Bank Reconciliation Statement?",
+            "A. To reconcile the differences between a company's cash balance and its bank statement balance, B. To report a company's revenue and expenses, C. To summarize changes in a company's equity, D. To present a company's assets and liabilities",
+            0,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of a Savings Account?",
+            "A. To facilitate daily transactions, B. To earn interest on deposited funds, C. To issue checks, D. To withdraw cash from ATMs",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of a Check Account?",
+            "A. To earn interest on deposited funds, B. To facilitate daily transactions and payment of bills, C. To withdraw cash from ATMs, D. To invest in stocks and bonds",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of a Debit Card?",
+            "A. To earn interest on deposited funds, B. To facilitate daily transactions and withdraw cash from ATMs, C. To issue checks, D. To invest in stocks and bonds",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of an ATM?",
+            "A. To facilitate daily transactions and payment of bills, B. To earn interest on deposited funds, C. To withdraw cash and check account balances, D. To issue checks",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Other Comprehensive Income section?",
+            "A. To report a company's revenue and expenses, B. To report certain gains and losses that are not included in net income, C. To summarize changes in a company's equity, D. To present a company's assets and liabilities",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Profit or Loss section?",
+            "A. To report a company's revenue and expenses, B. To report certain gains and losses that are not included in net income, C. To summarize changes in a company's equity, D. To present a company's assets and liabilities",
+            0,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Description of Account Titles section?",
+            "A. To provide explanations of various account titles used in financial statements, B. To report a company's revenue and expenses, C. To summarize changes in a company's equity, D. To present a company's assets and liabilities",
+            0,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Relevant Terminologies section?",
+            "A. To define and explain important accounting terms and concepts, B. To report a company's revenue and expenses, C. To summarize changes in a company's equity, D. To present a company's assets and liabilities",
+            0,
+            "Easy"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the purpose of the Accounting for Share Issue section?",
+            "A. To explain how to account for the issuance of shares by a company, B. To report a company's revenue and expenses, C. To summarize changes in a company's equity, D. To present a company's assets and liabilities",
+            0,
+            "Easy"
+        )
+
+    }
+
+    private fun mediumFABMII() {
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT an example of a liability?",
+            "A. Accounts Payable, B. Loans Payable, C. Cash, D. Accrued Expenses",
+            2,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "What is the primary source of information for preparing the Statement of Financial Position?",
+            "A. General Ledger, B. Trial Balance, C. Bank Statements, D. Cash Flow Projections",
+            1,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which section of the Statement of Cash Flows reports cash inflows from the sale of equipment?",
+            "A. Operating Activities, B. Investing Activities, C. Financing Activities, D. Non-Operating Activities",
+            1,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Enumerate the three main sections of the Statement of Cash Flows.",
+            "A. Operating Investing Financing, B. Revenue Expenses Gains/Losses, C. Assets Liabilities Equity, D. Cash Inflows Cash Outflows Net Cash Flow",
+            0,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a type of comprehensive income item?",
+            "A. Foreign Currency Translation Adjustments, B. Unrealized Gains/Losses on Investments, C. Depreciation Expense, D. Pension Adjustments",
+            2,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the account that is NOT reported under the Equity section of the Statement of Financial Position.",
+            "A. Retained Earnings, B. Common Stock, C. Additional Paid-in Capital, D. Accounts Payable",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a type of bank account?",
+            "A. Savings Account, B. Checking Account, C. Money Market Account, D. Loan Account",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Enumerate the three main categories of bank accounts.",
+            "A. Savings Checking Investment, B. Savings Checking Loan, C. Savings Checking Money Market, D. Savings Checking Credit Card",
+            2,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a factor to consider when selecting a bank account?",
+            "A. Interest Rates, B. Fees and Charges, C. Location of Bank Branches, D. Company's Credit Rating",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the term used to describe a check that has been issued but not yet cleared by the bank.",
+            "A. Stale Check, B. Canceled Check, C. Outstanding Check, D. Voided Check",
+            2,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of share issue?",
+            "A. Initial Public Offering (IPO), B. Rights Issue, C. Private Placement, D. Dividend Reinvestment Plan",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Enumerate the three main components of the equity section in a company's Statement of Financial Position.",
+            "A. Common Stock \n Retained Earnings \n Additional Paid-in Capital, B. Assets \n Liabilities\n Net Income, C. Revenue\n Expenses\n Profit, D. Cash\n Accounts Receivable\n Inventory",
+            0,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a type of transaction that does not affect cash?",
+            "A. Depreciation Expense, B. Issuance of Common Stock, C. Amortization of Intangible Assets, D. Purchase of Equipment with Cash",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the term used to describe the cash flow remaining after all operating expenses and capital expenditures have been paid.",
+            "A. Net Income, B. Operating Cash Flow, C. Free Cash Flow, D. Net Cash Flow",
+            2,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of privacy concern related to bank accounts?",
+            "A. Identity Theft, B. Phishing Scams, C. Data Breaches, D. Interest Rate Fluctuations",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Enumerate the three main types of ownership structures for financial institutions.",
+            "A. Public Private Cooperative, B. Sole Proprietorship Partnership Corporation, C. Local National International, D. Commercial Investment Savings",
+            0,
+            "Medium"
+        )
+
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the term used to describe the process of reconciling the differences between a company's cash balance and its bank statement balance.",
+            "A. Cash Reconciliation, B. Bank Reconciliation, C. Balance Reconciliation, D. Account Reconciliation",
+            1,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of financing activity reported in the Statement of Cash Flows?",
+            "A. Issuance of Debt, B. Repayment of Loans, C. Purchase of Treasury Stock, D. Sale of Inventory",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of other comprehensive income item?",
+            "A. Foreign Currency Translation Adjustments, B. Unrealized Gains/Losses on Investments, C. Remeasurement of Defined Benefit Plans, D. Accrued Expenses",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the term used to describe the process of converting non-cash expenses back to cash for the purpose of calculating cash flow.",
+            "A. Accrual Adjustment, B. Cash Conversion, C. Add-Back Adjustment, D. Non-Cash Reconciliation",
+            2,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of cash inflow from operating activities?",
+            "A. Cash Received from Customers, B. Cash Paid to Suppliers, C. Cash Received from Interest Income, D. Cash Paid for Rent and Utilities",
+            1,
+            "Medium"
+        )
+
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the term used to describe the difference between a company's cash balance and its bank statement balance.",
+            "A. Cash Discrepancy, B. Bank Reconciliation Difference, C. Cash Variance, D. Bank Balance Adjustment",
+            1,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of cash inflow from financing activities?",
+            "A. Issuance of Debt, B. Issuance of Common Stock, C. Repayment of Loans, D. Sale of Investment Securities",
+            3,
+            "Medium"
+        )
+
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of non-cash transaction?",
+            "A. Depreciation Expense, B. Amortization of Intangible Assets, C. Issuance of Common Stock for Cash, D. Unrealized Gains/Losses on Investments",
+            2,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the term used to describe the process of issuing new shares of stock to existing shareholders.",
+            "A. Initial Public Offering (IPO), B. Rights Issue, C. Private Placement, D. Dividend Reinvestment Plan",
+            1,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of equity account?",
+            "A. Common Stock, B. Retained Earnings, C. Additional Paid-in Capital, D. Accounts Payable",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of cash inflow from operating activities?",
+            "A. Cash Received from Customers, B. Cash Paid to Employees, C. Cash Received from Interest Income, D. Cash Received from Sale of Property, Plant, and Equipment",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the term used to describe the process of reconciling the differences between a company's cash balance and its bank statement balance at a specific point in time.",
+            "A. Bank Reconciliation, B. Cash Reconciliation, C. Balance Sheet Reconciliation, D. Month-End Reconciliation",
+            0,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of cash outflow from financing activities?",
+            "A. Repayment of Loans, B. Payment of Dividends, C. Purchase of Treasury Stock, D. Purchase of Property, Plant, and Equipment",
+            3,
+            "Medium"
+        )
+
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of cash outflow from operating activities?",
+            "A. Cash Paid to Suppliers, B. Cash Paid to Employees, C. Cash Paid for Interest Expense, D. Cash Paid for Purchase of Property, Plant, and Equipment",
+            3,
+            "Medium"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "Identify the term used to describe the process of issuing new shares of stock to the general public for the first time.",
+            "A. Initial Public Offering (IPO), B. Rights Issue, C. Private Placement, D. Dividend Reinvestment Plan",
+            0,
+            "Medium"
+        )
+
+
+        insertQuizData(
+            "FABM 2",
+            "Which of the following is NOT a common type of cash inflow from financing activities?",
+            "A. Proceeds from Issuance of Debt, B. Proceeds from Issuance of Common Stock, C. Proceeds from Sale of Property, Plant, and Equipment, D. Proceeds from Exercise of Stock Options",
+            2,
+            "Medium"
+        )
+    }
+
+    private fun hardFABMII() {
+        // Add hard FABM II quiz questions here
+        insertQuizData(
+            "FABM 2",
+            "ABC Company had the following transactions during the year: Cash received from customers ₱500,000, Cash paid to suppliers ₱300,000, Cash paid for operating expenses ₱100,000, Purchase of equipment for cash ₱80,000, Proceeds from issuance of common stock ₱150,000, Repayment of long-term debt ₱50,000. Calculate the company's net cash flow from operating activities.",
+            "A. ₱100,000, B. ₱200,000, C. ₱300,000, D. ₱400,000",
+            0,
+            "Hard"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "XYZ Company had the following balance sheet items at the end of the year: Cash ₱50,000, Accounts Receivable ₱80,000, Inventory ₱120,000, Property, Plant, and Equipment (net) ₱300,000, Accounts Payable ₱60,000, Long-term Debt ₱200,000, Common Stock ₱100,000, Retained Earnings ₱190,000. Calculate the company's working capital.",
+            "A. ₱190,000, B. ₱290,000, C. ₱390,000, D. ₱490,000",
+            0,
+            "Hard"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "A company issued 10,000 shares of common stock at ₱25 per share. The company incurred ₱15,000 in underwriting fees and other issuance costs. Calculate the amount that should be recorded in the Common Stock account and the Additional Paid-in Capital account.",
+            "A. Common Stock ₱250,000, Additional Paid-in Capital ₱0, B. Common Stock ₱100,000, Additional Paid-in Capital ₱150,000, C. Common Stock ₱250,000, Additional Paid-in Capital ₱235,000, D. Common Stock ₱100,000, Additional Paid-in Capital ₱235,000",
+            3,
+            "Hard"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "A company had the following transactions related to its defined benefit pension plan: Service cost ₱50,000, Interest cost ₱30,000, Actual return on plan assets ₱20,000, Amortization of prior service cost ₱10,000. Calculate the amount that should be reported as other comprehensive income related to the defined benefit pension plan.",
+            "A. ₱70,000, B. ₱60,000, C. ₱50,000, D. ₱40,000",
+            0,
+            "Hard"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its bank accounts: Beginning cash balance ₱100,000, Deposits in transit ₱20,000, Outstanding checks ₱15,000, Bank service charges ₱500, Interest earned ₱300. Calculate the adjusted cash balance after bank reconciliation.",
+            "A. ₱104,800, B. ₱105,300, C. ₱119,800, D. ₱120,300",
+            1,
+            "Hard"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its Statement of Cash Flows: Net income ₱200,000, Depreciation expense ₱50,000, Increase in accounts receivable ₱30,000, Decrease in accounts payable ₱20,000, Proceeds from issuance of long-term debt ₱100,000, Purchase of equipment ₱80,000. Calculate the company's free cash flow.",
+            "A. ₱120,000, B. ₱170,000, C. ₱220,000, D. ₱270,000",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its foreign currency translation adjustments: Beginning balance ₱50,000, Current year adjustment ₱30,000, Reclassification adjustment for realized gains ₱10,000. Calculate the ending balance of the foreign currency translation adjustment component of other comprehensive income.",
+            "A. ₱70,000, B. ₱80,000, C. ₱90,000, D. ₱100,000",
+            0,
+            "Hard"
+        )
+
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its Statement of Comprehensive Income: Revenue ₱1,000,000, Cost of goods sold ₱600,000, Operating expenses ₱200,000, Unrealized gain on available-for-sale securities ₱50,000, Foreign currency translation adjustment ₱30,000. Calculate the company's total comprehensive income.",
+            "A. ₱230,000, B. ₱260,000, C. ₱280,000, D. ₱310,000",
+            1,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its Statement of Changes in Equity: Beginning balance of common stock ₱500,000, Issuance of common stock for cash ₱200,000, Purchase of treasury stock ₱100,000, Net income ₱300,000, Dividends declared ₱50,000. Calculate the ending balance of total equity.",
+            "A. ₱850,000, B. ₱950,000, C. ₱1,050,000, D. ₱1,150,000",
+            0,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its Statement of Cash Flows: Net cash flow from operating activities ₱500,000, Net cash flow from investing activities (-)₱300,000, Net cash flow from financing activities ₱100,000, Beginning cash balance ₱200,000. Calculate the company's ending cash balance.",
+            "A. ₱300,000, B. ₱400,000, C. ₱500,000, D. ₱600,000",
+            2,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "ABC Company had the following transactions during the year: Cash received from customers ₱5,000,000, Cash paid to suppliers ₱3,000,000, Cash paid for operating expenses ₱1,000,000, Purchase of equipment for cash ₱800,000, Proceeds from issuance of common stock ₱1,500,000, Repayment of long-term debt ₱500,000. Calculate the company's net cash flow from operating activities.",
+            "A. ₱1,000,000, B. ₱2,000,000, C. ₱3,000,000, D. ₱4,000,000",
+            0,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "XYZ Company had the following balance sheet items at the end of the year: Cash ₱500,000, Accounts Receivable ₱800,000, Inventory ₱1,200,000, Property, Plant, and Equipment (net) ₱3,000,000, Accounts Payable ₱600,000, Long-term Debt ₱2,000,000, Common Stock ₱1,000,000, Retained Earnings ₱1,900,000. Calculate the company's working capital.",
+            "A. ₱1,900,000, B. ₱2,900,000, C. ₱3,900,000, D. ₱4,900,000",
+            0,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company issued 100,000 shares of common stock at ₱25 per share. The company incurred ₱150,000 in underwriting fees and other issuance costs. Calculate the amount that should be recorded in the Common Stock account and the Additional Paid-in Capital account.",
+            "A. Common Stock ₱2,500,000, Additional Paid-in Capital ₱0, B. Common Stock ₱1,000,000, Additional Paid-in Capital ₱1,500,000, C. Common Stock ₱2,500,000, Additional Paid-in Capital ₱2,350,000, D. Common Stock ₱1,000,000, Additional Paid-in Capital ₱2,350,000",
+            3,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following transactions related to its defined benefit pension plan: Service cost ₱500,000, Interest cost ₱300,000, Actual return on plan assets ₱200,000, Amortization of prior service cost ₱100,000. Calculate the amount that should be reported as other comprehensive income related to the defined benefit pension plan.",
+            "A. ₱700,000, B. ₱600,000, C. ₱500,000, D. ₱400,000",
+            0,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its bank accounts: Beginning cash balance ₱1,000,000, Deposits in transit ₱200,000, Outstanding checks ₱150,000, Bank service charges ₱5,000, Interest earned ₱3,000. Calculate the adjusted cash balance after bank reconciliation.",
+            "A. ₱1,048,000, B. ₱1,053,000, C. ₱1,198,000, D. ₱1,203,000",
+            1,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its Statement of Cash Flows: Net income ₱2,000,000, Depreciation expense ₱500,000, Increase in accounts receivable ₱300,000, Decrease in accounts payable ₱200,000, Proceeds from issuance of long-term debt ₱1,000,000, Purchase of equipment ₱800,000. Calculate the company's free cash flow.",
+            "A. ₱1,200,000, B. ₱1,700,000, C. ₱2,200,000, D. ₱2,700,000",
+            2,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its foreign currency translation adjustments: Beginning balance ₱500,000, Current year adjustment ₱300,000, Reclassification adjustment for realized gains ₱100,000. Calculate the ending balance of the foreign currency translation adjustment component of other comprehensive income.",
+            "A. ₱700,000, B. ₱800,000, C. ₱900,000, D. ₱1,000,000",
+            0,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its Statement of Comprehensive Income: Revenue ₱10,000,000, Cost of goods sold ₱6,000,000, Operating expenses ₱2,000,000, Unrealized gain on available-for-sale securities ₱500,000, Foreign currency translation adjustment ₱300,000. Calculate the company's total comprehensive income.",
+            "A. ₱2,300,000, B. ₱2,600,000, C. ₱2,800,000, D. ₱3,100,000",
+            1,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its Statement of Changes in Equity: Beginning balance of common stock ₱5,000,000, Issuance of common stock for cash ₱2,000,000, Purchase of treasury stock ₱1,000,000, Net income ₱3,000,000, Dividends declared ₱500,000. Calculate the ending balance of total equity.",
+            "A. ₱8,500,000, B. ₱9,500,000, C. ₱10,500,000, D. ₱11,500,000",
+            0,
+            "Hard"
+        )
+        insertQuizData(
+            "FABM 2",
+            "A company had the following information related to its Statement of Cash Flows: Net cash flow from operating activities ₱5,000,000, Net cash flow from investing activities (₱3,000,000), Net cash flow from financing activities ₱1,000,000, Beginning cash balance ₱2,000,000. Calculate the company's ending cash balance.",
+            "A. ₱3,000,000, B. ₱4,000,000, C. ₱5,000,000, D. ₱6,000,000",
+            2,
+            "Hard"
+        )
+    }
+
+    private fun easyBusinessEthics() {
+        insertQuizData(
+            "Business Ethics",
+            "What is the primary purpose of establishing a business enterprise?",
+            "A. To generate profit, B. To provide employment, C. To serve the community, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which of the following is a core principle of business organization?",
+            "A. Specialization, B. Centralization, C. Standardization, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is the foundation of the principles of business ethics?",
+            "A. Utilitarianism, B. Deontology, C. Virtue ethics, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which ethical theory emphasizes the importance of character development?",
+            "A. Consequentialism, B. Kantian ethics, C. Virtue ethics, D. Social contract theory",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a core Filipino value that is important in business?",
+            "A. Individualism, B. Materialism, C. Bayanihan, D. Competitiveness",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which of the following is a key responsibility of an entrepreneur?",
+            "A. Maximizing profits, B. Exploiting employees, C. Protecting the environment, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which of the following is an example of an asset?",
+            "A. Accounts Payable, B. Cash, C. Loans Payable, D. Owner's Equity",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a common practice in business organization?",
+            "A. Decentralization, B. Specialization, C. Formalization, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which ethical theory focuses on the consequences of actions?",
+            "A. Deontology, B. Virtue ethics, C. Utilitarianism, D. Social contract theory",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a key aspect of the Filipino value system?",
+            "A. Individualism, B. Materialism, C. Family orientation, D. Competitiveness",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a primary responsibility of an entrepreneur?",
+            "A. Maximizing profits, B. Exploiting employees, C. Protecting the environment, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which of the following is a model of social responsibility?",
+            "A. Stakeholder theory, B. Shareholder theory, C. Charity model, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is the role of belief systems in business ethics?",
+            "A. They have no impact, B. They provide a moral framework, C. They promote unethical practices, D. They are irrelevant",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which ethical theory emphasizes the importance of character and virtues?",
+            "A. Consequentialism, B. Deontology, C. Virtue ethics, D. Social contract theory",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a common form of business organization?",
+            "A. Sole proprietorship, B. Partnership, C. Corporation, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is the primary purpose of a business enterprise?",
+            "A. To maximize shareholder value, B. To serve the community, C. To generate profit, D. To provide employment",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which of the following is a core principle of business organization?",
+            "A. Specialization, B. Centralization, C. Standardization, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is the foundation of business ethics principles?",
+            "A. Utilitarianism, B. Deontology, C. Virtue ethics, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which ethical theory focuses on the rightness or wrongness of actions?",
+            "A. Consequentialism, B. Kantian ethics, C. Virtue ethics, D. Social contract theory",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is an example of a Filipino value that is important in business?",
+            "A. Individualism, B. Materialism, C. Bayanihan, D. Competitiveness",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a key responsibility of an entrepreneur?",
+            "A. Maximizing profits, B. Exploiting employees, C. Protecting the environment, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which of the following is a framework of social responsibility?",
+            "A. Stakeholder theory, B. Shareholder theory, C. Charity model, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "How do belief systems impact business ethics?",
+            "A. They have no impact, B. They provide a moral foundation, C. They promote unethical practices, D. They are irrelevant",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which ethical theory emphasizes the importance of virtues and character development?",
+            "A. Consequentialism, B. Deontology, C. Virtue ethics, D. Social contract theory",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a common type of business organization?",
+            "A. Sole proprietorship, B. Partnership, C. Corporation, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is the main goal of a business enterprise?",
+            "A. To maximize shareholder value, B. To serve the community, C. To generate profit, D. To provide employment",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which of the following is a core principle of business organization?",
+            "A. Specialization, B. Centralization, C. Standardization, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is the philosophical foundation of business ethics?",
+            "A. Utilitarianism, B. Deontology, C. Virtue ethics, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which ethical theory focuses on the intentions behind actions?",
+            "A. Consequentialism, B. Kantian ethics, C. Virtue ethics, D. Social contract theory",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a traditional Filipino value that is relevant in business?",
+            "A. Individualism, B. Materialism, C. Bayanihan, D. Competitiveness",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a key accountability of an entrepreneur?",
+            "A. Maximizing profits, B. Exploiting employees, C. Protecting the environment, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which of the following is a model of corporate social responsibility?",
+            "A. Stakeholder theory, B. Shareholder theory, C. Charity model, D. All of the above",
+            3,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "How do belief systems influence business ethics?",
+            "A. They have no impact, B. They provide a moral framework, C. They promote unethical practices, D. They are irrelevant",
+            1,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "Which ethical theory focuses on character and virtue development?",
+            "A. Consequentialism, B. Deontology, C. Virtue ethics, D. Social contract theory",
+            2,
+            "Easy"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "What is a common organizational structure for a business?",
+            "A. Sole proprietorship, B. Partnership, C. Corporation, D. All of the above",
+            3,
+            "Easy"
+        )
+    }
+
+    private fun mediumBusinessEthics() {
+
+    }
+
+    private fun hardBusinessEthics() {
+        insertQuizData(
+            "Business Ethics",
+            "A multinational corporation is considering expanding its operations into a developing country. The proposed project poses potential environmental risks, including deforestation and pollution, which may harm the local community and indigenous populations. However, the expansion promises significant economic benefits to the corporation and its shareholders. As an ethics consultant, advise the executive board on how to approach this dilemma.",
+            "A. Prioritize economic benefits and proceed with the expansion. B. Engage in comprehensive stakeholder consultation to assess the ethical implications and explore alternative strategies. C. Proceed with the expansion while implementing mitigation measures to minimize environmental harm. D. Abandon the expansion project altogether to avoid ethical conflicts and potential harm to the local community.",
+            1,
+            "Hard"
+        )
+        insertQuizData(
+            "Business Ethics",
+            "A pharmaceutical company is facing pressure to lower the prices of life-saving medications in developing countries where access to healthcare is limited. However, reducing prices would significantly impact the company's profit margins and potentially hinder future research and development efforts. Evaluate the ethical considerations involved and propose a course of action for the company.",
+            "A. Maintain current pricing structures to ensure profitability and support future innovation, regardless of access challenges in developing countries. B. Lower medication prices in developing countries to improve access to essential healthcare, balancing social responsibility with financial considerations. C. Collaborate with governments and NGOs to develop sustainable pricing models that address both healthcare access and corporate profitability. D. Ignore pressure to lower prices and focus solely on maximizing shareholder returns, disregarding the health needs of vulnerable populations.",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "An advertising agency is tasked with creating a marketing campaign for a new product that has been linked to harmful environmental practices during manufacturing. The client insists on highlighting the product's benefits while downplaying its environmental impact. As a member of the agency's ethics committee, propose a course of action that upholds integrity and transparency in advertising.",
+            "A. Comply with the client's request to focus solely on the product's benefits, as satisfying the client's demands is paramount for maintaining business relationships. B. Refuse to participate in the campaign and terminate the contract with the client to avoid promoting a product with harmful environmental consequences. C. Collaborate with the client to develop a balanced marketing message that acknowledges both the product's benefits and environmental impact, ensuring transparency and ethical advertising. D. Proceed with the campaign as directed by the client, but include disclaimers about the product's environmental impact to fulfill ethical obligations.",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A tech company is developing facial recognition technology for law enforcement agencies. The technology has the potential to enhance public safety but also raises concerns about invasion of privacy and misuse. As a member of the company's ethics board, propose ethical guidelines for the development and deployment of facial recognition technology.",
+            "A. Proceed with the development of facial recognition technology without restrictions, as its potential benefits outweigh privacy concerns. B. Implement strict regulations to limit the use of facial recognition technology to specific law enforcement purposes and prevent misuse or abuse. C. Engage in open dialogue with privacy advocates, policymakers, and the public to address concerns and collaboratively develop ethical guidelines for facial recognition technology. D. Refrain from developing facial recognition technology altogether due to ethical concerns related to privacy and potential misuse.",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A manufacturing company is considering outsourcing production to a foreign supplier known for its low labor costs. However, the supplier has been criticized for labor rights violations and poor working conditions. As an ethics consultant, advise the company on the ethical considerations and potential consequences of outsourcing to the foreign supplier.",
+            "A. Prioritize cost savings and efficiency gains by outsourcing production to the foreign supplier, regardless of its labor practices. B. Conduct a comprehensive ethical audit of the foreign supplier to assess labor conditions and compliance with international labor standards before making a decision on outsourcing. C. Explore alternative sourcing options that prioritize ethical considerations and support suppliers with fair labor practices, even if it involves higher production costs. D. Proceed with outsourcing to the foreign supplier but implement monitoring mechanisms and incentives to encourage improvements in labor conditions over time.",
+            1,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A financial institution is considering investing in companies involved in fossil fuel extraction, despite growing concerns about climate change and environmental sustainability. The investment portfolio managers argue that these companies offer high returns and diversification benefits. As an ethics advisor, propose ethical investment strategies that align with environmental sustainability goals.",
+            "A. Proceed with investments in fossil fuel companies to maximize financial returns as profitability is the primary objective of investment decisions. B. Adopt a socially responsible investment approach by divesting from fossil fuel companies and reallocating funds to renewable energy and sustainable industries. C. Engage with fossil fuel companies to encourage adoption of environmentally friendly practices and transition to renewable energy sources while maintaining investment positions. D. Maintain investments in fossil fuel companies but prioritize engagement and shareholder activism to influence positive change in environmental practices.",
+            1,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A food processing company is facing allegations of animal cruelty and unethical treatment of workers in its supply chain. Despite evidence of wrongdoing, the company denies any responsibility and refuses to implement changes to improve labor conditions and animal welfare. As a consumer advocate, propose ethical strategies to hold the company accountable and advocate for systemic change.",
+            "A. Boycott products from the company and encourage consumers to support ethical brands that prioritize animal welfare and fair labor practices. B. Launch a public awareness campaign to educate consumers about the company's unethical practices and pressure it to adopt responsible business practices. C. Lobby policymakers to enact regulations that mandate transparency and accountability in supply chains to prevent unethical practices and protect workers' rights and animal welfare. D. Form alliances with NGOs, labor unions, and other advocacy groups to exert collective pressure on the company through shareholder activism, protests, and legal action.",
+            3,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A technology company is developing artificial intelligence (AI) algorithms for automated decision-making systems used in various sectors, including finance, healthcare, and criminal justice. However, concerns have been raised about the potential for AI bias, discrimination, and lack of accountability. As an ethics consultant, propose ethical guidelines for the development and deployment of AI technologies.",
+            "A. Proceed with AI development without strict regulations as AI has the potential to revolutionize industries and improve efficiency, outweighing concerns about bias and accountability. B. Implement rigorous testing and validation processes to identify and mitigate biases in AI algorithms, prioritize transparency and accountability, and ensure fair and equitable outcomes for all stakeholders. C. Advocate for the establishment of industry-wide standards and regulations governing the development, deployment, and use of AI technologies to address ethical concerns and protect against potential harms. D. Suspend AI development until comprehensive ethical frameworks and regulatory frameworks are established to address concerns related to bias, discrimination, and accountability.",
+            1,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A retail company is considering sourcing products from overseas suppliers known for employing child labor in their factories. While the products are affordable and popular among consumers, the company faces ethical dilemmas related to supporting exploitative labor practices. As an ethics advisor, propose ethical sourcing strategies that prioritize human rights and fair labor practices.",
+            "A. Proceed with sourcing products from overseas suppliers to maintain competitiveness and profitability regardless of labor practices, but implement supplier audits and monitoring to ensure compliance with ethical standards. B. Refuse to engage with suppliers known for employing child labor and seek alternative sourcing options that prioritize fair labor practices and human rights, even if it involves higher costs. C. Collaborate with suppliers to implement education and training programs for workers and transition away from child labor, while supporting community development initiatives to address root causes of exploitation. D. Source products from overseas suppliers known for employing child labor but donate a portion of profits to organizations combating child labor and supporting affected communities, balancing business interests with social responsibility.",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A construction company is bidding for a government contract to build infrastructure projects in a developing country. However, the bidding process is marred by corruption, bribery, and favoritism among government officials. As a member of the company's ethics committee, propose ethical guidelines for navigating corrupt business environments while maintaining integrity and transparency.",
+            "A. Participate in the bidding process and engage in corrupt practices to secure the contract as it is common in the industry and necessary for business survival. B. Refuse to participate in the bidding process and report the corrupt practices to relevant authorities, prioritizing ethical principles over potential business opportunities. C. Seek legal counsel to explore ways to navigate the corrupt business environment while adhering to ethical standards, such as transparency in dealings and refusal to engage in bribery or kickbacks. D. Withdraw from the bidding process and focus on pursuing business opportunities in regions or sectors where corruption is less prevalent, maintaining integrity and avoiding ethical compromises.",
+            3,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A multinational fast-food chain is facing public scrutiny for its labor practices, including low wages, lack of benefits, and poor working conditions for employees. Despite mounting pressure from advocacy groups and labor unions, the company refuses to implement significant changes to improve workers' rights. As an ethics consultant, propose ethical strategies for holding the company accountable and advocating for fair labor practices.",
+            "A. Organize boycotts and protests to pressure the company into implementing fair labor practices and improving working conditions for employees. B. Engage in dialogue with company executives and shareholders to raise awareness of the ethical implications of labor practices and advocate for policy changes to protect workers' rights. C. File lawsuits and legal complaints against the company for violations of labor laws and regulations, seeking legal remedies and compensation for affected workers. D. Collaborate with labor unions, advocacy groups, and other stakeholders to develop comprehensive campaigns that leverage public pressure, shareholder activism, and legal action to push for systemic changes in the company's labor practices.",
+            3,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A renewable energy company is facing allegations of greenwashing, as it promotes its products and services as environmentally friendly while engaging in practices that harm the environment, such as pollution and habitat destruction. As an ethics consultant, propose ethical strategies for the company to address accusations of greenwashing and restore trust with stakeholders.",
+            "A. Continue promoting products and services as environmentally friendly without addressing accusations of greenwashing, as it may negatively impact the company's reputation and profitability. B. Launch a public relations campaign to address accusations of greenwashing, emphasizing the company's commitment to environmental stewardship and transparency in business practices. C. Conduct a comprehensive audit of the company's operations and supply chain to identify areas of environmental impact and implement corrective measures to minimize harm and promote sustainability. D. Acknowledge accusations of greenwashing and commit to transparency, accountability, and continuous improvement in environmental practices, engaging with stakeholders to rebuild trust and credibility.",
+            3,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A media conglomerate is facing criticism for its coverage of sensitive issues, including biased reporting, sensationalism, and misinformation. Despite public outcry and calls for journalistic integrity, the company prioritizes ratings and profits over ethical journalism. As an ethics advisor, propose strategies for promoting responsible and ethical journalism within the media industry.",
+            "A. Launch a public awareness campaign to educate consumers about the importance of ethical journalism and encourage them to support media outlets that prioritize accuracy, objectivity, and integrity in reporting. B. Advocate for regulatory reforms and industry standards that promote transparency, accountability, and ethical conduct in journalism, including measures to combat misinformation and ensure editorial independence. C. Engage with media executives, journalists, and industry stakeholders to develop codes of ethics and best practices for responsible reporting, emphasizing the role of journalism in informing and empowering the public. D. Boycott media outlets that prioritize ratings and profits over ethical journalism and support alternative sources of news and information that adhere to higher standards of integrity and accountability.",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A mining company is planning to expand its operations into an environmentally sensitive area with rich biodiversity. The project promises economic development and job creation but also poses risks of habitat destruction, pollution, and displacement of indigenous communities. As an ethics consultant, propose ethical considerations and recommendations for balancing economic interests with environmental conservation and social responsibility.",
+            "A. Proceed with the mining project as planned prioritizing economic benefits and job creation but implement mitigation measures to minimize environmental impact and address concerns of indigenous communities. B. Conduct a comprehensive environmental impact assessment and stakeholder consultation process to evaluate the potential risks and benefits of the mining project, considering alternatives and exploring sustainable development strategies. C. Engage with environmental organizations, indigenous leaders, and local communities to address concerns and develop a mutually beneficial approach to resource extraction that respects biodiversity, cultural heritage, and human rights. D. Suspend the mining project and explore alternative development opportunities that promote economic growth and community well-being without compromising environmental integrity or social justice.",
+            1,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A fashion retailer is facing accusations of unethical labor practices in its overseas factories, including exploitation of workers, unsafe working conditions, and substandard wages. Despite pressure from consumers and advocacy groups, the company denies responsibility and refuses to disclose information about its supply chain. As an ethics advisor, propose ethical strategies for addressing labor rights violations and promoting supply chain transparency in the fashion industry.",
+            "A. Ignore accusations of labor rights violations and prioritize profitability and competitiveness in the fashion industry, as addressing ethical concerns may negatively impact the company's bottom line. B. Conduct internal investigations and audits of overseas factories to assess labor conditions and address any violations of ethical standards, committing to transparency and accountability in supply chain management. C. Collaborate with industry peers, NGOs, and labor organizations to develop industry-wide standards and initiatives for promoting ethical labor practices and supply chain transparency in the fashion industry. D. Boycott brands that refuse to disclose information about their supply chains and support initiatives that advocate for greater transparency, accountability, and respect for labor rights in the fashion industry.",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A biotechnology company is developing genetically modified organisms (GMOs) for agricultural use, promising increased crop yields and resistance to pests and diseases. However, concerns have been raised about the potential environmental impact, biodiversity loss, and long-term health effects of GMOs. As an ethics consultant, propose ethical guidelines for the development and deployment of GMOs in agriculture.",
+            "A. Proceed with GMO development and deployment without restrictions as it offers solutions to global food security challenges and economic benefits for farmers and agribusinesses. B. Conduct rigorous scientific research and risk assessments to evaluate the environmental, health, and socioeconomic impacts of GMOs, prioritize transparency and stakeholder engagement, and ensure informed decision-making. C. Advocate for regulatory frameworks and labeling requirements that promote transparency, consumer choice, and informed consent regarding GMOs, while supporting farmers' access to diverse and sustainable agricultural practices. D. Suspend GMO development and deployment until comprehensive ethical assessments and regulatory frameworks are established to address concerns about environmental sustainability, biodiversity, and public health.",
+            1,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A hospitality company operates luxury resorts in tropical destinations known for their pristine natural beauty. Despite efforts to minimize environmental impact, the company faces criticism for unsustainable practices, such as overdevelopment, water consumption, and waste generation. As an ethics advisor, propose sustainable and responsible tourism strategies for the company to mitigate environmental harm and promote conservation.",
+            "A. Continue current business practices and prioritize profitability and guest satisfaction as sustainability initiatives may compromise the luxury experience and deter high-spending clientele. B. Implement eco-friendly initiatives and certifications, such as energy efficiency measures, waste reduction programs, and community engagement projects, to minimize environmental impact and enhance the company's reputation as a sustainable tourism destination. C. Collaborate with environmental organizations, local communities, and government agencies to develop destination management plans that balance tourism development with conservation efforts, preserving natural resources and cultural heritage for future generations. D. Transition away from luxury tourism and focus on sustainable ecotourism experiences that promote conservation, community empowerment, and authentic cultural experiences, aligning with global sustainability goals and responsible tourism principles.",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A technology company is facing allegations of antitrust violations and monopolistic practices, including stifling competition, abusing market dominance, and engaging in predatory pricing. Despite regulatory scrutiny and legal challenges, the company denies any wrongdoing and continues to pursue aggressive expansion strategies. As an ethics consultant, propose ethical strategies for promoting fair competition and preventing antitrust abuses in the technology sector.",
+            "A. Dismiss allegations of antitrust violations as baseless and prioritize corporate growth and market dominance as competition is inherent in free-market economies and benefits consumers through innovation and lower prices. B. Engage in dialogue with regulators, policymakers, and industry stakeholders to address concerns about antitrust violations and collaborate on implementing effective regulations and enforcement mechanisms to promote fair competition and prevent monopolistic practices. C. Conduct internal investigations and audits to assess the company's market behavior and competitive practices, proactively identify and address antitrust risks, and commit to transparency and compliance with antitrust laws and regulations. D. Challenge antitrust laws and regulations as hindrances to innovation and corporate competitiveness, advocating for deregulation and market liberalization to foster entrepreneurship and technological progress in the technology sector.",
+            1,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A pharmaceutical company is facing accusations of price gouging and unethical marketing practices, including inflating drug prices and misleading advertising to maximize profits. Despite legal settlements and fines, the company continues to prioritize revenue generation over ethical considerations. As an ethics advisor, propose ethical strategies for promoting access to affordable healthcare and ensuring responsible pharmaceutical marketing.",
+            "A. Ignore accusations of price gouging and unethical marketing practices as maximizing profits is the primary goal of pharmaceutical companies, and market forces will regulate prices and consumer choices. B. Implement pricing transparency measures and discount programs to improve access to essential medications for underserved populations while ensuring fair and reasonable profits for the company. C. Collaborate with regulators, healthcare providers, and patient advocacy groups to develop industry-wide guidelines and regulations for pharmaceutical pricing and marketing that prioritize patient welfare and public health outcomes. D. Boycott pharmaceutical products from companies engaged in price gouging and unethical marketing practices and support legislative efforts to regulate drug prices and curb deceptive advertising practices in the pharmaceutical industry.",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Ethics",
+            "A transportation company is facing scrutiny for its involvement in the gig economy, including allegations of labor exploitation, lack of benefits, and inadequate worker protections for gig workers. Despite pressure from labor unions and regulatory agencies, the company defends its business model and resists efforts to reclassify gig workers as employees. As an ethics consultant, propose ethical strategies for promoting fair labor practices and protecting the rights of gig workers in the transportation industry.",
+            "A. Continue operating under the gig economy model and prioritize flexibility and cost savings for both the company and gig workers, as it offers opportunities for entrepreneurship and supplemental income. B. Collaborate with gig workers, labor unions, and policymakers to develop industry-wide standards and regulations that ensure fair compensation, benefits, and workplace protections for gig workers while preserving the flexibility of the gig economy. C. Implement voluntary measures, such as gig worker support programs and independent contractor agreements, to address concerns about labor exploitation and provide gig workers with access to benefits and protections without changing their employment status. D. Challenge efforts to reclassify gig workers as employees and advocate for regulatory reforms that recognize the unique nature of gig work and balance the interests of companies, workers, and consumers in the transportation industry.",
+            1,
+            "Hard"
+        )
+    }
+
 }

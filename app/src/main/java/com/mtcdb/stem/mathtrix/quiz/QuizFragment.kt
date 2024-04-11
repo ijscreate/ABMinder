@@ -383,7 +383,6 @@ class QuizFragment : Fragment() {
                 val score = calculateScore()
                 navigateToQuizResult(score)
             }
-
         }
 
         // Start the timer

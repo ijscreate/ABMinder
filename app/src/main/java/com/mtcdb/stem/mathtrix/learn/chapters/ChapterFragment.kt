@@ -5,9 +5,9 @@ import android.view.*
 import androidx.fragment.app.*
 import androidx.recyclerview.widget.*
 import androidx.transition.*
-import com.mtcdb.stem.mathtrix.*
 import com.mtcdb.stem.mathtrix.R
 import com.mtcdb.stem.mathtrix.learn.lessons.*
+import com.mtcdb.stem.mathtrix.learn.subjects.*
 
 class ChaptersFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class ChaptersFragment : Fragment() {
         }
     }
 
-    private lateinit var mainActivity : MainActivity
+    private lateinit var mainActivity : SubjectsActivity
     private lateinit var selectedSubject : String
 
     override fun onCreateView(
@@ -40,7 +40,7 @@ class ChaptersFragment : Fragment() {
         recyclerView.adapter =
             ChaptersAdapter(getChaptersForSubject(selectedSubject), ::onChapterSelected)
 
-        mainActivity = (activity as? MainActivity)!!
+        mainActivity = (activity as? SubjectsActivity)!!
 
         TransitionManager.beginDelayedTransition(container!!, AutoTransition())
 
@@ -51,7 +51,7 @@ class ChaptersFragment : Fragment() {
         val fragmentManager = requireActivity().supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(
-            R.id.fragment_container,
+            R.id.content_frame,
             LessonsFragment.newInstance(chapter, selectedSubject)
         )
         transaction.addToBackStack(null)

@@ -9,6 +9,7 @@ import com.google.android.material.dialog.*
 import com.google.android.material.textfield.*
 import com.google.android.material.textview.*
 import com.mtcdb.stem.mathtrix.*
+import com.mtcdb.stem.mathtrix.calculator.*
 
 class COGSFragment : Fragment() {
 
@@ -92,8 +93,8 @@ class COGSFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        val mainActivity = requireActivity() as MainActivity
-        mainActivity.toolbar.title = getString(R.string.calculator)
+        val activity = requireActivity() as CalculatorOptionsActivity
+        activity.toolbar.title = getString(com.mtcdb.stem.mathtrix.R.string.calculator)
         super.onDestroy()
     }
 

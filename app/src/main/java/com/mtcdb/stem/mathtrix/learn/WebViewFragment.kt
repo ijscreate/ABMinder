@@ -6,9 +6,9 @@ import android.view.*
 import android.webkit.*
 import androidx.fragment.app.*
 import androidx.transition.*
-import com.mtcdb.stem.mathtrix.*
 import com.mtcdb.stem.mathtrix.R
 import com.mtcdb.stem.mathtrix.learn.lessons.*
+import com.mtcdb.stem.mathtrix.learn.subjects.*
 import java.io.*
 import java.nio.charset.*
 
@@ -30,7 +30,7 @@ class WebViewFragment : Fragment() {
 
     }
 
-    private lateinit var mainActivity : MainActivity
+    private lateinit var mainActivity : SubjectsActivity
     private lateinit var selectedChapter : String
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -38,14 +38,15 @@ class WebViewFragment : Fragment() {
         inflater : LayoutInflater, container : ViewGroup?,
         savedInstanceState : Bundle?,
     ) : View {
-        TransitionManager.beginDelayedTransition(container!!, AutoTransition())
         val view = inflater.inflate(R.layout.fragment_webview, container, false)
 
         // Initialize WebView
         val webView : WebView = view.findViewById(R.id.webView)
         webView.settings.javaScriptEnabled = true
 
-        mainActivity = (activity as? MainActivity)!!
+        TransitionManager.beginDelayedTransition(container!!, AutoTransition())
+
+        mainActivity = (activity as? SubjectsActivity)!!
         selectedChapter = arguments?.getString(ARG_SELECTED_CHAPTER) ?: ""
 
         // Load HTML content from assets based on selectedChapter and selectedLesson
@@ -71,7 +72,7 @@ class WebViewFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        mainActivity.toolbar.title = selectedChapter
         super.onDestroy()
+        mainActivity.toolbar.title = selectedChapter
     }
 }

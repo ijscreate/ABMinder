@@ -2,34 +2,39 @@ package com.mtcdb.stem.mathtrix.calculator
 
 import android.annotation.*
 import android.os.*
-import android.view.*
 import androidx.appcompat.widget.*
-import androidx.fragment.app.*
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.*
-import androidx.transition.*
+import com.google.android.material.navigation.*
 import com.mtcdb.stem.mathtrix.*
 import com.mtcdb.stem.mathtrix.R
 import com.mtcdb.stem.mathtrix.calculator.options.*
 
 
-class CalculatorOptionsFragment : Fragment() {
+class CalculatorOptionsActivity : BaseDrawerActivity() {
 
     private lateinit var recyclerView : RecyclerView
     private lateinit var adapter : CalculationOptionAdapter
     private lateinit var searchView : SearchView
+    lateinit var toolbar : Toolbar
+    private lateinit var calculatorFragmentLifecycleObserver: CalculatorFragmentLifecycleObserver
 
-    @SuppressLint("MissingInflatedId", "InflateParams")
-    override fun onCreateView(
-        inflater : LayoutInflater,
-        container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View {
-        val rootView = inflater.inflate(R.layout.fragment_calculator_options, container, false)
 
-        searchView = rootView.findViewById(R.id.calculatorSearchView)
-        val mainActivity = requireActivity() as MainActivity
+    @SuppressLint("MissingInflatedId")
+    override fun onCreate(savedInstanceState : Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.fragment_calculator_options)
 
-        TransitionManager.beginDelayedTransition(container!!, AutoTransition())
+        // Set up the toolbar and drawer
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        setupDrawer(toolbar)
+
+        searchView = findViewById(R.id.calculatorSearchView)
+
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        navView.setCheckedItem(R.id.nav_item_calculator)
+
         // Set up search view
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query : String?) : Boolean {
@@ -42,8 +47,10 @@ class CalculatorOptionsFragment : Fragment() {
             }
         })
 
-        recyclerView = rootView.findViewById(R.id.recyclerViewCalculationOptions)
-        recyclerView.layoutManager = LinearLayoutManager(null)
+        calculatorFragmentLifecycleObserver = CalculatorFragmentLifecycleObserver(toolbar)
+
+        recyclerView = findViewById(R.id.recyclerViewCalculationOptions)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Initialize calculation options
         val calculationOptions = listOf(
@@ -252,25 +259,36 @@ class CalculatorOptionsFragment : Fragment() {
 
             // Check if the calculator fragment is not null
             if (calculatorFragment != null) {
-                mainActivity.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, calculatorFragment)
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.calculator_container, calculatorFragment)
                     .addToBackStack(null)
                     .commit()
                 searchView.clearFocus()
-                mainActivity.toolbar.title = selectedOption.name
-
+                toolbar.title = selectedOption.name
             }
+
+
         }
         // Set the adapter on the recycler view
         recyclerView.adapter = adapter
 
-        return rootView
     }
 
     // Override onDestroy to clear the toolbar title
     override fun onDestroy() {
-        val mainActivity = requireActivity() as MainActivity
-        mainActivity.toolbar.title = getString(R.string.app_name)
         super.onDestroy()
+        supportActionBar?.setTitle(R.string.app_name)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Register the observer when the activity is resumed
+        adapter.registerFragmentLifecycleObserver(calculatorFragmentLifecycleObserver)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Unregister the observer when the activity is paused to avoid memory leaks
+        adapter.unregisterFragmentLifecycleObserver(calculatorFragmentLifecycleObserver)
     }
 }

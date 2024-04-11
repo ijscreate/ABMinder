@@ -4,6 +4,7 @@ import android.annotation.*
 import android.view.*
 import android.widget.*
 import androidx.appcompat.app.*
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.*
 import com.mtcdb.stem.mathtrix.R
 import java.util.*
@@ -15,6 +16,15 @@ class CalculationOptionAdapter(
 ) : RecyclerView.Adapter<CalculationOptionAdapter.ViewHolder>(), Filterable {
 
     private var filteredOptions : List<CalculationOption> = originalOptions
+    private val lifecycleObservers = mutableListOf<LifecycleObserver>()
+
+    fun registerFragmentLifecycleObserver(observer: LifecycleObserver) {
+        lifecycleObservers.add(observer)
+    }
+
+    fun unregisterFragmentLifecycleObserver(observer: LifecycleObserver) {
+        lifecycleObservers.remove(observer)
+    }
 
     override fun getFilter() : Filter {
         return object : Filter() {

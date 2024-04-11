@@ -1,29 +1,42 @@
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:contentDescription="@string/quiz"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+<com.mindinventory.midrawer.MIDrawerView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:id = "@+id/drawer_layout"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:fitsSystemWindows = "true"
+		app:sliderType = "slide"
+		android:orientation = "vertical"
+		>
+
+	<LinearLayout
+			android:layout_width = "match_parent"
+			android:contentDescription = "@string/quiz"
+			android:layout_height = "match_parent"
+			android:orientation = "vertical"
+			>
 
 
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/quiz_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:title="@string/quiz"
-            app:titleTextColor="@color/white"
-            app:titleTextAppearance="@style/TextAppearance.AppCompat.Title"
-            />
+		<androidx.appcompat.widget.Toolbar
+				android:id = "@+id/quiz_toolbar"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:background = "@color/colorPrimaryDark"
+				android:title = "@string/quiz"
+				app:titleTextColor = "@color/white"
+				app:titleTextAppearance = "@style/TextAppearance.AppCompat.Title"
+				/>
 
 
-    <FrameLayout
-            android:id="@+id/quiz_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+		<FrameLayout
+				android:id = "@+id/quiz_container"
+				android:layout_width = "match_parent"
+				android:layout_height = "match_parent"
+				/>
 
 
-</LinearLayout>
+	</LinearLayout>
+
+	<include layout="@layout/drawer_layout" />
+
+</com.mindinventory.midrawer.MIDrawerView>

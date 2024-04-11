@@ -7,7 +7,7 @@ open class QuizDatabaseHelper(context : Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 6
         private const val DATABASE_NAME = "quiz_db.db"
 
         const val TABLE_QUIZ = "quiz"

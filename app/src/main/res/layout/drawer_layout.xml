@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!-- NavigationView -->
+<com.google.android.material.navigation.NavigationView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		xmlns:tools = "http://schemas.android.com/tools"
+		android:id = "@+id/nav_view"
+		android:layout_width = "275dp"
+		android:layout_height = "match_parent"
+		android:layout_gravity = "start"
+		android:fitsSystemWindows = "false"
+		app:itemIconPadding = "16dp"
+		app:drawerLayoutCornerSize = "@dimen/navigation"
+		app:itemTextAppearance = "@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+		app:itemTextAppearanceActiveBoldEnabled = "true"
+		app:elevation = "2dp"
+		app:itemRippleColor = "@color/colorPrimary"
+		app:itemBackground = "@drawable/nav_item"
+		app:headerLayout = "@layout/nav_header"
+		app:menu = "@menu/activity_main_drawer"
+		/>
+
+

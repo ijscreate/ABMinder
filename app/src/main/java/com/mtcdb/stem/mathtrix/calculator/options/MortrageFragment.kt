@@ -11,6 +11,7 @@ import com.google.android.material.textfield.*
 import com.google.android.material.textview.*
 import kotlin.math.*
 import com.mtcdb.stem.mathtrix.R
+import com.mtcdb.stem.mathtrix.calculator.*
 
 class MortgageCalculatorFragment : Fragment() {
 
@@ -166,5 +167,11 @@ class MortgageCalculatorFragment : Fragment() {
             .setMessage(explanation)
             .setPositiveButton("OK", null)
             .show()
+    }
+
+    override fun onDestroy() {
+        val activity = requireActivity() as CalculatorOptionsActivity
+        activity.toolbar.title = getString(com.mtcdb.stem.mathtrix.R.string.calculator)
+        super.onDestroy()
     }
 }

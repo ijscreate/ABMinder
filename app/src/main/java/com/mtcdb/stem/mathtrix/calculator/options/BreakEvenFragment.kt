@@ -6,6 +6,7 @@ import android.widget.*
 import androidx.fragment.app.*
 import com.google.android.material.dialog.*
 import com.mtcdb.stem.mathtrix.*
+import com.mtcdb.stem.mathtrix.calculator.*
 
 class BreakEvenFragment : Fragment() {
 
@@ -91,8 +92,8 @@ class BreakEvenFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        val mainActivity = requireActivity() as MainActivity
-        mainActivity.toolbar.title = getString(R.string.calculator)
+        val activity = requireActivity() as CalculatorOptionsActivity
+        activity.toolbar.title = getString(com.mtcdb.stem.mathtrix.R.string.calculator)
         super.onDestroy()
     }
 

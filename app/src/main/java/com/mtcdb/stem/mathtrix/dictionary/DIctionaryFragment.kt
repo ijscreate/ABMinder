@@ -6,16 +6,19 @@ import android.database.*
 import android.os.*
 import android.view.*
 import android.widget.*
+import androidx.appcompat.app.*
 import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.*
-import androidx.lifecycle.*
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.*
+import androidx.drawerlayout.widget.*
 import androidx.recyclerview.widget.*
 import androidx.transition.*
+import com.mtcdb.stem.mathtrix.*
 import com.mtcdb.stem.mathtrix.R
 import com.mtcdb.stem.mathtrix.dictionary.database.*
 import com.mtcdb.stem.mathtrix.dictionary.recent.*
 
-class DictionaryFragment : Fragment() {
+class DictionaryActivity : BaseDrawerActivity() {
 
     private lateinit var searchView : SearchView
     private lateinit var termTextView : TextView
@@ -25,35 +28,53 @@ class DictionaryFragment : Fragment() {
     private lateinit var recentSearchesRecyclerView : RecyclerView
     private lateinit var recentSearchesAdapter : RecentSearchAdapter
     private lateinit var viewModel : DictionaryViewModel
+    private lateinit var toolbar : Toolbar
+    private lateinit var drawerLayout : DrawerLayout
+    private lateinit var toggle : ActionBarDrawerToggle
 
     @SuppressLint("MissingInflatedId")
-    override fun onCreateView(
-        inflater : LayoutInflater,
-        container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View {
-        val rootView = inflater.inflate(R.layout.fragment_dictionary, container, false)
+    override fun onCreate(savedInstanceState : Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_dictionary)
 
-        searchView = rootView.findViewById(R.id.searchView)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        toolbar = findViewById(R.id.dicToolBar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        setupDrawer(toolbar)
+
+        toggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        searchView = findViewById(R.id.searchView)
         searchView.queryHint = "Search terms..."
-        layoutDictionary = rootView.findViewById(R.id.dictionary_layout)
+        layoutDictionary = findViewById(R.id.dictionary_layout)
         layoutDictionary.visibility = View.GONE
 
-        termTextView = rootView.findViewById(R.id.termTextView)
-        termDefinitionTextView = rootView.findViewById(R.id.term_definition)
-        termExamplesListView = rootView.findViewById(R.id.term_examples)
-        recentSearchesRecyclerView = rootView.findViewById(R.id.recent_searches_list)
+        termTextView = findViewById(R.id.termTextView)
+        termDefinitionTextView = findViewById(R.id.term_definition)
+        termExamplesListView = findViewById(R.id.term_examples)
+        recentSearchesRecyclerView = findViewById(R.id.recent_searches_list)
         recentSearchesRecyclerView.visibility = View.VISIBLE
-        val recentText : TextView = rootView.findViewById(R.id.recentText)
+        val recentText : TextView = findViewById(R.id.recentText)
         recentText.visibility = View.GONE
 
-        TransitionManager.beginDelayedTransition(container!!, AutoTransition())
+        TransitionManager.beginDelayedTransition(
+            findViewById(android.R.id.content),
+            AutoTransition()
+        )
 
-        viewModel = ViewModelProvider(this)[DictionaryViewModel::class.java]
+        viewModel = DictionaryViewModel()
 
         // Initialize and set up the RecentSearchAdapter
-        recentSearchesAdapter = RecentSearchAdapter(requireContext(), { clickedSearch ->
-            Toast.makeText(requireContext(), clickedSearch.query, Toast.LENGTH_SHORT)
+        recentSearchesAdapter = RecentSearchAdapter(this, { clickedSearch ->
+            Toast.makeText(this, clickedSearch.query, Toast.LENGTH_SHORT)
                 .show()
         }) {
         }
@@ -61,21 +82,9 @@ class DictionaryFragment : Fragment() {
         recentSearchesRecyclerView.adapter = recentSearchesAdapter
 
         // Observe changes in recent searches
-        viewModel.recentSearches.observe(viewLifecycleOwner) { searches ->
+        viewModel.recentSearches.observe(this) { searches ->
             recentSearchesAdapter.submitList(searches)
         }
-
-        /**
-        // Observe changes in suggestions
-        if (recentSearchesAdapter.itemCount == 0) {
-        recentText.visibility = View.VISIBLE
-        recentSearchesRecyclerView.visibility = View.GONE
-        recent.visibility = View.GONE
-        } else {
-        recentText.visibility = View.GONE
-        recentSearchesRecyclerView.visibility = View.VISIBLE
-        recent.visibility = View.VISIBLE
-        } */
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query : String?) : Boolean {
@@ -96,12 +105,10 @@ class DictionaryFragment : Fragment() {
 
                 // Update the cursor in the adapter as the user types
                 val cursor = getSuggestionsCursor(newText)
-                searchView.suggestionsAdapter = context?.let {
-                    DictionarySuggestionAdapter(
-                        it,
-                        cursor
-                    )
-                }
+                searchView.suggestionsAdapter = DictionarySuggestionAdapter(
+                    this@DictionaryActivity,
+                    cursor
+                )
                 return true
             }
         })
@@ -132,17 +139,33 @@ class DictionaryFragment : Fragment() {
                 return true
             }
         })
+    }
 
-        return rootView
+    override fun onOptionsItemSelected(item : MenuItem) : Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Open or close the navigation drawer
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                } else {
+                    drawerLayout.openDrawer(GravityCompat.START)
+                }
+                true
+            }
+
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 
     private fun getSuggestionsCursor(query : String?) : Cursor? {
-        val db = context?.let { DictionaryDatabaseHelper(it).readableDatabase }
+        val db = DictionaryDatabaseHelper(this).readableDatabase
         val selection = "term LIKE ?"
         val selectionArgs = arrayOf("$query%")
         val columns = arrayOf("_id", "term", "definition", "example")
 
-        return db?.query(
+        return db.query(
             "dictionary_terms",
             columns,
             selection,
@@ -155,7 +178,7 @@ class DictionaryFragment : Fragment() {
 
     private fun handleRecentSearch(query : String, definition : String, example : String) {
         val sharedPreferences =
-            requireContext().getSharedPreferences("SearchHistory", Context.MODE_PRIVATE)
+            getSharedPreferences("SearchHistory", Context.MODE_PRIVATE)
 
         // Retrieve existing search history
         val searchHistory =
@@ -174,7 +197,6 @@ class DictionaryFragment : Fragment() {
 
         // Save the updated search history
         sharedPreferences.edit().putStringSet("searchHistory", searchHistory.toSet()).apply()
-
     }
 
     private fun performSearch(query : String) {
@@ -198,9 +220,8 @@ class DictionaryFragment : Fragment() {
             handleRecentSearch(term, definition, example)
         } else {
             // No match found, show a message
-            Toast.makeText(requireContext(), "No match found", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No match found", Toast.LENGTH_SHORT).show()
             searchView.setQuery("", false)
         }
     }
-
 }

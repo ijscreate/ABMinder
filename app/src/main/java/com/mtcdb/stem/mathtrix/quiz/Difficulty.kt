@@ -33,13 +33,12 @@ class Difficulty : Fragment() {
         subjectSpinner = rootView.findViewById(R.id.spinner)
         val description = rootView.findViewById<TextView>(R.id.description)
         val desc = """
-            Welcome to the ABMinder Quiz! This quiz covers a wide range of topics in Business Mathematics, FABM 1, Applied Economics, and Business Finance. Test your knowledge across these subjects and unlock new difficulty levels as you progress. With three levels of difficulty—easy, medium, and hard—this quiz offers a challenging yet rewarding experience for students and professionals alike. Can you conquer all the levels and become a master of ABM concepts?
+            Welcome to the ABMinder Quiz! This quiz covers a wide range of topics in Business Mathematics, FABM 1, Applied Economics, and Business Finance.
         """.trimIndent()
         description.text = desc
 
         val textView2 = rootView.findViewById<TextView>(R.id.textView2)
         val text = """
-            Choose your subject and difficulty level before starting the quiz.
             Read each question carefully and select the option that you believe best answers the question.
             You must answer at least 8 out of 10 questions correctly to unlock the medium difficulty level. To unlock the hard difficulty level, you need to score at least 7 out of 10 questions correctly on the medium difficulty level.
             Difficulty levels are unlocked progressively, so start with the easy level and work your way up.
@@ -52,7 +51,14 @@ class Difficulty : Fragment() {
 
         // Initialize subject options
         val subjects =
-            arrayOf("Business Mathematics", "Business Finance", "FABM 1", "Applied Economics")
+            arrayOf(
+                "Business Mathematics",
+                "Business Finance",
+                "Business Ethics",
+                "FABM 1",
+                "FABM 2",
+                "Applied Economics"
+            )
 
         // adapter for subject spinner
         val subjectAdapter =

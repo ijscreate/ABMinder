@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.fragment.app.*
 import com.google.android.material.dialog.*
 import com.mtcdb.stem.mathtrix.*
+import com.mtcdb.stem.mathtrix.calculator.*
 import java.text.*
 
 class SavingsGoalFragment : Fragment() {
@@ -77,11 +78,10 @@ class SavingsGoalFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        val mainActivity = requireActivity() as MainActivity
-        mainActivity.toolbar.title = getString(R.string.calculator)
+        val activity = requireActivity() as CalculatorOptionsActivity
+        activity.toolbar.title = getString(com.mtcdb.stem.mathtrix.R.string.calculator)
         super.onDestroy()
     }
-
     private fun calculateSavingsGoal() {
         val goalAmount = goalAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
         val monthlySaving = monthlySavingEditText.text.toString().toDoubleOrNull() ?: 0.0

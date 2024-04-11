@@ -9,7 +9,7 @@ import androidx.transition.*
 import com.mtcdb.stem.mathtrix.*
 import com.mtcdb.stem.mathtrix.R
 import com.mtcdb.stem.mathtrix.learn.*
-
+import com.mtcdb.stem.mathtrix.learn.subjects.*
 
 class LessonsFragment : Fragment() {
 
@@ -52,15 +52,14 @@ class LessonsFragment : Fragment() {
         val fragmentManager = requireActivity().supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         transaction.replace(
-            R.id.fragment_container,
+            R.id.content_frame,
             WebViewFragment.newInstance(arguments?.getString(ARG_SELECTED_CHAPTER), lesson)
         )
         transaction.addToBackStack(null)
         transaction.commit()
-        val mainActivity = requireActivity() as MainActivity
+        val mainActivity = requireActivity() as SubjectsActivity
         mainActivity.toolbar.title = lesson.name
     }
-
 
     private fun getLessonsForChapter(chapter : String) : List<Lesson> {
         return when (chapter) {
@@ -121,7 +120,6 @@ class LessonsFragment : Fragment() {
                 Lesson("Profitability", "profitability.html"),
                 Lesson("Efficiency", "efficiency.html"),
                 Lesson("Financial Leverage", "financial_leverage.html"),
-                Lesson("Case Analysis", "case_analysis.html"),
                 Lesson("Horizontal and Vertical Analysis", "hover_analysis.html"),
             )
 
@@ -215,7 +213,9 @@ class LessonsFragment : Fragment() {
             "Introduction to Economics" -> listOf(
                 Lesson("Introduction to Economics", "applied_economics.html"),
                 Lesson("Economic Development", "economic_development.html"),
-                Lesson("Economic History", "economic_history.html"),
+                Lesson("Economic Resources", "economic_resources.html"),
+                Lesson("Economic Problems", "economic_problems.html"),
+                Lesson("Why Economics is Important", "why_economics_important.html"),
                 Lesson("GDP & GNP", "gdp_gnp.html"),
             )
 
@@ -338,7 +338,7 @@ class LessonsFragment : Fragment() {
                 Lesson("Relevant Terminologies", "relevant_terminologies.html"),
                 Lesson("Accounting for Share Issue", "accounting_share_issue.html"),
                 Lesson("Requirements/Format for Equity", "requirements_format_equity.html"),
-                )
+            )
 
             "Statement of Cash Flows" -> listOf(
                 Lesson("Statement of Cash Flows", ""),
@@ -348,7 +348,7 @@ class LessonsFragment : Fragment() {
                 Lesson("Investing Activities", "investment_activities.html"),
                 Lesson("Financing Activities", "financing_activities.html"),
                 Lesson("Cash", "cash.html"),
-                )
+            )
 
             "Bank Account and Financial Health" -> listOf(
                 Lesson("Bank Accounts and Financial Health", "bank_accounts_financial_health.html"),
@@ -361,12 +361,15 @@ class LessonsFragment : Fragment() {
                 Lesson("Outstanding Checks", "outstanding_checks.html"),
                 Lesson("Debit Cards", "debit_cards.html"),
                 Lesson("ATMs", "atms.html"),
-                Lesson("Privacy Protections and Concerns in the Philippines", "privacy_concerns.html"),
+                Lesson(
+                    "Privacy Protections and Concerns in the Philippines",
+                    "privacy_concerns.html"
+                ),
 
                 )
 
             //PRINCIPLES OF MARKETING
-            "Market Principles and Strategies" -> listOf(
+            "Marketing Principles and Strategies" -> listOf(
                 Lesson("What is Marketing?", "what_is_marketing.html"),
                 Lesson("Traditional Approach to Marketing", "traditional_approach_marketing.html"),
                 Lesson("Goals of Marketing", "goals_marketing.html"),
@@ -453,7 +456,7 @@ class LessonsFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        val mainActivity = requireActivity() as MainActivity
+        val mainActivity = requireActivity() as SubjectsActivity
         mainActivity.toolbar.title = selectedSubject
     }
 }

@@ -24,110 +24,40 @@ import com.mtcdb.stem.mathtrix.learn.subjects.*
 import com.mtcdb.stem.mathtrix.quiz.*
 import com.mtcdb.stem.mathtrix.quiz.database.*
 import com.mtcdb.stem.mathtrix.settings.*
-import java.util.*
-import kotlin.random.Random
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseDrawerActivity() {
 
     lateinit var toolbar : Toolbar
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var layoutCalculator : LinearLayout
-    private lateinit var dbHelper : QuizDatabaseHelper
-    private lateinit var termDatabaseHelper : DictionaryDatabaseHelper
     private var backPressedTime : Long = 0
-    private lateinit var navView : NavigationView
-
-    // List of random tips or motivations
-    private val tipsList = listOf(
-        "Stay focused and never give up!",
-        "Take breaks to recharge your energy.",
-        "Set achievable goals and celebrate your progress.",
-        "Keep learning and expanding your skills.",
-        "Believe in yourself and your abilities.",
-        "Stay positive and optimistic.",
-        "Surround yourself with supportive people.",
-        "Stay organized and prioritize your tasks.",
-        "Embrace challenges as opportunities for growth.",
-        "Stay persistent and persevere through obstacles.",
-        "Practice time management and avoid procrastination.",
-        "Maintain a healthy work-life balance.",
-        "Learn from your mistakes and use them as learning experiences.",
-        "Stay curious and open-minded to new perspectives.",
-        "Develop a growth mindset and embrace continuous improvement.",
-        "Celebrate small wins and acknowledge your progress.",
-        "Stay disciplined and consistent in your efforts.",
-        "Seek feedback and use it constructively.",
-        "Find inspiration in others' success stories.",
-        "Practice self-care and prioritize your well-being.",
-        "Stay humble and always strive to learn more.",
-        "Embrace new challenges and step out of your comfort zone.",
-        "Cultivate a positive attitude and spread positivity.",
-        "Stay resilient and bounce back from setbacks.",
-        "Develop strong time management skills.",
-        "Practice mindfulness and stay present in the moment.",
-        "Celebrate diversity and embrace different perspectives.",
-        "Stay accountable and take responsibility for your actions.",
-        "Develop effective communication skills.",
-        "Practice gratitude and appreciate the little things.",
-        "Stay determined and never lose sight of your goals.",
-        "Embrace change and adapt to new situations.",
-        "Stay focused on continuous self-improvement.",
-        "Cultivate a sense of purpose and passion for what you do.",
-        "Stay motivated and inspired by your dreams and aspirations.",
-        "Learn about different accounting principles and practices.",
-        "Stay updated with the latest business trends and technologies.",
-        "Develop critical thinking and problem-solving skills.",
-        "Network and build professional connections.",
-        "Seek internships or practical experience in your field.",
-        "Learn effective marketing and business strategies.",
-        "Develop strong leadership and teamwork skills.",
-        "Stay organized and detail-oriented in your work.",
-        "Embrace ethical practices and integrity in business.",
-        "Develop financial literacy and investment knowledge.",
-        "Stay adaptable and open to learning new business models.",
-        "Cultivate entrepreneurial skills and innovative thinking.",
-        "Learn to analyze and interpret financial statements.",
-        "Stay informed about relevant laws and regulations.",
-        "Develop effective communication skills for presentations and meetings.",
-        "Embrace continuous learning and professional development.",
-        "Stay motivated by the potential for career growth and advancement.",
-        "Learn to manage resources and budgets effectively.",
-        "Cultivate strategic thinking and decision-making skills.",
-        "Stay passionate about your chosen field and its impact."
-    )
+    private lateinit var sharedPreferences : SharedPreferences
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    @SuppressLint("InflateParams")
+    @SuppressLint("InflateParams", "MissingInflatedId")
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        drawerLayout = findViewById(R.id.drawer_layout)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
-        dbHelper = QuizDatabaseHelper(this)
-        val quizDataPopulator = QuizDataPopulator(dbHelper)
-        quizDataPopulator.populateQuizData()
-
-        termDatabaseHelper = DictionaryDatabaseHelper(this)
-        val insertTerms = DictionaryDataInsertion(this, termDatabaseHelper)
-        insertTerms.insert()
-
+        setupDrawer(toolbar)
 
         val fab = findViewById<FloatingActionButton>(com.mtcdb.stem.mathtrix.R.id.fab)
-        drawerLayout = findViewById(R.id.drawer_layout)
 
         fab.setOnClickListener {
             showAddTermDialog()
         }
 
+        setCurrentFragment(DashboardFragment())
+
         // Display a random tip or motivation when the activity is created
-        displayRandomTip()
+        //displayRandomTip()
 
         // Initialize toolbar and other UI components
         initViews()
-
 
         val calcView = layoutInflater.inflate(
             R.layout.fragment_calculator_options, null
@@ -135,88 +65,48 @@ class MainActivity : AppCompatActivity() {
         layoutCalculator = calcView.findViewById(R.id.calculator_layout)
 
         toggle = ActionBarDrawerToggle(
-            this,
-            drawerLayout,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-
+            this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        navView = findViewById(R.id.nav_view)
-        navView.itemIconTintList = null // Disable tinting
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_item_calculator -> {
-                    setCurrentFragment(CalculatorOptionsFragment())
-                    toolbar.title = getString(R.string.calculator)
-                }
-
-                R.id.nav_item_dictionary -> {
-                    setCurrentFragment(DictionaryFragment())
-                    toolbar.title = getString(R.string.dictionary)
-                }
-
-                R.id.nav_item_learn -> {
-                    setCurrentFragment(SubjectsFragment())
-                    toolbar.title = "Learn"
-                }
-
-                /*
-                R.id.nav_item_learn -> {
-                supportFragmentManager.beginTransaction()
-                .replace(
-                R.id.fragment_container,
-                LearnFragment.newInstance(),
-                LearnFragment::class.java.simpleName
-                )
-                .addToBackStack(LearnFragment.TAG)
-                .commit()
-                drawerLayout.closeDrawer(GravityCompat.START)
-                toolbar.title = getString(R.string.learn)
-                }
-                */
-
-
-                R.id.nav_item_quiz -> {
-                    val intent = Intent(this, DifficultyLevel::class.java)
-                    startActivity(intent)
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                    toolbar.title = getString(R.string.quiz)
-                    navView.setCheckedItem(R.id.nav_item_dictionary)
-                }
-            }
-            return@setNavigationItemSelectedListener true
-        }
-        navView.setCheckedItem(R.id.nav_item_dictionary)
-
         onBackPressedDispatcher.addCallback(this) {
             handleBackPressed()
         }
+
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+
+        if (isFirstTimeUser()) {
+            showUnderDevelopmentMessage()
+            markFirstTimeUser()
+        }
     }
 
-    private fun displayRandomTip() {
-        // Get a random index within the range of the tipsList
-        val randomIndex = Random.nextInt(tipsList.size)
-
-        // Get the random tip using the random index
-        val randomTip = tipsList[randomIndex]
-        val textViewRandomTip = findViewById<TextView>(R.id.randomTips)
-
-        // Display the random tip on the TextView
-        textViewRandomTip.text = randomTip
+    private fun isFirstTimeUser() : Boolean {
+        return sharedPreferences.getBoolean("firstTimeUser", true)
     }
 
-    override fun onDestroy() {
-        navView.setCheckedItem(R.id.nav_item_dictionary)
-        super.onDestroy()
+    private fun markFirstTimeUser() {
+        sharedPreferences.edit().putBoolean("firstTimeUser", false).apply()
     }
 
-    override fun onResume() {
-        navView.setCheckedItem(R.id.nav_item_dictionary)
-        super.onResume()
+    private fun showUnderDevelopmentMessage() {
+        val message = """
+            This app is still under development and may encounter the following:
+            
+            - Bugs or unexpected behavior.
+            - Incomplete features or missing functionality.
+            - Changes in the user interface or navigation.
+            - Performance issues or slow response times.
+            
+            Your feedback is valuable to us as we work to improve the app. Thank you for your patience and understanding!
+        """.trimIndent()
+
+        AlertDialog.Builder(this).setTitle("UNDER DEVELOPMENT").setMessage(message)
+            .setCancelable(false).setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }.show()
     }
 
     private fun initViews() {
@@ -226,33 +116,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setCurrentFragment(fragment : Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
+            .addToBackStack(null).commit()
         drawerLayout.closeDrawer(GravityCompat.START)
-        // Update FAB visibility based on the current fragment
-        setFabVisibility(fragment)
-    }
-
-
-    private fun setFabVisibility(fragment : Fragment) {
-        val fab = findViewById<FloatingActionButton>(com.mtcdb.stem.mathtrix.R.id.fab)
-        fab.visibility = when (fragment) {
-            is DictionaryFragment -> View.VISIBLE
-            else -> View.GONE
-        }
     }
 
     private fun showAddTermDialog() {
-        val dialogView = LayoutInflater.from(this@MainActivity)
-            .inflate(R.layout.dialog_add_term, null)
-        val termEditText =
-            dialogView.findViewById<EditText>(R.id.termEditText)
-        val definitionEditText =
-            dialogView.findViewById<EditText>(R.id.definitionEditText)
-        val exampleEditText =
-            dialogView.findViewById<EditText>(R.id.exampleEditText)
+        val dialogView =
+            LayoutInflater.from(this@MainActivity).inflate(R.layout.dialog_add_term, null)
+        val termEditText = dialogView.findViewById<EditText>(R.id.termEditText)
+        val definitionEditText = dialogView.findViewById<EditText>(R.id.definitionEditText)
+        val exampleEditText = dialogView.findViewById<EditText>(R.id.exampleEditText)
 
         val dialog =
             AlertDialog.Builder(this@MainActivity).setTitle("Add New Term").setView(dialogView)
@@ -274,9 +148,7 @@ class MainActivity : AppCompatActivity() {
         if (term.isEmpty() && definition.isNullOrBlank()) {
             // Inform the user that the term is required
             Toast.makeText(
-                this@MainActivity,
-                "Term and definition are required.",
-                Toast.LENGTH_SHORT
+                this@MainActivity, "Term and definition are required.", Toast.LENGTH_SHORT
             ).show()
             return
         }
@@ -307,8 +179,7 @@ class MainActivity : AppCompatActivity() {
     private fun clearInputFields(dialogView : View) {
         // Clear input fields after adding the term
         dialogView.findViewById<EditText>(R.id.termEditText).text = null
-        dialogView.findViewById<EditText>(R.id.definitionEditText).text =
-            null
+        dialogView.findViewById<EditText>(R.id.definitionEditText).text = null
         dialogView.findViewById<EditText>(R.id.exampleEditText).text = null
     }
 
@@ -366,19 +237,18 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
+            /*
             R.id.action_progress -> {
                 setCurrentFragment(QuizProgressFragment())
                 toolbar.title = "Progress"
                 true
-            }
+            } */
 
             R.id.action_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
                 val bundle = Bundle().apply {
                     ActivityOptions.makeCustomAnimation(
-                        this@MainActivity,
-                        R.transition.zoom_in,
-                        R.transition.zoom_out
+                        this@MainActivity, R.transition.zoom_in, R.transition.zoom_out
                     )
                 }
 
@@ -389,8 +259,8 @@ class MainActivity : AppCompatActivity() {
             R.id.action_edit_term -> {
                 // Navigate to the EditTermFragment
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, EditTermFragment())
-                    .addToBackStack(null).commit()
+                    .replace(R.id.fragment_container, EditTermFragment()).addToBackStack(null)
+                    .commit()
                 true
             }
 

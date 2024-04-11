@@ -7,6 +7,7 @@ import androidx.fragment.app.*
 import com.google.android.material.dialog.*
 import com.google.android.material.textfield.*
 import com.mtcdb.stem.mathtrix.*
+import com.mtcdb.stem.mathtrix.calculator.*
 
 class HHIFragment : Fragment() {
 
@@ -109,5 +110,11 @@ class HHIFragment : Fragment() {
             .setMessage(explanation)
             .setPositiveButton("OK", null)
             .show()
+    }
+
+    override fun onDestroy() {
+        val activity = requireActivity() as CalculatorOptionsActivity
+        activity.toolbar.title = getString(com.mtcdb.stem.mathtrix.R.string.calculator)
+        super.onDestroy()
     }
 }

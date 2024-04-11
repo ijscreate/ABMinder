@@ -1,19 +1,21 @@
 package com.mtcdb.stem.mathtrix.quiz
 
-import android.annotation.*
-import android.os.*
-import android.view.*
-import androidx.appcompat.app.*
-import androidx.appcompat.widget.*
-import com.google.android.material.dialog.*
-import com.mtcdb.stem.mathtrix.*
+import android.annotation.SuppressLint
+import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.navigation.NavigationView
+import com.mtcdb.stem.mathtrix.BaseDrawerActivity
+import com.mtcdb.stem.mathtrix.R
 
 @Suppress("DEPRECATION")
-class DifficultyLevel : AppCompatActivity() {
-    private lateinit var toolbar : Toolbar
+class DifficultyLevel : BaseDrawerActivity() {
+
+    private lateinit var toolbar: Toolbar
 
     @SuppressLint("MissingInflatedId", "RestrictedApi")
-    override fun onCreate(savedInstanceState : Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_difficulty_level)
 
@@ -21,12 +23,16 @@ class DifficultyLevel : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        setupDrawer(toolbar) // Setup the drawer layout
+
         supportFragmentManager.beginTransaction().replace(R.id.quiz_container, Difficulty())
             .commit()
 
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        navView.setCheckedItem(R.id.nav_item_quiz)
     }
 
-    override fun onOptionsItemSelected(item : MenuItem) : Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
                 showExitQuizDialog()
@@ -64,11 +70,4 @@ class DifficultyLevel : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("InflateParams")
-    override fun onDestroy() {
-        val mainActivity = layoutInflater.inflate(R.layout.activity_main, null)
-        val toolbar = mainActivity.findViewById<Toolbar>(R.id.toolbar)
-        toolbar.title = "ABMinder"
-        super.onDestroy()
-    }
 }
