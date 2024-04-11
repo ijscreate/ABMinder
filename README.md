@@ -1,31 +1,35 @@
-# MathTrix: Your Ultimate Business Mathematics Companion
+# ABMinder: Your Ultimate ABM Learning Companion
 
-#### Elevate your understanding of Business Mathematics with MathTrix, the all-in-one app designed to empower ABM (Accountancy, Business, and Management) students on their academic journey. Tailored for your success, MathTrix combines powerful features to make learning, practicing, and mastering Business Mathematics an engaging and rewarding experience.
+Welcome to ABMinder – your ultimate companion for mastering Business Mathematics, Business Finance, FABM 1, and Applied Economics!
 
+ABMinder is a mobile application developed by our dedicated team of researchers at Mother Theresa Colegio De Balatan. Designed specifically for ABM (Accountancy, Business, and Management) students, ABMinder aims to provide a comprehensive and interactive learning experience to support students in their academic journey.
 
-## Key Features:
+Key Features of ABMinder:
 
-### 1. Business Mathematics Calculator:
-- Perform complex calculations with ease.
-- Solve financial equations, percentages, and more.
-- Your go-to tool for quick and accurate computations.
+1. Dictionary:
+   - Access a comprehensive dictionary of business and finance terms directly within the ABMinder app.
+   - Look up definitions, explanations, and examples to enhance your understanding of key terminology used in your studies.
 
-### 2. Business Mathematics Dictionary:
-- Explore a comprehensive dictionary with a wide range of terms.
-- Understand definitions, formulas, and real-world applications.
-- Enhance your business math vocabulary effortlessly.
+2. Calculator:
+   - Utilize specialized calculators for various financial calculations, such as compound interest, annuities, present value, and more.
+   - Tailored to the needs of ABM students, providing accurate and efficient solutions to complex mathematical problems.
 
-### 3. Lessons and Tips:
-- Access curated lessons and insightful tips for challenging topics.
-- Learn from concise explanations and practical examples.
-- Strengthen your grasp on core concepts.
+3. Lessons:
+   - Access detailed lessons and tutorials covering essential topics in Business Mathematics, Business Finance, FABM 1, FABM 2, Business Ethics, Principles of Marketing, Organization and Management, and Applied Economics.
+   - Carefully curated content designed to help you understand complex concepts and build a solid foundation in these subjects.
 
-### 4. Quiz and Progress Tracking:
-- Test your knowledge with interactive quizzes.
-- Track your progress and identify areas for improvement.
-- Reinforce learning through a gamified experience.
+4. Quiz:
+   - Test your knowledge and reinforce your learning with interactive quizzes and practice exercises.
+   - Track your progress and identify areas for improvement with quizzes designed to simulate exam conditions.
 
+5. Personalized Study Plans:
+   - Create personalized study plans tailored to your individual learning needs and goals.
+   - Set reminders, track your study time, and stay organized to maximize your productivity and academic success.
 
-#### MathTrix is more than just an app; it's a companion that grows with you throughout your ABM academic journey. With a user-friendly interface, rich content, and interactive features, MathTrix is the tool you need to excel in Business Mathematics.
+6. Real-World Examples:
+   - Explore real-world examples and case studies to illustrate key concepts and their practical applications in the business world.
+   - Bridging the gap between theory and practice, helping you understand how theoretical concepts are applied in real-life scenarios.
 
-#### Download MathTrix now and transform the way you approach and master the complexities of Business Mathematics. Your success begins with MathTrix!
+7. User-Friendly Interface:
+   - ABMinder features a user-friendly interface designed for seamless navigation and ease of use.
+   - Provides a convenient and accessible learning experience anytime, anywhere – whether at home, in the library, or on the go.
