@@ -17,6 +17,7 @@ Key Features of ABMinder:
 3. Lessons:
    - Access detailed lessons and tutorials covering essential topics in Business Mathematics, Business Finance, FABM 1, FABM 2, Business Ethics, Principles of Marketing, Organization and Management, and Applied Economics.
    - Carefully curated content designed to help you understand complex concepts and build a solid foundation in these subjects.
+   - (Note: Lessons are created using HTML.)
 
 4. Quiz:
    - Test your knowledge and reinforce your learning with interactive quizzes and practice exercises.
