@@ -10,7 +10,7 @@
 	<uses-permission android:name = "com.android.alarm.permission.SET_ALARM" />
 
 	<application
-			android:name = "com.mtcdb.stem.mathtrix.MyApplication"
+			android:name = "com.ijs.abminder.MyApplication"
 			android:allowBackup = "true"
 			android:dataExtractionRules = "@xml/data_extraction_rules"
 			android:fullBackupContent = "@xml/backup_rules"
@@ -21,7 +21,7 @@
 			android:theme = "@style/AppTheme"
 			tools:targetApi = "tiramisu">
 		<activity
-				android:name = "com.mtcdb.stem.mathtrix.WelcomeActivity"
+				android:name = "com.ijs.abminder.WelcomeActivity"
 				android:exported = "true"
 				android:screenOrientation = "unspecified"
 				tools:ignore = "DiscouragedApi">
@@ -31,15 +31,15 @@
 			</intent-filter>
 		</activity>
 		<activity
-				android:name = "com.mtcdb.stem.mathtrix.settings.SettingsActivity"
+				android:name = "com.ijs.abminder.settings.SettingsActivity"
 				android:exported = "false"
 				android:label = "@string/title_activity_settings" />
 		<activity
-				android:name = "com.mtcdb.stem.mathtrix.MainActivity"
+				android:name = ".MainActivity"
 				android:exported = "false"
 				android:windowSoftInputMode = "adjustResize" />
 		<activity
-				android:name = "com.mtcdb.stem.mathtrix.quiz.DifficultyLevel"
+				android:name = "com.ijs.abminder.quiz.DifficultyLevel"
 				android:exported = "false" />
 
 		<receiver

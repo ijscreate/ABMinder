@@ -2,8 +2,7 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/futureValueCardView"
-        android:layout_width="match_parent"
+		android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
@@ -28,7 +27,7 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="FUTURE VALUE"
+                    android:text="@string/future_value"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:gravity="center"

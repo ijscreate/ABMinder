@@ -7,7 +7,7 @@ plugins {
 
 android {
 
-    namespace 'com.mtcdb.stem.mathtrix'
+    namespace 'com.ijs.abminder'
     compileSdk 34
 
     repositories {
@@ -17,12 +17,11 @@ android {
     }
 
     defaultConfig {
-        applicationId 'com.mtcdb.stem.abminder'
+        applicationId 'com.ijs.abminder'
         minSdk 26
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

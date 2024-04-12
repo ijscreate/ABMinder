@@ -2,8 +2,7 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/equityMultiplierCardView"
-        android:layout_width="match_parent"
+		android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
@@ -26,8 +25,7 @@
 
             <!-- Title TextView -->
             <TextView
-                    android:id="@+id/textViewTitle"
-                    android:layout_width="match_parent"
+		            android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/equity_multiplier"
                     android:textSize="18sp"

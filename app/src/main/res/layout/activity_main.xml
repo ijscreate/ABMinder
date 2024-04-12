@@ -9,7 +9,7 @@
 		android:fitsSystemWindows = "true"
 		app:sliderType = "slide"
 		android:orientation = "vertical"
-		tools:context = "com.mtcdb.stem.mathtrix.MainActivity"
+		tools:context = ".MainActivity"
 		>
 
 

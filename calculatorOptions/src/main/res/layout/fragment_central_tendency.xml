@@ -25,8 +25,7 @@
 
             <!-- Data Entry Section -->
             <TextView
-                    android:id="@+id/textViewDataEntry"
-                    android:layout_width="match_parent"
+		            android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/enter_data_separated_by_commas_e_g_1_2_3_4"
                     android:textSize="16sp"
@@ -34,8 +33,7 @@
                     />
 
             <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayoutData"
-                    android:layout_width="match_parent"
+		            android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/data"
                     >
