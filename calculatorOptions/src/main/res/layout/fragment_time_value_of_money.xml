@@ -2,8 +2,7 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tvmCardView"
-        android:layout_width="match_parent"
+		android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
@@ -140,8 +139,7 @@
                     >
 
                 <Button
-                        android:id="@+id/buttonReset"
-                        android:layout_width="match_parent"
+		                android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/reset"
                         android:layout_weight="1"
@@ -149,8 +147,7 @@
                         />
 
                 <Button
-                        android:id="@+id/buttonShowSolution"
-                        android:layout_width="match_parent"
+		                android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/show_explanation"
                         android:layout_weight="1"

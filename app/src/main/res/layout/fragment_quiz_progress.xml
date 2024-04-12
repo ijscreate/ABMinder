@@ -172,7 +172,6 @@
 					>
 
 				<TextView
-						android:id = "@+id/tvCurrentStreakTitle"
 						android:layout_width = "0dp"
 						android:layout_height = "wrap_content"
 						android:layout_weight = "2"
@@ -200,7 +199,6 @@
 					>
 
 				<TextView
-						android:id = "@+id/tvHighestStreakTitle"
 						android:layout_width = "0dp"
 						android:layout_height = "wrap_content"
 						android:layout_weight = "2"
@@ -234,7 +232,6 @@
 					>
 
 				<TextView
-						android:id = "@+id/tvAverageTimeEasyTitle"
 						android:layout_width = "0dp"
 						android:layout_height = "wrap_content"
 						android:layout_weight = "2"
@@ -262,7 +259,6 @@
 					>
 
 				<TextView
-						android:id = "@+id/tvAverageTimeMediumTitle"
 						android:layout_width = "0dp"
 						android:layout_height = "wrap_content"
 						android:layout_weight = "2"
@@ -290,7 +286,6 @@
 					>
 
 				<TextView
-						android:id = "@+id/tvAverageTimeHardTitle"
 						android:layout_width = "0dp"
 						android:layout_height = "wrap_content"
 						android:layout_weight = "2"
@@ -324,7 +319,6 @@
 					>
 
 				<TextView
-						android:id = "@+id/tvFastestTimeEasyTitle"
 						android:layout_width = "0dp"
 						android:layout_height = "wrap_content"
 						android:layout_weight = "2"
@@ -352,7 +346,6 @@
 					>
 
 				<TextView
-						android:id = "@+id/tvFastestTimeMediumTitle"
 						android:layout_width = "0dp"
 						android:layout_height = "wrap_content"
 						android:layout_weight = "2"
@@ -380,7 +373,6 @@
 					>
 
 				<TextView
-						android:id = "@+id/tvFastestTimeHardTitle"
 						android:layout_width = "0dp"
 						android:layout_height = "wrap_content"
 						android:layout_weight = "2"

@@ -38,8 +38,7 @@
                         android:src="@drawable/books"
                         android:paddingVertical="8dp"
                         android:layout_gravity="center_vertical"
-                        android:id="@+id/imageView2"
-                        android:contentDescription="@string/books"
+		                android:contentDescription="@string/books"
                         />
             </LinearLayout>
 

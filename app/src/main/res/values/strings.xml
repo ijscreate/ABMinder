@@ -17,17 +17,8 @@
 
 	<string name = "progress">Progress</string>
 
-	<string name = "pref_language_key">language</string>
 	<string name = "dictionary">Dictionary</string>
 	<string name = "invalid_variable_cost">Invalid variable cost</string>
-	<string-array name = "languages">
-		<item>Filipino</item>
-		<item>English</item>
-	</string-array>
-	<string-array name = "language_values">
-		<item>fil</item>
-		<item>en</item>
-	</string-array>
 	<string-array name = "theme_options">
 		<item>System default</item>
 		<item>Light Theme</item>
@@ -41,7 +32,6 @@
 	<string name = "tvm_result_format">%.2f</string>
 	<string name = "learn">Learn</string>
 	<string name = "break_even">Break-even:</string>
-	<string name = "assets_path">file:///android_asset/%s</string>
 	<string name = "description">Welcome to ABMinder, the ultimate mobile application designed specifically for ABM (Accountancy, Business, and Management) students. Developed by a team of dedicated scholars from Mother Theresa Colegio De Balatan, ABMinder aims to revolutionize the way students engage with core subjects such as Business Mathematics, Business Finance, FABM 1, and Applied Economics.</string>
 	<string name = "get_started">Get started</string>
 	<string name = "choose_difficulty_level">Choose difficulty level</string>
@@ -67,7 +57,6 @@
 	<string name = "rOI">%1$s%</string>
 	<string name = "exa">Example: %1$s</string>
 	<string name = "recent_searches">Recent searches…</string>
-	<string name = "search_topics_here">Search topics here…</string>
 	<string name = "books">Books</string>
 	<string name = "time_taken">Time Taken</string>
 	<string name = "replay">Replay</string>
@@ -82,7 +71,6 @@
 
 	<string name = "quiz_rules_title">Instructions</string>
 	<string name = "quiz_rules_description">Welcome to our interactive quiz app\! Test your knowledge and skills by answering a series of thought-provoking questions across various categories.</string>
-	<string name = "quiz_rules_additional">Remember to select your preferred difficulty level before starting the quiz. Earn points for each correct answer, and watch out for time limits. Good luck\!</string>
 	<string name = "starting_quiz_in">Starting Quiz in…</string>
 
 
@@ -92,19 +80,12 @@
 	<string name = "personalized_study_plan_title">Study Plans</string>
 	<string name = "add_study_plan">Add study plan</string>
 
-	<string-array name = "subject">
-		<item>Business Mathematics</item>
-	</string-array>
-
-	<string name = "start_date">Start Date</string>
-	<string name = "end_date">End Date</string>
 	<string name = "to">to</string>
 	<string name = "study_plan_title">Study Plan Title</string>
 	<string name = "end_time">End time</string>
 	<string name = "start_time">Start time</string>
 	<string name = "delete">delete</string>
 	<string name = "inventory_turnover_ratio_calculation">Inventory Turnover Ratio Calculation</string>
-	<string name = "explanation_dialog_message">Inventory Turnover Ratio measures how efficiently a company manages its inventory by indicating how many times inventory is sold and replaced over a specific period.\n\nThe formula for calculating Inventory Turnover Ratio is:\n\nInventory Turnover Ratio = Cost of Goods Sold / Average Inventory\n\nGiven:\nCost of Goods Sold = %.2f\nAverage Inventory = %.2f\n\nSolution:\nInventory Turnover Ratio = %.2f / %.2f\nInventory Turnover Ratio = %.2f\n\nTherefore, the Inventory Turnover Ratio is %.2f.</string>
 	<string name = "ok">OK</string>
 	<string name = "error_title">Error</string>
 	<string name = "error_message">An error occurred while calculating the Inventory Turnover Ratio.</string>
@@ -114,7 +95,6 @@
 	<string name = "present_value_calculation_title">Present Value Calculation</string>
 	<string name = "choose_preffered_subject">Choose preffered subject</string>
 	<!-- TODO: Remove or change this placeholder text -->
-	<string name = "hello_blank_fragment">Hello blank fragment</string>
 	<string name = "instant_word_definitions_and_examples">Instant word definitions and examples.</string>
 	<string name = "specialized_tool_for_computations">Specialized tool for computations.</string>
 	<string name = "test_your_knowledge">Test your knowledge.</string>

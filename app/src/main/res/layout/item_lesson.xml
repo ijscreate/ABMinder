@@ -38,8 +38,7 @@
                         android:src="@drawable/reading"
                         android:paddingVertical="8dp"
                         android:layout_gravity="center_vertical"
-                        android:id="@+id/imageView2"
-                        android:contentDescription="@string/learn"
+		                android:contentDescription="@string/learn"
                         />
             </LinearLayout>
 

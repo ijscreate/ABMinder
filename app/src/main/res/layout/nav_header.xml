@@ -7,9 +7,9 @@
 		android:layout_height = "150dp"
 		android:orientation = "vertical"
 		android:padding = "16dp"
-		android:id = "@+id/nav_header"
 		android:gravity = "bottom"
-		tools:context = "com.mtcdb.stem.mathtrix.MainActivity"
+		tools:context = ".MainActivity"
+		tools:ignore = "Overdraw"
 		>
 
 	<LinearLayout
@@ -19,7 +19,6 @@
 			>
 
 		<ImageView
-				android:id = "@+id/nav_profile_image"
 				android:layout_width = "60dp"
 				android:layout_height = "60dp"
 				android:src = "@drawable/ic_logo_modified"
@@ -32,7 +31,6 @@
 	</LinearLayout>
 
 	<TextView
-			android:id = "@+id/nav_user_name"
 			android:layout_width = "wrap_content"
 			android:layout_height = "wrap_content"
 			android:text = "@string/app_name"
@@ -44,7 +42,6 @@
 			/>
 
 	<TextView
-			android:id = "@+id/nav_user_email"
 			android:layout_width = "wrap_content"
 			android:layout_height = "wrap_content"
 			android:text = "@string/an_innovative_business_mathematics_application"
