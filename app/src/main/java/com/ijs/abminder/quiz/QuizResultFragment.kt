@@ -1,14 +1,18 @@
 package com.ijs.abminder.quiz
 
-import android.annotation.*
-import android.content.*
-import android.graphics.*
-import android.os.*
-import android.view.*
-import android.widget.*
-import androidx.core.content.*
-import androidx.fragment.app.*
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.graphics.Color
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import antonkozyriatskyi.circularprogressindicator.*
+import com.ijs.abminder.R
 
 @Suppress("DEPRECATION")
 class QuizResultFragment : Fragment() {
@@ -26,8 +30,7 @@ class QuizResultFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_quiz_result, container, false)
 
         // Retrieve the quiz questions and score from arguments
-        val questions =
-            arguments?.getParcelableArrayList<QuizEntity>("quizQuestions")
+        val questions = arguments?.getParcelableArrayList<QuizEntity>("quizQuestions")
         val score = arguments?.getInt("quizScore") ?: 0
         difficulty = arguments?.getString("difficulty").toString()
 

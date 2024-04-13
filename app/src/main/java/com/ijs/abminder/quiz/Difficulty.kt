@@ -7,14 +7,13 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatSpinner
 import androidx.appcompat.widget.TooltipCompat
 import androidx.fragment.app.Fragment
 import com.ijs.abminder.R
+import com.skydoves.powerspinner.PowerSpinnerView
 
 class Difficulty : Fragment() {
 
@@ -22,7 +21,7 @@ class Difficulty : Fragment() {
     private lateinit var mediumButton : AppCompatButton
     private lateinit var hardButton : AppCompatButton
     private lateinit var quizFragment : QuizFragment
-    private lateinit var subjectSpinner : AppCompatSpinner
+    private lateinit var subjectSpinner : PowerSpinnerView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -37,6 +36,7 @@ class Difficulty : Fragment() {
         mediumButton = rootView.findViewById(R.id.mediumButton)
         hardButton = rootView.findViewById(R.id.hardButton)
         subjectSpinner = rootView.findViewById(R.id.spinner)
+
         val description = rootView.findViewById<TextView>(R.id.description)
         val desc = """
             Welcome to the ABMinder Quiz! This quiz covers a wide range of topics in Business Mathematics, FABM 1, Applied Economics, and Business Finance.
@@ -57,7 +57,7 @@ class Difficulty : Fragment() {
 
         // Initialize subject options
         val subjects =
-            arrayOf(
+            listOf(
                 "Business Mathematics",
                 "Business Finance",
                 "Business Ethics",
@@ -67,30 +67,30 @@ class Difficulty : Fragment() {
             )
 
         // adapter for subject spinner
+        /*
         val subjectAdapter =
             ArrayAdapter(requireContext(), R.layout.custom_spinner, subjects)
         subjectAdapter.setDropDownViewResource(R.layout.dropdown)
+         */
 
         // Set adapter for subject spinner
-        subjectSpinner.adapter = subjectAdapter
-        subjectSpinner.tag = "subject"
-        subjectSpinner.prompt = "Select subject"
-        subjectSpinner.dropDownVerticalOffset = 100
+        subjectSpinner.setItems(subjects)
+        subjectSpinner.hint = "Choose a subject"
+
+        var subject = ""
 
         // Set up button click listeners
+        subjectSpinner.setOnSpinnerItemSelectedListener<String> { _, _, _, newItem ->
+           subject = newItem
+        }
         easyButton.setOnClickListener {
-            val selectedSubject = subjectSpinner.selectedItem.toString()
-            showCountdownDialog("Easy", selectedSubject)
+            showCountdownDialog("Easy", subject)
         }
-
         mediumButton.setOnClickListener {
-            val selectedSubject = subjectSpinner.selectedItem.toString()
-            showCountdownDialog("Medium", selectedSubject)
+            showCountdownDialog("Medium", subject)
         }
-
         hardButton.setOnClickListener {
-            val selectedSubject = subjectSpinner.selectedItem.toString()
-            showCountdownDialog("Hard", selectedSubject)
+            showCountdownDialog("Hard", subject)
         }
 
         // Check the unlocking conditions
@@ -100,23 +100,6 @@ class Difficulty : Fragment() {
         // Enable or disable the buttons based on the unlocking state
         mediumButton.isEnabled = isMediumUnlocked
         hardButton.isEnabled = isHardUnlocked
-
-
-        /**
-        // Set the Tooltip text for Medium and Hard levels
-        if (!isMediumUnlocked) {
-        showTooltip(
-        mediumButton,
-        "Score 8 or higher in Easy level to unlock",
-        )
-        }
-
-        if (!isHardUnlocked) {
-        showTooltip(
-        hardButton,
-        "Score 6 or higher in Medium level to unlock",
-        )
-        } */
 
         TooltipCompat.setTooltipText(mediumButton, "Score 8 or higher in Easy level to unlock")
         TooltipCompat.setTooltipText(hardButton, "Score 6 or higher in Medium level to unlock")
@@ -130,10 +113,16 @@ class Difficulty : Fragment() {
         return sharedPreferences.getBoolean(level, false)
     }
 
+    @SuppressLint("MissingInflatedId")
     private fun showCountdownDialog(d : String, s : String) {
         val dialogView =
             LayoutInflater.from(requireContext()).inflate(R.layout.dialog_coundown, null)
         val countdownTextView = dialogView.findViewById<TextView>(R.id.textCountdown)
+        val subject = dialogView.findViewById<TextView>(R.id.subjectName)
+        val difficulty = dialogView.findViewById<TextView>(R.id.difficultyName)
+
+        subject.text = s
+        difficulty.text = d
 
         val dialog = AlertDialog.Builder(requireContext())
             .setView(dialogView)

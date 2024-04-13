@@ -8,6 +8,8 @@ import android.os.*
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.*
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.akexorcist.roundcornerprogressbar.*
 import com.google.android.material.radiobutton.*
 import com.ijs.abminder.R

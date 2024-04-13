@@ -11,7 +11,6 @@
 		<item name = "colorTertiary">@color/colorTertiary</item>
 		<item name = "colorOnTertiary">@color/colorOnTertiary</item>
 		<item name = "android:textColor">@color/primaryText</item>
-		<item name = "android:textColorSecondary">@color/secondaryText</item>
 		<item name = "dividerColor">@color/dividerColor</item>
 
 		<item name = "android:windowActivityTransitions">true</item>

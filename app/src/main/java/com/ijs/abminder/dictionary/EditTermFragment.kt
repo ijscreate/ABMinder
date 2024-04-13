@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ijs.abminder.R
 import com.ijs.abminder.dictionary.database.DictionaryDatabaseHelper
-import com.ijs.abminder.dictionary.recent.TermAdapter
 
 class EditTermFragment : Fragment(), TermAdapter.OnItemClickListener {
 

@@ -2,16 +2,12 @@ package com.ijs.abminder
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
-import android.content.ContentValues
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.addCallback
@@ -23,9 +19,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.ijs.abminder.dictionary.EditTermFragment
-import com.ijs.abminder.dictionary.database.DictionaryDatabaseHelper
 import com.ijs.abminder.settings.SettingsActivity
 
 class MainActivity : BaseDrawerActivity() {
@@ -48,11 +43,8 @@ class MainActivity : BaseDrawerActivity() {
         setSupportActionBar(toolbar)
         setupDrawer(toolbar)
 
-        val fab = findViewById<FloatingActionButton>(com.ijs.abminder.R.id.fab)
-
-        fab.setOnClickListener {
-            showAddTermDialog()
-        }
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        navView.setCheckedItem(R.id.nav_item_home)
 
         setCurrentFragment(DashboardFragment())
 
@@ -122,68 +114,6 @@ class MainActivity : BaseDrawerActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment)
             .addToBackStack(null).commit()
         drawerLayout.closeDrawer(GravityCompat.START)
-    }
-
-    private fun showAddTermDialog() {
-        val dialogView =
-            LayoutInflater.from(this@MainActivity).inflate(R.layout.dialog_add_term, null)
-        val termEditText = dialogView.findViewById<EditText>(R.id.termEditText)
-        val definitionEditText = dialogView.findViewById<EditText>(R.id.definitionEditText)
-        val exampleEditText = dialogView.findViewById<EditText>(R.id.exampleEditText)
-
-        val dialog =
-            AlertDialog.Builder(this@MainActivity).setTitle("Add New Term").setView(dialogView)
-                .setPositiveButton("Add") { _, _ ->
-                    val term = termEditText.text.toString().trim()
-                    val definition = definitionEditText.text.toString().trim()
-                    val example = exampleEditText.text.toString().trim()
-                    addTermToDatabase(term, definition, example)
-                    clearInputFields(dialogView) // Clear input fields after adding the term
-                }.setNegativeButton("Cancel") { dialog, _ ->
-                    dialog.dismiss()
-                }.create()
-
-        dialog.show()
-    }
-
-
-    private fun addTermToDatabase(term : String, definition : String?, example : String?) {
-        if (term.isEmpty() && definition.isNullOrBlank()) {
-            // Inform the user that the term is required
-            Toast.makeText(
-                this@MainActivity, "Term and definition are required.", Toast.LENGTH_SHORT
-            ).show()
-            return
-        }
-
-        val dbHelper = DictionaryDatabaseHelper(this@MainActivity)
-        val db = dbHelper.writableDatabase
-
-        val values = ContentValues().apply {
-            put("term", term)
-            definition?.let { put("definition", it) }
-            example?.let { put("example", it) }
-        }
-
-        val newTerm = db.insert("dictionary_terms", null, values)
-
-        if (newTerm != -1L) {
-            // Term added successfully
-            Toast.makeText(this@MainActivity, "Term added to the database.", Toast.LENGTH_SHORT)
-                .show()
-        } else {
-            // Failed to add term
-            Toast.makeText(
-                this@MainActivity, "Failed to add term to the database.", Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-
-    private fun clearInputFields(dialogView : View) {
-        // Clear input fields after adding the term
-        dialogView.findViewById<EditText>(R.id.termEditText).text = null
-        dialogView.findViewById<EditText>(R.id.definitionEditText).text = null
-        dialogView.findViewById<EditText>(R.id.exampleEditText).text = null
     }
 
     private fun handleBackPressed() {

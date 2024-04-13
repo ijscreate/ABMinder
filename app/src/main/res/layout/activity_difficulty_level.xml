@@ -21,7 +21,7 @@
 				android:id = "@+id/quiz_toolbar"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
-				android:background = "@color/colorPrimaryDark"
+				android:background = "@color/colorPrimary"
 				android:title = "@string/quiz"
 				app:titleTextColor = "@color/white"
 				app:titleTextAppearance = "@style/TextAppearance.AppCompat.Title"

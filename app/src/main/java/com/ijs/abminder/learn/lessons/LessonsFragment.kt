@@ -5,6 +5,8 @@ import android.os.*
 import android.view.*
 import androidx.fragment.app.*
 import androidx.recyclerview.widget.*
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.ijs.abminder.*
 import com.ijs.abminder.learn.*
 import com.ijs.abminder.learn.subjects.*

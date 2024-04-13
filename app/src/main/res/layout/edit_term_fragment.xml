@@ -11,15 +11,17 @@
 			android:id = "@+id/termEditText"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
-			android:hint = "Term"
+			android:hint = "@string/term"
 			android:autofillHints = ""
+			android:inputType = "text"
 			/>
 
 	<EditText
 			android:id = "@+id/definitionEditText"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
-			android:hint = "Definition"
+			android:hint = "@string/definition"
+			android:inputType = "text"
 			android:autofillHints = ""
 			/>
 
@@ -27,8 +29,8 @@
 			android:id = "@+id/exampleEditText"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
-			android:hint = "Example"
-
+			android:hint = "@string/example"
+			android:inputType = "text"
 			android:autofillHints = ""
 			/>
 
@@ -43,7 +45,7 @@
 				android:layout_width = "wrap_content"
 				android:layout_height = "wrap_content"
 				android:layout_weight = "1"
-				android:text = "Cancel"
+				android:text = "@string/cancel"
 				style = "?android:attr/buttonBarButtonStyle"
 				/>
 
@@ -52,7 +54,7 @@
 				android:layout_width = "wrap_content"
 				android:layout_height = "wrap_content"
 				android:layout_weight = "1"
-				android:text = "Save"
+				android:text = "@string/save"
 				style = "?android:attr/buttonBarButtonStyle"
 				/>
 	</LinearLayout>

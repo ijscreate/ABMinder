@@ -1,22 +1,28 @@
 package com.ijs.abminder.dictionary
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.ijs.abminder.BaseDrawerActivity
 import com.ijs.abminder.R
 import com.ijs.abminder.dictionary.database.DictionaryDatabaseHelper
@@ -47,6 +53,15 @@ class DictionaryActivity : BaseDrawerActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        val fab = findViewById<FloatingActionButton>(com.ijs.abminder.R.id.fab)
+
+        fab.setOnClickListener {
+            showAddTermDialog()
+        }
+
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        navView.setCheckedItem(R.id.nav_item_dictionary)
 
         setupDrawer(toolbar)
 
@@ -142,6 +157,68 @@ class DictionaryActivity : BaseDrawerActivity() {
         })
     }
 
+    private fun showAddTermDialog() {
+        val dialogView =
+            LayoutInflater.from(this).inflate(R.layout.dialog_add_term, null)
+        val termEditText = dialogView.findViewById<EditText>(R.id.termEditText)
+        val definitionEditText = dialogView.findViewById<EditText>(R.id.definitionEditText)
+        val exampleEditText = dialogView.findViewById<EditText>(R.id.exampleEditText)
+
+        val dialog =
+            AlertDialog.Builder(this).setTitle("Add New Term").setView(dialogView)
+                .setPositiveButton("Add") { _, _ ->
+                    val term = termEditText.text.toString().trim()
+                    val definition = definitionEditText.text.toString().trim()
+                    val example = exampleEditText.text.toString().trim()
+                    addTermToDatabase(term, definition, example)
+                    clearInputFields(dialogView) // Clear input fields after adding the term
+                }.setNegativeButton("Cancel") { dialog, _ ->
+                    dialog.dismiss()
+                }.create()
+
+        dialog.show()
+    }
+
+
+    private fun addTermToDatabase(term : String, definition : String?, example : String?) {
+        if (term.isEmpty() && definition.isNullOrBlank()) {
+            // Inform the user that the term is required
+            Toast.makeText(
+                this, "Term and definition are required.", Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        val dbHelper = DictionaryDatabaseHelper(this)
+        val db = dbHelper.writableDatabase
+
+        val values = ContentValues().apply {
+            put("term", term)
+            definition?.let { put("definition", it) }
+            example?.let { put("example", it) }
+        }
+
+        val newTerm = db.insert("dictionary_terms", null, values)
+
+        if (newTerm != -1L) {
+            // Term added successfully
+            Toast.makeText(this, "Term added to the database.", Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            // Failed to add term
+            Toast.makeText(
+                this, "Failed to add term to the database.", Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun clearInputFields(dialogView : View) {
+        // Clear input fields after adding the term
+        dialogView.findViewById<EditText>(R.id.termEditText).text = null
+        dialogView.findViewById<EditText>(R.id.definitionEditText).text = null
+        dialogView.findViewById<EditText>(R.id.exampleEditText).text = null
+    }
+
     override fun onOptionsItemSelected(item : MenuItem) : Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -171,18 +248,24 @@ class DictionaryActivity : BaseDrawerActivity() {
         )
     }
 
-    private fun handleRecentSearch(query : String, definition : String, example : String) {
+    private fun handleRecentSearch(query: String, definition: String, example: String) {
         val sharedPreferences = getSharedPreferences("SearchHistory", Context.MODE_PRIVATE)
 
         // Retrieve existing search history
-        val searchHistory =
-            sharedPreferences.getStringSet("searchHistory", HashSet())?.toMutableList()
-                ?: mutableListOf()
+        val searchHistory = sharedPreferences.getStringSet("searchHistory", HashSet())?.toMutableList()
+            ?: mutableListOf()
 
         // Add the new search
         val newSearch = RecentSearch(query, definition, example)
         viewModel.addRecentSearch(newSearch)
         searchHistory.add(0, newSearch.toString()) // Convert to string for storage
+
+        // Check if the query already exists in the recent search history
+        val existingSearch = searchHistory.find { it.contains(query, ignoreCase = true) }
+        if (existingSearch != null) {
+            // Remove the existing search to avoid duplicates
+            searchHistory.remove(existingSearch)
+        }
 
         // Limit the search history to 10 items
         while (searchHistory.size > 10) {
@@ -192,6 +275,7 @@ class DictionaryActivity : BaseDrawerActivity() {
         // Save the updated search history
         sharedPreferences.edit().putStringSet("searchHistory", searchHistory.toSet()).apply()
     }
+
 
     private fun performSearch(query : String) {
         val cursor = getSuggestionsCursor(query)

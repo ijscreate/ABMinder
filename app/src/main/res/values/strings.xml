@@ -101,4 +101,7 @@
 	<string name = "home">Home</string>
 	<string name = "features">Features</string>
 	<string name = "tip">Tip:</string>
+	<string name = "example">Example</string>
+	<string name = "cancel">Cancel</string>
+	<string name = "save">Save</string>
 </resources>

@@ -3,7 +3,8 @@ package com.ijs.abminder.learn.subjects
 import android.annotation.*
 import android.os.*
 import androidx.appcompat.widget.*
-import androidx.fragment.app.*
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.google.android.material.floatingactionbutton.*
 import com.google.android.material.navigation.*
 import com.ijs.abminder.*

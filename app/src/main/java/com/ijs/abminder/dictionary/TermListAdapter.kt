@@ -1,4 +1,4 @@
-package com.ijs.abminder.dictionary.recent
+package com.ijs.abminder.dictionary
 
 import android.annotation.SuppressLint
 import android.database.Cursor

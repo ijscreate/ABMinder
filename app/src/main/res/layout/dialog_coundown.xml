@@ -1,33 +1,61 @@
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:padding="24dp"
-        >
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		android:orientation = "vertical"
+		android:layout_gravity = "center"
+		android:padding = "24dp"
+		>
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/starting_quiz_in"
-            android:layout_marginBottom="16dp"
-            />
+	<LinearLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:orientation = "horizontal"
+			android:layout_marginBottom="12dp"
+			>
 
-    <TextView
-            android:id="@+id/textCountdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.Material3.DisplayMedium"
-            android:textStyle="bold"
-            android:fontFamily="@font/roboto_black"
-            android:layout_gravity="center"
-            android:text="@string/quiz"
-            android:gravity="center"
-            />
+		<TextView
+				android:id="@+id/subjectName"
+				android:layout_width = "0dp"
+				android:layout_height = "wrap_content"
+				android:layout_marginEnd="4dp"
+				android:layout_weight = "1"
+				android:gravity="start"
+				android:layout_gravity="start"
+				/>
+
+		<TextView
+				android:id="@+id/difficultyName"
+				android:layout_width = "0dp"
+				android:layout_height = "wrap_content"
+				android:layout_marginStart="4dp"
+				android:layout_weight = "1"
+				android:gravity="end"
+				android:layout_gravity="end"
+				/>
+	</LinearLayout>
+
+	<TextView
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:layout_gravity = "center"
+			android:gravity = "center"
+			android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+			android:fontFamily = "@font/roboto_regular"
+			android:text = "@string/starting_quiz_in"
+			android:layout_marginBottom = "8dp"
+			/>
+
+	<TextView
+			android:id = "@+id/textCountdown"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:textAppearance = "@style/TextAppearance.Material3.DisplayMedium"
+			android:textStyle = "bold"
+			android:fontFamily = "@font/roboto_black"
+			android:layout_gravity = "center"
+			android:text = "@string/quiz"
+			android:gravity = "center"
+			/>
 
 </LinearLayout>
