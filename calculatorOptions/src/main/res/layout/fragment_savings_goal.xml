@@ -1,78 +1,93 @@
-<!-- res/layout/fragment_savings_goal.xml -->
+<?xml version="1.0" encoding="utf-8" ?>
+<androidx.cardview.widget.CardView
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		xmlns:tools = "http://schemas.android.com/tools"
+		app:cardCornerRadius = "10dp"
+		app:cardElevation = "4dp"
+		app:cardUseCompatPadding = "true"
+		android:layout_gravity = "center"
+		android:orientation = "vertical"
+		>
 
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        >
+	<ScrollView
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutGoalAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Savings Goal Amount"
-            >
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:padding = "16dp"
+				android:orientation = "vertical"
+				>
 
-        <EditText
-                android:id="@+id/editTextGoalAmount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                tools:ignore="LabelFor"
-                />
-    </com.google.android.material.textfield.TextInputLayout>
+			<com.google.android.material.textfield.TextInputLayout
+					android:id = "@+id/textInputLayoutGoalAmount"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/savings_goal_amount"
+					>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutMonthlySaving"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textInputLayoutGoalAmount"
-            android:layout_marginTop="16dp"
-            android:hint="Monthly Saving"
-            >
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextGoalAmount"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						tools:ignore = "LabelFor"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-                android:id="@+id/editTextMonthlySaving"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                tools:ignore="LabelFor"
-                />
-    </com.google.android.material.textfield.TextInputLayout>
+			<com.google.android.material.textfield.TextInputLayout
+					android:id = "@+id/textInputLayoutMonthlySaving"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					android:hint = "@string/monthly_saving"
+					>
 
-    <Button
-            android:id="@+id/buttonCalculateSavingsGoal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textInputLayoutMonthlySaving"
-            android:layout_marginTop="16dp"
-            android:text="Calculate"
-            />
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/editTextMonthlySaving"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						tools:ignore = "LabelFor"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-            android:id="@+id/textViewSavingsGoalResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/buttonCalculateSavingsGoal"
-            android:layout_marginTop="16dp"
-            />
+			<Button
+					android:id = "@+id/buttonCalculateSavingsGoal"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					android:text = "@string/calculate"
+					/>
 
-    <Button
-            android:id="@+id/buttonExplanationSavingsGoal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textViewSavingsGoalResult"
-            android:layout_marginTop="16dp"
-            android:text="Show Explanation"
-            />
+			<TextView
+					android:id = "@+id/textViewSavingsGoalResult"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					/>
 
-    <TextView
-            android:id="@+id/textViewSavingsGoalDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/buttonExplanationSavingsGoal"
-            android:layout_marginTop="16dp"
-            />
-</RelativeLayout>
+			<Button
+					android:id = "@+id/buttonExplanationSavingsGoal"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					android:text = "@string/show_explanation"
+					/>
+
+			<TextView
+					android:id = "@+id/textViewSavingsGoalDescription"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					/>
+		</LinearLayout>
+
+	</ScrollView>
+
+</androidx.cardview.widget.CardView>

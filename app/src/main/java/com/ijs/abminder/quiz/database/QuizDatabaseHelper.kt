@@ -31,7 +31,6 @@ open class QuizDatabaseHelper(context : Context) :
                 "$COLUMN_DIFFICULTY_LEVEL TEXT NOT NULL)"
 
         db.execSQL(CREATE_QUIZ_TABLE)
-
     }
 
     override fun onUpgrade(db : SQLiteDatabase, oldVersion : Int, newVersion : Int) {
@@ -59,4 +58,28 @@ open class QuizDatabaseHelper(context : Context) :
         db.insert(TABLE_QUIZ, null, values)
     }
 
+    open fun deleteDuplicateQuestions() {
+        val db = writableDatabase
+        val cursor = db.rawQuery("SELECT $COLUMN_ID, $COLUMN_QUESTION FROM $TABLE_QUIZ", null)
+
+        if (cursor.moveToFirst()) {
+            val questionIndex = cursor.getColumnIndex(COLUMN_QUESTION)
+            val idIndex = cursor.getColumnIndex(COLUMN_ID)
+            val questionsSet = HashSet<String>()
+
+            do {
+                val question = cursor.getString(questionIndex).trim()
+                val first5Words = question.split(" ").take(5).joinToString(" ")
+
+                if (questionsSet.contains(first5Words)) {
+                    // Delete the duplicate entry
+                    val id = cursor.getInt(idIndex)
+                    db.delete(TABLE_QUIZ, "$COLUMN_ID=?", arrayOf(id.toString()))
+                } else {
+                    questionsSet.add(first5Words)
+                }
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+    }
 }

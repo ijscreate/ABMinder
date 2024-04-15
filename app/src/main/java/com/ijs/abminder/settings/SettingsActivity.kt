@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.GravityCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -20,12 +21,12 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Apply the initial theme
-
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         themePreference = preferences.getString("theme_preference", "system") ?: "system"
         applyTheme(themePreference)
 
         setContentView(R.layout.settings_activity)
+
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(R.id.settings, SettingsFragment())
@@ -65,7 +66,12 @@ class SettingsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item : MenuItem) : Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                this.finish()
+                if (supportFragmentManager.backStackEntryCount > 0) {
+                    // If there are fragments in the back stack, pop the fragment
+                    supportFragmentManager.popBackStack()
+                } else {
+                    this.finish()
+                }
             }
         }
         return super.onOptionsItemSelected(item)
@@ -88,6 +94,14 @@ class SettingsActivity : AppCompatActivity() {
             aboutAbminderPreference?.setOnPreferenceClickListener {
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.settings, AboutAbminderFragment()).addToBackStack(null).commit()
+                true
+            }
+
+            val creditPreference = findPreference<Preference>("credits")
+
+            creditPreference?.setOnPreferenceClickListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.settings, CreditFragment()).addToBackStack(null).commit()
                 true
             }
         }

@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.mtcdb.stem.abminder",
+  "applicationId": "com.ijs.abminder",
   "variantName": "release",
   "elements": [
     {

@@ -22,6 +22,7 @@ class DifficultyLevel : BaseDrawerActivity() {
         toolbar = findViewById(R.id.quiz_toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDefaultDisplayHomeAsUpEnabled(true)
 
         setupDrawer(toolbar) // Setup the drawer layout
 
@@ -43,8 +44,8 @@ class DifficultyLevel : BaseDrawerActivity() {
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
-        super.onBackPressed()
         showExitQuizDialog()
+        super.onBackPressed()
     }
 
     private fun showExitQuizDialog() {

@@ -1,78 +1,92 @@
-<RelativeLayout
+<androidx.cardview.widget.CardView
 		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
 		xmlns:tools = "http://schemas.android.com/tools"
 		android:layout_width = "match_parent"
 		android:layout_height = "match_parent"
-		android:padding = "16dp"
+		app:cardCornerRadius = "10dp"
+		app:cardElevation = "4dp"
+		app:cardUseCompatPadding = "true"
+		android:layout_gravity = "center"
+		android:orientation = "vertical"
 		>
 
-	<com.google.android.material.textfield.TextInputLayout
-			android:id = "@+id/textInputLayoutNominalReturn"
+	<ScrollView
 			android:layout_width = "match_parent"
-			android:layout_height = "wrap_content"
-			android:hint = "Nominal Return"
+			android:layout_height = "match_parent"
 			>
 
-		<EditText
-				android:id = "@+id/editTextNominalReturn"
+		<LinearLayout
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
-				android:inputType = "numberDecimal"
-				tools:ignore = "LabelFor"
-				/>
-	</com.google.android.material.textfield.TextInputLayout>
+				android:padding = "16dp"
+				android:orientation = "vertical"
+				>
 
-	<com.google.android.material.textfield.TextInputLayout
-			android:id = "@+id/textInputLayoutInflationRate"
-			android:layout_width = "match_parent"
-			android:layout_height = "wrap_content"
-			android:layout_below = "@id/textInputLayoutNominalReturn"
-			android:layout_marginTop = "16dp"
-			android:hint = "Inflation Rate"
-			>
+			<com.google.android.material.textfield.TextInputLayout
+					android:id = "@+id/textInputLayoutNominalReturn"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "@string/nominal_return"
+					>
 
-		<EditText
-				android:id = "@+id/editTextInflationRate"
-				android:layout_width = "match_parent"
-				android:layout_height = "wrap_content"
-				android:inputType = "numberDecimal"
-				tools:ignore = "LabelFor"
-				/>
-	</com.google.android.material.textfield.TextInputLayout>
+				<EditText
+						android:id = "@+id/editTextNominalReturn"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						tools:ignore = "LabelFor"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
 
-	<Button
-			android:id = "@+id/buttonCalculateInflationAdjustedReturn"
-			android:layout_width = "match_parent"
-			android:layout_height = "wrap_content"
-			android:layout_below = "@id/textInputLayoutInflationRate"
-			android:layout_marginTop = "16dp"
-			style = "?attr/buttonBarButtonStyle"
-			android:text = "Calculate"
-			/>
+			<com.google.android.material.textfield.TextInputLayout
+					android:id = "@+id/textInputLayoutInflationRate"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					android:hint = "@string/inflation_rate"
+					>
 
-	<TextView
-			android:id = "@+id/textViewInflationAdjustedReturnResult"
-			android:layout_width = "match_parent"
-			android:layout_height = "wrap_content"
-			android:layout_below = "@id/buttonCalculateInflationAdjustedReturn"
-			android:layout_marginTop = "16dp"
-			/>
+				<EditText
+						android:id = "@+id/editTextInflationRate"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						tools:ignore = "LabelFor"
+						/>
+			</com.google.android.material.textfield.TextInputLayout>
 
-	<Button
-			android:id = "@+id/buttonExplanationInflationAdjustedReturn"
-			android:layout_width = "match_parent"
-			android:layout_height = "wrap_content"
-			android:layout_below = "@id/textViewInflationAdjustedReturnResult"
-			android:layout_marginTop = "16dp"
-			style = "?attr/buttonBarButtonStyle"
-			android:text = "Show Explanation"
-			/>
+			<Button
+					android:id = "@+id/buttonCalculateInflationAdjustedReturn"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					style = "?attr/buttonBarButtonStyle"
+					android:text = "@string/calculate"
+					/>
 
-	<TextView
-			android:id = "@+id/textViewInflationAdjustedReturnDescription"
-			android:layout_width = "match_parent"
-			android:layout_height = "wrap_content"
-			android:layout_below = "@id/buttonExplanationInflationAdjustedReturn"
-			android:layout_marginTop = "16dp"
-			/>
-</RelativeLayout>
+			<TextView
+					android:id = "@+id/textViewInflationAdjustedReturnResult"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					/>
+
+			<Button
+					android:id = "@+id/buttonExplanationInflationAdjustedReturn"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					style = "?attr/buttonBarButtonStyle"
+					android:text = "@string/show_explanation"
+					/>
+
+			<TextView
+					android:id = "@+id/textViewInflationAdjustedReturnDescription"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					/>
+		</LinearLayout>
+	</ScrollView>
+</androidx.cardview.widget.CardView>

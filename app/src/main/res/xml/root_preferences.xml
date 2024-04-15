@@ -39,6 +39,11 @@
 				app:key = "about_app"
 				app:layout = "@layout/preferences"
 				app:icon = "@drawable/about" />
+
+		<Preference
+				app:title = "Credits"
+				app:key = "credits"
+				app:layout = "@layout/preferences" />
 	</PreferenceCategory>
 
 </PreferenceScreen>

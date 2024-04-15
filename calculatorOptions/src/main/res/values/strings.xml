@@ -176,6 +176,10 @@
 	<string name = "percentage_change">percentage change</string>
 	<string name = "original_value">Original value</string>
 	<string name = "new_value">New value</string>
+	<string name = "savings_goal_amount">Savings Goal Amount</string>
+	<string name = "monthly_saving">Monthly Saving</string>
+	<string name = "nominal_return">Nominal Return</string>
+	<string name = "inflation_rate">Inflation Rate</string>
 
 
 </resources>

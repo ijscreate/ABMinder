@@ -55,7 +55,8 @@ class AverageRateOfReturnFragment : Fragment() {
         val finalValue = finalValueEditText.text.toString().toDoubleOrNull()
 
         if (initialInvestment == null || finalValue == null || initialInvestment == 0.0) {
-            resultTextView.text = getString(R.string.invalid_input)
+            resultTextView.text =
+                getString(com.ijs.abminder.R.string.invalid_input_please_enter_valid_numbers)
             return
         }
 
@@ -92,7 +93,7 @@ class AverageRateOfReturnFragment : Fragment() {
         val finalValue = finalValueEditText.text.toString().toDoubleOrNull()
 
         if (initialInvestment == null || finalValue == null || initialInvestment == 0.0) {
-            resultTextView.text = getString(R.string.invalid_input)
+            resultTextView.text = getString(com.ijs.abminder.R.string.invalid_input_please_enter_valid_numbers)
             return
         }
 

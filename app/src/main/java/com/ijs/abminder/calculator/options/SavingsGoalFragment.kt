@@ -1,5 +1,3 @@
-// SavingsGoalFragment.kt
-
 package com.ijs.abminder.calculator.options
 
 import android.os.Bundle
@@ -100,24 +98,34 @@ class SavingsGoalFragment : Fragment() {
     }
 
     private fun showExplanationDialog() {
-        val explanation = """
-            To calculate the number of months required to reach your savings goal:
+        val goalAmount = goalAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
+        val monthlySaving = monthlySavingEditText.text.toString().toDoubleOrNull() ?: 0.0
 
-            Monthly Saving = Amount Saved per month
+        if (goalAmount != 0.0 && monthlySaving != 0.0) {
+            val monthsToReachGoal = (goalAmount / monthlySaving).toInt()
+
+            val explanation = """
+            Based on your inputs:
+            
+            Savings Goal Amount: ${formatCurrency(goalAmount)}
+            Monthly Saving: ${formatCurrency(monthlySaving)}
+            
+            To reach your savings goal, the calculation is:
+            
             Number of Months = Total Goal Amount / Monthly Saving
-
-            For example:
-            If your savings goal is $1000 and you save $100 per month:
-
-            Number of Months = $1000 / $100 = 10 months
-
-            Adjust the monthly saving amount to see how it affects the time needed to reach your goal.
+            Number of Months = ${formatCurrency(goalAmount)} / ${formatCurrency(monthlySaving)} = $monthsToReachGoal months
         """.trimIndent()
 
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Savings Goal Calculation Explanation")
-            .setMessage(explanation)
-            .setPositiveButton("OK", null)
-            .show()
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Savings Goal Calculation Explanation")
+                .setMessage(explanation)
+                .setPositiveButton("OK", null)
+                .show()
+        }
+    }
+
+    private fun formatCurrency(amount: Double): String {
+        val format = DecimalFormat("#,###.00")
+        return "₱${format.format(amount)}"
     }
 }

@@ -4,6 +4,8 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
 
     fun populateQuizData() {
 
+        dbHelper.deleteDuplicateQuestions()
+
         populateEasyQuestions()
         populateEasyQuestionsBUSINESS()
         populateEasyQuestionsFABM()
@@ -34,6 +36,58 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
     }
 
     private fun populateEasyQuestions() {
+        // Fundamental Operations on Fractions, Decimals, and Percentage
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the formula 'Adding or subtracting decimals' belong?",
+            "A. Addition and Subtraction of Decimals, B. Multiplication and Division of Decimals, C. Percentage, D. Ratio and Proportion",
+            0, // Index of correct answer (A)
+            "Easy"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the formula 'Percentage Proportion' belong?",
+            "A. Fundamental Operations on Fractions, Decimals, and Percentage, B. Ratio and Proportion, C. Buying and Selling, D. Presentation and Analysis of Business Data",
+            0, // Index of correct answer (A)
+            "Easy"
+        )
+
+// Ratio and Proportion
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the concept 'Ratio and Proportion' belong?",
+            "A. Fundamental Operations on Fractions, Decimals, and Percentage, B. Ratio and Proportion, C. Buying and Selling, D. Presentation and Analysis of Business Data",
+            1, // Index of correct answer (B)
+            "Easy"
+        )
+
+// Buying and Selling
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the concept of 'Commission' belong?",
+            "A. Fundamental Operations on Fractions, Decimals, and Percentage, B. Ratio and Proportion, C. Buying and Selling, D. Salaries and Wages",
+            2, // Index of correct answer (C)
+            "Easy"
+        )
+
+// Salaries and Wages
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the concept of 'Net Earnings' belong?",
+            "A. Buying and Selling, B. Salaries and Wages, C. Presentation and Analysis of Business Data, D. Ratio and Proportion",
+            1, // Index of correct answer (B)
+            "Easy"
+        )
+
+// Presentation and Analysis of Business Data
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the concept of 'Mean' belong?",
+            "A. Presentation and Analysis of Business Data, B. Fundamental Operations on Fractions, Decimals, and Percentage, C. Salaries and Wages, D. Ratio and Proportion",
+            0, // Index of correct answer (A)
+            "Easy"
+        )
+
         insertQuizData(
             "Business Mathematics",
             "What is the formula for calculating gross profit?",
@@ -139,10 +193,246 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             1,
             "Easy"
         )
+        insertQuizData(
+            "Fundamental Operations on Fractions, Decimals, and Percentage",
+            "What is 1/4 + 1/2 expressed as a fraction?",
+            "A. 1/8, B. 3/4, C. 5/8, D. 7/8",
+            2, // Index of correct answer (C)
+            "Easy"
+        )
+        insertQuizData(
+            "Fundamental Operations on Fractions, Decimals, and Percentage",
+            "What is 0.75 expressed as a fraction?",
+            "A. 1/4, B. 3/4, C. 5/8, D. 7/8",
+            1, // Index of correct answer (B)
+            "Easy"
+        )
+        insertQuizData(
+            "Ratio and Proportion",
+            "If the ratio of apples to oranges is 2:3, and there are 12 apples, how many oranges are there?",
+            "A. 8, B. 12, C. 16, D. 18",
+            3, // Index of correct answer (D)
+            "Easy"
+        )
+        insertQuizData(
+            "Buying and Selling",
+            "If a shirt is bought for 500 pesos and sold for 625 pesos, what is the profit?",
+            "A. 75 pesos, B. 100 pesos, C. 125 pesos, D. 150 pesos",
+            2, // Index of correct answer (C)
+            "Easy"
+        )
+        // Fundamental Operations on Fractions, Decimals, and Percentage
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the concept of 'Lowest Term' belong?",
+            "A. Addition and Subtraction of Fractions, B. Multiplication and Division of Decimals, C. Percentage, D. Ratio and Proportion",
+            0, // Index of correct answer (A)
+            "Easy"
+        )
+
+// Ratio and Proportion
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the formula 'Ratio and Proportion' belong?",
+            "A. Fundamental Operations on Fractions, Decimals, and Percentage, B. Ratio and Proportion, C. Buying and Selling, D. Salaries and Wages",
+            1, // Index of correct answer (B)
+            "Easy"
+        )
+
+// Buying and Selling
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the concept 'Mark Up' belong?",
+            "A. Buying and Selling, B. Salaries and Wages, C. Presentation and Analysis of Business Data, D. Ratio and Proportion",
+            0, // Index of correct answer (A)
+            "Easy"
+        )
+
+// Salaries and Wages
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the formula 'Gross Earnings' belong?",
+            "A. Buying and Selling, B. Salaries and Wages, C. Presentation and Analysis of Business Data, D. Ratio and Proportion",
+            1, // Index of correct answer (B)
+            "Easy"
+        )
+
+// Presentation and Analysis of Business Data
+        insertQuizData(
+            "Business Mathematics",
+            "In which topic does the concept 'Levels of Measurement' belong?",
+            "A. Presentation and Analysis of Business Data, B. Fundamental Operations on Fractions, Decimals, and Percentage, C. Salaries and Wages, D. Ratio and Proportion",
+            0, // Index of correct answer (A)
+            "Easy"
+        )
     }
 
     private fun populateMediumQuestions() {
         // Add medium Business Mathematics quiz questions here
+        // Fundamental Operations on Fractions, Decimals, and Percentage
+        insertQuizData(
+            "Business Mathematics",
+            "What are the practical uses of understanding operations on fractions, decimals, and percentages in business?",
+            "A. Calculating discounts, B. Analyzing financial statements, C. Budgeting expenses",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What does the term 'cost price' refer to in business?",
+            "A. The price at which goods are sold to customers, B. The amount paid for goods before adding profit, C. The total expenses incurred in operating a business",
+            1,
+            "Medium"
+        )
+
+        insertQuizData(
+            "Business Mathematics",
+            "Which formula is used to calculate the mark-up on a product?",
+            "A. Mark-up = Selling Price - Cost Price, B. Mark-up = Selling Price + Cost Price, C. Mark-up = Cost Price / Selling Price",
+            0,
+            "Medium"
+        )
+
+        insertQuizData(
+            "Business Mathematics",
+            "What is the purpose of offering mark-downs in retail?",
+            "A. To increase profit margins, B. To clear out old inventory, C. To attract new customers",
+            1,
+            "Medium"
+        )
+
+        insertQuizData(
+            "Business Mathematics",
+            "Which term refers to the amount deducted from the list price of goods?",
+            "A. Net Price, B. Trade Discount, C. Invoice",
+            1,
+            "Medium"
+        )
+
+        insertQuizData(
+            "Business Mathematics",
+            "What is the primary benefit of using discount series in business?",
+            "A. Allows for tiered discounts based on quantity or value, B. Increases overall profit margins, C. Simplifies inventory management",
+            0,
+            "Medium"
+        )
+
+// Lesson: Mark-up
+        insertQuizData(
+            "Business Mathematics",
+            "Which of the following statements best describes the concept of mark-up?",
+            "A. The difference between the cost price and selling price, B. A method to attract customers through discounts, C. The total expenses incurred in operating a business",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Lesson: Mark-down
+        insertQuizData(
+            "Business Mathematics",
+            "What is the primary purpose of offering mark-downs in retail?",
+            "A. To clear out old inventory, B. To increase profit margins, C. To attract new customers",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Lesson: Trade Discount
+        insertQuizData(
+            "Business Mathematics",
+            "What effect does a trade discount have on the selling price?",
+            "A. Reduces the selling price, B. Increases the selling price, C. Has no effect on the selling price",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Lesson: Discount Series
+        insertQuizData(
+            "Business Mathematics",
+            "What is the main advantage of using discount series in business?",
+            "A. Allows for tiered discounts based on quantity or value, B. Simplifies the calculation of discounts, C. Increases overall profit margins",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+
+// Ratio and Proportion
+        insertQuizData(
+            "Business Mathematics",
+            "How can understanding ratio and proportion benefit business decision-making?",
+            "A. By analyzing cost-effectiveness, B. By evaluating market trends, C. By determining inventory levels",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Buying and Selling
+        insertQuizData(
+            "Business Mathematics",
+            "What are the advantages of using discounts in sales?",
+            "A. Attracting customers, B. Increasing sales volume, C. Clearing old inventory",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Salaries and Wages
+        insertQuizData(
+            "Business Mathematics",
+            "How does understanding salaries and wages benefit both employers and employees?",
+            "A. Ensures fair compensation, B. Helps in budgeting, C. Facilitates tax calculations",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Presentation and Analysis of Business Data
+        insertQuizData(
+            "Business Mathematics",
+            "What are the practical uses of presenting and analyzing business data?",
+            "A. Identifying trends, B. Making informed decisions, C. Evaluating performance",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+        insertQuizData(
+            "Business Mathematics",
+            "Why is it important to simplify fractions to their lowest terms?",
+            "A. It makes calculations easier, B. It makes fractions smaller, C. It's a requirement in mathematics, D. It's a tradition",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Ratio and Proportion
+        insertQuizData(
+            "Business Mathematics",
+            "Why is understanding ratio and proportion important in business?",
+            "A. It helps in determining profitability, B. It's not important, C. It's used only in accounting, D. It's a mathematical curiosity",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Buying and Selling
+        insertQuizData(
+            "Business Mathematics",
+            "What is the significance of discounts in retail?",
+            "A. To attract customers, B. To increase prices, C. To confuse customers, D. To reduce inventory",
+            0, // Index of correct answer (A)
+            "Medium"
+        )
+
+// Salaries and Wages
+        insertQuizData(
+            "Business Mathematics",
+            "Why is it important for employers and employees to understand gross and net earnings?",
+            "A. To negotiate salaries, B. To calculate taxes accurately, C. To understand company finances, D. It's not important",
+            2, // Index of correct answer (C)
+            "Medium"
+        )
+
+// Presentation and Analysis of Business Data
+        insertQuizData(
+            "Business Mathematics",
+            "What is the significance of measures of central tendency in data analysis?",
+            "A. To confuse analysts, B. To summarize data, C. To make data more complex, D. To simplify data",
+            1, // Index of correct answer (B)
+            "Medium"
+        )
 
         insertQuizData(
             "Business Mathematics",
@@ -151,7 +441,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             3,
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the purpose of using ratios in financial analysis?",
@@ -159,7 +448,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0, // Index of correct answer (A)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What does the term 'net profit margin' indicate about a business?",
@@ -167,7 +455,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             1, // Index of correct answer (B)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "Why is it important for businesses to understand the concept of mark-up?",
@@ -175,7 +462,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             2, // Index of correct answer (C)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "How are measures of central tendency useful in analyzing business data?",
@@ -183,7 +469,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             2, // Index of correct answer (C)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What role does the concept of ratio and proportion play in pricing strategies?",
@@ -191,7 +476,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             1, // Index of correct answer (B)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "How can businesses use percentages to analyze financial performance?",
@@ -199,7 +483,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0, // Index of correct answer (A)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the significance of understanding simple interest in financial transactions?",
@@ -207,7 +490,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             2, // Index of correct answer (C)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "How do businesses use proportions in analyzing sales data?",
@@ -240,6 +522,8 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Medium"
         )
 
+
+
         insertQuizData(
             "Business Mathematics",
             "What formula is used to calculate net earnings?",
@@ -271,7 +555,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             0, // Index of correct answer (A)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "How do businesses use ratios in analyzing profitability?",
@@ -279,7 +562,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             2, // Index of correct answer (C)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the formula for calculating gross margin?",
@@ -287,7 +569,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             1, // Index of correct answer (B)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "Why is it important for businesses to understand the concept of compound interest?",
@@ -295,7 +576,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             3,// Index of correct answer (D)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is the significance of understanding mark-up in pricing strategies?",
@@ -303,7 +583,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             2,// Index of correct answer (C)
             "Medium"
         )
-
         insertQuizData(
             "Business Mathematics",
             "What is 'Net Income' in business?",
@@ -376,11 +655,225 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
             "Medium"
         )
 
-
     }
 
     private fun populateHardQuestions() {
         // Add hard Business Mathematics quiz questions here
+        insertQuizData(
+            "Buying and Selling",
+            "What is the selling price if an item is marked up by 20% from its cost price of ₱500?",
+            "A. ₱600, B. ₱520, C. ₱480",
+            0,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Buying and Selling",
+            "If an item is sold for ₱800 with a 10% profit, what is its cost price?",
+            "A. ₱720, B. ₱740, C. ₱780",
+            2,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Buying and Selling",
+            "If an item is marked down by 25% from its original price of ₱200, what is the sale price?",
+            "A. ₱150, B. ₱175, C. ₱225",
+            0,
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Mathematics",
+            "If an employee earns 60,000 pesos per year and contributes 6% of their salary to a retirement plan, how much do they contribute annually?",
+            "A. 3,000 pesos, B. 3,600 pesos, C. 4,200 pesos, D. 4,800 pesos",
+            1, // Index of correct answer (B)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What is the median of the following set of numbers: 12, 18, 20, 15, 22?",
+            "A. 12, B. 15, C. 18, D. 22",
+            2, // Index of correct answer (C)
+            "Hard"
+        )
+
+        insertQuizData(
+            "Business Mathematics",
+            "What is the sum of 5/8 and 7/12?",
+            "A. 29/24, B. 29/12, C. 29/16, D. 29/8",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What is the difference of 82/3 and 51/2?",
+            "A. 31/6, B. 29/6, C. 19/6, D. 17/6",
+            2, // Index of correct answer (C)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Convert 4/8 to its lowest term.",
+            "A. 1/2, B. 2/4, C. 3/6, D. 4/8",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Convert 7/21 to its lowest term.",
+            "A. 1/3, B. 2/7, C. 3/14, D. 7/21",
+            1, // Index of correct answer (B)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Convert 20/50 to its lowest term.",
+            "A. 2/5, B. 4/10, C. 5/10, D. 10/25",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What is the result of 8/12 + 5/12?",
+            "A. 13/12, B. 11/12, C. 7/12, D. 3/12",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What is the result of 13/20 - 4/8?",
+            "A. 29/40, B. 15/20, C. 9/20, D. 6/20",
+            2, // Index of correct answer (C)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What is the result of -5/6 + 7/6?",
+            "A. 1, B. 0, C. -1, D. 2",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Perform the operation: 6.4 - 3.2",
+            "A. 3.2, B. 3.6, C. 3.8, D. 2.2",
+            1, // Index of correct answer (B)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Perform the operation: 5.4 + 6.1",
+            "A. 11.2, B. 11.5, C. 12.2, D. 12.5",
+            2, // Index of correct answer (C)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Perform the operation: 10.15 + 139.89 + 44.78",
+            "A. 193.82, B. 194.82, C. 194.52, D. 195.52",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Perform the operation: 346.0146 - 288.8957",
+            "A. 57.1189, B. 57.109, C. 57.119, D. 57.120",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Perform the operation: 62.4 - 33.8",
+            "A. 28.6, B. 28.2, C. 28.4, D. 28.8",
+            2, // Index of correct answer (C)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "A 1-year subscription to the internet costs P12,500.00 while a monthly subscription costs P1,295.55. How much is saved if one prefers to pay the 1-year subscription?",
+            "A. P13,795.55, B. P11,204.45, C. P11,204.55, D. P13,705.55",
+            1, // Index of correct answer (B)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "Three pieces of metal, 3.4 cm, 1.8 cm, and 2.5 cm thick are joined together by a bolt 8.5 cm long. What is the exact thickness of the nut that must be screwed so that no portion of the bolt is seen?",
+            "A. 0.8 cm, B. 1.2 cm, C. 1.5 cm, D. 2.1 cm",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "5 is 25% of what number?",
+            "A. 15, B. 20, C. 25, D. 30",
+            1, // Index of correct answer (B)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What number is 15% of 60?",
+            "A. 6, B. 9, C. 12, D. 15",
+            1, // Index of correct answer (B)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What % of 10 is 5?",
+            "A. 20%, B. 30%, C. 40%, D. 50%",
+            3, // Index of correct answer (D)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "40 is what % of 400?",
+            "A. 5%, B. 10%, C. 15%, D. 20%",
+            1, // Index of correct answer (B)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "25% of 225 is what number?",
+            "A. 45, B. 50, C. 55, D. 60",
+            2, // Index of correct answer (C)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "What is 25% of 80?",
+            "A. 15, B. 18, C. 20, D. 25",
+            2, // Index of correct answer (C)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "200% of 189 is what number?",
+            "A. 378, B. 3780, C. 37800, D. 378000",
+            0, // Index of correct answer (A)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "An electrician received a monthly salary of P7,500 and was given a commission of 12% on home services rendered. How much did he receive during the month when his home services payments reached P60,000?",
+            "A. P7,020, B. P8,040, C. P8,700, D. P9,120",
+            1, // Index of correct answer (B)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "At least how many correct answers did Ma. Lourdes get if she got 85% in a statistics test consisting of 30 items?",
+            "A. 25, B. 26, C. 27, D. 28",
+            2, // Index of correct answer (C)
+            "Hard"
+        )
+        insertQuizData(
+            "Business Mathematics",
+            "A car tank contains 25 liters of gasoline when it is 80% full. How many liters does it contain when full?",
+            "A. 20, B. 30, C. 40, D. 50",
+            3, // Index of correct answer (D)
+            "Hard"
+        )
+
 
         insertQuizData(
             "Business Mathematics",
@@ -1771,7 +2264,6 @@ open class QuizDataPopulator(private val dbHelper : QuizDatabaseHelper) {
         )
 
     }
-
 
     private fun populateEasyQuestionsECONOMICS() {
         // Add easy Business Finance quiz questions here

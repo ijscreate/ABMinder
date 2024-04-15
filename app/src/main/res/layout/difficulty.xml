@@ -7,7 +7,6 @@
 		android:layout_width = "match_parent"
 		android:layout_height = "match_parent"
 		android:orientation = "vertical"
-		tools:context = ".MainActivity"
 		>
 
 
@@ -65,8 +64,9 @@
 					app:layout_constraintTop_toTopOf = "parent"
 					android:layout_marginTop = "12dp"
 					android:spinnerMode = "dropdown"
+					android:textColor="@color/black"
 					android:foreground="@drawable/button_background"
-					app:spinner_popup_background="@android:drawable/spinner_background"
+					app:spinner_popup_background="@color/white"
 					/>
 
 			<LinearLayout

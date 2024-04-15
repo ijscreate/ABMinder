@@ -21,8 +21,6 @@ import com.ijs.abminder.quiz.database.QuizDatabaseHelper
 class WelcomeActivity : AppCompatActivity() {
 
     private lateinit var startButton : Button
-    private lateinit var dbHelper : QuizDatabaseHelper
-    private lateinit var termDatabaseHelper : DictionaryDatabaseHelper
 
     @SuppressLint("InflateParams")
     @RequiresApi(Build.VERSION_CODES.R)
@@ -32,14 +30,6 @@ class WelcomeActivity : AppCompatActivity() {
 
         val layout = layoutInflater.inflate(R.layout.activity_welcome, null)
         layout.visibility = View.VISIBLE
-
-        dbHelper = QuizDatabaseHelper(this)
-        val quizDataPopulator = QuizDataPopulator(dbHelper)
-        quizDataPopulator.populateQuizData()
-
-        termDatabaseHelper = DictionaryDatabaseHelper(this)
-        val insertTerms = DictionaryDataInsertion(this, termDatabaseHelper)
-        insertTerms.insert()
 
         // Check if the welcome screen has been shown before
         if (!isWelcomeScreenShown()) {

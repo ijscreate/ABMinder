@@ -1,14 +1,22 @@
 package com.ijs.abminder
 
+import android.app.ActivityOptions
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
+import com.ijs.abminder.dictionary.database.DictionaryDataInsertion
+import com.ijs.abminder.dictionary.database.DictionaryDatabaseHelper
+import com.ijs.abminder.quiz.database.QuizDataPopulator
+import com.ijs.abminder.quiz.database.QuizDatabaseHelper
 
 class MyApplication : Application() {
     companion object {
         lateinit var instance : MyApplication
             private set
     }
+
+    private lateinit var dbHelper : QuizDatabaseHelper
+    private lateinit var termDatabaseHelper : DictionaryDatabaseHelper
 
     override fun onCreate() {
         super.onCreate()
@@ -24,6 +32,14 @@ class MyApplication : Application() {
                 sharedPreferences.getString("theme_preference", "system")?.let { applyTheme(it) }
             }
         }
+
+        dbHelper = QuizDatabaseHelper(this)
+        val quizDataPopulator = QuizDataPopulator(dbHelper)
+        quizDataPopulator.populateQuizData()
+
+        termDatabaseHelper = DictionaryDatabaseHelper(this)
+        val insertTerms = DictionaryDataInsertion(this, termDatabaseHelper)
+        insertTerms.insert()
     }
 
     private fun applyTheme(theme : String) {

@@ -45,7 +45,6 @@ class SimpleInterestFragment : Fragment() {
         explainButton = rootView.findViewById(com.calculator.calculatoroptions.R.id.explainButton)
 
         calculateButton.setOnClickListener {
-            calculateButton.clearFocus()
             calculateSimpleInterest()
         }
 
@@ -76,9 +75,7 @@ class SimpleInterestFragment : Fragment() {
             Therefore, the Simple Interest earned is ₱100.
         """.trimIndent()
 
-
         descriptionTextView.text = description
-
 
         return rootView
     }

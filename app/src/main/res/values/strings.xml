@@ -42,7 +42,7 @@
 	<string name = "principal">Principal amount</string>
 	<string name = "rate">Rate of interest</string>
 	<string name = "time_in_years">Time (in years)</string>
-	<string name = "simple_interestz">Simple Interest:\n %1$s</string>
+	<string name = "simple_interestz">Simple Interest: %1$s</string>
 	<string name = "finish">Finish</string>
 	<string name = "quiz_completed">Result</string>
 	<string name = "arrow">arrow</string>
@@ -104,4 +104,5 @@
 	<string name = "example">Example</string>
 	<string name = "cancel">Cancel</string>
 	<string name = "save">Save</string>
+	<string name = "invalid_input_please_enter_valid_numbers">Invalid input. Please enter valid numbers.</string>
 </resources>
