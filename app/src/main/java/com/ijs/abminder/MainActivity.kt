@@ -2,6 +2,7 @@ package com.ijs.abminder
 
 import android.annotation.SuppressLint
 import android.app.ActivityOptions
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
@@ -20,10 +21,11 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
-import com.ijs.abminder.dictionary.EditTermFragment
+import com.ijs.abminder.dictionary.ui.EditTermFragment
 import com.ijs.abminder.settings.SettingsActivity
 
 class MainActivity : BaseDrawerActivity() {
+
 
     lateinit var toolbar : Toolbar
     private lateinit var drawerLayout : DrawerLayout
@@ -73,7 +75,7 @@ class MainActivity : BaseDrawerActivity() {
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
 
         if (isFirstTimeUser()) {
-            showUnderDevelopmentMessage()
+            // showUnderDevelopmentMessage()
             markFirstTimeUser()
         }
     }
@@ -86,7 +88,9 @@ class MainActivity : BaseDrawerActivity() {
         sharedPreferences.edit().putBoolean("firstTimeUser", false).apply()
     }
 
+    /*
     private fun showUnderDevelopmentMessage() {
+
         val message = """
             This app is still under development and may encounter the following:
             
@@ -102,7 +106,24 @@ class MainActivity : BaseDrawerActivity() {
             .setCancelable(false).setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
             }.show()
+        showUpdateDialog(this)
     }
+
+    private fun showUpdateDialog(context: Context) {
+        val featureDescription = """
+            - Text-to-Speech (TTS) function has been added. Now you can listen to pronunciations of terms in the dictionary.
+            - Speech Recognition has been implemented to allow users to search for terms by speaking into the app.
+            """.trimIndent()
+
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("App Update")
+        builder.setMessage("New Feature Added:\n\n$featureDescription")
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    } */
 
     private fun initViews() {
         toolbar = findViewById(R.id.toolbar)
@@ -125,7 +146,6 @@ class MainActivity : BaseDrawerActivity() {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else if (supportFragmentManager.backStackEntryCount > 0) {
             // If there are fragments in the back stack, pop the fragment
-            toolbar.title = getString(R.string.app_name)
             supportFragmentManager.popBackStack()
         } else {
             // If there are no fragments in the back stack
@@ -144,7 +164,6 @@ class MainActivity : BaseDrawerActivity() {
             backPressedTime = System.currentTimeMillis()
         }
     }
-
 
     override fun onCreateOptionsMenu(menu : Menu?) : Boolean {
         menuInflater.inflate(R.menu.menu_app_bar, menu)

@@ -105,4 +105,9 @@
 	<string name = "cancel">Cancel</string>
 	<string name = "save">Save</string>
 	<string name = "invalid_input_please_enter_valid_numbers">Invalid input. Please enter valid numbers.</string>
+	<string name = "mic">mic</string>
+	<string name = "share">Share</string>
+	<string name = "listening">Listening…</string>
+	<string name = "bookmarks">Bookmarks</string>
+	<string name = "learning_tool_for_specialized_subjects">Learning tool for specialized subjects.</string>
 </resources>

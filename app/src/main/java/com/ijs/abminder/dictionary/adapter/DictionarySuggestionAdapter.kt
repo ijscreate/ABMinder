@@ -1,4 +1,4 @@
-package com.ijs.abminder.dictionary
+package com.ijs.abminder.dictionary.adapter
 
 import android.content.Context
 import android.database.Cursor

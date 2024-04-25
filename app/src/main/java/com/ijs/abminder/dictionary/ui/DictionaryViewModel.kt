@@ -1,4 +1,4 @@
-package com.ijs.abminder.dictionary
+package com.ijs.abminder.dictionary.ui
 
 import android.content.Context
 import androidx.lifecycle.LiveData

@@ -1,6 +1,5 @@
 package com.ijs.abminder
 
-import android.app.ActivityOptions
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager

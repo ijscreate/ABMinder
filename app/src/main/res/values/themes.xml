@@ -1,25 +1,27 @@
 <resources>
 
-	<style name = "AppTheme" parent = "Theme.MaterialComponents.DayNight.NoActionBar">
-		<item name = "colorPrimary">@color/colorPrimary</item>
-		<item name = "colorOnPrimary">@color/white</item>
-		<item name = "colorPrimaryVariant">@color/colorPrimaryDark</item>
-		<item name = "colorPrimaryDark">@color/colorPrimaryDark</item>
-		<item name = "colorSecondary">@color/colorSecondary</item>
-		<item name = "colorAccent">@color/lightGreen</item>
-		<item name = "dialogCornerRadius">10dp</item>
-		<item name = "colorTertiary">@color/colorTertiary</item>
-		<item name = "colorOnTertiary">@color/colorOnTertiary</item>
-		<item name = "android:textColor">@color/primaryText</item>
-		<item name = "dividerColor">@color/dividerColor</item>
+	<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorOnPrimary">@color/white</item>
+		<item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorSecondary">@color/colorSecondary</item>
+		<item name="colorAccent">@color/lightGreen</item>
+		<item name="dialogCornerRadius">10dp</item>
+		<item name="colorTertiary">@color/colorTertiary</item>
+		<item name="colorOnTertiary">@color/colorOnTertiary</item>
+		<item name="android:textColor">@color/primaryText</item>
+		<item name="dividerColor">@color/dividerColor</item>
 
-		<item name = "android:windowActivityTransitions">true</item>
-		<item name = "android:windowEnterTransition">@transition/zoom_in</item>
-		<item name = "android:windowExitTransition">@transition/zoom_out</item>
+		<item name="android:windowActivityTransitions">true</item>
+		<item name="android:windowEnterTransition">@transition/zoom_in</item>
+		<item name="android:windowExitTransition">@transition/zoom_out</item>
+
+		<item name = "preferenceCategoryTitleTextColor">@color/colorPrimary</item>
 	</style>
 
-	<style name = "PreferenceCategoryTitleStyle" parent = "@android:style/TextAppearance">
-		<item name = "android:textColor">@color/colorPrimary</item>
+	<style name="PreferenceCategoryTitleStyle" parent="@android:style/TextAppearance">
+		<item name="android:textColor">@color/colorPrimary</item>
 	</style>
 
 </resources>
