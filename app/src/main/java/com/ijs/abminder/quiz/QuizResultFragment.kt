@@ -11,7 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import antonkozyriatskyi.circularprogressindicator.*
+import antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
 import com.ijs.abminder.R
 
 @Suppress("DEPRECATION")
@@ -86,7 +86,7 @@ class QuizResultFragment : Fragment() {
 
         finishButton = view.findViewById(R.id.finishButton)
         finishButton.setOnClickListener {
-            val intent = Intent(requireActivity(), DifficultyLevel::class.java)
+            val intent = Intent(requireActivity(), QuizActivity::class.java)
             startActivity(intent)
         }
 

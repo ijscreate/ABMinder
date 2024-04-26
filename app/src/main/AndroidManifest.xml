@@ -8,6 +8,7 @@
 	<uses-permission android:name = "android.permission.WAKE_LOCK" />
 	<uses-permission android:name = "android.permission.VIBRATE" />
 	<uses-permission android:name = "com.android.alarm.permission.SET_ALARM" />
+	<uses-permission android:name = "android.permission.RECORD_AUDIO" />
 
 	<application
 			android:name = "com.ijs.abminder.MyApplication"
@@ -39,7 +40,7 @@
 				android:exported = "false"
 				android:windowSoftInputMode = "adjustResize" />
 		<activity
-				android:name = "com.ijs.abminder.quiz.DifficultyLevel"
+				android:name = "com.ijs.abminder.quiz.QuizActivity"
 				android:exported = "false" />
 
 		<receiver
@@ -48,18 +49,33 @@
 
 		<activity
 				android:name = ".BaseDrawerActivity"
-				android:exported = "true" />
+				android:exported = "false" />
 
 		<activity
 				android:name = ".calculator.CalculatorOptionsActivity"
-				android:label = "@string/calculator" />
+				android:label = "@string/calculator">
+			<meta-data
+					android:name = "android.support.REQUEST_PERMISSIONS"
+					android:value = "101" />
+		</activity>
 
 		<activity
 				android:name = ".learn.subjects.SubjectsActivity"
 				android:label = "@string/learn" />
 
-		<activity android:name = ".dictionary.DictionaryActivity"
-				android:label="@string/dictionary"/>
+		<activity
+				android:name = ".dictionary.ui.DictionaryActivity"
+				android:label = "@string/dictionary">
+			<meta-data
+					android:name = "android.support.REQUEST_PERMISSIONS"
+					android:value = "101" />
+		</activity>
 	</application>
+
+	<queries>
+		<intent>
+			<action android:name = "android.speech.RecognitionService" />
+		</intent>
+	</queries>
 
 </manifest>

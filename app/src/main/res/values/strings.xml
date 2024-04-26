@@ -90,7 +90,7 @@
 	<string name = "error_title">Error</string>
 	<string name = "error_message">An error occurred while calculating the Inventory Turnover Ratio.</string>
 	<string name = "mortgage_result">Monthly Mortgage Payment: ₱%.2f</string>
-	<string name = "invalid_input">Invalid input. Please enter valid cash flows and discount rate.</string>
+	<string name = "invalid_input">Invalid input. Please enter valid numbers.</string>
 	<string name = "present_value_result">Present Value: ₱%.2f</string>
 	<string name = "present_value_calculation_title">Present Value Calculation</string>
 	<string name = "choose_preffered_subject">Choose preffered subject</string>
@@ -110,4 +110,48 @@
 	<string name = "listening">Listening…</string>
 	<string name = "bookmarks">Bookmarks</string>
 	<string name = "learning_tool_for_specialized_subjects">Learning tool for specialized subjects.</string>
+	<string name = "next_step">Next step</string>
+	<string name = "step_1_input_values">Step 1: Enter the Principal Amount</string>
+	<string name = "step_2_input_rate">Step 2: Enter the Interest Rate</string>
+	<string name = "step_3_input_time">Step 3: Enter the Time (in years)</string>
+	<string name = "step_4_multiply">Step 4: Multiply the Principal Amount, Interest Rate, and Time</string>
+	<string name = "step_4_multiply_hint">Multiply %1$.2f * %2$.2f * %3$.2f</string>
+	<string name = "step_5_hint">Step 5: Divide the result %1$.2f by 100</string>
+	<string name = "step_5_divide">Step 5: Divide the result by 100</string>
+	<string name = "step_6_result">The result is:</string>
+	<string name = "next">Next</string>
+	<string name = "incorrect_multiplication">Incorrect multiplication. Please try again.</string>
+	<string name = "simple_interest_result">Simple Interest: ₱%.2f</string>
+	<string name = "incorrect_division">Incorrect division. Please try again.</string>
+	<string name = "exit">Exit</string>
+	<!-- Step titles -->
+	<string name = "step_1_input_loan_amount">Step 1: Input loan amount</string>
+	<string name = "step_2_input_interest_rate">Step 2: Input interest rate</string>
+	<string name = "step_3_input_loan_term">Step 3: Input loan term (years)</string>
+	<string name = "step_4_calculate_monthly_interest_rate">Step 4: Calculate monthly interest rate</string>
+	<string name = "step_5_calculate_monthly_payment">Step 5: Calculate monthly payment</string>
+
+	<!-- Step hints -->
+	<string name = "loan_amount">Loan amount</string>
+	<string name = "interest_rate">Interest rate</string>
+	<string name = "loan_term_years">Loan term (years)</string>
+	<string name = "step_4_monthly_interest_rate_hint">Monthly interest rate (Expected: %.2f%% for %d months)</string>
+
+	<!-- Error messages -->
+	<string name = "incorrect_monthly_interest_rate">Incorrect monthly interest rate. Please enter the correct value.</string>
+
+	<!-- Table headers -->
+	<string name = "month">Month</string>
+	<string name = "payment">Payment</string>
+	<string name = "interest">Interest</string>
+	<string name = "balance">Balance</string>
+
+	<string name = "step_1_description">Step 1: Enter the principal amount.</string>
+	<string name = "step_2_description">Step 2: Enter the annual interest rate (in percentage).</string>
+	<string name = "step_3_description">Step 3: Enter the time period (in years).</string>
+	<string name = "step_4_description">Step 4: Select the payment frequency.</string>
+	<string name = "step_5_description">Step 5: Calculating annuity payment…</string>
+	<string name = "annuity_payment_result">Annuity Payment: ₱%.2f</string>
+
+
 </resources>

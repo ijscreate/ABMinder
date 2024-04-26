@@ -3,6 +3,7 @@ package com.ijs.abminder
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.hardware.display.DisplayManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -12,10 +13,6 @@ import android.view.WindowInsetsController
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.ijs.abminder.dictionary.database.DictionaryDataInsertion
-import com.ijs.abminder.dictionary.database.DictionaryDatabaseHelper
-import com.ijs.abminder.quiz.database.QuizDataPopulator
-import com.ijs.abminder.quiz.database.QuizDatabaseHelper
 
 @Suppress("DEPRECATION")
 class WelcomeActivity : AppCompatActivity() {
@@ -26,7 +23,24 @@ class WelcomeActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_welcome)
+
+        val displayManager = this.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+        val display = displayManager.displays[0]
+        val supportedRefreshRates =
+            display.supportedModes.map { it.refreshRate }.distinct().sorted()
+
+        // Check if any refresh rate greater than 60 Hz is supported
+        val supportsHighRefreshRate = supportedRefreshRates.any { it > 60.0f }
+        if (supportsHighRefreshRate) {
+            val desiredMode = display.supportedModes.find { it.refreshRate == 90.0f }
+            if (desiredMode != null) {
+                window.attributes = window.attributes.apply {
+                    this.preferredDisplayModeId = desiredMode.modeId
+                }
+            }
+        }
 
         val layout = layoutInflater.inflate(R.layout.activity_welcome, null)
         layout.visibility = View.VISIBLE

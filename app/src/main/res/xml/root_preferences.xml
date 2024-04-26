@@ -12,13 +12,25 @@
 		<ListPreference
 				app:title = "Theme"
 				app:key = "theme_preference"
-				app:iconSpaceReserved = "false"
 				app:entries = "@array/theme_options"
 				app:entryValues = "@array/theme_values"
-				app:layout = "@layout/preferences"
-				app:icon = "@drawable/theme"
-				app:defaultValue = "system"
+				app:iconSpaceReserved = "false"
+				app:defaultValue = "light"
 				app:useSimpleSummaryProvider = "true" />
+
+		<SeekBarPreference
+				app:title = "Text-to-Speech (TTS) Speed"
+				app:key = "tts_speed_preference"
+				app:iconSpaceReserved = "false"
+				app:defaultValue = "100"
+				app:useSimpleSummaryProvider = "true"
+				app:showSeekBarValue = "true"
+				app:dialogMessage = "Adjust the TTS speed"
+				app:dialogTitle = "TTS Speed"
+				app:min = "50"
+				app:max = "200"
+				app:adjustable = "true"
+				app:seekBarIncrement = "5" />
 
 	</PreferenceCategory>
 
@@ -31,19 +43,21 @@
 		<Preference
 				app:title = "About Us"
 				app:key = "about_us"
-				app:layout = "@layout/preferences"
-				app:icon = "@drawable/information" />
+				app:iconSpaceReserved = "false"
+
+				/>
 
 		<Preference
 				app:title = "About ABMinder"
 				app:key = "about_app"
-				app:layout = "@layout/preferences"
-				app:icon = "@drawable/about" />
+				app:iconSpaceReserved = "false"
+
+				/>
 
 		<Preference
 				app:title = "Credits"
 				app:key = "credits"
-				app:layout = "@layout/preferences" />
+				app:iconSpaceReserved = "false" />
 	</PreferenceCategory>
 
 </PreferenceScreen>

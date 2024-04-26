@@ -1,146 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-		android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        >
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		app:cardCornerRadius = "10dp"
+		app:cardElevation = "4dp"
+		app:cardUseCompatPadding = "true"
+		android:layout_gravity = "center"
+		android:orientation = "vertical"
+		>
 
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+	<LinearLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			android:orientation = "vertical"
+			android:padding = "16dp"
+			>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                >
+		<!-- Step TextView -->
+		<com.google.android.material.textview.MaterialTextView
+				android:id = "@+id/stepTextView"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:gravity = "center"
+				android:padding = "8dp"
+				android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+				/>
 
-            <!-- Principal -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/principal_amount"
-                    >
+		<!-- Step Input Layout -->
+		<com.google.android.material.textfield.TextInputLayout
+				android:id = "@+id/stepInputLayout"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				>
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextPrincipal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
+			<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/stepInputEditText"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:importantForAutofill = "no"
+					android:inputType = "numberDecimal"
+					android:paddingHorizontal = "6dp"
+					android:textColorHint = "#757575"
+					/>
+		</com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Interest Rate -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/interest_rate"
-                    >
+		<Button
+				android:id = "@+id/nextButton"
+				style = "?android:attr/buttonBarButtonStyle"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:text = "@string/next"
+				/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextInterestRate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:importantForAutofill="no"
-                        android:inputType="numberDecimal"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
+		<ScrollView
+				android:layout_width = "match_parent"
+				android:layout_height = "match_parent"
+				>
 
-            <!-- Time Period -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/time_period_years"
-                    >
+			<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:orientation = "vertical"
+					>
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextTimePeriod"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:importantForAutofill="no"
-                        android:inputType="number"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
+				<!-- Result TextView -->
+				<com.google.android.material.textview.MaterialTextView
+						android:id = "@+id/resultTextView"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+						/>
 
-            <!-- Payment Frequency -->
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/payment_frequency"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="16dp"
-                    />
+				<com.google.android.material.textview.MaterialTextView
+						android:id = "@+id/descriptionTextView"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:textAppearance = "@style/TextAppearance.AppCompat.Small"
+						/>
 
-            <Spinner
-                    android:id="@+id/spinnerPaymentFrequency"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    />
+			</LinearLayout>
+		</ScrollView>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+	</LinearLayout>
 
-                <!-- Solution Button -->
-                <Button
-                        android:id="@+id/buttonSolution"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/show_explanation"
-                        />
-
-                <!-- Calculate Button -->
-                <Button
-                        android:id="@+id/buttonCalculateAnnuityPayment"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/calculate"
-                        />
-            </LinearLayout>
-
-            <!-- Result TextView -->
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewAnnuityPaymentResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:padding="8dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    />
-
-            <!-- Description TextView -->
-            <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:padding="8dp"
-                    android:textSize="16sp"
-                    />
-
-        </LinearLayout>
-    </ScrollView>
 </androidx.cardview.widget.CardView>

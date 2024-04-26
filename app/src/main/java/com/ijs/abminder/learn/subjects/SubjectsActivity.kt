@@ -1,15 +1,17 @@
 package com.ijs.abminder.learn.subjects
 
-import android.annotation.*
-import android.os.*
-import androidx.appcompat.widget.*
+import android.annotation.SuppressLint
+import android.os.Bundle
+import androidx.activity.addCallback
+import androidx.appcompat.widget.Toolbar
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
-import com.google.android.material.floatingactionbutton.*
-import com.google.android.material.navigation.*
-import com.ijs.abminder.*
-import com.ijs.abminder.learn.*
-import com.ijs.abminder.learn.chapters.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.ijs.abminder.BaseDrawerActivity
+import com.ijs.abminder.R
+import com.ijs.abminder.learn.ContainerFragment
+import com.ijs.abminder.learn.PersonalizedStudyPlanFragment
 
 class SubjectsActivity : BaseDrawerActivity() {
     lateinit var toolbar : Toolbar
@@ -42,14 +44,15 @@ class SubjectsActivity : BaseDrawerActivity() {
 
         val navView = findViewById<NavigationView>(R.id.nav_view)
         navView.setCheckedItem(R.id.nav_item_learn)
+
+        onBackPressedDispatcher.addCallback(this) {
+            finish()
+        }
     }
 
-    private fun onSubjectSelected(subject : String) {
-        val fragmentManager = supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.content_frame, ChaptersFragment.newInstance(subject))
-        transaction.addToBackStack(null)
-        transaction.commit()
-        supportActionBar?.title = subject
+    override fun onResume() {
+        super.onResume()
+        toolbar.title = "Learn"
+        navView.setCheckedItem(R.id.nav_item_learn)
     }
 }

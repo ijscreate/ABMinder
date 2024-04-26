@@ -6,18 +6,19 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
-import com.ijs.abminder.dictionary.DictionaryActivity
+import com.ijs.abminder.dictionary.ui.DictionaryActivity
 import com.ijs.abminder.learn.subjects.SubjectsActivity
-import com.ijs.abminder.quiz.DifficultyLevel
+import com.ijs.abminder.quiz.QuizActivity
 
 open class BaseDrawerActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle : ActionBarDrawerToggle
-    private lateinit var navView : NavigationView
+    lateinit var navView : NavigationView
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,37 +59,34 @@ open class BaseDrawerActivity : AppCompatActivity() {
                 R.id.nav_item_home -> {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
 
                 R.id.nav_item_calculator -> {
                     val intent = Intent(this, CalculatorOptionsActivity::class.java)
                     startActivity(intent)
-                    toolbar.title = getString(R.string.calculator)
-                    navView.setCheckedItem(R.id.nav_item_calculator)
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
 
                 R.id.nav_item_dictionary -> {
                     startActivity(Intent(this, DictionaryActivity::class.java))
-                    toolbar.title = getString(R.string.dictionary)
-                    navView.setCheckedItem(R.id.nav_item_dictionary)
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
 
                 R.id.nav_item_learn -> {
                     val intent = Intent(this, SubjectsActivity::class.java)
                     startActivity(intent)
-                    toolbar.title = "Learn"
-                    navView.setCheckedItem(R.id.nav_item_learn)
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
 
                 R.id.nav_item_quiz -> {
-                    val intent = Intent(this, DifficultyLevel::class.java)
+                    val intent = Intent(this, QuizActivity::class.java)
                     startActivity(intent)
-                    toolbar.title = getString(R.string.quiz)
-                    navView.setCheckedItem(R.id.nav_item_dictionary)
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
                 // Handle other navigation items similarly

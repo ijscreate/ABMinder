@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.view.GravityCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import androidx.preference.SeekBarPreference
 import com.ijs.abminder.R
 
 class SettingsActivity : AppCompatActivity() {
@@ -25,7 +25,7 @@ class SettingsActivity : AppCompatActivity() {
         themePreference = preferences.getString("theme_preference", "system") ?: "system"
         applyTheme(themePreference)
 
-        setContentView(R.layout.settings_activity)
+        setContentView(R.layout.activity_settings)
 
 
         if (savedInstanceState == null) {
@@ -36,7 +36,7 @@ class SettingsActivity : AppCompatActivity() {
         // Register the listener
         preferences.registerOnSharedPreferenceChangeListener { _, key ->
             if (key == "theme_preference") {
-                val newTheme = preferences.getString("theme_preference", "system") ?: "system"
+                val newTheme = preferences.getString("theme_preference", "light") ?: "light"
                 if (newTheme != themePreference) {
                     themePreference = newTheme
                     applyThemeWithAnimation()
@@ -78,6 +78,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
+        @SuppressLint("DiscouragedApi")
         override fun onCreatePreferences(savedInstanceState : Bundle?, rootKey : String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
@@ -104,6 +105,22 @@ class SettingsActivity : AppCompatActivity() {
                     .replace(R.id.settings, CreditFragment()).addToBackStack(null).commit()
                 true
             }
+
+            val ttsSpeedPreference = findPreference<SeekBarPreference>("tts_speed_preference")
+
+            ttsSpeedPreference?.setOnPreferenceChangeListener { preference, newValue ->
+                if (preference is SeekBarPreference && newValue is Int) {
+                    // Save the new TTS speed to SharedPreferences
+                    context?.let {
+                        PreferenceManager.getDefaultSharedPreferences(it)
+                            .edit()
+                            .putInt("tts_speed_preference", newValue)
+                            .apply()
+                    }
+                }
+                true
+            }
+
         }
     }
 }

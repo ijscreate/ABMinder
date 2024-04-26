@@ -1,47 +1,44 @@
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="4dp"
-        tools:ignore="MissingDefaultResource"
-        >
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:tools = "http://schemas.android.com/tools"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:orientation = "vertical"
+		android:paddingHorizontal = "16dp"
+		android:paddingVertical = "4dp"
+		tools:ignore = "MissingDefaultResource"
+		>
 
-    <TextView
-            android:id="@+id/recentSearchTerm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:textSize="18sp"
-            android:fontFamily="@font/lora_regular"
-            android:textStyle="bold"
-            android:text="@string/medium"
-            />
+	<TextView
+			android:id = "@+id/recentSearchTerm"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_marginBottom = "2dp"
+			android:textSize = "18sp"
+			android:textStyle = "bold"
+			android:text = "@string/medium"
+			/>
 
-    <TextView
-            android:id="@+id/recentSearchDefinition"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginVertical="4dp"
+	<TextView
+			android:id = "@+id/recentSearchDefinition"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:textSize = "14sp"
+			android:layout_marginVertical = "4dp"
 
-            />
+			/>
 
-    <TextView
-            android:id="@+id/recentSearchExample"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
+	<TextView
+			android:id = "@+id/recentSearchExample"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:textSize = "14sp"
 
-            />
+			/>
 
-    <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="6dp"
-            app:dividerColor="@android:color/darker_gray"
-            />
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginTop = "6dp"
+			/>
 </LinearLayout>

@@ -37,7 +37,7 @@
 	<string name = "fixed_cost">Fixed cost</string>
 	<string name = "break_even_calculator">Break-Even Point</string>
 	<string name = "compound_interest">Compound Interest</string>
-	<string name="compound_interest_result">Total Compound Interest: ₱%.2f\nTotal Interest Earned: ₱%.2f</string>
+	<string name = "compound_interest_result">Total Compound Interest: ₱%.2f\nTotal Interest Earned: ₱%.2f</string>
 	<string name = "tax_rate">Tax rate</string>
 	<string name = "equity_weight">Equity weight</string>
 	<string name = "debt_weight">Debt weight</string>
@@ -180,6 +180,7 @@
 	<string name = "monthly_saving">Monthly Saving</string>
 	<string name = "nominal_return">Nominal Return</string>
 	<string name = "inflation_rate">Inflation Rate</string>
+	<string name = "next">Next</string>
 
 
 </resources>

@@ -1,20 +1,28 @@
 package com.ijs.abminder.quiz
 
-import android.annotation.*
-import android.content.*
-import android.database.sqlite.*
-import android.graphics.*
-import android.os.*
-import android.view.*
-import android.widget.*
-import androidx.fragment.app.*
+import android.annotation.SuppressLint
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import android.graphics.Color
+import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RadioGroup
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
-import com.akexorcist.roundcornerprogressbar.*
-import com.google.android.material.radiobutton.*
+import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+import com.google.android.material.radiobutton.MaterialRadioButton
 import com.ijs.abminder.R
-import com.ijs.abminder.quiz.database.*
-import java.util.*
+import com.ijs.abminder.quiz.database.QuizDatabaseHelper
+import java.util.Locale
 import kotlin.collections.set
 
 class QuizFragment : Fragment() {
@@ -34,15 +42,15 @@ class QuizFragment : Fragment() {
     private var totalTimeMillis : Long = 180000 // 3 minutes in milliseconds
     private var totalQuestionsPerGame = 10
     private var quizStartTimeMillis : Long = 0
+
+    // variables to track progress
     private var totalQuestionsAnswered = 0
     private var totalCorrectAnswers = 0
     private var totalWrongAnswers = 0
-
+    private var totalTimeTaken = 0L
     private var currentStreak = 0
     private var highestStreak = 0
-    private var totalTimeTaken = 0L // Total time taken to answer all questions (in milliseconds)
-    private val timeTakenForLevel =
-        mutableMapOf<String, Long>() // Time taken for each difficulty level
+    private var timeTakenForLevel : HashMap<String, Long> = HashMap()
     private var questionStartTime = 0L
 
     private lateinit var selectedDifficulty : String
@@ -100,6 +108,7 @@ class QuizFragment : Fragment() {
         return view
     }
 
+    @Suppress("SameParameterValue")
     private fun setUnlockStateForLevel(level : String, isUnlocked : Boolean) {
         val sharedPreferences =
             requireContext().getSharedPreferences("UnlockState", Context.MODE_PRIVATE)
@@ -340,7 +349,7 @@ class QuizFragment : Fragment() {
         return score
     }
 
-    /**
+    /*
     private fun moveNextOrEndQuiz() {
     clearOptionBackgrounds()
     optionsRadioGroup.clearCheck()
@@ -426,6 +435,19 @@ class QuizFragment : Fragment() {
         // Perform the fragment transaction
         requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.quiz_container, resultFragment).commit()
+    }
+
+    fun getProgressData() : Bundle {
+        // Convert the map to a serializable HashMap
+        val serializableTimeTakenForLevel = HashMap(timeTakenForLevel)
+        return Bundle().apply {
+            putInt("totalQuestionsAnswered", totalQuestionsAnswered)
+            putInt("totalCorrectAnswers", totalCorrectAnswers)
+            putInt("totalWrongAnswers", totalWrongAnswers)
+            putLong("totalTimeTaken", totalTimeTaken)
+            putInt("highestStreak", highestStreak)
+            putSerializable("timeTakenForLevel", serializableTimeTakenForLevel)
+        }
     }
 
 }

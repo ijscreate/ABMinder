@@ -56,6 +56,7 @@ open class QuizDatabaseHelper(context : Context) :
         val db = writableDatabase
 
         db.insert(TABLE_QUIZ, null, values)
+        db.close()
     }
 
     open fun deleteDuplicateQuestions() {

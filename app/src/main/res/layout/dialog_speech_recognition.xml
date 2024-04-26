@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		android:layout_width = "match_parent"
+		android:layout_height = "100dp"
+		android:orientation = "vertical"
+		android:gravity = "center"
+		android:padding = "26dp"
+		>
+
+	<TextView
+			android:id = "@+id/textListening"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:text = "@string/listening"
+			android:textAlignment = "center"
+			android:textAppearance = "@style/TextAppearance.AppCompat.Title"
+			/>
+
+	<TextView
+			android:id = "@+id/textRecognized"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:text = ""
+			android:visibility = "gone"
+			android:textStyle = "bold"
+			android:textAlignment = "center"
+			android:textSize = "18sp"
+			/>
+
+</LinearLayout>

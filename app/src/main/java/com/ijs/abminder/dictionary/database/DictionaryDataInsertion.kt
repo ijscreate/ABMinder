@@ -2049,6 +2049,7 @@ class DictionaryDataInsertion(
                 db.setTransactionSuccessful()
             } finally {
                 db.endTransaction()
+                db.close()
             }
         }
     }

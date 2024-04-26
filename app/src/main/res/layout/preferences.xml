@@ -32,7 +32,6 @@
 				android:layout_height = "wrap_content"
 				android:id = "@android:id/title"
 				android:textAppearance = "@style/TextAppearance.Material3.LabelLarge"
-				android:textStyle = "bold"
 				/>
 
 		<TextView

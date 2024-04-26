@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:orientation = "vertical"
+		android:padding = "16dp"
+		>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewTotalQuestionsAnswered"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Total Questions Answered: 0"
+			/>
+
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginVertical = "6dp"
+			/>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewTotalCorrectAnswers"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Total Correct Answers: 0"
+			/>
+
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginVertical = "6dp"
+			/>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewTotalWrongAnswers"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Total Wrong Answers: 0"
+			/>
+
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginVertical = "6dp"
+			/>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewTotalTimeTaken"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Total Time Taken: 00:00"
+			/>
+
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginVertical = "6dp"
+			/>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewHighestStreak"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Highest Streak: 0"
+			/>
+
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginVertical = "6dp"
+			/>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewTimeTakenForLevel"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Time Taken for Each Level:"
+			/>
+
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginVertical = "6dp"
+			/>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewTimeTakenEasy"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Easy: 00:00"
+			/>
+
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginVertical = "6dp"
+			/>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewTimeTakenMedium"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Medium: 00:00"
+			/>
+
+	<com.google.android.material.divider.MaterialDivider
+			android:layout_width = "match_parent"
+			android:layout_height = "1dp"
+			android:layout_marginVertical = "6dp"
+			/>
+
+	<com.google.android.material.textview.MaterialTextView
+			android:id = "@+id/textViewTimeTakenHard"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "Hard: 00:00"
+			/>
+
+</LinearLayout>

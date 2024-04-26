@@ -10,6 +10,12 @@ android {
     namespace 'com.ijs.abminder'
     compileSdk 34
 
+    android.applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
+            outputFileName = "ABMinder-${variant.versionName}.apk"
+        }
+    }
+
     repositories {
         google()
         mavenCentral()
@@ -45,7 +51,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.core:core-ktx:1.13.0'
     implementation 'androidx.appcompat:appcompat:1.7.0-alpha03'
     implementation 'com.google.android.material:material:1.11.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -73,6 +79,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'org.apache.commons:commons-math3:3.6.1'
     implementation "com.github.skydoves:powerspinner:1.2.7"
+    implementation 'com.ezylang:EvalEx:3.2.0'
 
     implementation project(path: ":calculatorOptions")
     implementation fileTree(dir: 'libs', include: ['*.zip'])

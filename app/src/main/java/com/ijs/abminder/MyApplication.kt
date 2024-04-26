@@ -1,6 +1,9 @@
 package com.ijs.abminder
 
 import android.app.Application
+import android.hardware.display.DisplayManager
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.ijs.abminder.dictionary.database.DictionaryDataInsertion
@@ -12,33 +15,34 @@ class MyApplication : Application() {
     companion object {
         lateinit var instance : MyApplication
             private set
+
+        var supportsHighRefreshRate = false
     }
 
-    private lateinit var dbHelper : QuizDatabaseHelper
-    private lateinit var termDatabaseHelper : DictionaryDatabaseHelper
-
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate() {
         super.onCreate()
         instance = this
 
         // Apply the initial theme
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        preferences.getString("theme_preference", "system")?.let { applyTheme(it) }
+        preferences.getString("theme_preference", "light")?.let { applyTheme(it) }
 
         // Register the listener
         preferences.registerOnSharedPreferenceChangeListener { sharedPreferences, key ->
             if (key == "theme_preference") {
-                sharedPreferences.getString("theme_preference", "system")?.let { applyTheme(it) }
+                sharedPreferences.getString("theme_preference", "light")?.let { applyTheme(it) }
             }
         }
 
-        dbHelper = QuizDatabaseHelper(this)
-        val quizDataPopulator = QuizDataPopulator(dbHelper)
-        quizDataPopulator.populateQuizData()
+        val displayManager = getSystemService(DISPLAY_SERVICE) as DisplayManager
+        val display = displayManager.displays[0]
+        val supportedRefreshRates =
+            display.supportedModes.map { it.refreshRate }.distinct().sorted()
 
-        termDatabaseHelper = DictionaryDatabaseHelper(this)
-        val insertTerms = DictionaryDataInsertion(this, termDatabaseHelper)
-        insertTerms.insert()
+        supportsHighRefreshRate = supportedRefreshRates.any { it > 60.0f }
+
+        populateDatabases()
     }
 
     private fun applyTheme(theme : String) {
@@ -48,4 +52,19 @@ class MyApplication : Application() {
             else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
     }
+
+    private fun populateDatabases() {
+        val dbHelper = QuizDatabaseHelper(this)
+        val quizDataPopulator = QuizDataPopulator(dbHelper)
+        Thread {
+            quizDataPopulator.populateQuizData()
+        }.start()
+
+        val termDatabaseHelper = DictionaryDatabaseHelper(this)
+        val insertTerms = DictionaryDataInsertion(this, termDatabaseHelper)
+        Thread {
+            insertTerms.insert()
+        }.start()
+    }
+
 }

@@ -12,7 +12,7 @@
 			android:layout_height = "wrap_content"
 			app:cardCornerRadius = "12dp"
 			android:layout_margin = "4dp"
-			app:cardElevation = "@dimen/card_elevation"
+			app:cardElevation = "2dp"
 			>
 
 		<LinearLayout

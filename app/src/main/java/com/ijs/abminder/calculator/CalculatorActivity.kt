@@ -1,14 +1,28 @@
 package com.ijs.abminder.calculator
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.activity.addCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ezylang.evalex.Expression
+import com.ezylang.evalex.parser.ParseException
 import com.google.android.material.navigation.NavigationView
 import com.ijs.abminder.BaseDrawerActivity
 import com.ijs.abminder.R
+import com.ijs.abminder.calculator.adapter.CalculationOptionAdapter
+import com.ijs.abminder.calculator.data.CalculationOption
 import com.ijs.abminder.calculator.options.AmortizationFragment
 import com.ijs.abminder.calculator.options.AnnuityPaymentCalculatorFragment
 import com.ijs.abminder.calculator.options.AverageCollectionPeriodFragment
@@ -47,6 +61,7 @@ import com.ijs.abminder.calculator.options.TimeValueOfMoneyFragment
 import com.ijs.abminder.calculator.options.TradeDiscountCalculatorFragment
 import com.ijs.abminder.calculator.options.WACCFragment
 import com.ijs.abminder.calculator.options.WorkingCapitalFragment
+import java.text.DecimalFormat
 
 
 class CalculatorOptionsActivity : BaseDrawerActivity() {
@@ -55,23 +70,30 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
     private lateinit var adapter : CalculationOptionAdapter
     private lateinit var searchView : SearchView
     lateinit var toolbar : Toolbar
-    private lateinit var calculatorFragmentLifecycleObserver: CalculatorFragmentLifecycleObserver
-
+    private lateinit var calculatorFragmentLifecycleObserver : CalculatorFragmentLifecycleObserver
+    private lateinit var textViewDisplay : TextView
+    private lateinit var speechRecognitionDialog : Dialog
+    private lateinit var linearLayout : LinearLayout
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_calculator_options)
+        setContentView(R.layout.activity_calculator)
 
         // Set up the toolbar and drawer
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         setupDrawer(toolbar)
 
+        speechRecognitionDialog = Dialog(this)
+        speechRecognitionDialog.setContentView(R.layout.dialog_speech_recognition)
+
         searchView = findViewById(R.id.calculatorSearchView)
 
         val navView = findViewById<NavigationView>(R.id.nav_view)
         navView.setCheckedItem(R.id.nav_item_calculator)
+
+        linearLayout = findViewById(R.id.calculator_linear_layout)
 
         // Set up search view
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -84,6 +106,8 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
                 return false
             }
         })
+
+        onBackPressedDispatcher.addCallback(this) { finish() }
 
         calculatorFragmentLifecycleObserver = CalculatorFragmentLifecycleObserver(toolbar)
 
@@ -101,36 +125,30 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
                 "Compute interest on the initial principal and accumulated interest."
             ),
             CalculationOption(
-                "Percentage Change",
-                "Determine the percentage change between two values."
+                "Percentage Change", "Determine the percentage change between two values."
             ),
             CalculationOption(
-                "Profit Margin",
-                "Calculate the profit margin as a percentage of revenue."
+                "Profit Margin", "Calculate the profit margin as a percentage of revenue."
             ),
             CalculationOption(
                 "Amortization Schedule",
                 "Generate a schedule of loan repayments with details on principal and interest."
             ),
             CalculationOption(
-                "Net Present Value (NPV)",
-                "Evaluate the profitability of an investment."
+                "Net Present Value (NPV)", "Evaluate the profitability of an investment."
             ),
             CalculationOption(
-                "Return on Investment (ROI)",
-                "Measure the return on an investment as a percentage."
+                "Return on Investment (ROI)", "Measure the return on an investment as a percentage."
             ),
             CalculationOption(
-                "Break-Even Point",
-                "Find the point where revenue equals costs."
+                "Break-Even Point", "Find the point where revenue equals costs."
             ),
             CalculationOption(
                 "Weighted Average Cost of Capital (WACC)",
                 "Calculate the average rate of return a company is expected to provide to its investors."
             ),
             CalculationOption(
-                "Time Value of Money (TVM)",
-                "Evaluate the value of money over time."
+                "Time Value of Money (TVM)", "Evaluate the value of money over time."
             ),
             CalculationOption(
                 "Earnings Per Share (EPS)",
@@ -141,8 +159,7 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
                 "Determine the rate at which a country's economy is growing."
             ),
             CalculationOption(
-                "Debt to Equity Ratio",
-                "Assess a company's financial leverage."
+                "Debt to Equity Ratio", "Assess a company's financial leverage."
             ),
             CalculationOption(
                 "Operating Cash Flow Ratio",
@@ -169,16 +186,14 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
                 "Evaluate the return on an investment adjusted for its risk."
             ),
             CalculationOption(
-                "Working Capital Ratio",
-                "Assess a company's operational liquidity."
+                "Working Capital Ratio", "Assess a company's operational liquidity."
             ),
             CalculationOption(
                 "Quick Ratio",
                 "Measure a company's ability to meet its short-term obligations with its most liquid assets."
             ),
             CalculationOption(
-                "Savings Goal Planner",
-                "Plan and track progress toward a savings goal over time."
+                "Savings Goal Planner", "Plan and track progress toward a savings goal over time."
             ),
             CalculationOption(
                 "Inflation Adjusted Return",
@@ -223,12 +238,10 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
                 "Estimate the number of years required to double the value of an investment."
             ),
             CalculationOption(
-                "Mortgage",
-                "Estimate your monthly mortgage payment."
+                "Mortgage", "Estimate your monthly mortgage payment."
             ),
             CalculationOption(
-                "Trade Discount",
-                "Calculate the net price after applying trade discounts."
+                "Trade Discount", "Calculate the net price after applying trade discounts."
             ),
             CalculationOption(
                 "Measures of Central Tendency",
@@ -243,12 +256,9 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
                 "Calculate the markdown or discount for a given original price and sale price."
             ),
             CalculationOption(
-                "Depreciation Expense",
-                "Calculate the depreciation of an asset."
+                "Depreciation Expense", "Calculate the depreciation of an asset."
             ),
-
-
-            ).sortedBy { it.name }
+        ).sortedBy { it.name }
 
         // Initialize the adapter
         adapter = CalculationOptionAdapter(calculationOptions) { selectedOption ->
@@ -298,18 +308,167 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
             // Check if the calculator fragment is not null
             if (calculatorFragment != null) {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.calculator_container, calculatorFragment)
-                    .addToBackStack(null)
+                    .replace(R.id.calculator_container, calculatorFragment).addToBackStack(null)
                     .commit()
+                linearLayout.visibility = View.GONE
                 searchView.clearFocus()
                 toolbar.title = selectedOption.name
             }
 
-
+            if (calculatorFragment?.isVisible == true && calculatorFragment.isAdded) {
+                linearLayout.visibility = View.GONE
+            } else {
+                linearLayout.visibility = View.VISIBLE
+            }
         }
         // Set the adapter on the recycler view
         recyclerView.adapter = adapter
+    }
 
+    fun enableRecyclerView() {
+        recyclerView.isEnabled = true
+        recyclerView.alpha = 1.0f
+    }
+
+    private fun showCalculatorDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_calculator_layout, null)
+        textViewDisplay = dialogView.findViewById(R.id.textViewDisplay)
+        textViewDisplay.text = "0"
+
+        // Define click listeners for all buttons and handle their actions
+        val buttonIds = arrayOf(
+            R.id.buttonClear,
+            R.id.buttonDelete,
+            R.id.buttonSignToggle,
+            R.id.buttonMultiply,
+            R.id.button7,
+            R.id.button8,
+            R.id.button9,
+            R.id.buttonSubtract,
+            R.id.button4,
+            R.id.button5,
+            R.id.button6,
+            R.id.buttonAdd,
+            R.id.button1,
+            R.id.button2,
+            R.id.button3,
+            R.id.buttonDivide,
+            R.id.button0,
+            R.id.buttonDecimal,
+            R.id.buttonEqual,
+            R.id.buttonPercentage
+        )
+
+        for (buttonId in buttonIds) {
+            dialogView.findViewById<Button>(buttonId)
+                .setOnClickListener { onButtonClick(it as Button) }
+        }
+
+        val dialog = AlertDialog.Builder(this).setTitle("Calculator").setView(dialogView)
+            .setCancelable(false).setNegativeButton("Exit", null).create()
+
+        // Show the dialog
+        dialog.show()
+    }
+
+    private fun onButtonClick(button : Button) {
+        val buttonText = button.text.toString()
+        val currentValue = textViewDisplay.text.toString()
+
+        when (buttonText) {
+            // Clear the display
+            "C" -> textViewDisplay.text = "0"
+
+            // Delete the last character
+            "⌫" -> {
+                if (currentValue.length > 1) {
+                    textViewDisplay.text = currentValue.dropLast(1)
+                } else {
+                    textViewDisplay.text = "0"
+                }
+            }
+
+            // Toggle the sign of the number
+            "+/-" -> {
+                if (currentValue.startsWith("-")) {
+                    textViewDisplay.text = currentValue.substring(1)
+                } else {
+                    textViewDisplay.text = buildString {
+                        append("-")
+                        append(currentValue)
+                    }
+                }
+            }
+
+            // Perform arithmetic operations
+            "+", "-", "×", "/", "%" -> {
+                // Append the operator to the display
+                textViewDisplay.append(buttonText)
+            }
+
+            // Calculate the result
+            "=" -> {
+                val expression = textViewDisplay.text.toString()
+                val result = evaluateExpression(expression)
+                textViewDisplay.text = result.removeSuffix(".0")
+            }
+
+            // Append the digit or decimal point to the display
+            else -> {
+                if (currentValue == "0" && buttonText != ".") {
+                    textViewDisplay.text = buttonText
+                } else {
+                    textViewDisplay.append(buttonText)
+                }
+            }
+        }
+    }
+
+    private fun evaluateExpression(expression : String) : String {
+        val mExpression = expression.replace(",", "")
+
+        // Replace decimal values with their double representations
+        val decimalPattern = Regex("\\b\\d+\\.\\d+\\b")
+        val processedExpression = decimalPattern.replace(mExpression) { match ->
+            match.value.toDouble().toString()
+        }
+
+        // Replace × with * for multiplication
+        val sanitizedExpression = processedExpression
+            .replace("×", "*")
+            .replace("%", "/100")
+            .replace("÷", "/")
+
+        // Input validation
+        // val pattern = Regex("^[-+*/()\\d.\\s]+$")
+        //if (!pattern.matches(sanitizedExpression)) {
+        //    throw IllegalArgumentException("Invalid expression: $expression")
+        //}
+
+        return try {
+            val exp = Expression(sanitizedExpression).evaluate().value
+            val formatter = DecimalFormat("#,###.##")
+            formatter.format(exp)
+        } catch (e : ParseException) {
+            // Handle too many operands error
+            "Error: Too many operands"
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu : Menu?) : Boolean {
+        menuInflater.inflate(R.menu.menu_calculator, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item : MenuItem) : Boolean {
+        return when (item.itemId) {
+            R.id.action_show_calculator -> {
+                showCalculatorDialog()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     // Override onDestroy to clear the toolbar title
@@ -320,6 +479,8 @@ class CalculatorOptionsActivity : BaseDrawerActivity() {
 
     override fun onResume() {
         super.onResume()
+        toolbar.title = getString(R.string.calculator)
+        navView.setCheckedItem(R.id.nav_item_calculator)
         // Register the observer when the activity is resumed
         adapter.registerFragmentLifecycleObserver(calculatorFragmentLifecycleObserver)
     }

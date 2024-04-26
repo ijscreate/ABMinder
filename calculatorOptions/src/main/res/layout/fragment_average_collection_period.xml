@@ -1,111 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-		android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        >
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		app:cardCornerRadius = "10dp"
+		app:cardElevation = "4dp"
+		app:cardUseCompatPadding = "true"
+		android:layout_gravity = "center"
+		android:orientation = "vertical"
+		>
 
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+	<LinearLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			android:orientation = "vertical"
+			android:padding = "16dp"
+			>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="vertical"
-                >
+		<!-- Step TextView -->
+		<com.google.android.material.textview.MaterialTextView
+				android:id = "@+id/stepTextView"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:gravity = "center"
+				android:padding = "8dp"
+				android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+				/>
 
-            <!-- Net Credit Sales -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/net_credit_sales"
-                    >
+		<!-- Step Input Layout -->
+		<com.google.android.material.textfield.TextInputLayout
+				android:id = "@+id/stepInputLayout"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				>
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextNetCreditSales"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
+			<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/stepInputEditText"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:importantForAutofill = "no"
+					android:inputType = "numberDecimal"
+					android:paddingHorizontal = "6dp"
+					android:textColorHint = "#757575"
+					/>
+		</com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Average Accounts Receivable -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/average_accounts_receivable"
-                    >
+		<!-- Result TextView -->
+		<com.google.android.material.textview.MaterialTextView
+				android:id = "@+id/resultTextView"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:gravity = "center"
+				android:padding = "8dp"
+				android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
+				/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextAverageAccountsReceivable"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
+		<Button
+				android:id = "@+id/nextButton"
+				style = "?android:attr/buttonBarButtonStyle"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:text = "@string/next"
+				/>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+		<androidx.core.widget.NestedScrollView
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				>
 
-                <!-- Solution Button -->
-                <Button
-                        android:id="@+id/buttonSolution"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/show_explanation"
-                        style="?android:attr/buttonBarButtonStyle"
-                        />
+			<!-- Description TextView -->
+			<com.google.android.material.textview.MaterialTextView
+					android:id = "@+id/descriptionTextView"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:gravity = "start"
+					android:textAppearance = "@style/TextAppearance.AppCompat.Small"
+					/>
+		</androidx.core.widget.NestedScrollView>
 
-                <!-- Calculate Button -->
-                <Button
-                        android:id="@+id/buttonCalculateAverageCollectionPeriod"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/calculate"
-                        android:layout_weight="1"
-                        style="?android:attr/buttonBarButtonStyle"
-                        />
-            </LinearLayout>
-
-            <!-- Result TextView -->
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewAverageCollectionPeriodResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_marginTop="6dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    />
-
-            <!-- Description TextView -->
-            <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:padding="8dp"
-                    android:textSize="16sp"
-                    />
-
-        </LinearLayout>
-    </ScrollView>
+	</LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -1,120 +1,209 @@
 package com.ijs.abminder.calculator.options
 
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
-import androidx.core.widget.NestedScrollView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.calculator.calculatoroptions.R
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 import kotlin.math.pow
 
 class AmortizationFragment : Fragment() {
 
-    private lateinit var loanAmountEditText : EditText
-    private lateinit var interestRateEditText : EditText
-    private lateinit var loanTermEditText : EditText
-    private lateinit var calculateButton : Button
-    private lateinit var resultTextView : TextView
-    private lateinit var descriptionTextView : TextView
-    private lateinit var explainButton : Button
+    private lateinit var stepTextView : TextView
+    private lateinit var stepInputLayout : TextInputLayout
+    private lateinit var stepInputEditText : TextInputEditText
+    private lateinit var nextButton : Button
     private lateinit var tableLayout : TableLayout
 
-    override fun onCreateView(
-        inflater : LayoutInflater,
-        container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View {
-        val rootView =
-            inflater.inflate(
-                R.layout.fragment_amortization_schedule,
-                container,
-                false
-            )
+    private var currentStep = 1
+    private var loanAmount : Double? = null
+    private var interestRate : Double? = null
+    private var loanTerm : Double? = null
+    private var monthlyInterestRate : Double? = null
+    private var totalPayments : Double? = null
+    private var monthlyPayment : Double? = null
 
-        loanAmountEditText =
-            rootView.findViewById(R.id.editTextLoanAmount)
-        interestRateEditText =
-            rootView.findViewById(R.id.editTextInterestRate)
-        loanTermEditText =
-            rootView.findViewById(R.id.editTextLoanTerm)
-        calculateButton =
-            rootView.findViewById(R.id.buttonCalculateAmortization)
-        resultTextView =
-            rootView.findViewById(R.id.textViewAmortizationResult)
-        descriptionTextView =
-            rootView.findViewById(R.id.tVAmortizationDescription)
-        explainButton =
-            rootView.findViewById(R.id.explainAmortizationButton)
+    override fun onCreateView(
+        inflater : LayoutInflater, container : ViewGroup?,
+        savedInstanceState : Bundle?,
+    ) : View? {
+        val rootView = inflater.inflate(R.layout.fragment_amortization_schedule, container, false)
+
+        stepTextView = rootView.findViewById(R.id.stepTextView)
+        stepInputLayout = rootView.findViewById(R.id.stepInputLayout)
+        stepInputEditText = rootView.findViewById(R.id.stepInputEditText)
+        nextButton = rootView.findViewById(R.id.nextButton)
         tableLayout = rootView.findViewById(R.id.tableLayoutAmortization)
 
-        calculateButton.setOnClickListener {
-            calculateAmortization()
+        setupStep(currentStep)
+
+        nextButton.setOnClickListener {
+            handleNextStep()
         }
 
-        explainButton.setOnClickListener {
-            showAmortizationExplanation()
-        }
-
-        // Set up description text
-        val description = """
-            The Amortization Schedule calculates the monthly installment payments for a loan.
+        val desc = """
+            Calculate an amortization schedule to determine the monthly payments on a loan, including the interest and principal components.
         
-            The formula for calculating monthly payments is:
-        
-            M = P * [r(1+r)^n] / [(1+r)^n-1]
-        
-            Where:
-            - M = Monthly payment
-            - P = Principal loan amount
-            - r = Monthly interest rate (annual rate / 12 / 100)
-            - n = Total number of payments (loan term * 12)
-        
+            Formula:
+                Monthly Payment = (Loan Amount * Monthly Interest Rate) /
+                                  (1 - (1 + Monthly Interest Rate)^(-Total Payments))        
             Example:
-            Suppose you take out a loan of ₱10,000 with an annual interest rate of 5% for 3 years.
         
-            Monthly interest rate (r) = 0.05 / 12
-            Total number of payments (n) = 3 * 12
-            Monthly payment (M) ≈ ₱299.71
+            Suppose you take out a loan of ₱100,000 with an interest rate of 5% per annum for 3 years.
+            The monthly payment would be calculated as follows:
+        
+            1. Calculate the monthly interest rate:
+               Monthly Interest Rate = Annual Interest Rate / 12
+                                    = 5% / 12
+                                    = 0.05 / 12
+                                    = 0.004167 (approximately)
+        
+            2. Calculate the total number of payments:
+               Total Payments = Loan Term (in years) * 12
+                             = 3 * 12
+                             = 36
+        
+            3. Calculate the monthly payment using the formula:
+               Monthly Payment = (Loan Amount * Monthly Interest Rate) /
+                                 (1 - (1 + Monthly Interest Rate)^(-Total Payments))
+        
+                              = (100000 * 0.004167) /
+                                 (1 - (1 + 0.004167)^(-36))
+        
+               This calculation yields the monthly payment amount.
+        
+            4. Generate the amortization schedule, which breaks down each payment into its
+               principal and interest components, along with the remaining balance.
+        
+               Month |  Payment  |  Principal  |  Interest  |  Balance
+               --------------------------------------------------------
+               1     |  ₱2963.57  |  ₱588.57     |  ₱2375.00   |  ₱99411.43
+               2     |  ₱2963.57  |  ₱592.10     |  ₱2371.47   |  ₱98819.33
+               3     |  ₱2963.57  |  ₱595.64     |  ₱2367.93   |  ₱98223.69
+               ...   |  ...       |  ...         |  ...       |  ...
+               36    |  ₱2963.57  |  ₱2922.85    |  ₱40.72     |  ₱0.00
+        
+            This amortization schedule provides a detailed breakdown of each payment,
+            helping you understand how much of each payment goes towards interest and principal,
+            and how the loan balance decreases over time.
         """.trimIndent()
-
-
-        descriptionTextView.text = description
+        rootView.findViewById<MaterialTextView>(R.id.descriptionTextView).text = desc
 
         return rootView
     }
 
-    private fun calculateAmortization() {
-        val loanAmount = loanAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val interestRate = interestRateEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val loanTerm = loanTermEditText.text.toString().toDoubleOrNull() ?: 0.0
+    private fun setupStep(step : Int) {
+        when (step) {
+            1 -> {
+                stepTextView.text = getString(com.ijs.abminder.R.string.step_1_input_loan_amount)
+                stepInputLayout.hint = getString(R.string.loan_amount)
+                stepInputEditText.setText("")
+            }
 
-        val monthlyInterestRate = interestRate / 12 / 100
-        val totalPayments = loanTerm * 12
-        val denominator = (1 + monthlyInterestRate).pow(totalPayments) - 1
+            2 -> {
+                stepTextView.text = getString(com.ijs.abminder.R.string.step_2_input_interest_rate)
+                stepInputLayout.hint = getString(R.string.interest_rate)
+                stepInputEditText.setText("")
+            }
 
-        val monthlyPayment =
-            loanAmount * monthlyInterestRate * (1 + monthlyInterestRate).pow(totalPayments) / denominator
+            3 -> {
+                stepTextView.text = getString(com.ijs.abminder.R.string.step_3_input_loan_term)
+                stepInputLayout.hint = getString(R.string.loan_term_years)
+                stepInputEditText.setText("")
+            }
 
-        resultTextView.text = String.format("Monthly Payment: ₱%.2f", monthlyPayment)
+            4 -> {
+                stepTextView.text =
+                    getString(com.ijs.abminder.R.string.step_4_calculate_monthly_interest_rate)
+                stepInputLayout.hint = getString(
+                    com.ijs.abminder.R.string.step_4_monthly_interest_rate_hint,
+                    interestRate,
+                    12
+                )
+                stepInputEditText.setText("")
+            }
 
-        generateAmortizationTable(loanAmount, monthlyInterestRate, totalPayments, monthlyPayment)
+            5 -> {
+                stepTextView.text =
+                    getString(com.ijs.abminder.R.string.step_5_calculate_monthly_payment)
+                stepInputLayout.visibility = View.GONE
+                calculateMonthlyPayment()
+                generateAmortizationTable()
+            }
+        }
     }
 
-    private fun generateAmortizationTable(
-        loanAmount : Double,
-        monthlyInterestRate : Double,
-        totalPayments : Double,
-        monthlyPayment : Double,
-    ) {
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    loanAmount = input
+                    currentStep = 2
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            2 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    interestRate = input
+                    currentStep = 3
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            3 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    loanTerm = input
+                    currentStep = 4
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            4 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    val expectedMonthlyInterestRate = interestRate!! / 12 / 100
+                    if (input == expectedMonthlyInterestRate) {
+                        monthlyInterestRate = input
+                        currentStep = 5
+                        setupStep(currentStep)
+                    } else {
+                        showMonthlyInterestRateErrorToast()
+                    }
+                } else {
+                    showInputErrorToast()
+                }
+            }
+        }
+    }
+
+    private fun calculateMonthlyPayment() {
+        totalPayments = loanTerm!! * 12
+        val denominator = (1 + monthlyInterestRate!!).pow(totalPayments!!) - 1
+        monthlyPayment =
+            loanAmount!! * monthlyInterestRate!! * (1 + monthlyInterestRate!!).pow(totalPayments!!) / denominator
+    }
+
+    private fun generateAmortizationTable() {
         tableLayout.removeAllViews() // Clear the table
 
         // Add table headers
@@ -126,10 +215,10 @@ class AmortizationFragment : Fragment() {
         headerRow.addView(createTableCell("Balance"))
         tableLayout.addView(headerRow)
 
-        var balance = loanAmount
-        for (month in 1..totalPayments.toInt()) {
-            val interest = balance * monthlyInterestRate
-            val principal = monthlyPayment - interest
+        var balance = loanAmount!!
+        for (month in 1..totalPayments!!.toInt()) {
+            val interest = balance * monthlyInterestRate!!
+            val principal = monthlyPayment!! - interest
             balance -= principal
 
             val row = TableRow(context)
@@ -149,62 +238,23 @@ class AmortizationFragment : Fragment() {
         return cell
     }
 
-    private fun showAmortizationExplanation() {
-        val loanAmount = loanAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val interestRate = interestRateEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val loanTerm = loanTermEditText.text.toString().toDoubleOrNull() ?: 0.0
+    private fun showInputErrorToast() {
+        Toast.makeText(requireContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show()
+    }
 
-        val monthlyInterestRate = interestRate / 12 / 100
-        val totalPayments = loanTerm * 12
-        val denominator = (1 + monthlyInterestRate).pow(totalPayments) - 1
-        val monthlyPayment = loanAmount * monthlyInterestRate * (1 + monthlyInterestRate).pow(totalPayments) / denominator
-
-        val explanation = """
-        Amortization Schedule Explanation
-        
-        Given:
-        - Loan Amount = ₱${String.format("%.2f", loanAmount)}
-        - Annual Interest Rate = ${String.format("%.2f", interestRate)}%
-        - Loan Term = ${String.format("%.2f", loanTerm)} years
-        
-        Formula:
-        M = P * [r(1+r)^n] / [(1+r)^n-1]
-        
-        Where:
-        - M = Monthly payment
-        - P = Principal loan amount
-        - r = Monthly interest rate
-        - n = Total number of payments
-        
-        Solution:
-        - Monthly Interest Rate (r) = ${String.format("%.4f", monthlyInterestRate)} or ${String.format("%.2f", interestRate / 12)}%
-        - Total Number of Payments (n) = ${totalPayments} (${String.format("%.2f", loanTerm)} years x 12 months)
-        - Monthly Payment (M) = ₱${String.format("%.2f", monthlyPayment)}
-        
-        Therefore, the Monthly Payment for the given loan is ₱${String.format("%.2f", monthlyPayment)}
-    """.trimIndent()
-
-        // Display explanation in a custom dialog
-        val dialogBuilder = MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Amortization Schedule")
-            .setMessage(explanation)
-            .setPositiveButton("OK", null)
-
-        // Allow scrolling for long explanations
-        val dialog = dialogBuilder.create()
-        dialog.setView(NestedScrollView(requireContext()).apply {
-            addView(TextView(requireContext()).apply {
-                text = explanation
-                movementMethod = LinkMovementMethod.getInstance()
-                setTextIsSelectable(true)
-            })
-        })
-        dialog.show()
+    private fun showMonthlyInterestRateErrorToast() {
+        Toast.makeText(
+            requireContext(),
+            com.ijs.abminder.R.string.incorrect_monthly_interest_rate,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onDestroy() {
         val activity = requireActivity() as CalculatorOptionsActivity
         activity.toolbar.title = getString(com.ijs.abminder.R.string.calculator)
+        (activity).enableRecyclerView()
         super.onDestroy()
     }
 }
+

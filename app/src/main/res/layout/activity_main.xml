@@ -25,7 +25,6 @@
 
 			<com.google.android.material.appbar.AppBarLayout
 					android:id = "@+id/appBar"
-					android:background = "@color/colorPrimary"
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
 					>
@@ -45,25 +44,12 @@
 					android:layout_width = "match_parent"
 					android:layout_height = "match_parent"
 					android:layout_below = "@id/appBar"
-					/>
-		</RelativeLayout>
+					>
 
+				<include layout = "@layout/fragment_dashboard" />
+			</FrameLayout>
+		</RelativeLayout>
 	</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-	<com.google.android.material.navigation.NavigationView
-			android:id = "@+id/nav_view"
-			android:layout_width = "275dp"
-			android:layout_height = "match_parent"
-			android:layout_gravity = "start"
-			android:fitsSystemWindows = "false"
-			app:itemIconPadding = "16dp"
-			app:drawerLayoutCornerSize = "@dimen/navigation"
-			app:itemTextAppearance = "@style/TextAppearance.AppCompat.Light.SearchResult.Title"
-			app:itemTextAppearanceActiveBoldEnabled = "true"
-			app:elevation = "2dp"
-			app:itemRippleColor = "@color/colorPrimary"
-			app:itemBackground = "@drawable/nav_item"
-			app:headerLayout = "@layout/nav_header"
-			app:menu = "@menu/activity_main_drawer"
-			/>
+	<include layout = "@layout/drawer_layout" />
 </com.mindinventory.midrawer.MIDrawerView>

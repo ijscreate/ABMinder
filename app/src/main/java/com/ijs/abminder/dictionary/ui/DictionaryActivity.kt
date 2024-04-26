@@ -26,6 +26,7 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
@@ -161,10 +162,11 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
                 recentSearch.visibility = View.GONE
                 // Adding the recent search
                 handleRecentSearch(term, definition, example)
-
                 return true
             }
         })
+
+        onBackPressedDispatcher.addCallback(this) { finish() }
     }
 
     private fun initViews() {
@@ -514,6 +516,12 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
             Toast.makeText(this, "No match found", Toast.LENGTH_SHORT).show()
             searchView.setQuery("", false)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        toolbar.title = getString(R.string.dictionary)
+        navView.setCheckedItem(R.id.nav_item_dictionary)
     }
 
     override fun onInit(status : Int) {

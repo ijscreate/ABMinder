@@ -27,7 +27,6 @@ class DictionaryDatabaseHelper(context : Context) :
             )
             """.trimIndent()
         )
-
     }
 
     override fun onUpgrade(db : SQLiteDatabase, oldVersion : Int, newVersion : Int) {
@@ -44,8 +43,7 @@ class DictionaryDatabaseHelper(context : Context) :
             db.setTransactionSuccessful()
         } finally {
             db.endTransaction()
+            db.close()
         }
     }
-
-
 }
