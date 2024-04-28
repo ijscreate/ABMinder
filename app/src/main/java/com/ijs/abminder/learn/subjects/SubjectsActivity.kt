@@ -44,10 +44,6 @@ class SubjectsActivity : BaseDrawerActivity() {
 
         val navView = findViewById<NavigationView>(R.id.nav_view)
         navView.setCheckedItem(R.id.nav_item_learn)
-
-        onBackPressedDispatcher.addCallback(this) {
-            finish()
-        }
     }
 
     override fun onResume() {

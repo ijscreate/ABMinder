@@ -57,7 +57,7 @@ class ChaptersFragment : Fragment() {
         )
         transaction.addToBackStack(null)
         transaction.commit()
-        mainActivity.toolbar.title = chapter
+        mainActivity.toolbar.title = selectedSubject
     }
 
     private fun getChaptersForSubject(subject : String) : List<String> {
@@ -78,7 +78,7 @@ class ChaptersFragment : Fragment() {
                 "Investments",
             )
 
-            "Business Ethics" -> listOf(
+            "Business Ethics and Social Responsibility" -> listOf(
                 "Business in Social and Economic",
                 "Foundations of the Principles of Business Ethics",
                 "Social Responsibility of Entrepreneurs",

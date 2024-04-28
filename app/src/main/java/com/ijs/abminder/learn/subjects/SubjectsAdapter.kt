@@ -1,6 +1,5 @@
 package com.ijs.abminder.learn.subjects
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +17,7 @@ class SubjectsAdapter(
 
         init {
             itemView.setOnClickListener {
-                val position = adapterPosition
+                val position = absoluteAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val subject = subjects[position]
                     onItemClick(subject)
@@ -40,12 +39,5 @@ class SubjectsAdapter(
 
     override fun getItemCount() : Int {
         return subjects.size
-    }
-
-    // Method to update the list of subjects
-    @SuppressLint("NotifyDataSetChanged")
-    fun updateSubjects(newSubjects : List<String>) {
-        subjects = newSubjects
-        notifyDataSetChanged()
     }
 }
