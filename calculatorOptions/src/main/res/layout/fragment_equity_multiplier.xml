@@ -2,121 +2,83 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-		android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true"
         android:layout_gravity="center"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
-    <ScrollView
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            >
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <LinearLayout
+        <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="vertical"
-                >
+                android:gravity="center"
+                android:text="@string/equity_multiplier"
+                android:padding="8dp"
+                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <!-- Title TextView -->
-            <TextView
-		            android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/equity_multiplier"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:layout_marginBottom="16dp"
-                    />
+        <!-- Step TextView -->
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/stepTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <!-- Total Assets -->
-            <com.google.android.material.textfield.TextInputLayout
+        <!-- Step Input Layout -->
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/stepInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/stepInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/total_assets"
-                    >
+                    android:importantForAutofill="no"
+                    android:inputType="numberDecimal"
+                    android:paddingHorizontal="6dp"
+                    android:textColorHint="#757575" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextTotalAssets"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
+        <!-- Result TextView -->
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/resultTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-            <!-- Total Equity -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/total_equity"
-                    >
+        <Button
+                android:id="@+id/nextButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextTotalEquity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-
-                <!-- Solution Button -->
-                <Button
-                        android:id="@+id/buttonSolution"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/show_explanation"
-                        style="?android:attr/buttonBarButtonStyle"
-                        />
-
-                <!-- Calculate Button -->
-                <Button
-                        android:id="@+id/buttonCalculateEquityMultiplier"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/calculate"
-                        android:layout_weight="1"
-                        style="?android:attr/buttonBarButtonStyle"
-                        />
-            </LinearLayout>
-
-            <!-- Result TextView -->
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewEquityMultiplierResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_marginTop="6dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    />
+        <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <!-- Description TextView -->
-            <TextView
-                    android:id="@+id/description"
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/descriptionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:padding="8dp"
-                    android:textSize="16sp"
-                    />
+                    android:gravity="start"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        </androidx.core.widget.NestedScrollView>
 
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

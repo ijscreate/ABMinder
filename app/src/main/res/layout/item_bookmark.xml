@@ -4,11 +4,10 @@
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
 		android:orientation = "vertical"
-		android:padding = "16dp"
 		>
 
 	<TextView
-			android:id = "@+id/termTextView"
+			android:id = "@+id/termTV"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
 			android:textSize = "18sp"
@@ -16,7 +15,7 @@
 			/>
 
 	<TextView
-			android:id = "@+id/definitionTextView"
+			android:id = "@+id/definitionTV"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
 			android:textSize = "16sp"
@@ -24,11 +23,10 @@
 			/>
 
 	<TextView
-			android:id = "@+id/exampleTextView"
+			android:id = "@+id/exampleTV"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
 			android:textSize = "14sp"
-			android:textColor = "@color/black"
 			android:visibility = "gone"
 			/>
 

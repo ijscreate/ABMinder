@@ -1,109 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-		android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        >
+		xmlns:android = "http://schemas.android.com/apk/res/android"
+		xmlns:app = "http://schemas.android.com/apk/res-auto"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:layout_margin = "8dp"
+		app:cardCornerRadius = "12dp"
+		app:cardElevation = "4dp"
+		>
 
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+	<ScrollView
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="vertical"
-                >
+		<LinearLayout
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:orientation = "vertical"
+				android:padding = "16dp"
+				>
 
-            <!-- Total Debt -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/total_debt"
-                    >
+			<TextView
+					android:id = "@+id/stepTextView"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:textSize = "18sp"
+					android:textStyle = "bold"
+					/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextTotalDebt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
+			<com.google.android.material.textfield.TextInputLayout
+					android:id = "@+id/stepInputLayout"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					app:errorEnabled = "true"
+					>
 
-            <!-- Equity -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/equity"
-                    >
+				<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/stepInputEditText"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:inputType = "numberDecimal"
+						/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextEquity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
+			</com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+			<Button
+					android:id = "@+id/nextButton"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_gravity = "end"
+					android:layout_marginTop = "16dp"
+					style="?android:attr/buttonBarButtonStyle"
+					android:text = "@string/next"
+					/>
 
-                <!-- Solution Button -->
-                <Button
-                        android:id="@+id/buttonSolution"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/show_explanation"
-                        android:layout_weight="1"
-                        style="?android:attr/buttonBarButtonStyle"/>
+			<TextView
+					android:id = "@+id/textViewDebtToEquityRatioResult"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					android:textSize = "18sp"
+					android:textStyle = "bold"
+					/>
 
-                <!-- Calculate Button -->
-                <Button
-                        android:id="@+id/buttonCalculateDebtToEquityRatio"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/calculate"
-                        android:layout_weight="1"
-                        style="?android:attr/buttonBarButtonStyle"
-                        />
-            </LinearLayout>
+			<TextView
+					android:id = "@+id/tVDescription"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					android:textSize = "16sp"
+					/>
 
-            <!-- Result TextView -->
-            <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewDebtToEquityRatioResult"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:layout_marginTop="6dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    />
-
-            <!-- Description TextView -->
-            <TextView
-                    android:id="@+id/tVDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:padding="8dp"
-                    android:textSize="16sp"
-                    />
-        </LinearLayout>
-    </ScrollView>
+		</LinearLayout>
+	</ScrollView>
 </androidx.cardview.widget.CardView>

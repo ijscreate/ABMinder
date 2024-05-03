@@ -21,91 +21,59 @@
                 android:padding="16dp"
                 android:orientation="vertical">
 
-            <!-- Net Income -->
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- Step TextView -->
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/stepTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/net_income">
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <!-- Step Input Layout -->
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/stepInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextNetIncome"
+                        android:id="@+id/stepInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
                         android:importantForAutofill="no"
+                        android:inputType="numberDecimal"
                         android:paddingHorizontal="6dp"
                         android:textColorHint="#757575" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Preferred Dividends -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/preferred_dividends">
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextPreferredDividends"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Weighted Average Shares -->
-            <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/weighted_average_shares">
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextWeightedAverageShares"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                <Button
-                        android:id="@+id/buttonSolution"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/show_explanation"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_weight="1"/>
-
-                <Button
-                        android:id="@+id/buttonCalculateEPS"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/calculate"
-                        android:layout_weight="1"
-                        style="?android:attr/buttonBarButtonStyle" />
-            </LinearLayout>
 
             <!-- Result TextView -->
             <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/textViewEPSResult"
+                    android:id="@+id/resultTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:padding="8dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6dp"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-
-            <TextView
-                    android:id="@+id/description"
+            <Button
+                    android:id="@+id/nextButton"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="@string/next" />
+
+            <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <!-- Description TextView -->
+                <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/descriptionTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+            </androidx.core.widget.NestedScrollView>
         </LinearLayout>
     </ScrollView>
 </androidx.cardview.widget.CardView>

@@ -24,4 +24,8 @@
 		<item name="android:textColor">@color/colorPrimary</item>
 	</style>
 
+	<style name="NavigationHeaderStyle">
+		<item name="android:background">?attr/colorPrimary</item>
+	</style>
+
 </resources>

@@ -22,8 +22,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 import com.ijs.abminder.dictionary.ui.DictionaryActivity
-import com.ijs.abminder.dictionary.ui.EditTermFragment
-import com.ijs.abminder.learn.subjects.SubjectsActivity
+import com.ijs.abminder.learn.LearnActivity
 import com.ijs.abminder.quiz.QuizActivity
 import com.ijs.abminder.settings.SettingsActivity
 import kotlin.random.Random
@@ -212,7 +211,7 @@ class MainActivity : BaseDrawerActivity() {
         }
 
         findViewById<CardView>(R.id.learn_card).setOnClickListener {
-            val intent = Intent(this, SubjectsActivity::class.java)
+            val intent = Intent(this, LearnActivity::class.java)
             startActivity(intent)
 
         }
@@ -287,13 +286,6 @@ class MainActivity : BaseDrawerActivity() {
                 true
             }
 
-            /*
-            R.id.action_progress -> {
-                setCurrentFragment(QuizProgressFragment())
-                toolbar.title = "Progress"
-                true
-            } */
-
             R.id.action_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
                 val bundle = Bundle().apply {
@@ -303,14 +295,6 @@ class MainActivity : BaseDrawerActivity() {
                 }
 
                 startActivity(intent, bundle)
-                true
-            }
-
-            R.id.action_edit_term -> {
-                // Navigate to the EditTermFragment
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, EditTermFragment()).addToBackStack(null)
-                    .commit()
                 true
             }
 

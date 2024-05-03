@@ -7,156 +7,160 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
+import com.ijs.abminder.R
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 
-class EPSFragment : Fragment() {
+class EarningsPerShareFragment : Fragment() {
 
-    private lateinit var netIncomeEditText : TextInputEditText
-    private lateinit var preferredDividendsEditText : TextInputEditText
-    private lateinit var weightedAverageSharesEditText : TextInputEditText
-    private lateinit var calculateButton : MaterialButton
-    private lateinit var resultTextView : MaterialTextView
-    private lateinit var description : TextView
-    private lateinit var buttonSolution : Button
+    private lateinit var stepTextView: MaterialTextView
+    private lateinit var stepInputLayout: TextInputLayout
+    private lateinit var stepInputEditText: TextInputEditText
+    private lateinit var nextButton: Button
+    private lateinit var resultTextView: MaterialTextView
+
+    private var currentStep = 1
+    private var netIncome: Double? = null
+    private var outstandingShares: Double? = null
+    private var eps: Double? = null
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
-        inflater : LayoutInflater, container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View? {
-        val view = inflater.inflate(
-            com.calculator.calculatoroptions.R.layout.fragment_eps,
-            container,
-            false
-        )
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val rootView = inflater.inflate(com.calculator.calculatoroptions.R.layout.fragment_eps, container, false)
 
-        // Initialize UI components
-        netIncomeEditText =
-            view.findViewById(com.calculator.calculatoroptions.R.id.editTextNetIncome)
-        preferredDividendsEditText =
-            view.findViewById(com.calculator.calculatoroptions.R.id.editTextPreferredDividends)
-        weightedAverageSharesEditText =
-            view.findViewById(com.calculator.calculatoroptions.R.id.editTextWeightedAverageShares)
-        calculateButton =
-            view.findViewById(com.calculator.calculatoroptions.R.id.buttonCalculateEPS)
-        resultTextView = view.findViewById(com.calculator.calculatoroptions.R.id.textViewEPSResult)
-        description = view.findViewById(com.calculator.calculatoroptions.R.id.description)
-        buttonSolution = view.findViewById(com.calculator.calculatoroptions.R.id.buttonSolution)
+        stepTextView = rootView.findViewById(com.calculator.calculatoroptions.R.id.stepTextView)
+        stepInputLayout = rootView.findViewById(R.id.stepInputLayout)
+        stepInputEditText = rootView.findViewById(R.id.stepInputEditText)
+        nextButton = rootView.findViewById(R.id.nextButton)
+        resultTextView = rootView.findViewById(R.id.resultTextView)
 
-        calculateButton.setOnClickListener {
-            calculateEarningsPerShare()
+        setupStep(currentStep)
+
+        nextButton.setOnClickListener {
+            handleNextStep()
         }
 
-        val epsDescription = """
-    Earnings Per Share (EPS) is a crucial financial metric that measures the profitability of a company on a per-share basis. Understanding EPS is vital for investors as it indicates how much of the company's earnings are allocated to each outstanding share of common stock.
+        val description = rootView.findViewById<TextView>(R.id.descriptionTextView)
+        val desc = """
+            Calculate Earnings Per Share (EPS) using the formula:
+            
+            Earnings Per Share (EPS) = Net Income / Number of Outstanding Shares
+            
+            This calculator guides you through the steps to determine the earnings per share of a company. Please provide the necessary values and perform the required calculations.
+            
+            Example:
+            
+                If a company has a net income of ₱100,000 and 50,000 outstanding shares, then the earnings per share would be:
+                
+                Earnings Per Share (EPS) = 100,000 / 50,000
+                                        = ₱2.00
+                
+            Therefore, the earnings per share of the company is ₱2.00.
+        """.trimIndent()
+        description.text = desc
 
-    The formula for calculating EPS is:
-    
-    EPS = (Net Income - Dividends on Preferred Stock) / Average Number of Outstanding Shares
+        return rootView
+    }
 
-    Breaking down the components of the formula:
+    private fun setupStep(step: Int) {
+        when (step) {
+            1 -> {
+                stepTextView.text = getString(R.string.step_1_input_net_income)
+                stepInputLayout.hint = getString(R.string.net_income)
+                stepInputEditText.setText("")
+            }
 
-    - Net Income represents the total profit a company has earned after deducting all operating expenses, taxes, and interest.
-    - Dividends on Preferred Stock are the dividends paid to preferred shareholders, which need to be subtracted from net income to find the earnings available for common shareholders.
-    - Average Number of Outstanding Shares is the average of the beginning and ending shares outstanding during a specific period. This accounts for any changes in the number of shares over time.
+            2 -> {
+                stepTextView.text = getString(R.string.step_2_input_outstanding_shares)
+                stepInputLayout.hint = getString(R.string.outstanding_shares)
+                stepInputEditText.setText("")
+            }
 
-    Let's consider an example to illustrate the calculation:
+            3 -> {
+                stepTextView.text = getString(R.string.step_3_calculate_eps)
+                stepInputLayout.hint = getString(R.string.step_3_calculate_eps_hint, netIncome, outstandingShares)
+                stepInputEditText.setText("")
+            }
 
-    Suppose a company has a net income of $1,000,000, dividends on preferred stock of $50,000, and an average of 500,000 outstanding shares.
-
-    EPS = ($1,000,000 - $50,000) / 500,000
-        = $1.90 per share
-
-    In this example, the EPS is $1.90, indicating that for every common share, the company has earned $1.90 in profit.
-
-    Investors often use EPS as a key factor in assessing a company's financial health and performance. A higher EPS generally suggests better profitability, but it's essential to analyze EPS trends and consider other financial metrics for a comprehensive evaluation.
-
-    Understanding EPS enables investors to make informed decisions, especially when comparing companies within the same industry or tracking a company's performance over time.
-""".trimIndent()
-
-        description.text = epsDescription
-
-        buttonSolution.setOnClickListener {
-            val netIncome = netIncomeEditText.text.toString().toDoubleOrNull() ?: 0.0
-            val preferredDividends =
-                preferredDividendsEditText.text.toString().toDoubleOrNull() ?: 0.0
-            val weightedAverageShares =
-                weightedAverageSharesEditText.text.toString().toDoubleOrNull() ?: 0.0
-
-            val earningsPerShare = (netIncome - preferredDividends) / weightedAverageShares
-
-            resultTextView.text =
-                getString(com.calculator.calculatoroptions.R.string.eps_result, earningsPerShare)
-            showExplanationDialog(
-                netIncome,
-                preferredDividends,
-                weightedAverageShares,
-                earningsPerShare
-            )
+            4 -> {
+                stepTextView.text = getString(R.string.step_4_result)
+                stepInputLayout.visibility = View.GONE
+                nextButton.text = getString(R.string.exit)
+                nextButton.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().remove(this)
+                        .commit()
+                }
+                displayResult()
+            }
         }
+    }
 
-        return view
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    netIncome = input
+                    currentStep = 2
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            2 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    outstandingShares = input
+                    currentStep = 3
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            3 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    val expectedEPS = netIncome!! / outstandingShares!!
+                    if (input == expectedEPS) {
+                        eps = input
+                        currentStep = 4
+                        setupStep(currentStep)
+                    } else {
+                        showEPSCalculationErrorToast()
+                    }
+                } else {
+                    showInputErrorToast()
+                }
+            }
+        }
+    }
+
+    private fun displayResult() {
+        resultTextView.text = getString(R.string.earnings_per_share_result, eps)
+    }
+
+    private fun showInputErrorToast() {
+        Toast.makeText(requireContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showEPSCalculationErrorToast() {
+        Toast.makeText(requireContext(), R.string.incorrect_eps_calculation, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
         val activity = requireActivity() as CalculatorOptionsActivity
-        activity.toolbar.title = getString(com.ijs.abminder.R.string.calculator)
+        activity.toolbar.title = getString(R.string.calculator)
+        (activity).enableRecyclerView()
         super.onDestroy()
     }
-
-    private fun calculateEarningsPerShare() {
-        val netIncome = netIncomeEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val preferredDividends = preferredDividendsEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val weightedAverageShares =
-            weightedAverageSharesEditText.text.toString().toDoubleOrNull() ?: 0.0
-
-        val earningsPerShare = (netIncome - preferredDividends) / weightedAverageShares
-
-        resultTextView.text =
-            getString(com.calculator.calculatoroptions.R.string.eps_result, earningsPerShare)
-    }
-
-    private fun showExplanationDialog(
-        netIncome : Double,
-        preferredDividends : Double,
-        weightedAverageShares : Double,
-        earningsPerShare : Double,
-    ) {
-        val explanation = """
-        Earnings Per Share (EPS) is a financial metric that represents the portion of a company's profit allocated to each outstanding share of common stock.
-
-        Formula:
-        EPS = (Net Income - Preferred Dividends) / Weighted Average Shares Outstanding
-
-        Step-by-step Calculation:
-
-        1. Subtract Preferred Dividends from Net Income:
-           Net Income - Preferred Dividends = $netIncome - $preferredDividends = ${netIncome - preferredDividends}
-
-        2. Divide the result by Weighted Average Shares Outstanding:
-           EPS = (Net Income - Preferred Dividends) / Weighted Average Shares Outstanding
-               = ${netIncome - preferredDividends} / $weightedAverageShares
-               = $earningsPerShare
-
-        Given:
-            Net Income = $netIncome
-            Preferred Dividends = $preferredDividends
-            Weighted Average Shares = $weightedAverageShares
-
-        Therefore, the Earnings Per Share is $earningsPerShare.
-    """.trimIndent()
-
-        // Display explanation in a custom dialog
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Earnings Per Share (EPS) Calculation Explanation")
-            .setMessage(explanation)
-            .setPositiveButton("OK", null)
-            .show()
-    }
-
 }

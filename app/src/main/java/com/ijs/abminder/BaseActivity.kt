@@ -5,13 +5,15 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 import com.ijs.abminder.dictionary.ui.DictionaryActivity
-import com.ijs.abminder.learn.subjects.SubjectsActivity
+import com.ijs.abminder.learn.LearnActivity
 import com.ijs.abminder.quiz.QuizActivity
 
 open class BaseDrawerActivity : AppCompatActivity() {
@@ -77,7 +79,7 @@ open class BaseDrawerActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_item_learn -> {
-                    val intent = Intent(this, SubjectsActivity::class.java)
+                    val intent = Intent(this, LearnActivity::class.java)
                     startActivity(intent)
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true

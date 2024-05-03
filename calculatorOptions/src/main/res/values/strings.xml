@@ -116,7 +116,7 @@
 	<string name = "average_rate_of_return_title">Average Rate of Return</string>
 	<string name = "final_value">Final Value</string>
 	<!-- Result label -->
-	<string name = "average_rate_of_return_result">Average Rate of Return: %2s%</string>
+	<string name = "average_rate_of_return_result">Average Rate of Return: %2$.2f%</string>
 
 	<!-- Titles -->
 	<string name = "cash_conversion_cycle_title">Cash Conversion Cycle (CCC)</string>
@@ -181,6 +181,7 @@
 	<string name = "nominal_return">Nominal Return</string>
 	<string name = "inflation_rate">Inflation Rate</string>
 	<string name = "next">Next</string>
+	<string name = "annuity">Annuity</string>
 
 
 </resources>

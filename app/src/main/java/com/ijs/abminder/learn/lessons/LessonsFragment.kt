@@ -9,7 +9,6 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.ijs.abminder.*
 import com.ijs.abminder.learn.*
-import com.ijs.abminder.learn.subjects.*
 
 class LessonsFragment : Fragment() {
 
@@ -57,8 +56,8 @@ class LessonsFragment : Fragment() {
         )
         transaction.addToBackStack(null)
         transaction.commit()
-        val mainActivity = requireActivity() as SubjectsActivity
-        mainActivity.toolbar.title = lesson.name
+        val subsActivity = requireActivity() as LearnActivity
+        subsActivity.toolbar.title = lesson.name
     }
 
     private fun getLessonsForChapter(chapter : String) : List<Lesson> {
@@ -456,7 +455,7 @@ class LessonsFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        val mainActivity = requireActivity() as SubjectsActivity
+        val mainActivity = requireActivity() as LearnActivity
         mainActivity.toolbar.title = selectedSubject
     }
 }

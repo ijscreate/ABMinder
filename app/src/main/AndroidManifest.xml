@@ -60,7 +60,7 @@
 		</activity>
 
 		<activity
-				android:name = ".learn.subjects.SubjectsActivity"
+				android:name = ".learn.LearnActivity"
 				android:label = "@string/learn" />
 
 		<activity

@@ -15,21 +15,21 @@ import com.ijs.abminder.calculator.CalculatorOptionsActivity
 
 class AverageCollectionPeriodFragment : Fragment() {
 
-    private lateinit var stepTextView : TextView
-    private lateinit var stepInputLayout : TextInputLayout
-    private lateinit var stepInputEditText : TextInputEditText
-    private lateinit var nextButton : Button
-    private lateinit var resultTextView : TextView
+    private lateinit var stepTextView: TextView
+    private lateinit var stepInputLayout: TextInputLayout
+    private lateinit var stepInputEditText: TextInputEditText
+    private lateinit var nextButton: Button
+    private lateinit var resultTextView: TextView
 
     private var currentStep = 1
-    private var netCreditSales : Double? = null
-    private var averageAccountsReceivable : Double? = null
-    private var averageCollectionPeriod : Double? = null
+    private var netCreditSales: Double? = null
+    private var averageAccountsReceivable: Double? = null
+    private var averageCollectionPeriod: Double? = null
 
     override fun onCreateView(
-        inflater : LayoutInflater, container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View? {
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val rootView = inflater.inflate(
             com.calculator.calculatoroptions.R.layout.fragment_average_collection_period,
             container,
@@ -45,10 +45,8 @@ class AverageCollectionPeriodFragment : Fragment() {
         setupStep(currentStep)
 
         nextButton.setOnClickListener {
-            currentStep++
-            setupStep(currentStep)
+            handleNextStep()
         }
-
 
         val description = rootView.findViewById<TextView>(R.id.descriptionTextView)
         val desc = """
@@ -72,33 +70,33 @@ class AverageCollectionPeriodFragment : Fragment() {
         return rootView
     }
 
-    private fun setupStep(step : Int) {
+    private fun setupStep(step: Int) {
         when (step) {
             1 -> {
-                stepTextView.text = "Step 1: Input net credit sales"
-                stepInputLayout.hint = "Net credit sales"
+                stepTextView.text = getString(R.string.step_1_input_net_credit_sales)
+                stepInputLayout.hint = getString(R.string.net_credit_sales)
                 stepInputEditText.setText("")
             }
 
             2 -> {
-                stepTextView.text = "Step 2: Input average accounts receivable"
-                stepInputLayout.hint = "Average accounts receivable"
+                stepTextView.text = getString(R.string.step_2_input_average_accounts_receivable)
+                stepInputLayout.hint = getString(R.string.average_accounts_receivable)
                 stepInputEditText.setText("")
             }
 
             3 -> {
-                stepTextView.text = "Step 3: Calculate ACP"
+                stepTextView.text = getString(R.string.step_3_calculate_acp)
                 stepInputLayout.visibility = View.GONE
-                nextButton.text = "Calculate"
+                nextButton.text = getString(R.string.calculate)
                 nextButton.setOnClickListener {
                     calculateAverageCollectionPeriod()
                 }
             }
 
             4 -> {
-                stepTextView.text = "Step 4: Result"
+                stepTextView.text = getString(R.string.step_4_result)
                 stepInputLayout.visibility = View.GONE
-                nextButton.text = "Exit"
+                nextButton.text = getString(R.string.exit)
                 nextButton.setOnClickListener {
                     requireActivity().supportFragmentManager.beginTransaction().remove(this)
                         .commit()
@@ -108,20 +106,40 @@ class AverageCollectionPeriodFragment : Fragment() {
         }
     }
 
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    netCreditSales = input
+                    currentStep = 2
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            2 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    averageAccountsReceivable = input
+                    currentStep = 3
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            3 -> {
+                calculateAverageCollectionPeriod()
+            }
+        }
+    }
+
     private fun calculateAverageCollectionPeriod() {
-        val input = stepInputEditText.text.toString().toDoubleOrNull()
-        if (input != null) {
-            if (currentStep == 1) {
-                netCreditSales = input
-            } else if (currentStep == 2) {
-                averageAccountsReceivable = input
-            }
-
-            if (currentStep == 2) {
-                averageCollectionPeriod = (averageAccountsReceivable!! / netCreditSales!!) * 365
-            }
-
-            currentStep++
+        if (netCreditSales != null && averageAccountsReceivable != null) {
+            averageCollectionPeriod = (averageAccountsReceivable!! / netCreditSales!!) * 365
+            currentStep = 4
             setupStep(currentStep)
         } else {
             showInputErrorToast()
@@ -130,7 +148,7 @@ class AverageCollectionPeriodFragment : Fragment() {
 
     private fun displayResult() {
         resultTextView.text = getString(
-            com.calculator.calculatoroptions.R.string.average_collection_period_result,
+            R.string.average_collection_period_result,
             averageCollectionPeriod
         )
     }

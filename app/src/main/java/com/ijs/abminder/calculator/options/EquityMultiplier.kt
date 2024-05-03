@@ -1,132 +1,164 @@
 package com.ijs.abminder.calculator.options
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.calculator.calculatoroptions.R
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
+import com.google.android.material.textfield.TextInputLayout
+import com.ijs.abminder.R
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 
 class EquityMultiplierFragment : Fragment() {
 
-    private lateinit var totalAssetsEditText : TextInputEditText
-    private lateinit var totalEquityEditText : TextInputEditText
-    private lateinit var calculateButton : MaterialButton
-    private lateinit var resultTextView : MaterialTextView
-    private lateinit var description : TextView
-    private lateinit var buttonSolution : Button
+    private lateinit var stepTextView: TextView
+    private lateinit var stepInputLayout: TextInputLayout
+    private lateinit var stepInputEditText: TextInputEditText
+    private lateinit var nextButton: Button
+    private lateinit var resultTextView: TextView
 
+    private var currentStep = 1
+    private var totalAssets: Double? = null
+    private var totalEquity: Double? = null
+    private var equityMultiplier: Double? = null
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
-        inflater : LayoutInflater, container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View {
-        val view = inflater.inflate(
-            R.layout.fragment_equity_multiplier,
-            container,
-            false
-        )
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val rootView = inflater.inflate(com.calculator.calculatoroptions.R.layout.fragment_equity_multiplier, container, false)
 
-        // Initialize UI components
-        totalAssetsEditText = view.findViewById(R.id.editTextTotalAssets)
-        totalEquityEditText = view.findViewById(R.id.editTextTotalEquity)
-        calculateButton = view.findViewById(R.id.buttonCalculateEquityMultiplier)
-        resultTextView = view.findViewById(R.id.textViewEquityMultiplierResult)
-        description = view.findViewById(R.id.description)
-        buttonSolution = view.findViewById(R.id.buttonSolution)
+        stepTextView = rootView.findViewById(R.id.stepTextView)
+        stepInputLayout = rootView.findViewById(R.id.stepInputLayout)
+        stepInputEditText = rootView.findViewById(R.id.stepInputEditText)
+        nextButton = rootView.findViewById(R.id.nextButton)
+        resultTextView = rootView.findViewById(R.id.resultTextView)
 
-        calculateButton.setOnClickListener {
-            calculateEquityMultiplier()
+        setupStep(currentStep)
+
+        nextButton.setOnClickListener {
+            handleNextStep()
         }
 
-        val equityMultiplierDescription = """
-            The Equity Multiplier is a financial metric used to assess the financial leverage of a company by measuring its equity multiplier. The formula for calculating the Equity Multiplier is:
+        val description = rootView.findViewById<TextView>(R.id.descriptionTextView)
+        val desc = """
+            Calculate the Equity Multiplier using the formula:
             
             Equity Multiplier = Total Assets / Total Equity
             
-            Where:
-            - Total Assets represent the total assets owned by the company.
-            - Total Equity represents the total equity or net worth of the company.
+            This calculator helps you determine the equity multiplier of a company based on the total assets and total equity.
             
-            Let's consider an example to illustrate the calculation:
+            Example:
             
-            Suppose a company has total assets of ₱500,000 and total equity of ₱200,000.
-            
-            Equity Multiplier = ₱500,000 / ₱200,000
-                               = 2.5
-                               
-            In this example, the Equity Multiplier is 2.5, indicating that for every peso of equity, the company has ₱2.5 of assets.
+                If a company has total assets of ₱100,000 and total equity of ₱50,000, then the equity multiplier would be:
+                
+                Equity Multiplier = 100,000 / 50,000
+                                = 2.00
+                
+            Therefore, the equity multiplier of the company is 2.00.
         """.trimIndent()
+        description.text = desc
 
-        description.text = equityMultiplierDescription
-
-        buttonSolution.setOnClickListener {
-            val totalAssets = totalAssetsEditText.text.toString().toDoubleOrNull() ?: 0.0
-            val totalEquity = totalEquityEditText.text.toString().toDoubleOrNull() ?: 0.0
-
-            val equityMultiplier = totalAssets / totalEquity
-
-            resultTextView.text =
-                getString(
-                    R.string.equity_multiplier_result,
-                    equityMultiplier
-                )
-            showExplanationDialog(totalAssets, totalEquity, equityMultiplier)
-        }
-
-        return view
+        return rootView
     }
 
-    private fun calculateEquityMultiplier() {
-        val totalAssets = totalAssetsEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val totalEquity = totalEquityEditText.text.toString().toDoubleOrNull() ?: 0.0
+    private fun setupStep(step: Int) {
+        when (step) {
+            1 -> {
+                stepTextView.text = getString(R.string.step_1_input_total_assets)
+                stepInputLayout.hint = getString(R.string.total_assets)
+                stepInputEditText.setText("")
+            }
 
-        val equityMultiplier = totalAssets / totalEquity
+            2 -> {
+                stepTextView.text = getString(R.string.step_2_input_total_equity)
+                stepInputLayout.hint = getString(R.string.total_equity)
+                stepInputEditText.setText("")
+            }
 
-        resultTextView.text =
-            getString(
-                R.string.equity_multiplier_result,
-                equityMultiplier
-            )
+            3 -> {
+                stepTextView.text = getString(R.string.step_3_calculate_equity_multiplier)
+                stepInputLayout.hint = getString(R.string.step_3_calculate_equity_multiplier_hint, totalAssets, totalEquity)
+                stepInputEditText.setText("")
+            }
+
+            4 -> {
+                stepTextView.text = getString(R.string.step_4_result)
+                stepInputLayout.visibility = View.GONE
+                nextButton.text = getString(R.string.exit)
+                nextButton.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().remove(this)
+                        .commit()
+                }
+                displayResult()
+            }
+        }
+    }
+
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    totalAssets = input
+                    currentStep = 2
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            2 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    totalEquity = input
+                    currentStep = 3
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            3 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    val expectedEquityMultiplier = totalAssets!! / totalEquity!!
+                    if (input == expectedEquityMultiplier) {
+                        equityMultiplier = input
+                        currentStep = 4
+                        setupStep(currentStep)
+                    } else {
+                        showEquityMultiplierCalculationErrorToast()
+                    }
+                } else {
+                    showInputErrorToast()
+                }
+            }
+        }
+    }
+
+    private fun displayResult() {
+        resultTextView.text = getString(R.string.equity_multiplier_result, equityMultiplier)
+    }
+
+    private fun showInputErrorToast() {
+        Toast.makeText(requireContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showEquityMultiplierCalculationErrorToast() {
+        Toast.makeText(requireContext(), R.string.incorrect_equity_multiplier_calculation, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
         val activity = requireActivity() as CalculatorOptionsActivity
-        activity.toolbar.title = getString(com.ijs.abminder.R.string.calculator)
+        activity.toolbar.title = getString(R.string.calculator)
+        (activity).enableRecyclerView()
         super.onDestroy()
-    }
-
-    private fun showExplanationDialog(
-        totalAssets : Double,
-        totalEquity : Double,
-        equityMultiplier : Double,
-    ) {
-        val explanation = """
-            The Equity Multiplier is a financial metric used to assess the financial leverage of a company by measuring its equity multiplier.
-            
-            Given:
-                Total Assets = ₱$totalAssets
-                Total Equity = ₱$totalEquity
-                
-            Solution:
-                Equity Multiplier = Total Assets / Total Equity
-                                  = ₱$totalAssets / ₱$totalEquity
-                                  = ${"%.2f".format(equityMultiplier)}
-                                  
-            Therefore, the Equity Multiplier is ${"%.2f".format(equityMultiplier)}.
-        """.trimIndent()
-
-        // Display explanation in a custom dialog
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Equity Multiplier Calculation")
-            .setMessage(explanation)
-            .setPositiveButton("OK", null)
-            .show()
     }
 }

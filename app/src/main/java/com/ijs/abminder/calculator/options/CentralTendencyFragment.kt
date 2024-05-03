@@ -6,20 +6,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
-import com.ijs.abminder.calculator.CalculatorOptionsActivity
+import com.google.android.material.textfield.TextInputLayout
+import com.ijs.abminder.R
+import kotlin.math.floor
+import kotlin.math.round
 
 class CentralTendencyFragment : Fragment() {
 
-    private lateinit var dataSetEditText : TextInputEditText
-    private lateinit var calculateButton : MaterialButton
-    private lateinit var resultTextView : MaterialTextView
-    private lateinit var descriptionTextView : TextView
-    private lateinit var explanationButton : Button
+    private lateinit var stepTextView : TextView
+    private lateinit var stepInputLayout : TextInputLayout
+    private lateinit var stepInputEditText : TextInputEditText
+    private lateinit var nextButton : Button
+    private lateinit var resultTextView : TextView
+
+    private var currentStep = 1
+    private var numbers : MutableList<Double> = mutableListOf()
+    private var mean : Double? = null
+    private var median : Double? = null
+    private var mode : Double? = null
 
     override fun onCreateView(
         inflater : LayoutInflater, container : ViewGroup?,
@@ -31,139 +38,176 @@ class CentralTendencyFragment : Fragment() {
             false
         )
 
-        // Initialize UI components
-        dataSetEditText =
-            view.findViewById(com.calculator.calculatoroptions.R.id.editTextData)
-        calculateButton =
-            view.findViewById(com.calculator.calculatoroptions.R.id.buttonCalculateCentralTendency)
-        resultTextView =
-            view.findViewById(com.calculator.calculatoroptions.R.id.textViewCentralTendencyResult)
-        descriptionTextView = view.findViewById(com.calculator.calculatoroptions.R.id.description)
-        explanationButton =
-            view.findViewById(com.calculator.calculatoroptions.R.id.buttonExplanation)
+        stepTextView = view.findViewById(R.id.stepTextView)
+        stepInputLayout = view.findViewById(R.id.stepInputLayout)
+        stepInputEditText = view.findViewById(R.id.stepInputEditText)
+        nextButton = view.findViewById(R.id.nextButton)
+        resultTextView = view.findViewById(R.id.resultTextView)
 
-        calculateButton.setOnClickListener {
-            calculateMeasuresOfCentralTendency()
+        setupStep(currentStep)
+
+        nextButton.setOnClickListener {
+            handleNextStep()
         }
 
-        explanationButton.setOnClickListener {
-            showExplanationDialog()
-        }
+        val description = view.findViewById<TextView>(R.id.descriptionTextView)
+        val centralTendencyDescription = """
+            The Central Tendency calculator is a guide to help you compute the mean, median, and mode of a set of numbers.
 
-        val description = """
-            The Measures of Central Tendency Calculator allows you to compute statistical measures that represent the central tendency of a dataset.
+            The mean is the average of the numbers, the median is the middle value when the numbers are sorted, and the mode is the number that appears most often.
+
+            Please input the numbers separated by commas, and click the "Next" button to proceed with the calculation steps.
+
+            Example:
             
-            Simply input your dataset separated by commas, and the calculator will provide you with the mean, median, and mode.
+            Suppose you have the following set of numbers: 5, 7, 3, 9, 5, 7, 3
             
-            For example, given the dataset: 10, 15, 20, 20, 25
-            - Mean: (10 + 15 + 20 + 20 + 25) / 5 = 18
-            - Median: Since there are an odd number of values, the median is the middle value, which is 20.
-            - Mode: The mode is 20 since it appears most frequently. 
-            """.trimIndent()
-
-
-        descriptionTextView.text = description
+            To begin, enter these numbers separated by commas.
+        """.trimIndent()
+        description.text = centralTendencyDescription
 
         return view
     }
 
-    private fun calculateMeasuresOfCentralTendency() {
-        val dataSetStr = dataSetEditText.text.toString()
-        val dataSet = dataSetStr.split(",").map { it.trim().toDoubleOrNull()!!.toDouble() }
+    private fun setupStep(step : Int) {
+        when (step) {
+            1 -> {
+                stepTextView.text = getString(R.string.input_numbers_hint)
+                stepInputLayout.hint = ""
+                stepInputEditText.setText("")
+                nextButton.text = getString(R.string.next)
+            }
 
-        // Check if the data set is valid
-        if (dataSet.any { false }) {
-            // Invalid data set
-            showErrorMessage()
-            return
+            2 -> {
+                stepTextView.text = getString(R.string.calculate_mean_hint)
+                nextButton.text = getString(R.string.calculate)
+                stepInputLayout.hint = numbers.toString()
+                stepInputEditText.setText("")
+
+            }
+
+            3 -> {
+                stepTextView.text = getString(R.string.calculate_median_hint)
+                nextButton.text = getString(R.string.calculate)
+                stepInputLayout.hint = numbers.toString()
+                stepInputEditText.setText("")
+            }
+
+            4 -> {
+                stepTextView.text = getString(R.string.calculate_mode_hint)
+                nextButton.text = getString(R.string.calculate)
+                stepInputLayout.hint = numbers.toString()
+                stepInputEditText.setText("")
+            }
+
+            5 -> {
+                stepTextView.text = getString(R.string.step_5_result)
+                stepInputLayout.visibility = View.GONE
+                nextButton.text = getString(R.string.exit)
+                stepInputEditText.setText("")
+                displayResult()
+            }
         }
-
-        // Calculate measures of central tendency
-        val mean = dataSet.average()
-        val median = calculateMedian(dataSet.sorted())
-        val mode = calculateMode(dataSet)
-
-        val result = "Mean: $mean\nMedian: $median\nMode: $mode"
-
-        resultTextView.text = result
     }
 
-    override fun onDestroy() {
-        val activity = requireActivity() as CalculatorOptionsActivity
-        activity.toolbar.title = getString(com.ijs.abminder.R.string.calculator)
-        super.onDestroy()
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().trim()
+                val numbersArray = input.split(",").map { it.trim().toDoubleOrNull() }
+                if (numbersArray.all { it != null }) {
+                    numbers.addAll(numbersArray.filterNotNull())
+                    stepInputEditText.setText("")
+                    currentStep++
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+            2 -> {
+                if (mean != null) {
+                    handleCalculateMean()
+                } else {
+                    showInputErrorToast()
+                }
+            }
+            3 -> {
+                if (median != null) {
+                    handleCalculateMedian()
+                } else {
+                    showInputErrorToast()
+                }
+            }
+            4 -> {
+                if (mode != null) {
+                    handleCalculateMode()
+                } else {
+                    showInputErrorToast()
+                }
+            }
+            5 -> {
+                requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
+            }
+        }
     }
 
-    private fun calculateMedian(sortedData : List<Double>) : Double {
-        val size = sortedData.size
-        return if (size % 2 == 0) {
-            (sortedData[size / 2 - 1] + sortedData[size / 2]) / 2.0
+
+
+    private fun handleCalculateMean() {
+        if (numbers.isNotEmpty()) {
+            val sum = numbers.sum()
+            mean = sum / numbers.size
+            currentStep++
+            setupStep(currentStep)
         } else {
-            sortedData[size / 2]
+            showInputErrorToast()
         }
     }
 
-    // Calculate the mode of the data set
-    private fun calculateMode(dataSet: List<Double>): String {
-        val frequencyMap = mutableMapOf<Double, Int>()
-        dataSet.forEach { value ->
-            frequencyMap[value] = frequencyMap.getOrDefault(value, 0) + 1
-        }
-
-        val maxFrequency = frequencyMap.maxByOrNull { it.value }?.value ?: return ""
-        val modes = frequencyMap.filter { it.value == maxFrequency }.keys.toList()
-        return modes.toString().removeSurrounding("[", "]")
-    }
-
-
-    // Show an error message
-    private fun showErrorMessage() {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Error")
-            .setMessage("Invalid data set. Please enter numeric values separated by commas.")
-            .setPositiveButton("OK", null)
-            .show()
-    }
-
-    private fun showExplanationDialog() {
-        val dataSetStr = dataSetEditText.text.toString()
-        val dataSet = dataSetStr.split(",").map { it.trim().toDoubleOrNull() ?: 0.0 }
-
-        val mean = dataSet.average()
-        val sortedData = dataSet.sorted()
-        val median = calculateMedian(sortedData)
-        val mode = calculateMode(dataSet)
-
-        val explanation = """
-        Measures of Central Tendency are statistical measures that describe the center of a data set. 
-        - Mean: The average of all values in the data set.
-        - Median: The middle value when the data set is sorted in ascending order.
-        - Mode: The value that appears most frequently in the data set.
-        
-        Step-by-Step Calculation:
-        - Mean: Add up all values and divide by the total count.
-            For the dataset $dataSetStr
-            Mean = (${dataSet.joinToString(" + ")}) / ${dataSet.size}
-                 = ${dataSet.joinToString(" + ")} / ${dataSet.size}
-                 = $mean
-        - Median: Sort the data, then find the middle value(s).
-            For the sorted dataset (${sortedData.joinToString(", ")})
-            Median = ${if (dataSet.size % 2 == 0) {
-            "(${sortedData[dataSet.size / 2 - 1]} + ${sortedData[dataSet.size / 2]}) / 2"
+    private fun handleCalculateMedian() {
+        if (numbers.isNotEmpty()) {
+            val sortedNumbers = numbers.sorted()
+            val middleIndex = sortedNumbers.size / 2
+            median = if (sortedNumbers.size % 2 == 0) {
+                (sortedNumbers[middleIndex - 1] + sortedNumbers[middleIndex]) / 2
+            } else {
+                sortedNumbers[middleIndex]
+            }
+            currentStep++
+            setupStep(currentStep)
         } else {
-            sortedData[dataSet.size / 2].toString()
-        }}
-                 = $median
-        - Mode: Count the frequency of each value and identify the most frequent one(s).
-            For the dataset $dataSetStr
-            Mode = $mode
-    """.trimIndent()
+            showInputErrorToast()
+        }
+    }
 
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Explanation - Measures of Central Tendency")
-            .setMessage(explanation)
-            .setPositiveButton("OK", null)
-            .show()
+    private fun handleCalculateMode() {
+        if (numbers.isNotEmpty()) {
+            val numCount = numbers.groupingBy { it }.eachCount()
+            mode = numCount.maxByOrNull { it.value }?.key
+            currentStep++
+            setupStep(currentStep)
+        } else {
+            showInputErrorToast()
+        }
+    }
+
+    private fun showInputErrorToast() {
+        Toast.makeText(requireContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun displayResult() {
+        val meanValue = mean?.let { round(it * 100.0) / 100.0 }
+        val medianValue = median?.let { floor(it * 100.0) / 100.0 }
+        val modeValue = mode?.let { floor(it * 100.0) / 100.0 }
+
+        val resultText = StringBuilder()
+        resultText.append(getString(R.string.central_tendency_mean, meanValue ?: 0.0))
+        resultText.append("\n")
+        resultText.append(getString(R.string.central_tendency_median, medianValue ?: 0.0))
+        resultText.append("\n")
+        resultText.append(getString(R.string.central_tendency_mode, modeValue ?: 0.0))
+
+        resultTextView.text = resultText.toString()
     }
 
 }

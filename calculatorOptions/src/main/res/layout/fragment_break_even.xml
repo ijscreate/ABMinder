@@ -1,170 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-		android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
         android:layout_gravity="center"
         android:orientation="vertical"
-        >
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
 
     <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
                 android:orientation="vertical"
-                >
+                android:padding="16dp">
 
+            <!-- Step TextView -->
             <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/stepTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/break_even_calculator"
-                    android:fontFamily="sans-serif-black"
-                    android:padding="6dp"
                     android:gravity="center"
-                    android:textStyle="bold"
-                    android:textAppearance=" @style/TextAppearance.AppCompat.Title"
-                    android:textAllCaps="true"
-                    />
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+            <!-- Step Input Layout -->
             <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/stepInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/fixed_cost"
-                    >
+                    android:visibility="visible">
 
                 <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextFixedCost"
+                        android:id="@+id/stepInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
                         android:importantForAutofill="no"
+                        android:inputType="textMultiLine"
                         android:paddingHorizontal="6dp"
-                        android:ems="@integer/material_motion_duration_short_1"
-                        android:textColorHint="#757575"
-                        tools:ignore="VisualLintTextFieldSize"
-                        />
+                        android:textColorHint="#757575" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- Result TextView -->
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/resultTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/variable_cost"
-                    >
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextVariableCost"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:importantForAutofill="no"
-                        android:paddingHorizontal="6dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="VisualLintTextFieldSize"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- Calculate Button -->
+            <Button
+                    android:id="@+id/nextButton"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/selling_price"
-                    >
+                    android:layout_marginTop="16dp"
+                    android:text="@string/next" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextSellingPrice"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:paddingHorizontal="6dp"
-                        android:importantForAutofill="no"
-                        android:textColorHint="#757575"
-                        tools:ignore="VisualLintTextFieldSize"
-                        />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+            <!-- Description -->
+            <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/descriptionTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="16dp" />
 
-                <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:text="@string/break_even"
-                        android:padding="8dp"
-                        android:layout_weight="1"/>
-
-                <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/textViewBreakEvenOutput"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:gravity="start"
-                        android:layout_weight="1"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        />
-            </LinearLayout>
-
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:baselineAligned="false"
-                    >
-
-                <Button
-                        android:id="@+id/buttonResetBreakEven"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/reset"
-                        android:layout_weight="1"
-                        style="?android:attr/buttonBarButtonStyle"
-                        />
-
-                <Button
-                        android:id="@+id/explainBreakEvenButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/show_explanation"
-                        android:layout_weight="1"
-                        style="?android:attr/buttonBarButtonStyle"
-                        />
-
-                <Button
-                        android:id="@+id/buttonCalculateBreakEven"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/calculate"
-                        android:layout_weight="1"
-                        style="?android:attr/buttonBarButtonStyle"
-                        />
-            </LinearLayout>
-
-            <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="NestedScrolling"
-                    >
-
-                <TextView
-                        android:id="@+id/tVBreakEvenDescription"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:padding="8dp"
-                        android:textSize="16sp"
-                        />
-            </ScrollView>
         </LinearLayout>
     </ScrollView>
 </androidx.cardview.widget.CardView>

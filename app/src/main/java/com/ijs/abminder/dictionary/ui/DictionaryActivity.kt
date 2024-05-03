@@ -3,7 +3,6 @@ package com.ijs.abminder.dictionary.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
@@ -17,18 +16,15 @@ import android.speech.tts.TextToSpeech
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
@@ -37,7 +33,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.ijs.abminder.BaseDrawerActivity
 import com.ijs.abminder.R
@@ -57,7 +52,7 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
     private lateinit var recentSearchesRecyclerView : RecyclerView
     private lateinit var recentSearchesAdapter : RecentSearchAdapter
     private lateinit var viewModel : DictionaryViewModel
-    private lateinit var toolbar : Toolbar
+    lateinit var toolbar : Toolbar
     private lateinit var drawerLayout : DrawerLayout
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var textToSpeech : TextToSpeech
@@ -70,7 +65,7 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
     private lateinit var textRecognized : TextView
     private lateinit var bookmark : ImageButton
 
-    var bookmarkedTerm : String = ""
+    private var bookmarkedTerm : String = ""
     private val RECORD_AUDIO_PERMISSION_REQUEST_CODE = 101
 
     @SuppressLint("MissingInflatedId")
@@ -166,7 +161,15 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
             }
         })
 
-        onBackPressedDispatcher.addCallback(this) { finish() }
+        onBackPressedDispatcher.addCallback(this) {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else if (supportFragmentManager.backStackEntryCount > 0) {
+                supportFragmentManager.popBackStack()
+            } else {
+                finish()
+            }
+        }
     }
 
     private fun initViews() {
@@ -175,12 +178,6 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-
-        val fab = findViewById<FloatingActionButton>(com.ijs.abminder.R.id.fab)
-
-        fab.setOnClickListener {
-            showAddTermDialog()
-        }
 
         val navView = findViewById<NavigationView>(R.id.nav_view)
         navView.setCheckedItem(R.id.nav_item_dictionary)
@@ -359,69 +356,6 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
         startActivity(Intent.createChooser(shareIntent, "Share Term"))
     }
 
-
-    private fun showAddTermDialog() {
-        val dialogView =
-            LayoutInflater.from(this).inflate(R.layout.dialog_add_term, null)
-        val termEditText = dialogView.findViewById<EditText>(R.id.termEditText)
-        val definitionEditText = dialogView.findViewById<EditText>(R.id.definitionEditText)
-        val exampleEditText = dialogView.findViewById<EditText>(R.id.exampleEditText)
-
-        val dialog =
-            AlertDialog.Builder(this).setTitle("Add New Term").setView(dialogView)
-                .setPositiveButton("Add") { _, _ ->
-                    val term = termEditText.text.toString().trim()
-                    val definition = definitionEditText.text.toString().trim()
-                    val example = exampleEditText.text.toString().trim()
-                    addTermToDatabase(term, definition, example)
-                    clearInputFields(dialogView) // Clear input fields after adding the term
-                }.setNegativeButton("Cancel") { dialog, _ ->
-                    dialog.dismiss()
-                }.create()
-
-        dialog.show()
-    }
-
-
-    private fun addTermToDatabase(term : String, definition : String?, example : String?) {
-        if (term.isEmpty() && definition.isNullOrBlank()) {
-            // Inform the user that the term is required
-            Toast.makeText(
-                this, "Term and definition are required.", Toast.LENGTH_SHORT
-            ).show()
-            return
-        }
-
-        val dbHelper = DictionaryDatabaseHelper(this)
-        val db = dbHelper.writableDatabase
-
-        val values = ContentValues().apply {
-            put("term", term)
-            definition?.let { put("definition", it) }
-            example?.let { put("example", it) }
-        }
-
-        val newTerm = db.insert("dictionary_terms", null, values)
-
-        if (newTerm != -1L) {
-            // Term added successfully
-            Toast.makeText(this, "Term added to the database.", Toast.LENGTH_SHORT)
-                .show()
-        } else {
-            // Failed to add term
-            Toast.makeText(
-                this, "Failed to add term to the database.", Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-
-    private fun clearInputFields(dialogView : View) {
-        // Clear input fields after adding the term
-        dialogView.findViewById<EditText>(R.id.termEditText).text = null
-        dialogView.findViewById<EditText>(R.id.definitionEditText).text = null
-        dialogView.findViewById<EditText>(R.id.exampleEditText).text = null
-    }
-
     override fun onCreateOptionsMenu(menu : Menu?) : Boolean {
         menuInflater.inflate(R.menu.menu_dictionary, menu)
         return super.onCreateOptionsMenu(menu)
@@ -439,9 +373,16 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
                 true
             }
 
+
             R.id.action_bookmark -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.dictionary_container, BookmarkFragment()).commit()
+                if (bookmarkedTerm.isNotEmpty()) {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.dictionary_container, BookmarkFragment.newInstance(bookmarkedTerm, this))
+                        .addToBackStack(null)
+                        .commit()
+                } else {
+                    Toast.makeText(this, "No term bookmarked", Toast.LENGTH_SHORT).show()
+                }
                 true
             }
 
@@ -549,5 +490,4 @@ class DictionaryActivity : BaseDrawerActivity(), TextToSpeech.OnInitListener {
         textToSpeech.shutdown()
         super.onDestroy()
     }
-
 }

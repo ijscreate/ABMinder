@@ -6,126 +6,154 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.calculator.calculatoroptions.R
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
+import com.google.android.material.textfield.TextInputLayout
+import com.ijs.abminder.R
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 
 class AverageRateOfReturnFragment : Fragment() {
 
-    private lateinit var initialInvestmentEditText : TextInputEditText
-    private lateinit var finalValueEditText : TextInputEditText
-    private lateinit var calculateButton : Button
-    private lateinit var resultTextView : MaterialTextView
-    private lateinit var descriptionTextView : MaterialTextView
-    private lateinit var solutionButton : Button
+    private lateinit var stepTextView: TextView
+    private lateinit var stepInputLayout: TextInputLayout
+    private lateinit var stepInputEditText: TextInputEditText
+    private lateinit var nextButton: Button
+    private lateinit var resultTextView: TextView
 
-    @SuppressLint("StringFormatInvalid")
+    private var currentStep = 1
+    private var initialInvestment: Double? = null
+    private var finalValue: Double? = null
+    private var averageRateOfReturn: Double? = null
+
+    @SuppressLint("StringFormatInvalid", "MissingInflatedId")
     override fun onCreateView(
-        inflater : LayoutInflater, container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View? {
-        val view = inflater.inflate(R.layout.fragment_average_rate_return, container, false)
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(com.calculator.calculatoroptions.R.layout.fragment_average_rate_return, container, false)
 
-        initialInvestmentEditText = view.findViewById(R.id.editTextInitialInvestment)
-        finalValueEditText = view.findViewById(R.id.editTextFinalValue)
-        calculateButton = view.findViewById(R.id.buttonCalculateAverageRateOfReturn)
-        resultTextView = view.findViewById(R.id.textViewAverageRateOfReturnResult)
-        descriptionTextView = view.findViewById(R.id.description)
-        solutionButton = view.findViewById(R.id.buttonExplanation)
+        stepTextView = view.findViewById(R.id.stepTextView)
+        stepInputLayout = view.findViewById(R.id.stepInputLayout)
+        stepInputEditText = view.findViewById(R.id.stepInputEditText)
+        nextButton = view.findViewById(com.calculator.calculatoroptions.R.id.nextButton)
+        resultTextView = view.findViewById(R.id.resultTextView)
 
-        calculateButton.setOnClickListener {
-            calculateAverageRateOfReturn()
+        nextButton.setOnClickListener {
+            handleNextStep()
         }
 
-        solutionButton.setOnClickListener {
-            showExplanationDialog()
-        }
+        setupStep(currentStep)
 
-        setDescription()
+        val description = view.findViewById<TextView>(R.id.descriptionTextView)
+        val desc = """
+            The Average Rate of Return is a financial metric that calculates the average return on investment over a specified time period. The formula for Average Rate of Return is:
+
+            Average Rate of Return = (Final Value - Initial Investment) / Initial Investment * 100
+
+            Example:
+                Suppose you invested ₱10,000 and the investment grew to ₱12,000 over 5 years.
+
+                Average Rate of Return = (₱12,000 - ₱10,000) / ₱10,000 * 100
+                = ₱2,000 / ₱10,000 * 100
+                = 20%
+
+            Therefore, the Average Rate of Return is 20%.
+        """.trimIndent()
+        description.text = desc
 
         return view
     }
 
-    @SuppressLint("StringFormatInvalid")
+    private fun setupStep(step: Int) {
+        when (step) {
+            1 -> {
+                stepTextView.text = getString(R.string.step_1_input_initial_investment)
+                stepInputLayout.hint = getString(R.string.initial_investment)
+                stepInputEditText.setText("")
+            }
+
+            2 -> {
+                stepTextView.text = getString(R.string.step_2_input_final_value)
+                stepInputLayout.hint = getString(R.string.final_value)
+                stepInputEditText.setText("")
+            }
+
+            3 -> {
+                stepTextView.text = getString(R.string.step_3_calculate)
+                stepInputLayout.visibility = View.GONE
+                nextButton.text = getString(R.string.calculate)
+                nextButton.setOnClickListener {
+                    calculateAverageRateOfReturn()
+                }
+            }
+
+            4 -> {
+                stepTextView.text = getString(R.string.step_4_result)
+                stepInputLayout.visibility = View.GONE
+                nextButton.text = getString(R.string.exit)
+                nextButton.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().remove(this)
+                        .commit()
+                }
+                displayResult()
+            }
+        }
+    }
+
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null && input > 0) {
+                    initialInvestment = input
+                    currentStep = 2
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            2 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null && input > 0) {
+                    finalValue = input
+                    currentStep = 3
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+        }
+    }
+
     private fun calculateAverageRateOfReturn() {
-        val initialInvestment = initialInvestmentEditText.text.toString().toDoubleOrNull()
-        val finalValue = finalValueEditText.text.toString().toDoubleOrNull()
-
-        if (initialInvestment == null || finalValue == null || initialInvestment == 0.0) {
-            resultTextView.text =
-                getString(com.ijs.abminder.R.string.invalid_input_please_enter_valid_numbers)
-            return
+        if (initialInvestment != null && finalValue != null) {
+            averageRateOfReturn = ((finalValue!! - initialInvestment!!) / initialInvestment!!) * 100
+            currentStep = 4
+            setupStep(currentStep)
+        } else {
+            showInputErrorToast()
         }
-
-        val averageRateOfReturn = ((finalValue - initialInvestment) / initialInvestment) * 100
-
-        resultTextView.text = getString(R.string.average_rate_of_return_result, averageRateOfReturn)
     }
 
-    private fun setDescription() {
-        val explanation = """
-            The Average Rate of Return is a financial metric that calculates the average return on investment over a specified time period. The formula for Average Rate of Return is:
-        
-            Average Rate of Return = (Final Value - Initial Investment) / Initial Investment * 100%
-        
-            Where:
-            - Initial Investment is the initial amount invested.
-            - Final Value is the final value of the investment.
-        
-            Let's consider an example to illustrate the calculation:
-        
-            Suppose you invested ₱10,000 and the investment grew to ₱12,000 over 5 years.
-        
-            Average Rate of Return = (₱12,000 - ₱10,000) / ₱10,000 * 100%
-            = ₱2,000 / ₱10,000 * 100%
-            = 20%
-        
-            In this example, the Average Rate of Return is 20%.
-        """.trimIndent()
-        descriptionTextView.text = explanation
+    @SuppressLint("StringFormatInvalid")
+    private fun displayResult() {
+        resultTextView.text = getString(com.calculator.calculatoroptions.R.string.average_rate_of_return_result, averageRateOfReturn)
     }
 
-    private fun showExplanationDialog() {
-        val initialInvestment = initialInvestmentEditText.text.toString().toDoubleOrNull()
-        val finalValue = finalValueEditText.text.toString().toDoubleOrNull()
-
-        if (initialInvestment == null || finalValue == null || initialInvestment == 0.0) {
-            resultTextView.text = getString(com.ijs.abminder.R.string.invalid_input_please_enter_valid_numbers)
-            return
-        }
-
-        val averageRateOfReturn = ((finalValue - initialInvestment) / initialInvestment) * 100
-
-        val explanation = """
-            The Average Rate of Return is a financial metric that calculates the average return on investment over a specified time period. The formula for Average Rate of Return is:
-
-            Average Rate of Return = (Final Value - Initial Investment) / Initial Investment * 100%
-
-            Given:
-                Initial Investment = ₱$initialInvestment
-                Final Value = ₱$finalValue
-
-            Solution:
-                Average Rate of Return = (($finalValue - $initialInvestment) / $initialInvestment) * 100%
-                                       = $averageRateOfReturn%
-
-            Therefore, the Average Rate of Return is $averageRateOfReturn%.
-        """.trimIndent()
-
-        // Display explanation in a custom dialog
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Average Rate of Return Calculation")
-            .setMessage(explanation)
-            .setPositiveButton("OK", null)
-            .show()
+    private fun showInputErrorToast() {
+        Toast.makeText(
+            requireContext(),
+            R.string.invalid_input_please_enter_valid_numbers,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onDestroy() {
         val activity = requireActivity() as CalculatorOptionsActivity
-        activity.toolbar.title = getString(com.ijs.abminder.R.string.calculator)
+        activity.toolbar.title = getString(R.string.calculator)
         super.onDestroy()
     }
 }

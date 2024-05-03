@@ -24,7 +24,7 @@
 				android:maxLines = "1"
 				android:paddingHorizontal = "12dp"
 				android:textSize = "24sp"
-				android:paddingTop = "4dp"
+				android:paddingVertical="4dp"
 				/>
 
 		<TextView
@@ -35,6 +35,7 @@
 				android:gravity = "end"
 				android:maxLines = "1"
 				android:textSize = "20sp"
+				android:visibility="gone"
 				android:textColor = "@android:color/black"
 				android:textStyle = "bold"
 				/>
@@ -97,9 +98,10 @@
 				/>
 
 		<!-- Row 2 -->
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button7"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -108,9 +110,10 @@
 				android:text = "7"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
 				android:id = "@+id/button8"
-				style = "?android:attr/buttonBarButtonStyle"
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -119,9 +122,10 @@
 				android:text = "8"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button9"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -130,7 +134,9 @@
 				android:text = "9"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/buttonMultiply"
 				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
@@ -142,9 +148,10 @@
 				/>
 
 		<!-- Row 3 -->
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button4"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -153,9 +160,10 @@
 				android:text = "4"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button5"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -164,9 +172,10 @@
 				android:text = "5"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button6"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -188,9 +197,10 @@
 				/>
 
 		<!-- Row 4 -->
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button1"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -199,9 +209,10 @@
 				android:text = "1"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button2"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -210,9 +221,10 @@
 				android:text = "2"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button3"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -233,9 +245,10 @@
 				/>
 
 		<!-- Row 5 -->
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/buttonPercentage"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:textStyle = "bold"
@@ -244,9 +257,10 @@
 				android:text = "%"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/button0"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:text = "0"
@@ -255,9 +269,10 @@
 				android:textSize = "20sp"
 				/>
 
-		<Button
+		<androidx.appcompat.widget.AppCompatButton
+				android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+				android:background="@android:color/transparent"
 				android:id = "@+id/buttonDecimal"
-				style = "?android:attr/buttonBarButtonStyle"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"
@@ -270,6 +285,7 @@
 		<Button
 				android:id = "@+id/buttonEqual"
 				style = "?android:attr/buttonBarButtonStyle"
+				android:textColor="@color/colorPrimaryDark"
 				android:layout_width = "66dp"
 				android:layout_height = "wrap_content"
 				android:layout_margin = "4dp"

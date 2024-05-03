@@ -1,3 +1,6 @@
 <resources>
 	<!-- Base application theme. -->
+	<style name="NavigationHeaderStyle">
+		<item name="android:background">#1C1C1C</item>
+	</style>
 </resources>

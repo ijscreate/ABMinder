@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.*
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.ijs.abminder.*
+import com.ijs.abminder.learn.LearnActivity
 import com.ijs.abminder.learn.lessons.*
-import com.ijs.abminder.learn.subjects.*
 
 class ChaptersFragment : Fragment() {
 
@@ -24,7 +24,7 @@ class ChaptersFragment : Fragment() {
         }
     }
 
-    private lateinit var mainActivity : SubjectsActivity
+    private lateinit var subsActivity : LearnActivity
     private lateinit var selectedSubject : String
 
     override fun onCreateView(
@@ -41,7 +41,7 @@ class ChaptersFragment : Fragment() {
         recyclerView.adapter =
             ChaptersAdapter(getChaptersForSubject(selectedSubject), ::onChapterSelected)
 
-        mainActivity = (activity as? SubjectsActivity)!!
+        subsActivity = (activity as LearnActivity)
 
         TransitionManager.beginDelayedTransition(container!!, AutoTransition())
 
@@ -57,7 +57,7 @@ class ChaptersFragment : Fragment() {
         )
         transaction.addToBackStack(null)
         transaction.commit()
-        mainActivity.toolbar.title = selectedSubject
+        subsActivity.toolbar.title = selectedSubject
     }
 
     private fun getChaptersForSubject(subject : String) : List<String> {
@@ -129,7 +129,7 @@ class ChaptersFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mainActivity.toolbar.title = getString(R.string.learn)
+        subsActivity.toolbar.title = getString(R.string.learn)
     }
 
 }

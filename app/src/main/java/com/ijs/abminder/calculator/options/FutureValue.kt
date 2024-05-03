@@ -1,145 +1,184 @@
 package com.ijs.abminder.calculator.options
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.calculator.calculatoroptions.R
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
+import com.google.android.material.textfield.TextInputLayout
+import com.ijs.abminder.R
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 import kotlin.math.pow
 
 class FutureValueFragment : Fragment() {
 
-    private lateinit var principalAmountEditText : TextInputEditText
-    private lateinit var interestRateEditText : TextInputEditText
-    private lateinit var numberOfPeriodsEditText : TextInputEditText
-    private lateinit var calculateButton : MaterialButton
-    private lateinit var resultTextView : MaterialTextView
-    private lateinit var description : TextView
-    private lateinit var buttonSolution : Button
+    private lateinit var stepTextView: TextView
+    private lateinit var stepInputLayout: TextInputLayout
+    private lateinit var stepInputEditText: TextInputEditText
+    private lateinit var nextButton: Button
+    private lateinit var resultTextView: TextView
 
+    private var currentStep = 1
+    private var presentValue: Double? = null
+    private var interestRate: Double? = null
+    private var time: Double? = null
+    private var futureValue: Double? = null
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
-        inflater : LayoutInflater, container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View {
-        val view = inflater.inflate(
-            R.layout.fragment_future_value,
-            container,
-            false
-        )
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val rootView = inflater.inflate(com.calculator.calculatoroptions.R.layout.fragment_future_value, container, false)
 
-        // Initialize UI components
-        principalAmountEditText = view.findViewById(R.id.editTextPrincipalAmount)
-        interestRateEditText = view.findViewById(R.id.editTextInterestRate)
-        numberOfPeriodsEditText = view.findViewById(R.id.editTextNumberOfPeriods)
-        calculateButton = view.findViewById(R.id.buttonCalculateFutureValue)
-        resultTextView = view.findViewById(R.id.textViewFutureValueResult)
-        description = view.findViewById(R.id.description)
-        buttonSolution = view.findViewById(R.id.buttonSolution)
+        stepTextView = rootView.findViewById(com.calculator.calculatoroptions.R.id.stepTextView)
+        stepInputLayout = rootView.findViewById(R.id.stepInputLayout)
+        stepInputEditText = rootView.findViewById(R.id.stepInputEditText)
+        nextButton = rootView.findViewById(R.id.nextButton)
+        resultTextView = rootView.findViewById(R.id.resultTextView)
 
-        calculateButton.setOnClickListener {
-            calculateFutureValue()
+        setupStep(currentStep)
+
+        nextButton.setOnClickListener {
+            handleNextStep()
         }
 
-        val futureValueDescription = """
-            The Future Value of an Investment is a financial metric that calculates the value of an investment at a specified future date, based on a specified rate of return. The formula for calculating Future Value (FV) is:
+        val description = rootView.findViewById<TextView>(R.id.descriptionTextView)
+        val desc = """
+            Calculate the Future Value (FV) using the formula:
             
-            FV = PV * (1 + r)^n
+            Future Value (FV) = Present Value × (1 + Interest Rate)^Time
             
-            Where:
-            - PV (Principal Amount) represents the initial amount of the investment.
-            - r (Interest Rate) represents the annual interest rate (in decimal form).
-            - n (Number of Periods) represents the number of compounding periods.
+            This calculator helps you determine the future value of an investment or savings based on the present value, interest rate, and time period.
             
-            Let's consider an example to illustrate the calculation:
+            Example:
             
-            Suppose you invest ₱10,000 at an annual interest rate of 5% for 3 years.
-            
-            FV = ₱10,000 * (1 + 0.05)^3
-               = ₱10,000 * (1.05)^3
-               ≈ ₱11,576.25
-            
-            In this example, the Future Value of the investment after 3 years is approximately ₱11,576.25.
-        """.trimIndent()
-
-        description.text = futureValueDescription
-
-        buttonSolution.setOnClickListener {
-            val principalAmount = principalAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
-            val interestRate = interestRateEditText.text.toString().toDoubleOrNull() ?: 0.0
-            val numberOfPeriods = numberOfPeriodsEditText.text.toString().toDoubleOrNull() ?: 0.0
-
-            val futureValue = principalAmount * (1 + interestRate).pow(numberOfPeriods)
-
-            resultTextView.text =
-                getString(
-                    R.string.future_value_result,
-                    futureValue
-                )
-            showExplanationDialog(principalAmount, interestRate, numberOfPeriods, futureValue)
-        }
-
-        return view
-    }
-
-    private fun calculateFutureValue() {
-        val principalAmount = principalAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val interestRate = interestRateEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val numberOfPeriods = numberOfPeriodsEditText.text.toString().toDoubleOrNull() ?: 0.0
-
-        val futureValue = principalAmount * (1 + interestRate).pow(numberOfPeriods)
-
-        resultTextView.text =
-            getString(
-                R.string.future_value_result,
-                futureValue
-            )
-    }
-
-    private fun showExplanationDialog(
-        principalAmount : Double,
-        interestRate : Double,
-        numberOfPeriods : Double,
-        futureValue : Double,
-    ) {
-        val explanation = """
-            The Future Value of an Investment is a financial metric that calculates the value of an investment at a specified future date, based on a specified rate of return.
-            
-            Given:
-                Principal Amount = ₱$principalAmount
-                Interest Rate = ${"%.2f".format(interestRate * 100)}%
-                Number of Periods = $numberOfPeriods
+                If you invest ₱1,000 at an interest rate of 5% per year for 3 years, the future value would be:
                 
-            Solution:
-                FV = PV * (1 + r)^n
-                   = ₱$principalAmount * (1 + $interestRate)^$numberOfPeriods
-                   ≈ ₱${"%.2f".format(futureValue)}
-                                  
-            Therefore, the Future Value of the investment is approximately ₱${
-            "%.2f".format(
-                futureValue
-            )
-        }.
+                Future Value (FV) = 1,000 × (1 + 0.05)^3
+                                 = 1,000 × 1.157625
+                                 = ₱1,157.63
+                
+            Therefore, the future value of the investment after 3 years is ₱1,157.63.
         """.trimIndent()
+        description.text = desc
 
-        // Display explanation in a custom dialog
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Future Value of an Investment Calculation")
-            .setMessage(explanation)
-            .setPositiveButton("OK", null)
-            .show()
+        return rootView
+    }
+
+    private fun setupStep(step: Int) {
+        when (step) {
+            1 -> {
+                stepTextView.text = getString(R.string.step_1_input_present_value)
+                stepInputLayout.hint = getString(R.string.present_value)
+                stepInputEditText.setText("")
+            }
+
+            2 -> {
+                stepTextView.text = getString(R.string.step_2_input_interest_rate)
+                stepInputLayout.hint = getString(R.string.interest_rate_percent)
+                stepInputEditText.setText("")
+            }
+
+            3 -> {
+                stepTextView.text = getString(R.string.step_3_input_time)
+                stepInputLayout.hint = getString(R.string.time_in_years)
+                stepInputEditText.setText("")
+            }
+
+            4 -> {
+                stepTextView.text = getString(R.string.step_4_calculate_future_value)
+                stepInputLayout.hint = getString(R.string.step_4_calculate_future_value_hint, presentValue, interestRate, time)
+                stepInputEditText.setText("")
+            }
+
+            5 -> {
+                stepTextView.text = getString(R.string.step_5_result)
+                stepInputLayout.visibility = View.GONE
+                nextButton.text = getString(R.string.exit)
+                nextButton.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().remove(this)
+                        .commit()
+                }
+                displayResult()
+            }
+        }
+    }
+
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    presentValue = input
+                    currentStep = 2
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            2 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    interestRate = input / 100.0 // Convert to decimal
+                    currentStep = 3
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            3 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    time = input
+                    currentStep = 4
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            4 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    val expectedFutureValue = presentValue!! * (1 + interestRate!!) .pow(time!!)
+                    if (input == expectedFutureValue) {
+                        futureValue = input
+                        currentStep = 5
+                        setupStep(currentStep)
+                    } else {
+                        showFutureValueCalculationErrorToast()
+                    }
+                } else {
+                    showInputErrorToast()
+                }
+            }
+        }
+    }
+
+    private fun displayResult() {
+        resultTextView.text = getString(R.string.future_value_result, futureValue)
+    }
+
+    private fun showInputErrorToast() {
+        Toast.makeText(requireContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showFutureValueCalculationErrorToast() {
+        Toast.makeText(requireContext(), R.string.incorrect_future_value_calculation, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
         val activity = requireActivity() as CalculatorOptionsActivity
-        activity.toolbar.title = getString(com.ijs.abminder.R.string.calculator)
+        activity.toolbar.title = getString(R.string.calculator)
+        (activity).enableRecyclerView()
         super.onDestroy()
     }
 }

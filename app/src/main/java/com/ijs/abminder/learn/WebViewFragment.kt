@@ -11,7 +11,6 @@ import android.webkit.WebView
 import androidx.fragment.app.Fragment
 import com.ijs.abminder.R
 import com.ijs.abminder.learn.lessons.Lesson
-import com.ijs.abminder.learn.subjects.SubjectsActivity
 import java.io.IOException
 import java.nio.charset.Charset
 
@@ -33,7 +32,7 @@ class WebViewFragment : Fragment() {
 
     }
 
-    private lateinit var mainActivity : SubjectsActivity
+    private lateinit var mainActivity : LearnActivity
     private lateinit var selectedChapter : String
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -46,10 +45,11 @@ class WebViewFragment : Fragment() {
         // Initialize WebView
         val webView : WebView = view.findViewById(R.id.webView)
         webView.settings.javaScriptEnabled = true
+        webView.webViewClient = ThemeAwareWebViewClient()
 
         TransitionManager.beginDelayedTransition(container!!, AutoTransition())
 
-        mainActivity = (activity as? SubjectsActivity)!!
+        mainActivity = (activity as? LearnActivity)!!
         selectedChapter = arguments?.getString(ARG_SELECTED_CHAPTER) ?: ""
 
         // Load HTML content from assets based on selectedChapter and selectedLesson

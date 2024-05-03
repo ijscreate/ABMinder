@@ -1,286 +1,205 @@
 package com.ijs.abminder.calculator.options
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.ijs.abminder.R
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 
-class DepreciationCalculatorFragment : Fragment() {
+class DepreciationExpenseFragment : Fragment() {
 
-    private lateinit var costOfAssetEditText : TextInputEditText
-    private lateinit var salvageValueEditText : TextInputEditText
-    private lateinit var usefulLifeEditText : TextInputEditText
-    private lateinit var calculateButton : MaterialButton
-    private lateinit var resultTextView : MaterialTextView
-    private lateinit var descriptionTextView : TextView
-    private lateinit var methodSpinner : Spinner
-    private lateinit var solutionButton : Button
+    private lateinit var stepTextView: TextView
+    private lateinit var stepInputLayout: TextInputLayout
+    private lateinit var stepInputEditText: TextInputEditText
+    private lateinit var nextButton: Button
+    private lateinit var resultTextView: MaterialTextView
+    private lateinit var description: TextView
 
-    @SuppressLint("MissingInflatedId")
+    private var currentStep = 1
+    private var cost: Double? = null
+    private var salvageValue: Double? = null
+    private var usefulLife: Double? = null
+    private var annualDepreciation: Double? = null
+    private var depreciatedCost: Double? = null
+
     override fun onCreateView(
-        inflater : LayoutInflater, container : ViewGroup?,
-        savedInstanceState : Bundle?,
-    ) : View {
-        val view = inflater.inflate(
-            com.calculator.calculatoroptions.R.layout.fragment_depreciation, container, false
-        )
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(com.calculator.calculatoroptions.R.layout.fragment_depreciation, container, false)
 
         // Initialize UI components
-        costOfAssetEditText =
-            view.findViewById(com.calculator.calculatoroptions.R.id.editTextCostOfAsset)
-        salvageValueEditText =
-            view.findViewById(com.calculator.calculatoroptions.R.id.editTextSalvageValue)
-        usefulLifeEditText =
-            view.findViewById(com.calculator.calculatoroptions.R.id.editTextUsefulLife)
-        calculateButton =
-            view.findViewById(com.calculator.calculatoroptions.R.id.buttonCalculateDepreciation)
-        resultTextView =
-            view.findViewById(com.calculator.calculatoroptions.R.id.textViewDepreciationResult)
-        descriptionTextView = view.findViewById(R.id.description)
-        solutionButton = view.findViewById(com.calculator.calculatoroptions.R.id.buttonSolution)
-        methodSpinner = view.findViewById(com.calculator.calculatoroptions.R.id.spinnerMethod)
+        stepTextView = view.findViewById(R.id.stepTextView)
+        stepInputLayout = view.findViewById(R.id.stepInputLayout)
+        stepInputEditText = view.findViewById(R.id.stepInputEditText)
+        nextButton = view.findViewById(R.id.nextButton)
+        resultTextView = view.findViewById(com.calculator.calculatoroptions.R.id.textViewDepreciationResult)
+        description = view.findViewById(R.id.description)
 
-        // Set up method spinner
-        val methodList = listOf(
-            "Straight-Line",
-            "Declining Balance",
-            "Sum-of-Years' Digits"
-        )
-        val adapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, methodList)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        methodSpinner.adapter = adapter
-
-        methodSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent : AdapterView<*>?,
-                view : View?,
-                position : Int,
-                id : Long,
-            ) {
-                // Handle method selection
-            }
-
-            override fun onNothingSelected(parent : AdapterView<*>?) {
-                // Do nothing
-            }
+        nextButton.setOnClickListener {
+            handleNextStep()
         }
 
-        calculateButton.setOnClickListener {
-            calculateDepreciation()
-        }
+        setupStep(currentStep)
 
-        solutionButton.setOnClickListener {
-            val costOfAsset = costOfAssetEditText.text.toString().toDoubleOrNull() ?: 0.0
-            val salvageValue = salvageValueEditText.text.toString().toDoubleOrNull() ?: 0.0
-            val usefulLife = usefulLifeEditText.text.toString().toIntOrNull() ?: 0
-            val selectedMethod = methodSpinner.selectedItem.toString()
+        val depreciationDescription = """
+            The Depreciation Expense Calculator computes the annual depreciation expense based on the cost of an asset, its salvage value, and its useful life.
 
-            val depreciationExpense = when (selectedMethod) {
-                "Straight-Line" -> calculateStraightLineDepreciation(
-                    costOfAsset,
-                    salvageValue,
-                    usefulLife
-                )
+            The formula for calculating depreciation expense is:
 
-                "Declining Balance" -> calculateDecliningBalanceDepreciation(
-                    costOfAsset,
-                    salvageValue,
-                    usefulLife
-                )
+            Depreciation Expense = (Cost - Salvage Value) / Useful Life (in years)
 
-                "Sum-of-Years' Digits" -> calculateSumOfYearsDigitsDepreciation(
-                    costOfAsset,
-                    salvageValue,
-                    usefulLife
-                )
-
-                else -> 0.0
-            }
-
-            resultTextView.text = getString(
-                com.calculator.calculatoroptions.R.string.depreciation_result,
-                depreciationExpense
-            )
-
-            showExplanationDialog(
-                costOfAsset,
-                salvageValue,
-                usefulLife.toDouble(),
-                depreciationExpense,
-                selectedMethod
-            )
-        }
-
-        val description = """
-            The Depreciation Schedule Calculator estimates the depreciation of an asset over its useful life.
-
-            The most commonly used method for calculating depreciation is the Straight-Line Method, which spreads the depreciation expense evenly over the useful life of the asset. The formula to calculate depreciation using the Straight-Line Method is:
-
-            Depreciation Expense = (Initial Cost - Salvage Value) / Useful Life
-
-            Where:
-            - Initial Cost is the original cost of the asset.
-            - Salvage Value is the estimated value of the asset at the end of its useful life.
-            - Useful Life is the expected period over which the asset will be used.
-
-            Let's consider an example to illustrate the calculation:
-
-            Suppose you purchase a machine for ₱100,000 with an estimated salvage value of ₱10,000 after 5 years of use.
-
-            Depreciation Expense = (₱100,000 - ₱10,000) / 5
-                                 = ₱18,000 per year
-
-            In this example, the depreciation schedule would show the annual depreciation expense for each year of the asset's useful life.
+            To use this calculator, follow the step-by-step process:
+            1. Enter the cost of the asset.
+            2. Enter the salvage value of the asset.
+            3. Enter the useful life of the asset in years.
+            4. Calculate the depreciation expense.
+            5. Calculate the depreciated cost.
+            6. View the final result.
         """.trimIndent()
 
-        // Set description text
-        descriptionTextView.text = description
+        description.text = depreciationDescription
 
         return view
     }
 
-    @SuppressLint("StringFormatMatches")
-    private fun calculateDepreciation() {
-        val costOfAsset = costOfAssetEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val salvageValue = salvageValueEditText.text.toString().toDoubleOrNull() ?: 0.0
-        val usefulLife = usefulLifeEditText.text.toString().toIntOrNull() ?: 0
-        val selectedMethod = methodSpinner.selectedItem.toString()
+    private fun setupStep(step: Int) {
+        when (step) {
+            1 -> {
+                stepTextView.text = getString(R.string.step_1_input_cost)
+                stepInputLayout.hint = getString(R.string.cost)
+                stepInputEditText.setText("")
+            }
 
-        val depreciationExpense = when (selectedMethod) {
-            "Straight-Line" -> calculateStraightLineDepreciation(
-                costOfAsset,
-                salvageValue,
-                usefulLife
-            )
+            2 -> {
+                stepTextView.text = getString(R.string.step_2_input_salvage_value)
+                stepInputLayout.hint = getString(R.string.salvage_value)
+                stepInputEditText.setText("")
+            }
 
-            "Declining Balance" -> calculateDecliningBalanceDepreciation(
-                costOfAsset,
-                salvageValue,
-                usefulLife
-            )
+            3 -> {
+                stepTextView.text = getString(R.string.step_3_input_useful_life)
+                stepInputLayout.hint = getString(R.string.useful_life)
+                stepInputEditText.setText("")
+            }
 
-            "Sum-of-Years' Digits" -> calculateSumOfYearsDigitsDepreciation(
-                costOfAsset,
-                salvageValue,
-                usefulLife
-            )
+            4 -> {
+                stepTextView.text = getString(R.string.step_4_calculate_depreciation)
+                stepInputLayout.hint = getString(R.string.step_4_depreciation_formula, cost, salvageValue, usefulLife)
+                stepInputEditText.setText("")
+            }
 
-            else -> 0.0
+            5 -> {
+                stepTextView.text = getString(R.string.step_5_calculate_depreciated_cost)
+                stepInputLayout.hint = getString(R.string.step_5_depreciated_cost_formula, cost, annualDepreciation, usefulLife)
+                stepInputEditText.setText("")
+            }
+
+            6 -> {
+                stepTextView.text = getString(R.string.step_6_result)
+                stepInputLayout.visibility = View.GONE
+                nextButton.text = getString(R.string.exit)
+                nextButton.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().remove(this)
+                        .commit()
+                    val activity = requireActivity() as CalculatorOptionsActivity
+                    activity.toolbar.title = getString(R.string.calculator)
+                }
+                displayResult()
+            }
         }
+    }
 
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null && input > 0) {
+                    cost = input
+                    currentStep = 2
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            2 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null && input >= 0) {
+                    salvageValue = input
+                    currentStep = 3
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            3 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null && input > 0) {
+                    usefulLife = input
+                    currentStep = 4
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            4 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null && input > 0) {
+                    val expectedAnnualDepreciation = (cost!! - salvageValue!!) / usefulLife!!
+                    if (input == expectedAnnualDepreciation) {
+                        annualDepreciation = input
+                        currentStep = 5
+                        setupStep(currentStep)
+                    } else {
+                        showIncorrectCalculationToast()
+                    }
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            5 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null && input > 0) {
+                    val expectedDepreciatedCost = cost!! - (annualDepreciation!! * usefulLife!!)
+                    if (input == expectedDepreciatedCost) {
+                        depreciatedCost = input
+                        currentStep = 6
+                        setupStep(currentStep)
+                    } else {
+                        showIncorrectCalculationToast()
+                    }
+                } else {
+                    showInputErrorToast()
+                }
+            }
+        }
+    }
+
+    private fun displayResult() {
         resultTextView.text = getString(
-            com.calculator.calculatoroptions.R.string.depreciation_result,
-            depreciationExpense
+            R.string.depreciation_result,
+            annualDepreciation,
+            depreciatedCost
         )
     }
 
-    private fun calculateStraightLineDepreciation(
-        costOfAsset : Double,
-        salvageValue : Double,
-        usefulLife : Int,
-    ) : Double {
-        return (costOfAsset - salvageValue) / usefulLife
+    private fun showInputErrorToast() {
+        Toast.makeText(requireContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show()
     }
 
-    private fun calculateDecliningBalanceDepreciation(
-        costOfAsset : Double,
-        salvageValue : Double,
-        usefulLife : Int,
-    ) : Double {
-        val rate = 2.0 / usefulLife.toDouble()
-        var depreciationExpense = 0.0
-
-        var bookValue = costOfAsset
-        for (year in 1..usefulLife) {
-            val depreciation = bookValue * rate
-            bookValue -= depreciation
-            if (bookValue < salvageValue) {
-                depreciationExpense += (bookValue - salvageValue)
-                break
-            }
-            depreciationExpense += depreciation
-        }
-
-        return depreciationExpense
-    }
-
-    private fun calculateSumOfYearsDigitsDepreciation(
-        costOfAsset : Double,
-        salvageValue : Double,
-        usefulLife : Int,
-    ) : Double {
-        val depreciableValue = costOfAsset - salvageValue
-        val sumOfYearsDigits = usefulLife * (usefulLife + 1) / 2.0
-
-        var depreciationExpense = 0.0
-        for (year in 1..usefulLife) {
-            val depreciationFactor = year.toDouble() / sumOfYearsDigits
-            val depreciation = depreciableValue * depreciationFactor
-            depreciationExpense += depreciation
-        }
-
-        return depreciationExpense
-    }
-
-    private fun showExplanationDialog(
-        costOfAsset : Double,
-        salvageValue : Double,
-        usefulLife : Double,
-        depreciationExpense : Double,
-        selectedMethod : String,
-    ) {
-        val explanation = buildString {
-            appendLine("To calculate depreciation expense using the $selectedMethod method:")
-            appendLine("Cost of Asset = $costOfAsset")
-            appendLine("Salvage Value = $salvageValue")
-            appendLine("Useful Life = $usefulLife years")
-
-            when (selectedMethod) {
-                "Straight-Line" -> {
-                    appendLine("Depreciation Expense = (Cost of Asset - Salvage Value) / Useful Life")
-                    appendLine("                     = ($costOfAsset - $salvageValue) / $usefulLife")
-                    appendLine("                     = $depreciationExpense")
-                }
-
-                "Declining Balance" -> {
-                    appendLine("Declining Balance Rate = 2 / Useful Life = 2 / $usefulLife = ${2.0 / usefulLife}")
-                    appendLine("Depreciation Expense is calculated by applying the declining balance rate to the book value each year until the book value reaches the salvage value.")
-                }
-
-                "Sum-of-Years' Digits" -> {
-                    appendLine("Sum of Years' Digits = n(n+1)/2 = $usefulLife($usefulLife+1)/2 = ${usefulLife * (usefulLife + 1) / 2.0}")
-                    appendLine("Depreciation Expense is calculated by applying a depreciation factor (year/Sum of Years' Digits) to the depreciable value (Cost of Asset - Salvage Value) for each year.")
-                }
-            }
-
-            appendLine("Therefore, the depreciation expense is $depreciationExpense.")
-        }
-
-        // Display explanation in a custom dialog
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Depreciation Expense Calculation Explanation")
-            .setMessage(explanation)
-            .setPositiveButton("OK", null)
-            .show()
-    }
-
-    override fun onDestroy() {
-        val activity = requireActivity() as CalculatorOptionsActivity
-        activity.toolbar.title = getString(R.string.calculator)
-        super.onDestroy()
+    private fun showIncorrectCalculationToast() {
+        Toast.makeText(requireContext(), R.string.incorrect_calculation, Toast.LENGTH_SHORT).show()
     }
 }

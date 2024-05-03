@@ -36,49 +36,7 @@
 				android:id = "@+id/calculator_container"
 				android:layout_width = "match_parent"
 				android:layout_height = "match_parent"
-				>
-
-			<LinearLayout
-					android:id = "@+id/calculator_linear_layout"
-					android:layout_width = "match_parent"
-					android:layout_height = "match_parent"
-					android:orientation = "vertical"
-					tools:ignore = "UselessParent"
-					android:visibility = "visible"
-					>
-
-				<androidx.cardview.widget.CardView
-						android:layout_width = "match_parent"
-						android:layout_height = "wrap_content"
-						app:cardCornerRadius = "20dp"
-						android:layout_marginHorizontal = "16dp"
-						android:layout_marginBottom = "8dp"
-						android:layout_marginTop = "12dp"
-						>
-
-					<androidx.appcompat.widget.SearchView
-							android:id = "@+id/calculatorSearchView"
-							android:layout_width = "match_parent"
-							android:layout_height = "40dp"
-							app:queryBackground = "@null"
-							app:iconifiedByDefault = "false"
-							app:queryHint = "Search calculators..."
-							/>
-				</androidx.cardview.widget.CardView>
-
-				<com.google.android.material.divider.MaterialDivider
-						android:layout_width = "match_parent"
-						android:layout_height = "2dp"
-						/>
-
-				<androidx.recyclerview.widget.RecyclerView
-						android:id = "@+id/recyclerViewCalculationOptions"
-						android:layout_width = "match_parent"
-						android:layout_height = "wrap_content"
-						android:padding = "12dp"
-						/>
-			</LinearLayout>
-		</FrameLayout>
+				/>
 
 
 	</LinearLayout>
