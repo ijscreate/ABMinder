@@ -393,14 +393,14 @@
 	<string name="incorrect_gdp_deflator_calculation">Incorrect GDP Deflator calculation. Please try again.</string>
 
 	<!-- HHIFragment -->
-	<string name="hhi">Herfindahl-Hirschman Index (HHI)</string>
-	<string name="step_1_input_number_of_firms">Number of Firms</string>
-	<string name="step_2_input_market_shares">Market Shares</string>
-	<string name="step_3_calculate_hhi">Calculate HHI</string>
-	<string name="step_3_calculate_hhi_hint">Step 3: Calculate HHI</string>
-	<string name="hhi_result">Step 4: Result: HHI: %.4f</string>
-	<string name="number_of_firms">Step 1: Input Number of Firms</string>
-	<string name="market_share_of_firm">Step 2: Input Market Shares of Firm %d</string>
+	<string name="step_1_input_number_of_firms">Step 1: Enter the number of firms in the market.</string>
+	<string name="number_of_firms">Number of Firms</string>
+	<string name="step_2_input_market_shares">Step 2: Enter the market share (in percentage) for each firm.</string>
+	<string name="market_share_of_firm">Market Share of Firm %d (%%)</string>
+	<string name="step_3_calculate_hhi">Step 3: Calculate the Herfindahl-Hirschman Index (HHI) using the formula:\n\nHHI = &amp;Sigma; (Market Share)^2 / 10000</string>
+	<string name="step_3_calculate_hhi_hint">Enter the HHI value calculated using the market shares: %s</string>
+	<string name="step_4_result_hhi">Step 4: View the final HHI value and market concentration assessment.</string>
+	<string name="hhi_result">HHI: %.4f\n\nMarket Shares: %s\n\nMarket Concentration Assessment:\n\nHHI &lt; 0.15: Unconcentrated Market\n0.15 &amp;le; HHI &lt; 0.25: Moderately Concentrated Market\n0.25 &amp;le; HHI: Highly Concentrated Market</string>
 	<string name="incorrect_hhi_calculation">Incorrect HHI calculation. Please try again.</string>
 
 	<!-- InflationAdjustedReturnFragment -->

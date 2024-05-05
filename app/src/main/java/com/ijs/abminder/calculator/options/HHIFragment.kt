@@ -102,7 +102,7 @@ class HHIFragment : Fragment() {
             }
 
             4 -> {
-                stepTextView.text = getString(R.string.step_4_result)
+                stepTextView.text = getString(R.string.step_4_result_hhi)
                 stepInputLayout.visibility = View.GONE
                 nextButton.text = getString(R.string.exit)
                 nextButton.setOnClickListener {
@@ -147,7 +147,7 @@ class HHIFragment : Fragment() {
             3 -> {
                 val input = stepInputEditText.text.toString().toDoubleOrNull()
                 if (input != null) {
-                    val expectedHHI = marketShares.sumOf { it.pow(2) }
+                    val expectedHHI = marketShares.sumOf { (it * 100).pow(2) } / 10000
                     if (input == expectedHHI) {
                         hhi = input
                         currentStep = 4
@@ -163,7 +163,11 @@ class HHIFragment : Fragment() {
     }
 
     private fun displayResult() {
-        resultTextView.text = getString(R.string.hhi_result, hhi!!)
+        resultTextView.text = getString(
+            R.string.hhi_result,
+            hhi!!,
+            marketShares.joinToString(", ") { "${(it * 100).toInt()}%" }
+        )
     }
 
     private fun showInputErrorToast() {
