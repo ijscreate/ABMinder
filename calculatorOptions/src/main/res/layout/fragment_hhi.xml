@@ -1,140 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-		xmlns:android = "http://schemas.android.com/apk/res/android"
-		xmlns:app = "http://schemas.android.com/apk/res-auto"
-		android:layout_width = "match_parent"
-		android:layout_height = "match_parent"
-		app:cardCornerRadius = "10dp"
-		app:cardElevation = "4dp"
-		app:cardUseCompatPadding = "true"
-		android:layout_gravity = "center"
-		android:orientation = "vertical"
-		>
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:cardCornerRadius="10dp"
+		app:cardElevation="4dp"
+		app:cardUseCompatPadding="true"
+		android:layout_gravity="center"
+		android:orientation="vertical">
 
-	<ScrollView
-			android:layout_width = "match_parent"
-			android:layout_height = "match_parent"
-			>
+	<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical"
+			android:padding="16dp">
 
-		<LinearLayout
-				android:layout_width = "match_parent"
-				android:layout_height = "wrap_content"
-				android:padding = "16dp"
-				android:orientation = "vertical"
-				>
+		<!-- Step TextView -->
+		<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/stepTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:padding="8dp"
+				android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-			<!-- Total Market Shares -->
-			<com.google.android.material.textfield.TextInputLayout
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:hint = "@string/total_market_shares"
-					>
+		<!-- Step Input Layout -->
+		<com.google.android.material.textfield.TextInputLayout
+				android:id="@+id/stepInputLayout"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
 
-				<com.google.android.material.textfield.TextInputEditText
-						android:id = "@+id/editTextTotalMarketShares"
-						android:layout_width = "match_parent"
-						android:layout_height = "wrap_content"
-						android:inputType = "numberDecimal"
-						android:importantForAutofill = "no"
-						android:paddingHorizontal = "6dp"
-						android:textColorHint = "#757575"
-						/>
-			</com.google.android.material.textfield.TextInputLayout>
+			<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/stepInputEditText"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:importantForAutofill="no"
+					android:inputType="numberDecimal"
+					android:paddingHorizontal="6dp"
+					android:textColorHint="#757575" />
+		</com.google.android.material.textfield.TextInputLayout>
 
-			<!-- Market Share 1 -->
-			<com.google.android.material.textfield.TextInputLayout
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:hint = "@string/market_share_1"
-					>
+		<!-- Result TextView -->
+		<com.google.android.material.textview.MaterialTextView
+				android:id="@+id/resultTextView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:padding="8dp"
+				android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
-				<com.google.android.material.textfield.TextInputEditText
-						android:id = "@+id/editTextMarketShare1"
-						android:layout_width = "match_parent"
-						android:layout_height = "wrap_content"
-						android:inputType = "numberDecimal"
-						android:importantForAutofill = "no"
-						android:paddingHorizontal = "6dp"
-						android:textColorHint = "#757575"
-						/>
-			</com.google.android.material.textfield.TextInputLayout>
+		<Button
+				android:id="@+id/nextButton"
+				style="?android:attr/buttonBarButtonStyle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/next" />
 
-			<!-- Market Share 2 -->
-			<com.google.android.material.textfield.TextInputLayout
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:hint = "@string/market_share_2"
-					>
-
-				<com.google.android.material.textfield.TextInputEditText
-						android:id = "@+id/editTextMarketShare2"
-						android:layout_width = "match_parent"
-						android:layout_height = "wrap_content"
-						android:inputType = "numberDecimal"
-						android:importantForAutofill = "no"
-						android:paddingHorizontal = "6dp"
-						android:textColorHint = "#757575"
-						/>
-			</com.google.android.material.textfield.TextInputLayout>
-
-			<!-- Market Share 3 -->
-			<com.google.android.material.textfield.TextInputLayout
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:hint = "@string/market_share_3"
-					>
-
-				<com.google.android.material.textfield.TextInputEditText
-						android:id = "@+id/editTextMarketShare3"
-						android:layout_width = "match_parent"
-						android:layout_height = "wrap_content"
-						android:inputType = "numberDecimal"
-						android:importantForAutofill = "no"
-						android:paddingHorizontal = "6dp"
-						android:textColorHint = "#757575"
-						/>
-			</com.google.android.material.textfield.TextInputLayout>
-
-			<!-- Calculate Button -->
-			<Button
-					android:id = "@+id/buttonCalculateHHI"
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:text = "@string/calculate"
-					style = "?android:attr/buttonBarButtonStyle"
-					/>
-
-			<!-- Result TextView -->
-			<Button
-					android:id = "@+id/buttonExplanation"
-					android:layout_width = "wrap_content"
-					android:layout_height = "wrap_content"
-					android:text = "@string/show_explanation"
-					style = "?android:attr/buttonBarButtonStyle"
-					android:layout_gravity = "center"
-					/>
-
-			<com.google.android.material.textview.MaterialTextView
-					android:id = "@+id/textViewHHIResult"
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:padding = "8dp"
-					android:layout_marginTop = "6dp"
-					android:textAppearance = "@style/TextAppearance.AppCompat.Medium"
-					/>
+		<androidx.core.widget.NestedScrollView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
 
 			<!-- Description TextView -->
-			<TextView
-					android:id = "@+id/description"
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:layout_marginTop = "12dp"
-					android:padding = "8dp"
-					android:textSize = "16sp"
-					/>
+			<com.google.android.material.textview.MaterialTextView
+					android:id="@+id/descriptionTextView"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="start"
+					android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+		</androidx.core.widget.NestedScrollView>
 
-			<!-- Explanation Button -->
-
-		</LinearLayout>
-	</ScrollView>
+	</LinearLayout>
 </androidx.cardview.widget.CardView>

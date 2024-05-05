@@ -275,86 +275,181 @@
 	<string name = "incorrect_calculation">Your calculation is incorrect. Please try again.</string>
 
 	<!-- Commission Calculator Strings -->
-	<string name="step_1_input_sale_amount">Step 1: Enter the sale amount</string>
-	<string name="step_2_input_commission_rate">Step 2: Enter the commission rate</string>
-	<string name="step_3_calculate_commission">Step 3: Calculate the commission</string>
-	<string name="step_3_commission_formula">Commission = %1$.2f * (%2$.2f / 100)</string>
-	<string name="step_4_divide">Step 4: Divide the result by 100</string>
-	<string name="step_4_divide_hint">Divide %1$.2f by 100</string>
-	<string name="step_5_result_commission">Step 5: Commission Result</string>
-	<string name="sale_amount">Sale Amount</string>
-	<string name="commission_rate">Commission Rate</string>
-	<string name="commission_result">Commission: ₱%1$.2f</string>
+	<string name="step_1_input_sale_amount">Sale Amount</string>
+	<string name="step_2_input_commission_rate">Commission Rate</string>
+	<string name="step_3_calculate_commission">Calculate Commission</string>
+	<string name="step_3_commission_formula">Step 3: Calculate the commission</string>
+	<string name="step_4_divide">Divide the result by 100</string>
+	<string name="step_4_divide_hint">Step 4: Divide the result by 100</string>
+	<string name="step_5_result_commission">Commission Result</string>
+	<string name="sale_amount">Step 1: Enter the sale amount</string>
+	<string name="commission_rate">Step 2: Enter the commission rate</string>
+	<string name="commission_result">Step 5: Result: Commission: ₱%1$.2f</string>
 
 	<!-- Compound Interest Calculator Strings -->
-	<string name="step_1_input_principal">Enter the principal amount:</string>
-	<string name="step_3_input_compounding_periods">Enter the number of times interest is compounded per year:</string>
-	<string name="compounding_periods">Compounding Periods</string>
-	<string name="step_4_input_time">Enter the time period in years:</string>
-	<string name="step_5_calculate_rate_per_period">Calculate the rate per period:</string>
-	<string name="step_5_rate_per_period_formula">Rate Per Period = (%2$.2f / %2$.2f)</string>
-	<string name="step_6_calculate_power_term">Calculate the power term:</string>
-	<string name="step_6_power_term_formula">Power Term = (1 + %.2f)^(%.2f * %.2f)</string>
-	<string name="step_7_calculate_compounded_interest">Calculate the compounded interest:</string>
-	<string name="step_7_compound_interest_formula">Compounded Interest = Principal * (Power Term - 1) (%.2f * (%.2f - 1))</string>
+	<string name="step_1_input_principal">Principal Amount</string>
+	<string name="step_3_input_compounding_periods">Number of Times Interest is Compounded per Year</string>
+	<string name="compounding_periods">Step 3: Enter the number of times interest is compounded per year</string>
+	<string name="step_4_input_time">Time Period in Years</string>
+	<string name="step_5_calculate_rate_per_period">Calculate the Rate per Period</string>
+	<string name="step_5_rate_per_period_formula">Step 5: Calculate the rate per period</string>
+	<string name="step_6_calculate_power_term">Calculate the Power Term</string>
+	<string name="step_6_power_term_formula">Step 6: Calculate the power term</string>
+	<string name="step_7_calculate_compounded_interest">Calculate the Compounded Interest</string>
+	<string name="step_7_compound_interest_formula">Step 7: Calculate the compounded interest</string>
 	<string name="step_8_result_compound">Result: Compound Interest</string>
-	<string name="compound_interest_result">Compound Interest: ₱%.2f</string>
+	<string name="compound_interest_result">Step 8: Result: Compound Interest: ₱%.2f</string>
 
 	<!--Depreciation-->
-	<string name="step_1_input_cost">Step 1: Enter the cost of the asset:</string>
-	<string name="cost">Cost</string>
-	<string name="step_2_input_salvage_value">Step 2: Enter the salvage value of the asset:</string>
-	<string name="salvage_value">Salvage Value</string>
-	<string name="step_3_input_useful_life">Step 3: Enter the useful life of the asset in years:</string>
-	<string name="useful_life">Useful Life</string>
-	<string name="step_4_calculate_depreciation">Step 4: Calculate the depreciation:</string>
-	<string name="step_4_depreciation_formula">Depreciation Expense = (Cost - Salvage Value) / Useful Life (%.2f - %.2f) / %.2f</string>
-	<string name="step_5_calculate_depreciated_cost">Step 5: Calculate the depreciated cost:</string>
-	<string name="step_5_depreciated_cost_formula">Depreciated Cost = Cost - (Annual Depreciation * Useful Life) (%.2f - (%.2f * %.2f))</string>
+	<string name="step_1_input_cost">Cost of the Asset</string>
+	<string name="cost">Step 1: Enter the cost of the asset</string>
+	<string name="step_2_input_salvage_value">Salvage Value of the Asset</string>
+	<string name="salvage_value">Step 2: Enter the salvage value of the asset</string>
+	<string name="step_3_input_useful_life">Useful Life of the Asset in Years</string>
+	<string name="useful_life">Step 3: Enter the useful life of the asset in years</string>
+	<string name="step_4_calculate_depreciation">Calculate the Depreciation</string>
+	<string name="step_4_depreciation_formula">Step 4: Calculate the depreciation</string>
+	<string name="step_5_calculate_depreciated_cost">Calculate the Depreciated Cost</string>
+	<string name="step_5_depreciated_cost_formula">Step 5: Calculate the depreciated cost</string>
 	<string name="result">Result</string>
 	<string name="depreciation_description">The Depreciation Expense Calculator computes the annual depreciation expense based on the cost of an asset, its salvage value, and its useful life.\n\nThe formula for calculating depreciation expense is:\n\nDepreciation Expense = (Cost - Salvage Value) / Useful Life (in years)\n\nTo use this calculator, follow the step-by-step process:\n1. Enter the cost of the asset.\n2. Enter the salvage value of the asset.\n3. Enter the useful life of the asset in years.\n4. Calculate the depreciation expense.\n5. Calculate the depreciated cost.\n6. View the final result.</string>
-	<string name="depreciation_result">
-        Annual Depreciation: %1$.2f\n
-        Depreciated Cost: %2$.2f
-    </string>
+	<string name="depreciation_result">Annual Depreciation: %1$.2f\nDepreciated Cost: %2$.2f</string>
 
-	<string name="step_1_input_total_debt">Step 1: Enter the total debt (liabilities)</string>
-	<string name="total_debt">Total Debt</string>
-	<string name="step_2_input_equity">Step 2: Enter the total equity</string>
-	<string name="equity">Equity</string>
-	<string name="step_3_calculate_dter">Step 3: Calculate the Debt-to-Equity Ratio</string>
-	<string name="step_3_dter_formula">Debt-to-Equity Ratio = %1$.2f / %2$.2f</string>
-	<string name="dter_result">Debt-to-Equity Ratio: %.2f</string>
+	<string name="step_1_input_total_debt">Total Debt (Liabilities)</string>
+	<string name="total_debt">Step 1: Enter the total debt (liabilities)</string>
+	<string name="step_2_input_equity">Total Equity</string>
+	<string name="equity">Step 2: Enter the total equity</string>
+	<string name="step_3_calculate_dter">Calculate the Debt-to-Equity Ratio</string>
+	<string name="step_3_dter_formula">Step 3: Calculate the Debt-to-Equity Ratio</string>
+	<string name="dter_result">Step 4: Result: Debt-to-Equity Ratio: %.2f</string>
 
 	<!-- EarningsPerShareFragment -->
 	<string name="earnings_per_share">Earnings Per Share</string>
-	<string name="step_1_input_net_income">Step 1: Input Net Income</string>
-	<string name="step_2_input_outstanding_shares">Step 2: Input Outstanding Shares</string>
-	<string name="step_3_calculate_eps">Step 3: Calculate Earnings Per Share (EPS)</string>
-	<string name="step_3_calculate_eps_hint">Calculate EPS using the formula: EPS = %1$.2f / %2$.2f</string>
-	<string name="earnings_per_share_result">Earnings Per Share (EPS): ₱%.2f</string>
-	<string name="net_income">Net Income</string>
-	<string name="outstanding_shares">Outstanding Shares</string>
+	<string name="step_1_input_net_income">Net Income</string>
+	<string name="step_2_input_outstanding_shares">Outstanding Shares</string>
+	<string name="step_3_calculate_eps">Calculate Earnings Per Share (EPS)</string>
+	<string name="step_3_calculate_eps_hint">Step 3: Calculate Earnings Per Share (EPS)</string>
+	<string name="earnings_per_share_result">Step 4: Result: Earnings Per Share (EPS): ₱%.2f</string>
+	<string name="net_income">Step 1: Input Net Income</string>
+	<string name="outstanding_shares">Step 2: Input Outstanding Shares</string>
 	<string name="incorrect_eps_calculation">Incorrect Earnings Per Share calculation. Please try again.</string>
 
 	<!-- EquityMultiplierFragment -->
 	<string name="equity_multiplier">Equity Multiplier</string>
-	<string name="step_1_input_total_assets">Step 1: Input Total Assets</string>
-	<string name="step_2_input_total_equity">Step 2: Input Total Equity</string>
-	<string name="step_3_calculate_equity_multiplier">Step 3: Calculate Equity Multiplier</string>
-	<string name="step_3_calculate_equity_multiplier_hint">Calculate Equity Multiplier using the formula: Equity Multiplier = %1$.2f / %2$.2f</string>
-	<string name="equity_multiplier_result">Equity Multiplier: %.2f</string>
-	<string name="total_assets">Total Assets</string>
-	<string name="total_equity">Total Equity</string>
+	<string name="step_1_input_total_assets">Total Assets</string>
+	<string name="step_2_input_total_equity">Total Equity</string>
+	<string name="step_3_calculate_equity_multiplier">Calculate Equity Multiplier</string>
+	<string name="step_3_calculate_equity_multiplier_hint">Step 3: Calculate Equity Multiplier</string>
+	<string name="equity_multiplier_result">Step 4: Result: Equity Multiplier: %.2f</string>
+	<string name="total_assets">Step 1: Input Total Assets</string>
+	<string name="total_equity">Step 2: Input Total Equity</string>
 	<string name="incorrect_equity_multiplier_calculation">Incorrect Equity Multiplier calculation. Please try again.</string>
 
 	<!-- FutureValueFragment -->
 	<string name="future_value">Future Value</string>
-	<string name="step_1_input_present_value">Step 1: Input Present Value</string>
-	<string name="step_4_calculate_future_value">Step 4: Calculate Future Value</string>
-	<string name="step_4_calculate_future_value_hint">Calculate Future Value using the formula: FV = %1$.2f × (1 + %2$.2f)^%3$.2f</string>
-	<string name="future_value_result">Future Value: ₱%.2f</string>
-	<string name="present_value">Present Value</string>
+	<string name="step_1_input_present_value">Present Value</string>
+	<string name="step_4_calculate_future_value">Calculate Future Value</string>
+	<string name="step_4_calculate_future_value_hint">Step 4: Calculate Future Value</string>
+	<string name="future_value_result">Step 5: Result: Future Value: ₱%.2f</string>
+	<string name="present_value">Step 1: Input Present Value</string>
 	<string name="interest_rate_percent">Interest Rate (%)</string>
 	<string name="incorrect_future_value_calculation">Incorrect Future Value calculation. Please try again.</string>
+
+	<!-- GDPGrowthRateFragment -->
+	<string name="gdp_growth_rate">GDP Growth Rate</string>
+	<string name="step_1_input_previous_gdp">Previous GDP</string>
+	<string name="step_2_input_current_gdp">Current GDP</string>
+	<string name="step_3_calculate_gdp_difference">Calculate GDP Difference</string>
+	<string name="step_3_calculate_gdp_difference_hint">Step 3: Calculate GDP Difference</string>
+	<string name="step_4_divide_by_previous_gdp">Divide by Previous GDP</string>
+	<string name="step_4_divide_by_previous_gdp_hint">Step 4: Divide by Previous GDP</string>
+	<string name="step_5_multiply_by_100">Multiply by 100</string>
+	<string name="step_5_multiply_by_100_hint">Step 5: Multiply by 100</string>
+	<string name="gdp_growth_rate_result">Step 6: Result: GDP Growth Rate: %.2f%%</string>
+	<string name="previous_gdp">Step 1: Input Previous GDP</string>
+	<string name="current_gdp">Step 2: Input Current GDP</string>
+	<string name="incorrect_gdp_growth_rate_calculation">Incorrect GDP Growth Rate calculation. Please try again.</string>
+
+	<!-- GDPPerCapitaFragment -->
+	<string name="gdp_per_capita">GDP Per Capita</string>
+	<string name="step_1_input_total_gdp">Total GDP</string>
+	<string name="step_2_input_population">Population</string>
+	<string name="step_3_calculate_gdp_per_capita">Calculate GDP Per Capita</string>
+	<string name="step_3_calculate_gdp_per_capita_hint">Step 3: Calculate GDP Per Capita</string>
+	<string name="gdp_per_capita_result">Step 4: Result: GDP Per Capita: ₱%.2f</string>
+	<string name="total_gdp">Step 1: Input Total GDP</string>
+	<string name="population">Step 2: Input Population</string>
+	<string name="incorrect_gdp_per_capita_calculation">Incorrect GDP Per Capita calculation. Please try again.</string>
+
+	<!-- GDPDeflatorFragment -->
+	<string name="gdp_deflator">GDP Deflator</string>
+	<string name="step_1_input_nominal_gdp">Nominal GDP</string>
+	<string name="step_2_input_real_gdp">Real GDP</string>
+	<string name="step_3_calculate_gdp_deflator">Calculate GDP Deflator</string>
+	<string name="step_3_calculate_gdp_deflator_hint">Step 3: Calculate GDP Deflator</string>
+	<string name="gdp_deflator_result">Step 4: Result: GDP Deflator: %.2f</string>
+	<string name="nominal_gdp">Step 1: Input Nominal GDP</string>
+	<string name="real_gdp">Step 2: Input Real GDP</string>
+	<string name="incorrect_gdp_deflator_calculation">Incorrect GDP Deflator calculation. Please try again.</string>
+
+	<!-- HHIFragment -->
+	<string name="hhi">Herfindahl-Hirschman Index (HHI)</string>
+	<string name="step_1_input_number_of_firms">Number of Firms</string>
+	<string name="step_2_input_market_shares">Market Shares</string>
+	<string name="step_3_calculate_hhi">Calculate HHI</string>
+	<string name="step_3_calculate_hhi_hint">Step 3: Calculate HHI</string>
+	<string name="hhi_result">Step 4: Result: HHI: %.4f</string>
+	<string name="number_of_firms">Step 1: Input Number of Firms</string>
+	<string name="market_share_of_firm">Step 2: Input Market Shares of Firm %d</string>
+	<string name="incorrect_hhi_calculation">Incorrect HHI calculation. Please try again.</string>
+
+	<!-- InflationAdjustedReturnFragment -->
+	<string name="inflation_adjusted_return">Inflation-Adjusted Return</string>
+	<string name="step_2_input_final_investment">Step 2: Input your final investment amount.</string>
+	<string name="step_3_input_inflation_rate">Step 3: Input the annual inflation rate as a percentage.</string>
+	<string name="step_4_calculate_return">Step 4: Calculate the Return using the formula: (Final Investment / Initial Investment) - 1</string>
+	<string name="step_4_calculate_return_hint">Calculate the Return using the formula: (Final Investment / Initial Investment) - 1</string>
+	<string name="step_5_calculate_real_return">Step 5: Calculate the Real Return using the formula: (1 + Return) / (1 + Inflation Rate)</string>
+	<string name="step_5_calculate_real_return_hint">Calculate the Real Return using the formula: (1 + Return) / (1 + Inflation Rate)</string>
+	<string name="step_6_calculate_inflation_adjusted_return">Step 6: Calculate the Inflation-Adjusted Return using the formula: Real Return - 1</string>
+	<string name="step_6_calculate_inflation_adjusted_return_hint">Calculate the Inflation-Adjusted Return using the formula: Real Return - 1</string>
+	<string name="inflation_adjusted_return_result">Inflation-Adjusted Return: %.2f%%</string>
+	<string name="final_investment">Final Investment</string>
+	<string name="inflation_rate">Inflation Rate (%)</string>
+	<string name="incorrect_inflation_adjusted_return_calculation">Incorrect Inflation-Adjusted Return calculation. Please try again.</string>
+
+	<!-- InventoryTurnoverRatioFragment -->
+	<string name="inventory_turnover_ratio">Inventory Turnover Ratio</string>
+	<string name="step_1_input_cost_of_goods_sold">Step 1: Input Cost of Goods Sold (₱)</string>
+	<string name="step_2_input_average_inventory">Step 2: Input Average Inventory (₱)</string>
+	<string name="step_3_calculate_inventory_turnover_ratio">Step 3: Calculate Inventory Turnover Ratio using the formula: ₱%1$.2f / ₱%2$.2f</string>
+	<string name="step_3_calculate_inventory_turnover_ratio_hint">Calculate Inventory Turnover Ratio</string>
+	<string name="inventory_turnover_ratio_result">Inventory Turnover Ratio: %.2f</string>
+	<string name="cost_of_goods_sold">Cost of Goods Sold (₱)</string>
+	<string name="average_inventory">Average Inventory (₱)</string>
+	<string name="incorrect_inventory_turnover_ratio_calculation">Incorrect Inventory Turnover Ratio calculation. Please try again.</string>
+
+	<!--Markdown-->
+	<string name="step_1_input_selling_price">Step 1: Enter the original selling price of the product before the markdown.</string>
+	<string name="step_2_input_sale_price">Step 2: Enter the sale price after the markdown.</string>
+	<string name="sale_price">Sale Price</string>
+	<string name="step_3_calculate_markdown_amount">Step 3: Calculate the markdown amount by subtracting the sale price from the selling price.</string>
+	<string name="markdown_amount">Markdown Amount: %.2f</string>
+	<string name="step_4_calculate_markdown_percentage">Step 4: Calculate the markdown percentage by dividing the markdown amount by the selling price and multiplying by 100.</string>
+	<string name="markdown_percentage">Markdown Percentage: %.2f%%</string>
+	<string name="step_5_result_m">Step 5: View the final markdown amount and markdown percentage.</string>
+	<string name="markdown_result">Markdown Amount: %.2f\nMarkdown Percentage: %.2f%%</string>
+	<string name="invalid_markdown_input">The sale price cannot be greater than the selling price.</string>
+
+	<!-- MortgageFragment -->
+	<string name="step_4_calculate_interest_rate_per_month">Step 4: Calculate the interest rate per month</string>
+	<string name="step_5_calculate_loan_term_in_months">Step 5: Calculate the loan term in months</string>
+	<string name="step_6_calculate_monthly_payment">Step 6: Calculate the monthly payment</string>
+	<string name="loan_term">Loan Term (years)</string>
+	<string name="interest_rate_per_month">Interest Rate per Month (%)</string>
+	<string name="loan_term_in_months">Loan Term in Months</string>
+	<string name="monthly_payment_result">Monthly Payment: ₱%.2f</string>
+	<string name="incorrect_interest_rate_per_month">The calculated interest rate per month is incorrect. Please try again.</string>
+	<string name="incorrect_loan_term_in_months">The calculated loan term in months is incorrect. Please try again.</string>
+
 </resources>

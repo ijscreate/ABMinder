@@ -1,155 +1,173 @@
 package com.ijs.abminder.calculator.options
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.widget.addTextChangedListener
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textview.MaterialTextView
+import com.google.android.material.textfield.TextInputLayout
 import com.ijs.abminder.R
 import com.ijs.abminder.calculator.CalculatorOptionsActivity
 
 class InventoryTurnoverRatioFragment : Fragment() {
 
-    private lateinit var costOfGoodsSoldEditText : TextInputEditText
-    private lateinit var averageInventoryEditText : TextInputEditText
-    private lateinit var calculateButton : MaterialButton
-    private lateinit var resultTextView : MaterialTextView
-    private lateinit var description : MaterialTextView
-    private lateinit var solution: Button
+    private lateinit var stepTextView : TextView
+    private lateinit var stepInputLayout : TextInputLayout
+    private lateinit var stepInputEditText : TextInputEditText
+    private lateinit var nextButton : Button
+    private lateinit var resultTextView : TextView
 
+    private var currentStep = 1
+    private var costOfGoodsSold : Double? = null
+    private var averageInventory : Double? = null
+    private var inventoryTurnoverRatio : Double? = null
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater : LayoutInflater, container : ViewGroup?,
         savedInstanceState : Bundle?,
     ) : View? {
-        val view = inflater.inflate(
-            com.calculator.calculatoroptions.R.layout.fragment_inventory_turnover,
-            container,
-            false
-        )
+        val rootView =
+            inflater.inflate(com.calculator.calculatoroptions.R.layout.fragment_inventory_turnover, container, false)
 
-        // Initialize UI components
-        costOfGoodsSoldEditText = view.findViewById(com.calculator.calculatoroptions.R.id.editTextCostOfGoodsSold)
-        averageInventoryEditText = view.findViewById(com.calculator.calculatoroptions.R.id.editTextAverageInventory)
-        calculateButton = view.findViewById(com.calculator.calculatoroptions.R.id.buttonCalculateInventoryTurnoverRatio)
-        resultTextView = view.findViewById(com.calculator.calculatoroptions.R.id.textViewInventoryTurnoverRatioResult)
-        description = view.findViewById(com.calculator.calculatoroptions.R.id.tVDescription)
-        solution = view.findViewById(com.calculator.calculatoroptions.R.id.buttonSolution)
+        stepTextView = rootView.findViewById(R.id.stepTextView)
+        stepInputLayout = rootView.findViewById(R.id.stepInputLayout)
+        stepInputEditText = rootView.findViewById(R.id.stepInputEditText)
+        nextButton = rootView.findViewById(R.id.nextButton)
+        resultTextView = rootView.findViewById(R.id.resultTextView)
 
-        // Set input validation for edit texts
-        costOfGoodsSoldEditText.addTextChangedListener { validateInputs() }
-        averageInventoryEditText.addTextChangedListener { validateInputs() }
+        setupStep(currentStep)
 
-        calculateButton.setOnClickListener { calculateInventoryTurnoverRatio() }
-        solution.setOnClickListener {
-            val costOfGoodsSold = costOfGoodsSoldEditText.text.toString().toDouble()
-            val averageInventory = averageInventoryEditText.text.toString().toDouble()
-
-            try {
-                val inventoryTurnoverRatio = costOfGoodsSold / averageInventory
-                resultTextView.text = getString(
-                    com.calculator.calculatoroptions.R.string.inventory_turnover_ratio_result,
-                    inventoryTurnoverRatio
-                )
-                showExplanationDialog(costOfGoodsSold, averageInventory, inventoryTurnoverRatio)
-            } catch (e : Exception) {
-                showErrorDialog(e.message ?: getString(R.string.error_message))
-            }
+        nextButton.setOnClickListener {
+            handleNextStep()
         }
 
-        val inventoryTurnoverRatioDescription = """
-            The Inventory Turnover Ratio is a financial ratio that measures how efficiently a company manages and sells its inventory. It indicates the number of times a company's inventory is sold and replaced over a specific period, typically a year.
-
-            The formula for calculating the Inventory Turnover Ratio is:
-
+        val description = rootView.findViewById<TextView>(R.id.descriptionTextView)
+        val desc = """
+            Calculate the Inventory Turnover Ratio using the formula:
+            
             Inventory Turnover Ratio = Cost of Goods Sold / Average Inventory
+            
+            This calculator helps you determine the efficiency of a company's inventory management.
+            
+            Example:
+            
+                If the Cost of Goods Sold is ₱1,000,000 and the Average Inventory is ₱200,000, the Inventory Turnover Ratio would be:
+                
+                Inventory Turnover Ratio = 1,000,000 / 200,000 = 5
+                
+            Therefore, the Inventory Turnover Ratio is 5, which means the company sells its entire inventory 5 times per year.
+    """.trimIndent()
+        description.text = desc
 
-            Where:
-            - Cost of Goods Sold (COGS) is the total direct costs of producing goods sold by a company during a specific period.
-            - Average Inventory is the average value of the beginning and ending inventories over the same period.
+        return rootView
+    }
 
-            To calculate Average Inventory, you can use the following formula:
+    private fun setupStep(step : Int) {
+        when (step) {
+            1 -> {
+                stepTextView.text = getString(R.string.step_1_input_cost_of_goods_sold)
+                stepInputLayout.hint = getString(R.string.cost_of_goods_sold)
+                stepInputEditText.setText("")
+            }
 
-            Average Inventory = (Beginning Inventory + Ending Inventory) / 2
+            2 -> {
+                stepTextView.text = getString(R.string.step_2_input_average_inventory)
+                stepInputLayout.hint = getString(R.string.average_inventory)
+                stepInputEditText.setText("")
+            }
 
-            A higher Inventory Turnover Ratio generally indicates efficient inventory management, as it implies that inventory is sold quickly and replaced frequently. However, the ideal ratio varies by industry, so it's essential to compare it with industry benchmarks.
-        """.trimIndent()
+            3 -> {
+                stepTextView.text = getString(R.string.step_3_calculate_inventory_turnover_ratio_hint)
+                stepInputLayout.hint = getString(
+                    R.string.step_3_calculate_inventory_turnover_ratio,
+                    costOfGoodsSold,
+                    averageInventory
+                )
+                stepInputEditText.setText("")
+            }
 
-        description.text = inventoryTurnoverRatioDescription
+            4 -> {
+                stepTextView.text = getString(R.string.step_4_result)
+                stepInputLayout.visibility = View.GONE
+                nextButton.text = getString(R.string.exit)
+                nextButton.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().remove(this)
+                        .commit()
+                }
+                displayResult()
+            }
+        }
+    }
 
-        return view
+    private fun handleNextStep() {
+        when (currentStep) {
+            1 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    costOfGoodsSold = input
+                    currentStep = 2
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            2 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    averageInventory = input
+                    currentStep = 3
+                    setupStep(currentStep)
+                } else {
+                    showInputErrorToast()
+                }
+            }
+
+            3 -> {
+                val input = stepInputEditText.text.toString().toDoubleOrNull()
+                if (input != null) {
+                    val expectedInventoryTurnoverRatio = costOfGoodsSold!! / averageInventory!!
+                    if (input == expectedInventoryTurnoverRatio) {
+                        inventoryTurnoverRatio = input
+                        currentStep = 4
+                        setupStep(currentStep)
+                    } else {
+                        showInventoryTurnoverRatioCalculationErrorToast()
+                    }
+                } else {
+                    showInputErrorToast()
+                }
+            }
+        }
+    }
+
+    private fun displayResult() {
+        resultTextView.text =
+            getString(R.string.inventory_turnover_ratio_result, inventoryTurnoverRatio!!)
+    }
+
+    private fun showInputErrorToast() {
+        Toast.makeText(requireContext(), R.string.invalid_input, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showInventoryTurnoverRatioCalculationErrorToast() {
+        Toast.makeText(
+            requireContext(),
+            R.string.incorrect_inventory_turnover_ratio_calculation,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onDestroy() {
         val activity = requireActivity() as CalculatorOptionsActivity
         activity.toolbar.title = getString(R.string.calculator)
+        (activity).enableRecyclerView()
         super.onDestroy()
-    }
-
-    private fun validateInputs() {
-        val costOfGoodsSold = costOfGoodsSoldEditText.text.toString().toDoubleOrNull()
-        val averageInventory = averageInventoryEditText.text.toString().toDoubleOrNull()
-
-        calculateButton.isEnabled = costOfGoodsSold != null && costOfGoodsSold > 0 &&
-                averageInventory != null && averageInventory > 0
-    }
-
-    private fun calculateInventoryTurnoverRatio() {
-        val costOfGoodsSold = costOfGoodsSoldEditText.text.toString().toDouble()
-        val averageInventory = averageInventoryEditText.text.toString().toDouble()
-
-        try {
-            val inventoryTurnoverRatio = costOfGoodsSold / averageInventory
-            resultTextView.text = getString(
-                com.calculator.calculatoroptions.R.string.inventory_turnover_ratio_result,
-                inventoryTurnoverRatio
-            )
-        } catch (e : Exception) {
-            showErrorDialog(e.message ?: getString(R.string.error_message))
-        }
-    }
-
-    private fun showExplanationDialog(
-        costOfGoodsSold : Double,
-        averageInventory : Double,
-        inventoryTurnoverRatio : Double,
-    ) {
-        val explanation = """
-            Inventory Turnover Ratio measures how efficiently a company manages its inventory by indicating how many times inventory is sold and replaced over a specific period.
-
-            The formula for calculating Inventory Turnover Ratio is:
-
-            Inventory Turnover Ratio = Cost of Goods Sold / Average Inventory
-
-            Given:
-            Cost of Goods Sold = $costOfGoodsSold
-            Average Inventory = $averageInventory
-
-            Solution:
-            Inventory Turnover Ratio = $costOfGoodsSold / $averageInventory
-            Inventory Turnover Ratio = $inventoryTurnoverRatio
-
-            Therefore, the Inventory Turnover Ratio is $inventoryTurnoverRatio.
-        """.trimIndent()
-
-        // Display explanation in a custom dialog
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.inventory_turnover_ratio_calculation)
-            .setMessage(explanation)
-            .setPositiveButton(R.string.ok, null)
-            .show()
-    }
-
-    private fun showErrorDialog(errorMessage : String) {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.error_title)
-            .setMessage(errorMessage)
-            .setPositiveButton(R.string.ok, null)
-            .show()
     }
 }

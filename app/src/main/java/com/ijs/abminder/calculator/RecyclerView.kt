@@ -25,7 +25,9 @@ import com.ijs.abminder.calculator.options.DepreciationExpenseFragment
 import com.ijs.abminder.calculator.options.EarningsPerShareFragment
 import com.ijs.abminder.calculator.options.EquityMultiplierFragment
 import com.ijs.abminder.calculator.options.FutureValueFragment
-import com.ijs.abminder.calculator.options.GDPFragment
+import com.ijs.abminder.calculator.options.GDPDeflatorFragment
+import com.ijs.abminder.calculator.options.GDPGrowthRateFragment
+import com.ijs.abminder.calculator.options.GDPPerCapitaFragment
 import com.ijs.abminder.calculator.options.HHIFragment
 import com.ijs.abminder.calculator.options.InflationAdjustedReturnFragment
 import com.ijs.abminder.calculator.options.InventoryTurnoverRatioFragment
@@ -49,16 +51,16 @@ import com.ijs.abminder.calculator.options.TradeDiscountCalculatorFragment
 import com.ijs.abminder.calculator.options.WACCFragment
 import com.ijs.abminder.calculator.options.WorkingCapitalFragment
 
-class RecyclerView: Fragment() {
+class RecyclerView : Fragment() {
 
     private lateinit var recyclerView : RecyclerView
     private lateinit var adapter : CalculationOptionAdapter
-    private lateinit var searchView :SearchView
+    private lateinit var searchView : SearchView
 
     override fun onCreateView(
         inflater : LayoutInflater,
         container : ViewGroup?,
-        savedInstanceState : Bundle?
+        savedInstanceState : Bundle?,
     ) : View? {
         val recycler = layoutInflater.inflate(R.layout.calculator_recycler_view, container, false)
 
@@ -207,6 +209,14 @@ class RecyclerView: Fragment() {
             CalculationOption(
                 "Depreciation Expense", "Calculate the depreciation of an asset."
             ),
+            CalculationOption(
+                "Gross Domestic Product (GDP) Per Capita",
+                "Determine the GDP per capita of a country or region based on the total GDP and population."
+            ),
+            CalculationOption(
+                "Gross Domestic Product (GDP) Deflator",
+                "Determine the GDP deflator, which measures the rate of price change in an economy."
+            )
         ).sortedBy { it.name }
 
         // Initialize the adapter
@@ -223,7 +233,7 @@ class RecyclerView: Fragment() {
                 "Weighted Average Cost of Capital (WACC)" -> WACCFragment()
                 "Time Value of Money (TVM)" -> TimeValueOfMoneyFragment()
                 "Earnings Per Share (EPS)" -> EarningsPerShareFragment()
-                "Gross Domestic Product (GDP) Growth Rate" -> GDPFragment()
+                "Gross Domestic Product (GDP) Growth Rate" -> GDPGrowthRateFragment()
                 "Debt to Equity Ratio" -> DTERFragment()
                 "Operating Cash Flow Ratio" -> OperatingCashFlowRatioFragment()
                 "Inventory Turnover Ratio" -> InventoryTurnoverRatioFragment()
@@ -250,6 +260,8 @@ class RecyclerView: Fragment() {
                 "Depreciation Expense" -> DepreciationExpenseFragment()
                 "Markdown" -> MarkdownCalculatorFragment()
                 "Quick Ratio" -> QuickRatioFragment()
+                "Gross Domestic Product (GDP) Per Capita" -> GDPPerCapitaFragment()
+                "Gross Domestic Product (GDP) Deflator" -> GDPDeflatorFragment()
                 else -> null
             }
 
