@@ -1,36 +1,80 @@
-# ABMinder: Your Ultimate ABM Learning Companion
 
-Welcome to ABMinder – your ultimate companion for mastering Business Mathematics, Business Finance, FABM 1, and Applied Economics!
+# **ABMinder: Your Ultimate ABM Learning Companion**
 
-ABMinder is a mobile application developed by our dedicated team of researchers at Mother Theresa Colegio De Balatan. Designed specifically for ABM (Accountancy, Business, and Management) students, ABMinder aims to provide a comprehensive and interactive learning experience to support students in their academic journey.
+Welcome to **ABMinder** – the ultimate mobile app designed to support ABM (Accountancy, Business, and Management) students in mastering key subjects such as Business Mathematics, Business Finance, FABM 1, and Applied Economics!
 
-Key Features of ABMinder:
+Developed by the dedicated team of researchers at **Mother Theresa Colegio De Balatan**, ABMinder offers a comprehensive, interactive learning experience to aid students in their academic journey.
 
-1. Dictionary:
-   - Access a comprehensive dictionary of business and finance terms directly within the ABMinder app.
-   - Look up definitions, explanations, and examples to enhance your understanding of key terminology used in your studies.
+---
 
-2. Calculator:
-   - Utilize specialized calculators for various financial calculations, such as compound interest, annuities, present value, and more.
-   - Tailored to the needs of ABM students, providing accurate and efficient solutions to complex mathematical problems.
+## **Key Features**
 
-3. Lessons:
-   - Access detailed lessons and tutorials covering essential topics in Business Mathematics, Business Finance, FABM 1, FABM 2, Business Ethics, Principles of Marketing, Organization and Management, and Applied Economics.
-   - Carefully curated content designed to help you understand complex concepts and build a solid foundation in these subjects.
-   - (Note: Lessons are created using HTML.)
+### **1. Dictionary**
+- Instantly access a robust dictionary of business and finance terms within the app.  
+- Enhance your understanding with clear definitions, detailed explanations, and practical examples.
 
-4. Quiz:
-   - Test your knowledge and reinforce your learning with interactive quizzes and practice exercises.
-   - Track your progress and identify areas for improvement with quizzes designed to simulate exam conditions.
+---
 
-5. Personalized Study Plans:
-   - Create personalized study plans tailored to your individual learning needs and goals.
-   - Set reminders, track your study time, and stay organized to maximize your productivity and academic success.
+### **2. Calculator**
+- Perform financial calculations with specialized tools for:
+  - Compound interest  
+  - Annuities  
+  - Present value, and more  
+- Tailored to the unique needs of ABM students for accurate and efficient solutions.
 
-6. Real-World Examples:
-   - Explore real-world examples and case studies to illustrate key concepts and their practical applications in the business world.
-   - Bridging the gap between theory and practice, helping you understand how theoretical concepts are applied in real-life scenarios.
+---
 
-7. User-Friendly Interface:
-   - ABMinder features a user-friendly interface designed for seamless navigation and ease of use.
-   - Provides a convenient and accessible learning experience anytime, anywhere – whether at home, in the library, or on the go.
+### **3. Lessons**
+- Explore detailed lessons on core topics like:
+  - Business Mathematics  
+  - Business Finance  
+  - FABM 1 & FABM 2  
+  - Business Ethics  
+  - Principles of Marketing  
+  - Organization and Management  
+  - Applied Economics  
+- All lessons are crafted in HTML for an immersive learning experience.
+
+---
+
+### **4. Quiz**
+- Test your knowledge with interactive quizzes and practice exercises.  
+- Track your progress and identify areas for improvement.  
+- Quizzes simulate real exam conditions to prepare you for success.
+
+---
+
+### **5. Personalized Study Plans**
+- Create customized study plans based on your learning goals.  
+- Set reminders, manage study time, and stay organized for maximum productivity.  
+
+---
+
+### **6. Real-World Examples**
+- Dive into real-world case studies and examples that bring theoretical concepts to life.  
+- See how business principles are applied practically in various scenarios.
+
+---
+
+### **7. User-Friendly Interface**
+- Enjoy a seamless, intuitive experience with ABMinder’s user-friendly design.  
+- Learn anytime, anywhere – whether at home, the library, or on the go.
+
+---
+
+## **Exclusivity**
+ABMinder is exclusively available to students of **Mother Theresa Colegio De Balatan** as part of a **Practical Research 2 project**.
+
+**Team Members**:  
+- Pauly Jean Abarrera  
+- Jaressen Kyle Salcedo  
+- Jakelyn Landagan  
+- Mark Paul Calvelo  
+- Jeric Mendoza  
+- John Paul Maniscan  
+- Kurt Hearick Mangente  
+- Rowen Amarille  
+
+---
+
+With ABMinder, mastering ABM subjects has never been easier. Start your journey toward academic success today! 🎓
