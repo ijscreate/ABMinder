@@ -68,7 +68,7 @@ ABMinder is exclusively available to students of **Mother Theresa Colegio De Bal
 **Team Members**:  
 - Pauly Jean Abarrera  
 - Jaressen Kyle Salcedo  
-- Jakelyn Landagan  
+- Jackelyn Landagan  
 - Mark Paul Calvelo  
 - Jeric Mendoza  
 - John Paul Maniscan  
